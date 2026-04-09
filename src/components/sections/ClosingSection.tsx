@@ -38,9 +38,9 @@ export default function ClosingSection() {
           style={{ fontSize: 'clamp(20px, 2.4vw, 38px)', lineHeight: 1.42 }}
         >
           Creativity without process<br />
-          <em className="not-italic text-mid">{t('closing.chaos')}</em><br /><br />
+          <span className="text-mid">{t('closing.chaos')}</span><br /><br />
           Process without creativity<br />
-          <em className="not-italic text-mid">{t('closing.lifeless')}</em><br /><br />
+          <span className="text-mid">{t('closing.lifeless')}</span><br /><br />
           We build both.
         </p>
         <div className="mt-8 font-mono text-[10px] tracking-[0.14em] uppercase text-dim [html[data-theme='light']_&]:text-mid reveal d2">

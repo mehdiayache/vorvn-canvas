@@ -6,7 +6,7 @@ export default function EntitySection() {
 
   return (
     <section className="border-t border-rule" style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}>
-      <SectionHeader numKey="entity.num" labelKey="entity.label" />
+      <SectionHeader labelKey="entity.label" />
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20">
         <div className="hidden lg:block" />
         <div>
@@ -19,7 +19,7 @@ export default function EntitySection() {
             ))}
           </p>
           <p
-            className="mt-8 text-mid font-normal reveal d2"
+            className="mt-8 font-sans font-normal text-mid reveal d2"
             style={{ fontSize: 'clamp(14px, 1.1vw, 16px)', lineHeight: 1.88 }}
           >
             {t('entity.detail')}
