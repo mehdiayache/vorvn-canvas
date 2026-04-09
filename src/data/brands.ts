@@ -2,7 +2,7 @@ export const BRANDS_DATA = [
   {
     logo: 'https://vorvn.com/wp-content/uploads/2024/08/cookwarriors.png',
     url: 'https://cookwarriors.com',
-    presentationUrl: null,
+    presentationUrl: 'https://vorvn.com/presentations/cookwarriors.pdf',
     images: [
       'https://picsum.photos/seed/cw-pan1/800/800',
       'https://picsum.photos/seed/cw-pan2/800/800',

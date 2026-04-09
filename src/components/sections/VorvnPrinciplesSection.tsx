@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import SectionHeader from '../SectionHeader';
 
 export default function PrinciplesSection() {
   const { t } = useTranslation();
@@ -11,7 +10,9 @@ export default function PrinciplesSection() {
 
   return (
     <section className="border-t border-rule" style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}>
-      <SectionHeader labelKey="principles.label" />
+      <div className="reveal" style={{ marginBottom: 'clamp(48px, 7vh, 88px)' }}>
+        <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">{t('principles.label')}</span>
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-11 lg:gap-x-14">
         {items.map((item, i) => (
           <div key={i} className={`pt-8 border-t border-rule reveal d${i + 1}`}>
