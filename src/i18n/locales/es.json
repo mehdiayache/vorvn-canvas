@@ -3,7 +3,8 @@
     "tag": "IP Holdings · Est. 2023",
     "contact": "Contact",
     "light": "Light",
-    "dark": "Dark"
+    "dark": "Dark",
+    "menu": "Menu"
   },
   "hero": {
     "headline": "Autonomous & Independent\nIP & Brand Owners.",
@@ -18,14 +19,12 @@
     "scroll": "Scroll"
   },
   "entity": {
-    "num": "01",
     "label": "The Entity",
     "statement": "VORVN is not an agency.\nIt is the architecture\nbehind the brands.",
     "detail": "Design is not decoration — it is the first decision. Every structure we build, every brand we deploy, starts from a single design question: does this create real value? VORVN is a private IP holdings company registered in Hong Kong, with participations across Southeast Asia, Northwest Africa, and Western consumer markets. We own, license, and deploy brand intellectual property across verticals — consumer goods, faith-driven gifting, modest fashion — without intermediaries, without compromise. Pure execution.",
     "designNote": "Design · Strategy · Execution · No middlemen. No shortcuts."
   },
   "presence": {
-    "num": "02",
     "label": "Presence",
     "locations": [
       {
@@ -52,7 +51,6 @@
     ]
   },
   "portfolio": {
-    "num": "03",
     "label": "Portfolio",
     "intro": "The brands and intellectual property we design, build, and own — deployed across consumer markets worldwide.",
     "visitBrand": "Visit Brand →",
@@ -62,57 +60,44 @@
     "next": "Next →",
     "brands": [
       {
-        "idx": "01",
         "name": "Cook Warriors",
         "sector": "Consumer Goods · USA / UAE",
-        "status": "active",
         "statusLabel": "Active",
         "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
       },
       {
-        "idx": "02",
         "name": "Hearts Notes",
         "sector": "Faith & Gifting · USA",
-        "status": "active",
         "statusLabel": "Active",
         "desc": "A Christian gifting brand delivering faith-centred products through Etsy and direct-to-consumer channels. Workbooks, digital kits, and heartfelt gifts designed for the Christian home."
       },
       {
-        "idx": "03",
         "name": "MAQTOB",
         "sector": "Modest Fashion · EU / France",
-        "status": "dev",
         "statusLabel": "In Development",
         "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
       },
       {
-        "idx": "04",
         "name": "xVoyager",
         "sector": "Exploration · Global",
-        "status": "dev",
         "statusLabel": "In Development",
         "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
       },
       {
-        "idx": "05",
         "name": "Warung Marrakech",
         "sector": "Food & Beverage",
-        "status": "dev",
         "statusLabel": "In Development",
         "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
       },
       {
-        "idx": "06",
         "name": "Davi Properties",
         "sector": "Real Estate",
-        "status": "dev",
         "statusLabel": "In Development",
         "desc": "A real estate venture in development, leveraging VORVN's Southeast Asia network and operational infrastructure across the Indonesian archipelago."
       }
     ]
   },
   "principles": {
-    "num": "04",
     "label": "How We Operate",
     "items": [
       {
