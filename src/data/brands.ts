@@ -5,12 +5,10 @@ export const BRANDS_DATA = [
     presentationUrl: 'https://vorvn.com/presentations/cookwarriors.pdf',
     tags: ['E-Commerce', 'Kitchenware', 'DTC'],
     images: [
-      'https://picsum.photos/seed/cw-pan1/800/800',
-      'https://picsum.photos/seed/cw-pan2/800/800',
-      'https://picsum.photos/seed/cw-pan3/800/800',
-      'https://picsum.photos/seed/cw-pan4/800/800',
-      'https://picsum.photos/seed/cw-pan5/800/800',
-      'https://picsum.photos/seed/cw-pan6/800/800',
+      'https://cookwarriors.com/cdn/shop/files/6-eggscalibur-pan-sword-pan-sword-handle-frying-pan-cookwarriors-buy.webp?v=1775534988',
+      'https://cookwarriors.com/cdn/shop/files/5-eggscalibur-pan-sword-pan-sword-handle-frying-pan-cookwarriors-buy.webp?v=1759968518',
+      'https://cookwarriors.com/cdn/shop/files/7-eggscalibur-pan-sword-pan-sword-handle-frying-pan-cookwarriors-buy.webp?v=1751243279',
+      'https://cookwarriors.com/cdn/shop/files/2-eggscalibur-pan-sword-pan-sword-handle-frying-pan-cookwarriors-buy.webp?v=1759968518',
     ],
   },
   {

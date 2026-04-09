@@ -66,7 +66,7 @@
         "name": "Cook Warriors",
         "sector": "Consumer Goods · USA / UAE",
         "status": "active",
-        "statusLabel": "● Active",
+        "statusLabel": "Active",
         "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
       },
       {
@@ -74,7 +74,7 @@
         "name": "Hearts Notes",
         "sector": "Faith & Gifting · USA",
         "status": "active",
-        "statusLabel": "● Active",
+        "statusLabel": "Active",
         "desc": "A Christian gifting brand delivering faith-centred products through Etsy and direct-to-consumer channels. Workbooks, digital kits, and heartfelt gifts designed for the Christian home."
       },
       {
@@ -82,7 +82,7 @@
         "name": "MAQTOB",
         "sector": "Modest Fashion · EU / France",
         "status": "dev",
-        "statusLabel": "◌ In Development",
+        "statusLabel": "In Development",
         "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
       },
       {
@@ -90,7 +90,7 @@
         "name": "xVoyager",
         "sector": "Exploration · Global",
         "status": "dev",
-        "statusLabel": "◌ In Development",
+        "statusLabel": "In Development",
         "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
       },
       {
@@ -98,7 +98,7 @@
         "name": "Warung Marrakech",
         "sector": "Food & Beverage",
         "status": "dev",
-        "statusLabel": "◌ In Development",
+        "statusLabel": "In Development",
         "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
       },
       {
@@ -106,7 +106,7 @@
         "name": "Davi Properties",
         "sector": "Real Estate",
         "status": "dev",
-        "statusLabel": "◌ In Development",
+        "statusLabel": "In Development",
         "desc": "A real estate venture in development, leveraging VORVN's Southeast Asia network and operational infrastructure across the Indonesian archipelago."
       }
     ]
