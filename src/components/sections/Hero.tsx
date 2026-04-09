@@ -25,7 +25,7 @@ export default function Hero() {
         className="relative z-[1] font-sans text-mid font-medium uppercase mt-[18px]"
         style={{
           fontSize: 'clamp(12px, 1.1vw, 16px)',
-          letterSpacing: '0.28em',
+          letterSpacing: '0.02em',
           opacity: 0,
           animation: 'fadeIn 0.7s ease 0.55s forwards',
         }}
@@ -43,7 +43,7 @@ export default function Hero() {
         style={{ opacity: 0, animation: 'fadeUp 0.7s ease 0.85s forwards' }}
       >
         <p
-          className="font-sans italic font-normal text-foreground"
+          className="font-sans font-medium text-foreground"
           style={{ fontSize: 'clamp(17px, 1.85vw, 29px)', lineHeight: 1.46 }}
         >
           {t('hero.tagline').split('\n').map((line, i) => (
