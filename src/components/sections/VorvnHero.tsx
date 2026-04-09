@@ -1,6 +1,41 @@
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import EyeSvg from '../EyeSvg';
 import GlobeSvg from '../GlobeSvg';
+
+function RotatingWord() {
+  const { t } = useTranslation();
+  const words = [
+    t('hero.words.build'),
+    t('hero.words.design'),
+    t('hero.words.own'),
+  ];
+  const [index, setIndex] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % words.length);
+        setVisible(true);
+      }, 300);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [words.length]);
+
+  return (
+    <span
+      className="inline-block transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(12px)',
+      }}
+    >
+      {words[index]}
+    </span>
+  );
+}
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -35,9 +70,8 @@ export default function Hero() {
           className="font-sans font-medium text-foreground"
           style={{ fontSize: 'clamp(17px, 1.85vw, 29px)', lineHeight: 1.46 }}
         >
-          {t('hero.tagline').split('\n').map((line, i) => (
-            <span key={i}>{line}{i === 0 && <br />}</span>
-          ))}
+          {t('hero.taglinePre')} <RotatingWord />,<br />
+          {t('hero.taglinePost')}
         </p>
 
         <div className="hidden md:flex items-end gap-[10px] shrink-0 text-right">

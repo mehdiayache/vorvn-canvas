@@ -7,7 +7,13 @@
   },
   "hero": {
     "headline": "Autonomous & Independent\nIP & Brand Owners.",
-    "tagline": "Autonomous IP & Brand Holdings.\nWe think sharp. We execute bold.",
+    "taglinePre": "We",
+    "taglinePost": "Digital-First Brands.",
+    "words": {
+      "build": "Build",
+      "design": "Design",
+      "own": "Own"
+    },
     "basedIn": "Based in Hong Kong.\nOperating Worldwide.",
     "scroll": "Scroll"
   },
