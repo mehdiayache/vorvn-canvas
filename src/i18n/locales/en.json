@@ -125,18 +125,16 @@
   },
   "investors": {
     "label": "Investors",
-    "headline": "We're not raising. We're not selling. We're selecting.",
-    "body": "VORVN is a privately held structure. We don't pitch decks at conferences. We don't chase capital. But we recognize that the right alignment — in vision, in values, in ambition — can accelerate what we've already built. If you think like a builder, not a spectator, there may be a seat at the table.",
+    "headline": "We don't raise capital.\nWe choose partners.",
+    "body": "VORVN is privately held and fully operational. We are not looking for funding — we are looking for alignment. The rare kind. If you build, if you think in decades, if you move without noise — we should talk.",
     "path1Badge": "Incubator",
-    "path1Title": "Design-to-Market Incubator",
-    "path1Body": "Our Bali-based studio takes IP from concept to market-ready product — brand identity, packaging, fulfillment infrastructure. Join as a strategic partner and co-build the next brand from inside the machine.",
+    "path1Title": "Design-to-Market · Bali",
     "path1Location": "Bali, Indonesia",
     "path2Badge": "Venture",
-    "path2Title": "Strategic Venture Collaboration",
-    "path2Body": "Already have capital and conviction? Partner with us to accelerate an existing VORVN brand into new markets, new verticals, or new scale. We bring the IP, the team, and the operational backbone.",
+    "path2Title": "Strategic Co-Build",
     "path2Location": "Hong Kong · Global",
-    "cta": "Request a Private Introduction →",
-    "ctaSub": "By invitation only · Qualified entities"
+    "cta": "Request Introduction",
+    "ctaSub": "By invitation · Qualified entities only"
   },
   "closing": {
     "statement": "Creativity without process\n{chaos}\n\nProcess without creativity\n{lifeless}\n\nWe build both.",
