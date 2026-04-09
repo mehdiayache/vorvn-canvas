@@ -70,20 +70,7 @@ export default function Nav() {
           <span className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid">
             {t('nav.tag')}
           </span>
-          {/* Desktop theme toggle */}
-          <button
-            onClick={toggleTheme}
-            className="flex items-center gap-2 border border-dim rounded-[20px] py-[5px] px-3 ps-2 text-mid font-mono text-[8.5px] tracking-[0.14em] uppercase hover:border-mid hover:text-foreground transition-colors duration-200"
-            aria-label="Toggle colour mode"
-          >
-            <div className="w-6 h-[14px] border border-dim rounded-[7px] relative">
-              <div
-                className="absolute w-2 h-2 rounded-full bg-mid top-1/2 start-[2px] -translate-y-1/2 transition-transform duration-300 [html[data-theme='light']_&]:translate-x-[10px] [html[data-theme='light']_&]:bg-foreground"
-                style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-              />
-            </div>
-            <span>{isDark ? t('nav.light') : t('nav.dark')}</span>
-          </button>
+          {/* Theme toggle hidden – dark mode only for now */}
           <a href="mailto:contact@vorvn.com" className="font-sans text-[11px] font-medium tracking-[0.1em] uppercase text-foreground hover:text-mid transition-colors duration-200">
             {t('nav.contact')}
           </a>
@@ -150,14 +137,7 @@ export default function Nav() {
               {/* Divider */}
               <div className="mx-5 my-2 border-t border-rule" />
 
-              {/* Theme toggle as menu item */}
-              <button
-                onClick={toggleTheme}
-                className="w-full bg-transparent border-none text-left px-5 py-3 flex items-center gap-3 font-sans text-[14px] font-medium text-foreground hover:text-mid transition-colors duration-200"
-              >
-                {isDark ? <Sun className="w-4 h-4 text-mid" /> : <Moon className="w-4 h-4 text-mid" />}
-                {isDark ? t('nav.light') : t('nav.dark')}
-              </button>
+              {/* Theme toggle hidden – dark mode only for now */}
 
               {/* Language as expandable menu item */}
               <button
