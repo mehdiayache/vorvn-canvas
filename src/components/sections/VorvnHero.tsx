@@ -11,32 +11,15 @@ function RotatingWord() {
     t('hero.words.own'),
   ];
   const [index, setIndex] = useState(0);
-  const [phase, setPhase] = useState<'in' | 'out'>('in');
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setPhase('out');
-      setTimeout(() => {
-        setIndex((prev) => (prev + 1) % words.length);
-        setPhase('in');
-      }, 400);
-    }, 1400);
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 1000);
     return () => clearInterval(timer);
   }, [words.length]);
 
-  return (
-    <span className="inline-block overflow-hidden align-bottom" style={{ height: '1.15em' }}>
-      <span
-        className="inline-block transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
-        style={{
-          opacity: phase === 'in' ? 1 : 0,
-          transform: phase === 'in' ? 'translateY(0)' : 'translateY(100%)',
-        }}
-      >
-        {words[index]}
-      </span>
-    </span>
-  );
+  return <>{words[index]}</>;
 }
 
 export default function Hero() {
