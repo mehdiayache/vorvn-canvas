@@ -10,7 +10,7 @@ function VorvnGallery({ images }: { images: string[] }) {
     if (!el) return;
     let animId: number;
     let scrollPos = 0;
-    const speed = 0.5; // px per frame
+    const speed = 0.5;
 
     const step = () => {
       scrollPos += speed;
@@ -24,7 +24,6 @@ function VorvnGallery({ images }: { images: string[] }) {
     return () => cancelAnimationFrame(animId);
   }, [images]);
 
-  // Duplicate images for infinite loop
   const loopImages = [...images, ...images];
 
   return (
@@ -61,9 +60,10 @@ function VorvnPortfolioItem({
   const expandRef = useRef<HTMLDivElement>(null);
 
   const brand = t(`portfolio.brands.${index}`, { returnObjects: true }) as {
-    idx: string; name: string; sector: string; status: string; statusLabel: string; desc: string;
+    name: string; sector: string; statusLabel: string; desc: string;
   };
   const data = BRANDS_DATA[index];
+  const isActive = data.status === 'active';
 
   useEffect(() => {
     const el = expandRef.current;
@@ -82,8 +82,6 @@ function VorvnPortfolioItem({
       el.style.height = '0';
     }
   }, [isOpen]);
-
-  const isActive = brand.status === 'active';
 
   return (
     <li className={`border-b border-rule first:border-t`}>
@@ -132,7 +130,6 @@ function VorvnPortfolioItem({
         aria-hidden={!isOpen}
       >
         <div className="border-t border-rule py-10 pb-14">
-          {/* Big logo */}
           <div className="mb-8">
             {data.logo ? (
               <div className="inline-block [html[data-theme='light']_&]:bg-[#181818] [html[data-theme='light']_&]:p-3 [html[data-theme='light']_&]:px-5">
@@ -143,12 +140,10 @@ function VorvnPortfolioItem({
             )}
           </div>
 
-          {/* Content grid: info left, gallery right */}
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-x-[60px] gap-y-9">
             <div>
               <div className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground mb-3">{brand.name}</div>
               
-              {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-5">
                 {data.tags.map((tag) => (
                   <span
@@ -205,7 +200,7 @@ export default function VorvnPortfolioSection() {
   }, []);
 
   return (
-    <section className="border-t border-rule" style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}>
+    <section id="portfolio" className="border-t border-rule" style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}>
       <div className="reveal" style={{ marginBottom: 'clamp(48px, 7vh, 88px)' }}>
         <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">
           {t('portfolio.label')}
