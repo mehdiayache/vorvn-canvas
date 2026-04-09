@@ -11,28 +11,30 @@ function RotatingWord() {
     t('hero.words.own'),
   ];
   const [index, setIndex] = useState(0);
-  const [visible, setVisible] = useState(true);
+  const [phase, setPhase] = useState<'in' | 'out'>('in');
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setVisible(false);
+    const timer = setInterval(() => {
+      setPhase('out');
       setTimeout(() => {
         setIndex((prev) => (prev + 1) % words.length);
-        setVisible(true);
-      }, 300);
-    }, 1000);
-    return () => clearInterval(interval);
+        setPhase('in');
+      }, 400);
+    }, 1400);
+    return () => clearInterval(timer);
   }, [words.length]);
 
   return (
-    <span
-      className="inline-block transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(12px)',
-      }}
-    >
-      {words[index]}
+    <span className="inline-block overflow-hidden align-bottom" style={{ height: '1.15em' }}>
+      <span
+        className="inline-block transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+        style={{
+          opacity: phase === 'in' ? 1 : 0,
+          transform: phase === 'in' ? 'translateY(0)' : 'translateY(100%)',
+        }}
+      >
+        {words[index]}
+      </span>
     </span>
   );
 }
@@ -70,7 +72,7 @@ export default function Hero() {
           className="font-sans font-medium text-foreground"
           style={{ fontSize: 'clamp(17px, 1.85vw, 29px)', lineHeight: 1.46 }}
         >
-          {t('hero.taglinePre')} <RotatingWord />,<br />
+          {t('hero.taglinePre')} <RotatingWord /><br />
           {t('hero.taglinePost')}
         </p>
 
@@ -84,16 +86,6 @@ export default function Hero() {
           </div>
           <GlobeSvg />
         </div>
-      </div>
-
-      <div
-        className="relative z-[1] flex items-center gap-[14px] mt-11"
-        style={{ opacity: 0, animation: 'fadeIn 0.5s ease 1.1s forwards' }}
-      >
-        <div className="w-10 h-px bg-dim" />
-        <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-mid">
-          {t('hero.scroll')}
-        </span>
       </div>
     </header>
   );
