@@ -11,7 +11,7 @@ export default function EntitySection() {
         <div className="hidden lg:block" />
         <div>
           <p
-            className="font-sans italic font-normal text-foreground reveal d1"
+            className="font-sans font-medium text-foreground reveal d1"
             style={{ fontSize: 'clamp(22px, 2.8vw, 44px)', lineHeight: 1.35 }}
           >
             {t('entity.statement').split('\n').map((line, i) => (

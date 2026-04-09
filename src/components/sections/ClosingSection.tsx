@@ -34,7 +34,7 @@ export default function ClosingSection() {
 
       <div>
         <p
-          className="font-sans italic font-normal text-foreground reveal d1"
+          className="font-sans font-medium text-foreground reveal d1"
           style={{ fontSize: 'clamp(20px, 2.4vw, 38px)', lineHeight: 1.42 }}
         >
           Creativity without process<br />
