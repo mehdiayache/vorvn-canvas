@@ -19,7 +19,7 @@ function RotatingWord() {
     return () => clearInterval(timer);
   }, [words.length]);
 
-  return <>{words[index]}</>;
+  return <span className="font-black">{words[index]}</span>;
 }
 
 export default function Hero() {
@@ -59,9 +59,9 @@ export default function Hero() {
           {t('hero.taglinePost')}
         </p>
 
-        <div className="hidden md:flex items-end gap-[10px] shrink-0 text-right">
+        <div className="flex items-end gap-[10px] shrink-0 text-right">
           <div className="text-right">
-            <div className="font-sans text-[12px] font-normal tracking-[0.02em] leading-[1.55] text-foreground">
+            <div className="font-sans text-[10px] md:text-[12px] font-normal tracking-[0.02em] leading-[1.55] text-foreground">
               {t('hero.basedIn').split('\n').map((line, i) => (
                 <span key={i}>{line}{i === 0 && <br />}</span>
               ))}
