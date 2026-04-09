@@ -8,19 +8,20 @@ const validCodes = LANGUAGES.map((l) => l.code);
 export default function LanguageRoute({ children }: { children: React.ReactNode }) {
   const { lang } = useParams<{ lang: string }>();
   const { i18n } = useTranslation();
-
-  // Redirect invalid lang codes to /en
-  if (!lang || !validCodes.includes(lang)) {
-    return <Navigate to="/en" replace />;
-  }
+  const isValid = lang && validCodes.includes(lang);
 
   useEffect(() => {
+    if (!isValid || !lang) return;
     if (i18n.language !== lang) {
       i18n.changeLanguage(lang);
     }
     document.documentElement.lang = lang;
     document.documentElement.dir = RTL_LANGUAGES.includes(lang) ? 'rtl' : 'ltr';
-  }, [lang, i18n]);
+  }, [lang, i18n, isValid]);
+
+  if (!isValid) {
+    return <Navigate to="/en" replace />;
+  }
 
   return <>{children}</>;
 }
