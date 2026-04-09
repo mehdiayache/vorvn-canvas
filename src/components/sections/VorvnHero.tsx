@@ -10,28 +10,17 @@ export default function Hero() {
       <EyeSvg />
 
       <div
-        className="relative z-[1] font-brand text-foreground leading-[0.88]"
+        className="relative z-[1] font-sans font-medium text-foreground"
         style={{
-          fontSize: 'clamp(72px, 16vw, 248px)',
+          fontSize: 'clamp(36px, 6vw, 96px)',
+          lineHeight: 1.1,
           opacity: 0,
           transform: 'translateY(22px)',
           animation: 'fadeUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards',
         }}
       >
-        VORVN
+        {t('hero.headline')}
       </div>
-
-      <p
-        className="relative z-[1] font-sans text-mid font-medium uppercase mt-[18px]"
-        style={{
-          fontSize: 'clamp(12px, 1.1vw, 16px)',
-          letterSpacing: '0.02em',
-          opacity: 0,
-          animation: 'fadeIn 0.7s ease 0.55s forwards',
-        }}
-      >
-        {t('hero.designLine')}
-      </p>
 
       <div
         className="relative z-[1] h-px bg-rule my-7"
