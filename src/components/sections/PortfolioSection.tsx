@@ -126,7 +126,7 @@ function PortfolioItem({ index }: { index: number }) {
         style={{ height: 0, transition: 'height 520ms cubic-bezier(0.16, 1, 0.3, 1)' }}
         aria-hidden={!open}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.65fr] gap-x-[60px] gap-y-9 border-t border-rule" style={{ padding: '40px 0 56px 0', paddingInlineStart: window.innerWidth >= 1024 ? '80px' : '0' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.65fr] gap-x-[60px] gap-y-9 border-t border-rule py-10 pb-14 lg:ps-20">
           <div>
             {data.logo && (
               <div className="mb-5 inline-block [html[data-theme='light']_&]:bg-[#181818] [html[data-theme='light']_&]:p-2 [html[data-theme='light']_&]:px-[14px]">
