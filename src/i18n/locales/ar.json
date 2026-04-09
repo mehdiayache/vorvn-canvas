@@ -125,18 +125,16 @@
   },
   "investors": {
     "label": "المستثمرون",
-    "headline": "لا نجمع تمويلاً. لا نبيع. نحن نختار.",
-    "body": "VORVN هيكل خاص. لا نقدم عروضاً في المؤتمرات. لا نلاحق رأس المال. لكننا ندرك أن التوافق الصحيح — في الرؤية والقيم والطموح — يمكن أن يسرّع ما بنيناه بالفعل.",
+    "headline": "We don't raise capital.\nWe choose partners.",
+    "body": "VORVN is privately held and fully operational. We are not looking for funding — we are looking for alignment. The rare kind. If you build, if you think in decades, if you move without noise — we should talk.",
     "path1Badge": "حاضنة",
-    "path1Title": "حاضنة التصميم إلى السوق",
-    "path1Body": "استوديونا في بالي يحوّل الملكية الفكرية من فكرة إلى منتج جاهز للسوق — هوية العلامة التجارية والتغليف والبنية التحتية للتوزيع.",
+    "path1Title": "Design-to-Market · Bali",
     "path1Location": "بالي، إندونيسيا",
     "path2Badge": "مشروع مشترك",
-    "path2Title": "تعاون استراتيجي مشترك",
-    "path2Body": "لديك رأس المال والقناعة؟ شاركنا لتسريع علامة VORVN تجارية قائمة نحو أسواق جديدة.",
+    "path2Title": "Strategic Co-Build",
     "path2Location": "هونغ كونغ · عالمي",
-    "cta": "طلب مقدمة خاصة →",
-    "ctaSub": "بدعوة فقط · كيانات مؤهلة"
+    "cta": "Request Introduction",
+    "ctaSub": "By invitation · Qualified entities only"
   },
   "closing": {
     "statement": "Creativity without process\n{chaos}\n\nProcess without creativity\n{lifeless}\n\nWe build both.",

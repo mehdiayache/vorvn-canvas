@@ -125,18 +125,16 @@
   },
   "investors": {
     "label": "Investor",
-    "headline": "Kami tidak menggalang dana. Kami tidak menjual. Kami memilih.",
-    "body": "VORVN adalah struktur swasta. Kami tidak melakukan pitch di konferensi. Kami tidak mengejar modal. Tapi kami menyadari bahwa keselarasan yang tepat — dalam visi, nilai, dan ambisi — dapat mempercepat apa yang sudah kami bangun.",
+    "headline": "We don't raise capital.\nWe choose partners.",
+    "body": "VORVN is privately held and fully operational. We are not looking for funding — we are looking for alignment. The rare kind. If you build, if you think in decades, if you move without noise — we should talk.",
     "path1Badge": "Inkubator",
-    "path1Title": "Inkubator Desain-ke-Pasar",
-    "path1Body": "Studio kami di Bali mengubah IP dari konsep menjadi produk siap pasar — identitas merek, kemasan, infrastruktur distribusi.",
+    "path1Title": "Design-to-Market · Bali",
     "path1Location": "Bali, Indonesia",
     "path2Badge": "Venture",
-    "path2Title": "Kolaborasi Venture Strategis",
-    "path2Body": "Sudah punya modal dan keyakinan? Bermitra dengan kami untuk mempercepat merek VORVN yang ada ke pasar baru atau skala baru.",
+    "path2Title": "Strategic Co-Build",
     "path2Location": "Hong Kong · Global",
-    "cta": "Minta Perkenalan Pribadi →",
-    "ctaSub": "Hanya dengan undangan · Entitas berkualifikasi"
+    "cta": "Request Introduction",
+    "ctaSub": "By invitation · Qualified entities only"
   },
   "closing": {
     "statement": "Creativity without process\n{chaos}\n\nProcess without creativity\n{lifeless}\n\nWe build both.",
