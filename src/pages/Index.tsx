@@ -7,6 +7,7 @@ import VorvnPresenceSection from '@/components/sections/VorvnPresenceSection';
 import VorvnPortfolioSection from '@/components/sections/VorvnPortfolioSection';
 import VorvnPrinciplesSection from '@/components/sections/VorvnPrinciplesSection';
 import VorvnFounderSection from '@/components/sections/VorvnFounderSection';
+import VorvnInvestorsSection from '@/components/sections/VorvnInvestorsSection';
 import VorvnClosingSection from '@/components/sections/VorvnClosingSection';
 import VorvnFooter from '@/components/sections/VorvnFooter';
 
@@ -23,6 +24,7 @@ export default function Index() {
       <VorvnPortfolioSection />
       <VorvnPrinciplesSection />
       <VorvnFounderSection />
+      <VorvnInvestorsSection />
       <VorvnClosingSection />
       <VorvnFooter />
     </div>

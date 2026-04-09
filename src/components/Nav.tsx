@@ -10,6 +10,7 @@ const SECTIONS = [
   { id: 'portfolio', key: 'portfolio.label' },
   { id: 'principles', key: 'principles.label' },
   { id: 'founder', key: 'founder.label' },
+  { id: 'investors', key: 'investors.label' },
 ];
 
 export default function Nav() {
