@@ -1,12 +1,13 @@
 import { useTranslation } from 'react-i18next';
-import SectionHeader from '../SectionHeader';
 
 export default function EntitySection() {
   const { t } = useTranslation();
 
   return (
     <section className="border-t border-rule" style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}>
-      <SectionHeader labelKey="entity.label" />
+      <div className="reveal" style={{ marginBottom: 'clamp(48px, 7vh, 88px)' }}>
+        <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">{t('entity.label')}</span>
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20">
         <div className="hidden lg:block" />
         <div>

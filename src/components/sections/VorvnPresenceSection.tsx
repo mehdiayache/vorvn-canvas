@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import SectionHeader from '../SectionHeader';
 
 export default function PresenceSection() {
   const { t } = useTranslation();
@@ -13,7 +12,9 @@ export default function PresenceSection() {
 
   return (
     <section className="border-t border-rule" style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}>
-      <SectionHeader labelKey="presence.label" />
+      <div className="reveal" style={{ marginBottom: 'clamp(48px, 7vh, 88px)' }}>
+        <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">{t('presence.label')}</span>
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-3">
         {locations.map((loc, i) => (
           <div
