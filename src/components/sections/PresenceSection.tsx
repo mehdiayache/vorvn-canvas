@@ -13,7 +13,7 @@ export default function PresenceSection() {
 
   return (
     <section className="border-t border-rule" style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}>
-      <SectionHeader numKey="presence.num" labelKey="presence.label" />
+      <SectionHeader labelKey="presence.label" />
       <div className="grid grid-cols-1 lg:grid-cols-3">
         {locations.map((loc, i) => (
           <div
@@ -29,7 +29,7 @@ export default function PresenceSection() {
               {loc.city}
             </div>
             <div className="font-mono text-[9px] tracking-[0.1em] text-mid mb-[18px]">{loc.entity}</div>
-            <div className="text-[13px] font-normal leading-[1.78] text-mid">
+            <div className="font-sans text-[13px] font-normal leading-[1.78] text-mid">
               {loc.address.split('\n').map((line, j) => (
                 <span key={j}>{line}<br /></span>
               ))}

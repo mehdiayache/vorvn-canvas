@@ -12,9 +12,9 @@ function Gallery({ images }: { images: string[] }) {
     setCur(((idx % total) + total) % total);
   }, [total]);
 
-  // Each slide takes ~80% width so next one peeks
-  const slideWidth = 82;
-  const gap = 2; // percent
+  // Show ~4.3 images on desktop so next one peeks
+  const slideWidth = 23; // percent
+  const gap = 1; // percent
 
   return (
     <div className="relative">
@@ -114,25 +114,24 @@ function PortfolioItem({ index }: { index: number }) {
         onClick={toggleOpen}
         onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleOpen(); } }}
         className="grid items-center py-[22px] cursor-pointer select-none hover:opacity-50 transition-opacity duration-[220ms]"
-        style={{ gridTemplateColumns: '30px auto 1fr 1fr auto 20px', gap: '0 24px' }}
+        style={{ gridTemplateColumns: 'auto 1fr 1fr auto 20px', gap: '0 24px' }}
       >
-        <span className="font-mono text-[9px] tracking-[0.1em] text-mid">{brand.idx}</span>
         {/* Small logo beside name */}
-        <span className="w-6 h-6 flex items-center justify-center shrink-0">
+        <span className="w-7 h-7 flex items-center justify-center shrink-0">
           {data.logo ? (
             <img
               src={data.logo}
               alt=""
-              className="max-h-5 max-w-6 object-contain block [html[data-theme='light']_&]:invert"
+              className="max-h-6 max-w-7 object-contain block [html[data-theme='light']_&]:invert"
             />
           ) : (
-            <span className="w-5 h-5 border border-rule" />
+            <span className="w-6 h-6 border border-rule" />
           )}
         </span>
-        <span className="font-sans font-medium tracking-[0.04em] uppercase" style={{ fontSize: 'clamp(13px, 1.4vw, 18px)' }}>
+        <span className="font-sans font-medium tracking-[0.01em] uppercase" style={{ fontSize: 'clamp(13px, 1.4vw, 18px)' }}>
           {brand.name}
         </span>
-        <span className="hidden lg:block text-[13px] font-normal text-mid">{brand.sector}</span>
+        <span className="hidden lg:block font-sans text-[13px] font-normal text-mid">{brand.sector}</span>
         <span className={`font-mono text-[8.5px] tracking-[0.12em] uppercase whitespace-nowrap ${
           brand.status === 'active' ? 'text-foreground' : 'text-mid'
         }`}>
@@ -168,17 +167,17 @@ function PortfolioItem({ index }: { index: number }) {
                 />
               </div>
             ) : (
-              <div className="font-brand text-[28px] tracking-[0.04em] text-foreground">
+              <div className="font-sans text-[28px] font-medium tracking-[0.01em] text-foreground">
                 {brand.name}
               </div>
             )}
           </div>
 
-          {/* Content grid: info left, gallery right */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.65fr] gap-x-[60px] gap-y-9">
-            <div>
-              <div className="font-brand text-[18px] tracking-[0.04em] text-foreground mb-3">{brand.name}</div>
-              <p className="text-[14px] font-normal leading-[1.82] text-mid mb-6 max-w-[440px]">{brand.desc}</p>
+          {/* Info */}
+          <div className="mb-8">
+            <div className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground mb-3">{brand.name}</div>
+            <p className="font-sans text-[14px] font-normal leading-[1.82] text-mid mb-6 max-w-[540px]">{brand.desc}</p>
+            <div className="flex items-center gap-6">
               {data.url ? (
                 <a
                   href={data.url}
@@ -193,9 +192,21 @@ function PortfolioItem({ index }: { index: number }) {
                   {t('portfolio.inDevelopment')}
                 </span>
               )}
+              {data.presentationUrl && (
+                <a
+                  href={data.presentationUrl}
+                  target="_blank"
+                  rel="noopener"
+                  className="inline-flex items-center gap-[10px] font-mono text-[9.5px] tracking-[0.15em] uppercase text-foreground border-b border-dim pb-[3px] hover:text-mid hover:border-transparent transition-colors duration-200"
+                >
+                  {t('portfolio.downloadPresentation')}
+                </a>
+              )}
             </div>
-            {open && <Gallery images={data.images} />}
           </div>
+
+          {/* Gallery */}
+          {open && <Gallery images={data.images} />}
         </div>
       </div>
     </li>
@@ -207,7 +218,7 @@ export default function PortfolioSection() {
 
   return (
     <section className="border-t border-rule" style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}>
-      <SectionHeader numKey="portfolio.num" labelKey="portfolio.label" />
+      <SectionHeader labelKey="portfolio.label" />
 
       {/* Portfolio intro description */}
       <p
