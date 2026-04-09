@@ -3,58 +3,46 @@ import { useTranslation } from 'react-i18next';
 import { BRANDS_DATA } from '@/data/brands';
 
 function VorvnGallery({ images }: { images: string[] }) {
-  const { t } = useTranslation();
-  const [cur, setCur] = useState(0);
-  const total = images.length;
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const goNext = useCallback(() => {
-    setCur((prev) => (prev + 1) % total);
-  }, [total]);
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    let animId: number;
+    let scrollPos = 0;
+    const speed = 0.5; // px per frame
 
-  const goPrev = useCallback(() => {
-    setCur((prev) => (prev - 1 + total) % total);
-  }, [total]);
+    const step = () => {
+      scrollPos += speed;
+      if (scrollPos >= el.scrollWidth / 2) {
+        scrollPos = 0;
+      }
+      el.scrollLeft = scrollPos;
+      animId = requestAnimationFrame(step);
+    };
+    animId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animId);
+  }, [images]);
+
+  // Duplicate images for infinite loop
+  const loopImages = [...images, ...images];
 
   return (
-    <div className="relative">
-      <div className="overflow-hidden bg-surface" style={{ aspectRatio: '1/1' }}>
-        {images.map((src, i) => (
+    <div className="relative overflow-hidden">
+      <div
+        ref={scrollRef}
+        className="flex gap-3 overflow-hidden"
+        style={{ scrollBehavior: 'auto' }}
+      >
+        {loopImages.map((src, i) => (
           <img
             key={i}
             src={src}
             alt=""
             loading="lazy"
-            className={`absolute inset-0 w-full h-full object-cover block grayscale-[18%] [html[data-theme='light']_&]:grayscale-[5%] transition-opacity duration-500 ${
-              i === cur ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{ position: i === 0 ? 'relative' : 'absolute' }}
+            className="w-[300px] h-[300px] object-cover block shrink-0 grayscale-[18%] [html[data-theme='light']_&]:grayscale-[5%]"
           />
         ))}
-      </div>
-      <div className="flex items-center justify-between pt-3">
-        <button
-          onClick={goPrev}
-          className="bg-transparent border-none font-mono text-[10px] tracking-[0.08em] text-mid hover:text-foreground transition-colors p-0"
-        >
-          {t('portfolio.prev')}
-        </button>
-        <div className="flex gap-2">
-          {images.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCur(i)}
-              className={`w-[5px] h-[5px] rounded-full border-none p-0 transition-colors duration-[250ms] ${
-                i === cur ? 'bg-foreground' : 'bg-dim'
-              }`}
-            />
-          ))}
-        </div>
-        <button
-          onClick={goNext}
-          className="bg-transparent border-none font-mono text-[10px] tracking-[0.08em] text-mid hover:text-foreground transition-colors p-0"
-        >
-          {t('portfolio.next')}
-        </button>
       </div>
     </div>
   );
@@ -95,6 +83,8 @@ function VorvnPortfolioItem({
     }
   }, [isOpen]);
 
+  const isActive = brand.status === 'active';
+
   return (
     <li className={`border-b border-rule first:border-t`}>
       <div
@@ -117,10 +107,17 @@ function VorvnPortfolioItem({
           {brand.name}
         </span>
         <span className="hidden lg:block font-sans text-[13px] font-normal text-mid">{brand.sector}</span>
-        <span className={`font-mono text-[8.5px] tracking-[0.12em] uppercase whitespace-nowrap ${
-          brand.status === 'active' ? 'text-foreground' : 'text-mid'
-        }`}>
-          {brand.statusLabel}
+        <span className="flex items-center gap-[6px]">
+          <span className={`inline-block w-[7px] h-[7px] rounded-full ${
+            isActive
+              ? 'bg-green-500 animate-[pulse_2s_ease-in-out_infinite]'
+              : 'bg-mid/40'
+          }`} />
+          <span className={`font-mono text-[8.5px] tracking-[0.12em] uppercase whitespace-nowrap ${
+            isActive ? 'text-foreground' : 'text-mid'
+          }`}>
+            {brand.statusLabel}
+          </span>
         </span>
         <span className="w-4 h-4 relative shrink-0">
           <span className="absolute w-3 h-px bg-mid rounded-[1px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
@@ -150,6 +147,19 @@ function VorvnPortfolioItem({
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-x-[60px] gap-y-9">
             <div>
               <div className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground mb-3">{brand.name}</div>
+              
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mb-5">
+                {data.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-block font-mono text-[9px] tracking-[0.1em] uppercase px-[10px] py-[4px] border border-rule text-mid rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
               <p className="font-sans text-[14px] font-normal leading-[1.82] text-mid mb-6 max-w-[440px]">{brand.desc}</p>
               <div className="flex flex-col gap-3">
                 {data.url ? (
