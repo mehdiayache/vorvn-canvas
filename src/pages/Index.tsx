@@ -1,16 +1,42 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { RTL_LANGUAGES } from '@/i18n';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+import Nav from '@/components/Nav';
+import Hero from '@/components/sections/Hero';
+import EntitySection from '@/components/sections/EntitySection';
+import PresenceSection from '@/components/sections/PresenceSection';
+import PortfolioSection from '@/components/sections/PortfolioSection';
+import PrinciplesSection from '@/components/sections/PrinciplesSection';
+import FounderSection from '@/components/sections/FounderSection';
+import ClosingSection from '@/components/sections/ClosingSection';
+import Footer from '@/components/sections/Footer';
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+export default function Index() {
+  const { i18n } = useTranslation();
+  const scrollRef = useScrollReveal();
+
+  useEffect(() => {
+    const dir = RTL_LANGUAGES.includes(i18n.language) ? 'rtl' : 'ltr';
+    document.documentElement.dir = dir;
+    document.documentElement.lang = i18n.language;
+    // Default to dark theme
+    if (!document.documentElement.dataset.theme) {
+      document.documentElement.dataset.theme = 'dark';
+    }
+  }, [i18n.language]);
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div ref={scrollRef}>
+      <Nav />
+      <Hero />
+      <EntitySection />
+      <PresenceSection />
+      <PortfolioSection />
+      <PrinciplesSection />
+      <FounderSection />
+      <ClosingSection />
+      <Footer />
     </div>
   );
-};
-
-const Index = PlaceholderIndex;
-
-export default Index;
+}
