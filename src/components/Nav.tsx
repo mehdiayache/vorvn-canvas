@@ -67,10 +67,13 @@ export default function Nav() {
               </button>
             ))}
           </div>
-          <span className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid">
-            {t('nav.tag')}
-          </span>
           {/* Theme toggle hidden – dark mode only for now */}
+          <button
+            onClick={() => scrollTo('investors')}
+            className="font-sans text-[11px] font-medium tracking-[0.1em] uppercase text-foreground hover:text-mid transition-colors duration-200"
+          >
+            {t('investors.label')}
+          </button>
           <a href="mailto:contact@vorvn.com" className="font-sans text-[11px] font-medium tracking-[0.1em] uppercase text-foreground hover:text-mid transition-colors duration-200">
             {t('nav.contact')}
           </a>
