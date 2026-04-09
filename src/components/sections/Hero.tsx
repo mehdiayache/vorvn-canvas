@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import EyeSvg from './EyeSvg';
-import GlobeSvg from './GlobeSvg';
+import EyeSvg from '../EyeSvg';
+import GlobeSvg from '../GlobeSvg';
 
 export default function Hero() {
   const { t } = useTranslation();
