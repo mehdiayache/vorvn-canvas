@@ -123,6 +123,21 @@
     "name": "Mehdi Ayache Berberos",
     "title": "CEO & Founder — VORVN Limited"
   },
+  "investors": {
+    "label": "Inversores",
+    "headline": "No recaudamos. No vendemos. Seleccionamos.",
+    "body": "VORVN es una estructura privada. No presentamos en conferencias. No perseguimos capital. Pero reconocemos que la alineación correcta — en visión, valores y ambición — puede acelerar lo que ya hemos construido.",
+    "path1Badge": "Incubadora",
+    "path1Title": "Incubadora Diseño-a-Mercado",
+    "path1Body": "Nuestro estudio en Bali lleva la PI desde el concepto hasta el producto listo para el mercado — identidad de marca, empaque, infraestructura de distribución.",
+    "path1Location": "Bali, Indonesia",
+    "path2Badge": "Venture",
+    "path2Title": "Colaboración Venture Estratégica",
+    "path2Body": "¿Tienes capital y convicción? Asóciate con nosotros para acelerar una marca VORVN existente hacia nuevos mercados o nueva escala.",
+    "path2Location": "Hong Kong · Global",
+    "cta": "Solicitar una Introducción Privada →",
+    "ctaSub": "Solo por invitación · Entidades calificadas"
+  },
   "closing": {
     "statement": "Creativity without process\n{chaos}\n\nProcess without creativity\n{lifeless}\n\nWe build both.",
     "chaos": "is chaos.",
