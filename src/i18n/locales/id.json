@@ -51,6 +51,7 @@
     "intro": "The brands and intellectual property we design, build, and own — deployed across consumer markets worldwide.",
     "visitBrand": "Visit Brand →",
     "inDevelopment": "In Development",
+    "downloadPresentation": "Download Presentation →",
     "prev": "← Prev",
     "next": "Next →",
     "brands": [
@@ -126,7 +127,7 @@
     ]
   },
   "founder": {
-    "label": "05 · Founder",
+    "label": "Founder",
     "quote": "\"I believe the world belongs to those who design it, and that's exactly what we do.\n\nWe Design.\"",
     "name": "Mehdi Ayache Berberos",
     "title": "CEO & Founder — VORVN Limited"
