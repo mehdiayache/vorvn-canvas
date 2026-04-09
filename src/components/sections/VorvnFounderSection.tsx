@@ -5,6 +5,7 @@ export default function VorvnFounderSection() {
 
   return (
     <section
+      id="founder"
       className="border-t border-rule"
       style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}
     >
