@@ -3,6 +3,7 @@ export const BRANDS_DATA = [
     logo: 'https://vorvn.com/wp-content/uploads/2024/08/cookwarriors.png',
     url: 'https://cookwarriors.com',
     presentationUrl: 'https://vorvn.com/presentations/cookwarriors.pdf',
+    status: 'active' as const,
     tags: ['E-Commerce', 'Kitchenware', 'DTC'],
     images: [
       'https://cookwarriors.com/cdn/shop/files/6-eggscalibur-pan-sword-pan-sword-handle-frying-pan-cookwarriors-buy.webp?v=1775534988',
@@ -15,6 +16,7 @@ export const BRANDS_DATA = [
     logo: null,
     url: 'https://heartsnotes.com',
     presentationUrl: null,
+    status: 'active' as const,
     tags: ['Gifting', 'Faith-Driven', 'E-Commerce'],
     images: [
       'https://picsum.photos/seed/hn-faith1/800/800',
@@ -29,6 +31,7 @@ export const BRANDS_DATA = [
     logo: 'https://vorvn.com/wp-content/uploads/2024/08/maqtob.png',
     url: null,
     presentationUrl: null,
+    status: 'dev' as const,
     tags: ['Modest Fashion', 'EU Market', 'Craftsmanship'],
     images: [
       'https://picsum.photos/seed/mq-1/800/800',
@@ -43,6 +46,7 @@ export const BRANDS_DATA = [
     logo: 'https://vorvn.com/wp-content/uploads/2024/08/xvoyager.png',
     url: null,
     presentationUrl: null,
+    status: 'dev' as const,
     tags: ['Exploration', 'Lifestyle', 'Global'],
     images: [
       'https://picsum.photos/seed/xv-1/800/800',
@@ -57,6 +61,7 @@ export const BRANDS_DATA = [
     logo: 'https://vorvn.com/wp-content/uploads/2024/08/warung-marrakech-300x216.png',
     url: null,
     presentationUrl: null,
+    status: 'dev' as const,
     tags: ['Food & Beverage', 'Hospitality', 'Moroccan'],
     images: [
       'https://picsum.photos/seed/wm-1/800/800',
@@ -71,6 +76,7 @@ export const BRANDS_DATA = [
     logo: 'https://vorvn.com/wp-content/uploads/2024/08/daviproperties.png',
     url: null,
     presentationUrl: null,
+    status: 'dev' as const,
     tags: ['Real Estate', 'Southeast Asia', 'Development'],
     images: [
       'https://picsum.photos/seed/dp-1/800/800',

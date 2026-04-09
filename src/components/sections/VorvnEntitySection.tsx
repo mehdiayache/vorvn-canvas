@@ -4,7 +4,7 @@ export default function EntitySection() {
   const { t } = useTranslation();
 
   return (
-    <section className="border-t border-rule" style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}>
+    <section id="entity" className="border-t border-rule" style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}>
       <div className="reveal" style={{ marginBottom: 'clamp(48px, 7vh, 88px)' }}>
         <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">{t('entity.label')}</span>
       </div>
