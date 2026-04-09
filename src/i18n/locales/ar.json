@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "tag": "IP Holdings · Est. 2023",
+    "contact": "Contact",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "hero": {
+    "designLine": "We Design, Build & Own Digital-First Brands.",
+    "tagline": "Autonomous IP & Brand Holdings.\nWe think sharp. We execute bold.",
+    "basedIn": "Based in Hong Kong.\nOperating Worldwide.",
+    "scroll": "Scroll"
+  },
+  "entity": {
+    "num": "01",
+    "label": "The Entity",
+    "statement": "VORVN is not an agency.\nIt is the architecture\nbehind the brands.",
+    "detail": "Design is not decoration — it is the first decision. Every structure we build, every brand we deploy, starts from a single design question: does this create real value? VORVN is a private IP holdings company registered in Hong Kong, with participations across Southeast Asia, Northwest Africa, and Western consumer markets. We own, license, and deploy brand intellectual property across verticals — consumer goods, faith-driven gifting, modest fashion — without intermediaries, without compromise. Pure execution.",
+    "designNote": "Design · Strategy · Execution · No middlemen. No shortcuts."
+  },
+  "presence": {
+    "num": "02",
+    "label": "Presence",
+    "locations": [
+      {
+        "region": "Holding Entity",
+        "city": "Hong Kong",
+        "entity": "VORVN LIMITED",
+        "address": "RM4 16/F, Ho King Commercial Centre\n2–16 Fa Yuen Street, Mongkok\nKowloon, Hong Kong",
+        "badge": "Headquarters"
+      },
+      {
+        "region": "Design Studio",
+        "city": "Bali, Indonesia",
+        "entity": "PT. VORVN GROUP INDONESIA",
+        "address": "Jl. Seroja No.28, Tonja\nKec. Denpasar Utara, Bali 80235",
+        "badge": "Operations"
+      },
+      {
+        "region": "Origin Market",
+        "city": "Morocco",
+        "entity": "PARTICIPATIONS",
+        "address": "Northwest Africa\nFrench-speaking market\nGulf export corridor",
+        "badge": "Expansion"
+      }
+    ]
+  },
+  "portfolio": {
+    "num": "03",
+    "label": "Portfolio",
+    "visitBrand": "Visit Brand →",
+    "inDevelopment": "In Development",
+    "prev": "← Prev",
+    "next": "Next →",
+    "brands": [
+      {
+        "idx": "01",
+        "name": "Cook Warriors",
+        "sector": "Consumer Goods · USA / UAE",
+        "status": "active",
+        "statusLabel": "● Active",
+        "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
+      },
+      {
+        "idx": "02",
+        "name": "Hearts Notes",
+        "sector": "Faith & Gifting · USA",
+        "status": "active",
+        "statusLabel": "● Active",
+        "desc": "A Christian gifting brand delivering faith-centred products through Etsy and direct-to-consumer channels. Workbooks, digital kits, and heartfelt gifts designed for the Christian home."
+      },
+      {
+        "idx": "03",
+        "name": "MAQTOB",
+        "sector": "Modest Fashion · EU / France",
+        "status": "dev",
+        "statusLabel": "◌ In Development",
+        "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
+      },
+      {
+        "idx": "04",
+        "name": "xVoyager",
+        "sector": "Exploration · Global",
+        "status": "dev",
+        "statusLabel": "◌ In Development",
+        "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
+      },
+      {
+        "idx": "05",
+        "name": "Warung Marrakech",
+        "sector": "Food & Beverage",
+        "status": "dev",
+        "statusLabel": "◌ In Development",
+        "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
+      },
+      {
+        "idx": "06",
+        "name": "Davi Properties",
+        "sector": "Real Estate",
+        "status": "dev",
+        "statusLabel": "◌ In Development",
+        "desc": "A real estate venture in development, leveraging VORVN's Southeast Asia network and operational infrastructure across the Indonesian archipelago."
+      }
+    ]
+  },
+  "principles": {
+    "num": "04",
+    "label": "How We Operate",
+    "items": [
+      {
+        "numeral": "I",
+        "title": "Own the IP. Always.",
+        "body": "No middlemen. No licensing dependency. Every brand we build, every asset we create — stays within the structure. Ownership is the non-negotiable premise."
+      },
+      {
+        "numeral": "II",
+        "title": "Execute without friction.",
+        "body": "Ideas without systems are noise. We structure, build, and deploy with operational precision — from concept to market, without compromise or delay."
+      },
+      {
+        "numeral": "III",
+        "title": "Human first. AI amplified.",
+        "body": "We got this early. AI doesn't replace the creative — it accelerates the builder. VORVN is built by humans, for humans, with intelligence as the sharpest tool."
+      }
+    ]
+  },
+  "founder": {
+    "label": "05 · Founder",
+    "quote": "\"I believe the world belongs to those who design it, and that's exactly what we do.\n\nWe Design.\"",
+    "name": "Mehdi Ayache Berberos",
+    "title": "CEO & Founder — VORVN Limited"
+  },
+  "closing": {
+    "statement": "Creativity without process\n{chaos}\n\nProcess without creativity\n{lifeless}\n\nWe build both.",
+    "chaos": "is chaos.",
+    "lifeless": "is lifeless.",
+    "sub": "VORVN · VE VOLD™ · Est. 2023"
+  },
+  "footer": {
+    "legal": "© 2025 VORVN LIMITED. All rights reserved.\nRegistered in Hong Kong, SAR.",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn",
+    "careers": "Careers",
+    "geo": "HK · ID · MA"
+  }
+}
