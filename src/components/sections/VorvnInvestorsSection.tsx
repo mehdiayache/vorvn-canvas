@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { ArrowRight } from 'lucide-react';
 
 export default function VorvnInvestorsSection() {
   const { t } = useTranslation();
@@ -9,73 +10,81 @@ export default function VorvnInvestorsSection() {
       className="border-t border-rule"
       style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}
     >
-      {/* Label */}
-      <div className="reveal" style={{ marginBottom: 'clamp(48px, 7vh, 88px)' }}>
+      {/* Header row: label left, CTA right */}
+      <div className="flex items-start justify-between reveal">
         <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">
           {t('investors.label')}
         </span>
+        <a
+          href="mailto:invest@vorvn.com"
+          className="hidden md:inline-flex items-center gap-2 font-sans text-[13px] font-medium tracking-[0.04em] text-foreground hover:opacity-60 transition-opacity duration-300 group"
+        >
+          {t('investors.cta')}
+          <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+        </a>
       </div>
 
-      {/* Main statement */}
-      <div className="max-w-[820px] reveal d1">
+      {/* Statement */}
+      <div className="mt-16 md:mt-24 max-w-[720px] reveal d1">
         <p
           className="font-sans font-medium text-foreground"
-          style={{ fontSize: 'clamp(22px, 2.8vw, 44px)', lineHeight: 1.35 }}
+          style={{ fontSize: 'clamp(24px, 3vw, 48px)', lineHeight: 1.25 }}
         >
           {t('investors.headline')}
         </p>
-        <p className="font-sans text-mid mt-6" style={{ fontSize: 'clamp(14px, 1.2vw, 18px)', lineHeight: 1.7 }}>
+      </div>
+
+      {/* Body */}
+      <div className="mt-8 md:mt-12 max-w-[580px] reveal d2">
+        <p
+          className="font-sans text-mid"
+          style={{ fontSize: 'clamp(14px, 1.1vw, 17px)', lineHeight: 1.75 }}
+        >
           {t('investors.body')}
         </p>
       </div>
 
-      {/* Two paths */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-px mt-16 reveal d2">
-        {/* Incubator */}
-        <div className="border border-rule p-8 md:p-10 flex flex-col gap-5">
-          <span className="font-mono text-[8px] tracking-[0.2em] uppercase text-mid">
+      {/* Inline details — subtle, no boxes */}
+      <div className="mt-14 md:mt-20 flex flex-col md:flex-row md:gap-24 gap-10 reveal d3">
+        <div className="flex flex-col gap-2">
+          <span className="font-mono text-[8px] tracking-[0.2em] uppercase text-dim">
             {t('investors.path1Badge')}
           </span>
-          <h3 className="font-sans text-[18px] md:text-[22px] font-semibold text-foreground leading-tight">
+          <span className="font-sans text-[14px] md:text-[16px] font-medium text-foreground">
             {t('investors.path1Title')}
-          </h3>
-          <p className="font-sans text-[13px] md:text-[14px] text-mid leading-relaxed flex-1">
-            {t('investors.path1Body')}
-          </p>
+          </span>
           <span className="font-mono text-[9px] tracking-[0.12em] uppercase text-dim">
             {t('investors.path1Location')}
           </span>
         </div>
-
-        {/* Venture */}
-        <div className="border border-rule border-s-0 md:border-s p-8 md:p-10 flex flex-col gap-5">
-          <span className="font-mono text-[8px] tracking-[0.2em] uppercase text-mid">
+        <div className="flex flex-col gap-2">
+          <span className="font-mono text-[8px] tracking-[0.2em] uppercase text-dim">
             {t('investors.path2Badge')}
           </span>
-          <h3 className="font-sans text-[18px] md:text-[22px] font-semibold text-foreground leading-tight">
+          <span className="font-sans text-[14px] md:text-[16px] font-medium text-foreground">
             {t('investors.path2Title')}
-          </h3>
-          <p className="font-sans text-[13px] md:text-[14px] text-mid leading-relaxed flex-1">
-            {t('investors.path2Body')}
-          </p>
+          </span>
           <span className="font-mono text-[9px] tracking-[0.12em] uppercase text-dim">
             {t('investors.path2Location')}
           </span>
         </div>
       </div>
 
-      {/* CTA */}
-      <div className="mt-16 reveal d3">
+      {/* Mobile CTA */}
+      <div className="mt-12 md:hidden reveal d4">
         <a
           href="mailto:invest@vorvn.com"
-          className="inline-block border border-foreground text-foreground font-sans text-[13px] md:text-[14px] font-semibold tracking-[0.06em] uppercase px-8 py-4 hover:bg-foreground hover:text-[hsl(var(--bg))] transition-all duration-300"
+          className="inline-flex items-center gap-2 font-sans text-[13px] font-medium tracking-[0.04em] text-foreground"
         >
           {t('investors.cta')}
+          <ArrowRight size={14} />
         </a>
-        <p className="font-mono text-[9px] tracking-[0.14em] uppercase text-dim mt-5">
-          {t('investors.ctaSub')}
-        </p>
       </div>
+
+      {/* Subtle footnote */}
+      <p className="font-mono text-[9px] tracking-[0.14em] uppercase text-dim mt-10 reveal d4">
+        {t('investors.ctaSub')}
+      </p>
     </section>
   );
 }
