@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ChevronRight, X, Sun, Moon, Globe } from 'lucide-react';
+import { ChevronRight, X, Globe } from 'lucide-react';
 import { LANGUAGES } from '@/i18n';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const SECTIONS = [
   { id: 'entity', key: 'entity.label' },
@@ -67,7 +68,7 @@ export default function Nav() {
               </button>
             ))}
           </div>
-          {/* Theme toggle hidden – dark mode only for now */}
+          <ThemeToggle />
           <button
             onClick={() => scrollTo('investors')}
             className="font-sans text-[11px] font-medium tracking-[0.1em] uppercase text-foreground hover:text-mid transition-colors duration-200"
@@ -140,7 +141,13 @@ export default function Nav() {
               {/* Divider */}
               <div className="mx-5 my-2 border-t border-rule" />
 
-              {/* Theme toggle hidden – dark mode only for now */}
+              {/* Theme toggle */}
+              <div className="px-5 py-3 flex items-center justify-between">
+                <span className="font-sans text-[14px] font-medium text-foreground">
+                  {isDark ? t('nav.light') : t('nav.dark')}
+                </span>
+                <ThemeToggle />
+              </div>
 
               {/* Language as expandable menu item */}
               <button
