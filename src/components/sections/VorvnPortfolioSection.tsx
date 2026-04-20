@@ -64,6 +64,7 @@ function VorvnPortfolioItem({
   };
   const data = BRANDS_DATA[index];
   const isActive = data.status === 'active';
+  const isExited = data.status === 'exited';
 
   useEffect(() => {
     const el = expandRef.current;
@@ -109,10 +110,12 @@ function VorvnPortfolioItem({
           <span className={`inline-block w-[7px] h-[7px] rounded-full ${
             isActive
               ? 'bg-green-500 animate-[pulse_2s_ease-in-out_infinite]'
-              : 'bg-mid/40'
+              : isExited
+                ? 'bg-mid/30'
+                : 'bg-mid/40'
           }`} />
           <span className={`font-mono text-[8.5px] tracking-[0.12em] uppercase whitespace-nowrap ${
-            isActive ? 'text-foreground' : 'text-mid'
+            isActive ? 'text-foreground' : isExited ? 'text-mid line-through decoration-1 decoration-dim' : 'text-mid'
           }`}>
             {brand.statusLabel}
           </span>

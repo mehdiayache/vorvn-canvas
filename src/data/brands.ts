@@ -8,7 +8,7 @@ export type BrandData = {
   logo: string | null;
   url: string | null;
   presentationUrl: string | null;
-  status: 'active' | 'dev';
+  status: 'active' | 'dev' | 'exited';
   tags: string[];                // legacy — kept for v1 compatibility
   images: string[];
   // v2 additions
@@ -16,6 +16,7 @@ export type BrandData = {
   geoTags: string[];
   metrics?: BrandMetrics;        // active brands only
   devTimeline?: string;          // dev brands only — e.g. 'Q3 2026'
+  exitYear?: string;             // exited brands only — e.g. '2024'
 };
 
 export const BRANDS_DATA: BrandData[] = [
@@ -37,6 +38,22 @@ export const BRANDS_DATA: BrandData[] = [
       'https://cookwarriors.com/cdn/shop/files/5-eggscalibur-pan-sword-pan-sword-handle-frying-pan-cookwarriors-buy.webp?v=1759968518',
       'https://cookwarriors.com/cdn/shop/files/7-eggscalibur-pan-sword-pan-sword-handle-frying-pan-cookwarriors-buy.webp?v=1751243279',
       'https://cookwarriors.com/cdn/shop/files/2-eggscalibur-pan-sword-pan-sword-handle-frying-pan-cookwarriors-buy.webp?v=1759968518',
+    ],
+  },
+  {
+    logo: null,
+    url: 'https://storiesofbible.com',
+    presentationUrl: null,
+    status: 'exited',
+    tags: ['Christian Publishing', 'Books', 'US Market'],
+    sectorTags: ['Publishing', 'Christian Books'],
+    geoTags: ['USA'],
+    exitYear: '2024',
+    images: [
+      'https://picsum.photos/seed/sob-1/800/800',
+      'https://picsum.photos/seed/sob-2/800/800',
+      'https://picsum.photos/seed/sob-3/800/800',
+      'https://picsum.photos/seed/sob-4/800/800',
     ],
   },
   {
