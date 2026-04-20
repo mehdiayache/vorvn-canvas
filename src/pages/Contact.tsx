@@ -266,10 +266,25 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={onSubmit} noValidate className="mt-12 space-y-10 reveal d2">
+                  {/* Honeypot — hidden from users, bots fill it */}
+                  <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
+                    <label htmlFor="website">Website</label>
+                    <input
+                      id="website"
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                    />
+                  </div>
+
                   {/* Topic */}
                   <fieldset>
                     <legend className="font-sans text-[15px] font-medium text-foreground">
                       {t('contact.fields.topic')} <span className="text-foreground">*</span>
+                    </legend>
                     </legend>
                     <p
                       className="font-sans font-normal text-mid mt-2 mb-5"
