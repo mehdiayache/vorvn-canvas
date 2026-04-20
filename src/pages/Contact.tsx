@@ -410,6 +410,11 @@ export default function Contact() {
                     </button>
                     <p className="font-sans text-[13px] text-dim">{t('contact.privacy')}</p>
                   </div>
+                  {sendError && (
+                    <p className="font-sans text-[14px] text-destructive" role="alert">
+                      {sendError}
+                    </p>
+                  )}
                 </form>
               )}
             </div>
