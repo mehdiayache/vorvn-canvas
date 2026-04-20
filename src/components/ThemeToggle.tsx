@@ -1,33 +1,46 @@
-import { useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
 
+/**
+ * ThemeToggle — minimal dot/half-moon switch.
+ * - Tiny circle that fills/empties on theme change.
+ * - No label, no chrome. Lives quietly in the nav.
+ */
 export default function ThemeToggle() {
-  const { t } = useTranslation();
+  const [isDark, setIsDark] = useState(true);
 
-  const toggle = useCallback(() => {
-    const html = document.documentElement;
-    html.classList.add('switching');
-    const toLight = html.dataset.theme !== 'light';
-    html.dataset.theme = toLight ? 'light' : 'dark';
-    setTimeout(() => html.classList.remove('switching'), 420);
+  useEffect(() => {
+    setIsDark(document.documentElement.dataset.theme !== 'light');
   }, []);
 
-  const isDark = typeof document !== 'undefined' 
-    ? document.documentElement.dataset.theme !== 'light' 
-    : true;
+  const toggle = () => {
+    const html = document.documentElement;
+    html.classList.add('switching');
+    const nextDark = html.dataset.theme === 'light';
+    html.dataset.theme = nextDark ? 'dark' : 'light';
+    setIsDark(nextDark);
+    try {
+      localStorage.setItem('vorvn-theme', nextDark ? 'dark' : 'light');
+    } catch {
+      // ignore storage errors
+    }
+    setTimeout(() => html.classList.remove('switching'), 420);
+  };
 
   return (
     <button
       onClick={toggle}
-      className="flex items-center gap-2 border border-dim rounded-[20px] py-[5px] px-3 ps-2 text-mid font-mono text-[8.5px] tracking-[0.14em] uppercase hover:border-mid hover:text-foreground transition-colors duration-200"
-      aria-label="Toggle colour mode"
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      title={isDark ? 'Light mode' : 'Dark mode'}
+      className="group relative w-[14px] h-[14px] rounded-full border border-mid hover:border-foreground transition-colors duration-200"
     >
-      <div className="w-6 h-[14px] border border-dim rounded-[7px] relative">
-        <div className="absolute w-2 h-2 rounded-full bg-mid top-1/2 start-[2px] -translate-y-1/2 transition-transform duration-300 [html[data-theme='light']_&]:translate-x-[10px] [html[data-theme='light']_&]:bg-foreground"
-          style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-        />
-      </div>
-      <span>{isDark ? t('nav.light') : t('nav.dark')}</span>
+      {/* Half-fill that flips on theme */}
+      <span
+        className="absolute inset-[2px] rounded-full bg-foreground transition-transform duration-300"
+        style={{
+          transformOrigin: 'center',
+          transform: isDark ? 'scale(0.35)' : 'scale(1)',
+        }}
+      />
     </button>
   );
 }
