@@ -1,123 +1,65 @@
 
+## Issue diagnosis
 
-## Goal
-Build a **new Portfolio v2** section (parallel to the current one — keep the old one intact for now) with a stronger IP-Holding narrative, tag-based metadata, profitability/traction signals for **active** brands, and a layout that finally works on mobile.
+You're seeing English on `/fr` (and same will happen on `/es /zh /id /ar`) because **the locale JSON files are not actually translated**. They were created as scaffolds that copy the English strings verbatim for every section except a small handful (`investors`, `contact`, `notFound`, `footer.careers` — and those only in `fr.json`).
 
-## Strategy: duplicate, don't replace
-- Current `VorvnPortfolioSection.tsx` stays untouched.
-- New file: `VorvnPortfolioSectionV2.tsx`.
-- In `Index.tsx`, swap the import to V2 (one line). Old file remains in repo as a fallback — easy A/B / rollback.
+So `i18n.changeLanguage('fr')` *is* working — it just loads a French file that contains English text. Nothing is broken in routing or the switcher; the content payload itself is missing.
 
-## New design vision (mobile-first card rows)
+## Plan
 
-Replace the desktop-grid accordion with a **stacked card row** that reads identically on phone and desktop. Each brand = one expandable row, but the row itself is a structured card — not a single horizontal line that collapses on mobile.
+Translate every locale file fully and natively (no machine-fluff, no AI tone), keeping `VORVN` as the brand name in Latin letters across all languages including Arabic and Chinese.
 
-### Collapsed row (always visible)
+### Files to update
 
-```text
-┌───────────────────────────────────────────────────────────┐
-│  ●  COOK WARRIORS                              [ + ]      │
-│     Premium kitchenware · Eggscalibur                     │
-│                                                           │
-│  [CONSUMER GOODS] [DTC] [USA] [UAE]                       │
-└───────────────────────────────────────────────────────────┘
-```
+1. `src/i18n/locales/fr.json` — finish translating the English-leftover sections
+2. `src/i18n/locales/es.json` — full Spanish translation
+3. `src/i18n/locales/zh.json` — full Simplified Chinese translation (VORVN stays Latin)
+4. `src/i18n/locales/id.json` — full Bahasa Indonesia translation
+5. `src/i18n/locales/ar.json` — full Arabic translation (VORVN stays Latin, RTL already handled)
 
-- **Status dot** (pulsing green = active, hollow = in dev) — leftmost, always.
-- **Brand name** in Inter Tight medium, uppercase, larger than today.
-- **One-line pitch** (new short field, ~60 chars) — gives context without expanding.
-- **Tags row** as proper TAG UI — pills with mono caps, 1px border, rounded-none (per design system: no rounded edges → square pills with subtle border). Two tag families, visually distinct:
-  - **Sector tags** — foreground border (e.g. `CONSUMER GOODS`, `DTC`)
-  - **Geo tags** — dim border + globe-style prefix dot (e.g. `· USA`, `· UAE`)
-- **+ / ×** affordance on the right.
+### Sections to translate in each file
 
-### Expanded panel
+- `nav` (tag, contact, menu — keep "VORVN" untouched in code, not in JSON anyway)
+- `hero` (headline, taglinePre/Post, words.build/design/own, basedIn, scroll)
+- `entity` (label, statement, detail, designNote)
+- `presence` (label, three location blocks: region/city/entity/address/badge — keep entity legal names like "VORVN LIMITED" untouched)
+- `portfolio` (label, intro, v2.intro, metaStrip, metricsLabels, inDevelopmentSince, all 6 brand pitches/desc, statusLabel; keep brand names intact: Cook Warriors, Hearts Notes, MAQTOB, xVoyager, Warung Marrakech, Davi Properties)
+- `principles` (label, 3 items title + body)
+- `founder` (label, quote, title — name stays "Mehdi Ayache Berberos")
+- `investors` (already done in FR; needs doing in ES/ZH/ID/AR)
+- `closing` (statement, chaos, lifeless, sub)
+- `footer` (legal, careers, geo)
+- `notFound` (full)
+- `contact` (already done in FR; needs review in others)
 
-Two-column on desktop (`lg:grid-cols-[1.1fr_1fr]`), single-column stack on mobile.
+### Translation rules
 
-**Left column — Brand intel**
-- Large featured logo (or wordmark fallback, as today).
-- Full description paragraph.
-- **Metrics strip** (active brands only) — 3 small stat blocks:
-  ```text
-  STATUS         MARKETS         SINCE
-  Profitable     USA · UAE       2024
-  ```
-  Numbers in Inter Tight medium ~24px, labels in JetBrains Mono 9px caps. Pulled from new `metrics` field in `brands.ts` — strings only, no live data, fully editable per-brand. Hidden for `dev` brands; replaced by a single `IN DEVELOPMENT — Q3 2026` line.
-- Action links (right-arrow style, as user previously requested for CTAs):
-  - `Visit brand →`
-  - `Download deck →`
+- **VORVN**: never transliterated. Stays "VORVN" in 中文, العربية, etc.
+- **Brand names** (Cook Warriors, MAQTOB, Eggscalibur, etc.): never translated.
+- **Legal entities** (VORVN LIMITED, PT. VORVN GROUP INDONESIA): never translated.
+- **Tone**: terse, operator voice — match the FR investor copy. No marketing fluff, no "we are passionate about…".
+- **Arabic**: native RTL phrasing; punctuation `،` and `؟`; numerals can stay Western (01, 02, 2023) to match the design system's mono-numeric style.
+- **Chinese**: Simplified, concise; em-dash `——`; keep `·` separators as they are part of the visual system.
 
-**Right column — Visual**
-- Same auto-scrolling 300×300 gallery, but:
-  - On mobile: collapses to a single fixed 4:3 hero image (lighter, no infinite scroll on small screens — perf + clarity).
-  - On desktop: gallery height matches left column, smaller (240×240) so the row doesn't feel oversized.
+### Hero rotating word
 
-### Section header (rewritten copy direction)
+Currently the words `Build / Design / Own` rotate via `t('hero.words.build|design|own')`. These will be translated per locale — verify in `VorvnHero.tsx` that it reads from i18n (not hardcoded). I'll check during implementation; if hardcoded, switch to i18n keys.
 
-Current: *"The brands and intellectual property we design, build, and own…"*
+### Verification step after edits
 
-New (more IP-Holding, more accurate):
-> **Portfolio.** Six brands. One holding. Every IP designed, owned, and operated in-house — from Hong Kong, Bali, and Marrakech. No licenses. No partners on the cap table. Just brands we built to last.
+- Switch through `/en /fr /es /zh /id /ar` and confirm every section renders in the target language.
+- Confirm `VORVN` wordmark stays Latin everywhere.
+- Confirm Arabic flips RTL and reads naturally.
+- Confirm `/contact` page also fully translates in every language.
 
-Also adds a small meta-strip under the headline:
-```text
-6 BRANDS · 2 ACTIVE · 4 IN DEVELOPMENT · 3 CONTINENTS
-```
-Computed automatically from `BRANDS_DATA`.
+### What I will NOT touch
 
-## Data model changes (`src/data/brands.ts`)
+- No layout, no component, no routing changes.
+- No SEO/`SeoHead` changes (already wired to pull `t('seo.*')` — I'll add seo blocks where missing per language).
+- No `LanguageSwitcher` / `Nav` changes — they work correctly.
 
-Add three optional fields per brand. No breaking changes — old portfolio still reads what it needs.
+### Out of scope (flag for later if you want)
 
-```ts
-{
-  // ...existing fields
-  sectorTags: ['Consumer Goods', 'DTC'],     // replaces freeform "sector" string
-  geoTags:    ['USA', 'UAE'],
-  pitch:      'Premium kitchenware · Eggscalibur',  // ~60 char one-liner
-  metrics: {                                  // active brands only
-    status:  'Profitable',     // or 'Scaling', 'Launch phase'
-    since:   '2024',
-    channel: 'DTC + Amazon',   // optional
-  },
-  devTimeline: 'Q3 2026',      // dev brands only
-}
-```
-
-The existing `tags` array stays for backwards compatibility with v1 — v2 reads from the new structured fields.
-
-## i18n updates (`locales/*.json`)
-
-New `portfolio.v2` block with: rewritten `intro`, `metaStrip` template, `metricsLabels` (`status`, `markets`, `since`), `inDevelopmentSince`. Updated for all 6 languages (EN drafted, others get translated copies of the same structure).
-
-The per-brand `pitch` field is added to each `brands[i]` entry in every locale.
-
-## Files
-
-| File | Action |
-|---|---|
-| `src/components/sections/VorvnPortfolioSectionV2.tsx` | **new** — full implementation |
-| `src/data/brands.ts` | extend with `sectorTags`, `geoTags`, `pitch`, `metrics`, `devTimeline` |
-| `src/i18n/locales/en.json` (+ fr/es/zh/id/ar) | add `portfolio.v2` block + `pitch` per brand |
-| `src/pages/Index.tsx` | swap `VorvnPortfolioSection` → `VorvnPortfolioSectionV2` |
-| `mem://features/portfolio-accordion` | update to reflect new structure |
-
-## Mobile-friendliness checklist
-- All text scales via `clamp()`, no fixed `lg:` reveals.
-- Tags wrap freely (`flex-wrap gap-2`).
-- Gallery → single static image under `md`.
-- Tap targets ≥44px on the toggle.
-- Description max-width caps at full container on mobile (no `max-w-[440px]` clipping).
-- Status dot + name always sit on first line; tags row reflows under.
-
-## Two open decisions for you
-
-1. **Profitability wording** — for active brands, what's safest/preferred?
-   a) `Profitable` / `Scaling` (concrete, asserts strength)
-   b) `Revenue-generating` (factual, neutral)
-   c) Skip the status field, just show `SINCE 2024 · MARKETS USA · UAE`
-2. **Dev brands in metrics strip** — show a `Target launch: Q3 2026` line, or leave blank with just the status dot?
-
-If you don't answer, I default to **1a + show target launch** — the boldest, most IP-Holding read.
+- Auto-translation pipeline / CMS — staying with the JSON-file CMS as per memory.
+- Per-language SEO sitemap entries already exist.
 
