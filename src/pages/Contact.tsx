@@ -15,17 +15,18 @@ const OFFICES = [
     city: 'Hong Kong',
     entity: 'VORVN LIMITED',
     address: 'RM4 16/F, Ho King Commercial Centre\n2–16 Fa Yuen Street, Mongkok\nKowloon, Hong Kong',
-    phone: '+852 9290 0981',
-    phoneHref: 'tel:+85292900981',
   },
   {
     badge: 'Incubator Studio',
     city: 'Bali, Indonesia',
     entity: 'ADUH (LAGI) STUDIO',
     address: 'Jl. Seroja No.28, Tonja\nKec. Denpasar Utara, Bali 80235',
-    phone: '+1 218 417 4846',
-    phoneHref: 'tel:+12184174846',
   },
+];
+
+const PHONES = [
+  { value: '+852 9290 0981', href: 'tel:+85292900981' },
+  { value: '+1 218 417 4846', href: 'tel:+12184174846' },
 ];
 
 export default function Contact() {
@@ -109,7 +110,7 @@ export default function Contact() {
             </span>
           </div>
           <div className="lg:col-span-8">
-            <h1 className="font-brand text-[clamp(40px,6.5vw,88px)] leading-[0.95] tracking-[-0.01em] text-foreground uppercase">
+            <h1 className="font-sans font-medium text-[clamp(32px,4.6vw,56px)] leading-[1.05] tracking-[-0.015em] text-foreground whitespace-pre-line">
               {t('contact.headline')}
             </h1>
             <p className="font-sans text-[18px] leading-[1.55] text-mid mt-6 max-w-[60ch]">
