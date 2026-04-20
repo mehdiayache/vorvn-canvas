@@ -58,66 +58,18 @@
     "downloadPresentation": "下载介绍 →",
     "prev": "← 上一个",
     "next": "下一个 →",
-    "v2": {
-      "intro": "六个品牌，一家控股。每一项 IP 均由内部设计、持有与运营——来自香港、巴厘岛与马拉喀什。没有授权，没有股权外部合伙人。只有为长远而建的品牌。",
-      "metaStrip": {
-        "brands": "{{count}} 个品牌",
-        "active": "{{count}} 个运营中",
-        "dev": "{{count}} 个开发中",
-        "continents": "{{count}} 个大洲"
-      },
-      "metricsLabels": {
-        "status": "状态",
-        "markets": "市场",
-        "since": "自",
-        "timeline": "目标上线"
-      },
-      "inDevelopmentSince": "开发中 —— {{timeline}}",
-      "brands": [
-        {
-          "name": "Cook Warriors",
-          "pitch": "高端厨具 · Eggscalibur",
-          "statusLabel": "运营中",
-          "desc": "围绕 Eggscalibur——以剑柄为造型的标志性煎锅——打造的高端厨具品牌。从概念到阿联酋履约，再到美国家庭，Cook Warriors 是 VORVN 的旗舰消费品品牌。"
-        },
-        {
-          "name": "Stories of Bible",
-          "pitch": "基督教出版 · 美国市场",
-          "statusLabel": "已退出",
-          "desc": "孵化并共同打造了在美国市场增长最快的基督教图书品牌之一。全面主导生产端——设计体系、团队搭建、内容生产与交付基础设施。组建并管理了一家规模化生产插画版圣经书籍的创意工作室，主要销往美国基督教市场。合作期间品牌创造了超过 200 万美元的收入。"
-        },
-        {
-          "name": "MAQTOB",
-          "pitch": "端庄时装 · 巴厘岛工艺",
-          "statusLabel": "开发中",
-          "desc": "面向欧洲穆斯林市场的高端印尼祈祷服 mukena，首发法国。端庄时装与巴厘岛手工工艺相遇——连接两个世界的桥梁。"
-        },
-        {
-          "name": "xVoyager",
-          "pitch": "为全球游牧者打造的探索品牌",
-          "statusLabel": "开发中",
-          "desc": "面向全球游牧者与冒险家、以探索为核心的品牌。目前在 VORVN 内部实验室进行概念研发——为没有固定地址的人而设计。"
-        },
-        {
-          "name": "Warung Marrakech",
-          "pitch": "摩洛哥与巴厘岛交汇 · 香料与款待",
-          "statusLabel": "开发中",
-          "desc": "一个介于摩洛哥传承与巴厘岛款待之间的概念。香料、温度与文化——两个大陆在同一盘菜中相遇。"
-        },
-        {
-          "name": "Davi Properties",
-          "pitch": "房地产 · 印尼群岛",
-          "statusLabel": "开发中",
-          "desc": "正在开发中的房地产业务，依托 VORVN 在东南亚的网络与遍及印尼群岛的运营基础设施。"
-        }
-      ]
-    },
     "brands": [
       {
         "name": "Cook Warriors",
         "sector": "消费品 · 美国 / 阿联酋",
         "statusLabel": "运营中",
         "desc": "围绕 Eggscalibur——以剑柄为造型的标志性煎锅——打造的高端厨具品牌。从概念到阿联酋履约，再到美国家庭，Cook Warriors 是 VORVN 的旗舰消费品品牌。"
+      },
+      {
+        "name": "Stories of Bible",
+        "sector": "基督教出版 · 美国",
+        "statusLabel": "已退出",
+        "desc": "孵化并共同打造了在美国市场增长最快的基督教图书品牌之一。全面主导生产端——设计体系、团队搭建、内容生产与交付基础设施。组建并管理了一家规模化生产插画版圣经书籍的创意工作室，主要销往美国基督教市场。合作期间品牌创造了超过 200 万美元的收入。"
       },
       {
         "name": "MAQTOB",

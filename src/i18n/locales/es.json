@@ -58,66 +58,18 @@
     "downloadPresentation": "Descargar Presentación →",
     "prev": "← Anterior",
     "next": "Siguiente →",
-    "v2": {
-      "intro": "Seis marcas. Una holding. Cada IP diseñada, poseída y operada internamente — desde Hong Kong, Bali y Marrakech. Sin licencias. Sin socios en la cap table. Solo marcas construidas para durar.",
-      "metaStrip": {
-        "brands": "{{count}} Marcas",
-        "active": "{{count}} Activas",
-        "dev": "{{count}} En Desarrollo",
-        "continents": "{{count}} Continentes"
-      },
-      "metricsLabels": {
-        "status": "Estado",
-        "markets": "Mercados",
-        "since": "Desde",
-        "timeline": "Lanzamiento previsto"
-      },
-      "inDevelopmentSince": "En desarrollo — {{timeline}}",
-      "brands": [
-        {
-          "name": "Cook Warriors",
-          "pitch": "Utensilios de cocina premium · Eggscalibur",
-          "statusLabel": "Activa",
-          "desc": "Una marca de utensilios de cocina premium construida en torno al Eggscalibur — la icónica sartén con mango de espada. Desde el concepto hasta la entrega desde los EAU a los hogares estadounidenses, Cook Warriors es la marca insignia de bienes de consumo de VORVN."
-        },
-        {
-          "name": "Stories of Bible",
-          "pitch": "Editorial cristiana · Mercado de EE. UU.",
-          "statusLabel": "Salida",
-          "desc": "Incubación y co-construcción de una de las marcas de libros cristianos de mayor crecimiento en el mercado estadounidense. Dirección completa de la producción — sistemas de diseño, formación de equipos, producción de contenido e infraestructura de entrega. Montaje y gestión de un estudio creativo que produjo libros bíblicos ilustrados a escala, vendidos principalmente al mercado cristiano de EE. UU. La marca generó más de 2M$ en ingresos durante el periodo de colaboración."
-        },
-        {
-          "name": "MAQTOB",
-          "pitch": "Moda modesta · Artesanía balinesa",
-          "statusLabel": "En Desarrollo",
-          "desc": "Conjuntos de oración mukena premium indonesios para el mercado musulmán europeo, con lanzamiento en Francia. La moda modesta se encuentra con la artesanía balinesa — un puente entre dos mundos."
-        },
-        {
-          "name": "xVoyager",
-          "pitch": "Una marca de exploración para nómadas globales",
-          "statusLabel": "En Desarrollo",
-          "desc": "Una marca centrada en la exploración para nómadas y aventureros globales. Actualmente en desarrollo conceptual dentro del laboratorio VORVN — diseñada para quienes se mueven sin dirección fija."
-        },
-        {
-          "name": "Warung Marrakech",
-          "pitch": "Donde Marruecos se encuentra con Bali · Especias y hospitalidad",
-          "statusLabel": "En Desarrollo",
-          "desc": "Un concepto en la intersección entre el patrimonio marroquí y la hospitalidad balinesa. Especias, calidez y cultura — donde dos continentes se encuentran en un mismo plato."
-        },
-        {
-          "name": "Davi Properties",
-          "pitch": "Inmobiliaria · Archipiélago indonesio",
-          "statusLabel": "En Desarrollo",
-          "desc": "Una iniciativa inmobiliaria en desarrollo, apoyada en la red de VORVN en el Sudeste Asiático y su infraestructura operativa en todo el archipiélago indonesio."
-        }
-      ]
-    },
     "brands": [
       {
         "name": "Cook Warriors",
         "sector": "Bienes de Consumo · USA / EAU",
         "statusLabel": "Activa",
         "desc": "Una marca de utensilios de cocina premium construida en torno al Eggscalibur — la icónica sartén con mango de espada. Desde el concepto hasta la entrega desde los EAU a los hogares estadounidenses, Cook Warriors es la marca insignia de bienes de consumo de VORVN."
+      },
+      {
+        "name": "Stories of Bible",
+        "sector": "Editorial Cristiana · USA",
+        "statusLabel": "Salida",
+        "desc": "Incubación y co-construcción de una de las marcas de libros cristianos de mayor crecimiento en el mercado estadounidense. Dirección completa de la producción — sistemas de diseño, formación de equipos, producción de contenido e infraestructura de entrega. Montaje y gestión de un estudio creativo que produjo libros bíblicos ilustrados a escala, vendidos principalmente al mercado cristiano de EE. UU. La marca generó más de 2M$ en ingresos durante el periodo de colaboración."
       },
       {
         "name": "MAQTOB",

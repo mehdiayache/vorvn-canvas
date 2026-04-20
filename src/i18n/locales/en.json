@@ -58,66 +58,18 @@
     "downloadPresentation": "Download Presentation →",
     "prev": "← Prev",
     "next": "Next →",
-    "v2": {
-      "intro": "Six brands. One holding. Every IP designed, owned, and operated in-house — from Hong Kong, Bali, and Marrakech. No licenses. No partners on the cap table. Just brands we built to last.",
-      "metaStrip": {
-        "brands": "{{count}} Brands",
-        "active": "{{count}} Active",
-        "dev": "{{count}} In Development",
-        "continents": "{{count}} Continents"
-      },
-      "metricsLabels": {
-        "status": "Status",
-        "markets": "Markets",
-        "since": "Since",
-        "timeline": "Target Launch"
-      },
-      "inDevelopmentSince": "In development — {{timeline}}",
-      "brands": [
-        {
-          "name": "Cook Warriors",
-          "pitch": "Premium kitchenware · Eggscalibur",
-          "statusLabel": "Active",
-          "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
-        },
-        {
-          "name": "Stories of Bible",
-          "pitch": "Christian publishing · US market",
-          "statusLabel": "Exited",
-          "desc": "Incubated and co-built one of the fastest-growing Christian book brands in the US market. Led the full production side — design systems, team building, content production, and delivery infrastructure. Assembled and managed a creative studio that produced illustrated Bible books at scale, sold primarily to the US Christian market. The brand generated over $2M in revenue across the partnership period."
-        },
-        {
-          "name": "MAQTOB",
-          "pitch": "Modest fashion · Balinese craftsmanship",
-          "statusLabel": "In Development",
-          "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
-        },
-        {
-          "name": "xVoyager",
-          "pitch": "An exploration-first brand for global nomads",
-          "statusLabel": "In Development",
-          "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
-        },
-        {
-          "name": "Warung Marrakech",
-          "pitch": "Where Morocco meets Bali · Spice & hospitality",
-          "statusLabel": "In Development",
-          "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
-        },
-        {
-          "name": "Davi Properties",
-          "pitch": "Real estate · Indonesian archipelago",
-          "statusLabel": "In Development",
-          "desc": "A real estate venture in development, leveraging VORVN's Southeast Asia network and operational infrastructure across the Indonesian archipelago."
-        }
-      ]
-    },
     "brands": [
       {
         "name": "Cook Warriors",
         "sector": "Consumer Goods · USA / UAE",
         "statusLabel": "Active",
         "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
+      },
+      {
+        "name": "Stories of Bible",
+        "sector": "Christian Publishing · USA",
+        "statusLabel": "Exited",
+        "desc": "Incubated and co-built one of the fastest-growing Christian book brands in the US market. Led the full production side — design systems, team building, content production, and delivery infrastructure. Assembled a creative studio that produced illustrated Bible books at scale, sold primarily to the US Christian market. The brand generated over $2M in revenue across the partnership period."
       },
       {
         "name": "MAQTOB",
