@@ -1,45 +1,123 @@
 
 
 ## Goal
-Auto-detect the visitor's browser language on first visit and redirect them to the matching `/:lang` route. Fall back to `/en` if their language isn't supported.
+Build a **new Portfolio v2** section (parallel to the current one — keep the old one intact for now) with a stronger IP-Holding narrative, tag-based metadata, profitability/traction signals for **active** brands, and a layout that finally works on mobile.
 
-## Current Behavior
-- `/` → hard redirect to `/en` (always, regardless of browser language)
-- `i18next-browser-languagedetector` is already installed and configured, but its detection only fires *after* the redirect to `/en` already happened, so it never gets a chance to influence the URL.
+## Strategy: duplicate, don't replace
+- Current `VorvnPortfolioSection.tsx` stays untouched.
+- New file: `VorvnPortfolioSectionV2.tsx`.
+- In `Index.tsx`, swap the import to V2 (one line). Old file remains in repo as a fallback — easy A/B / rollback.
 
-## Proposed Change
-Replace the static `<Navigate to="/en" />` on the `/` route with a small **`LanguageRedirect`** component that:
+## New design vision (mobile-first card rows)
 
-1. Reads `navigator.language` (e.g. `"fr-FR"`, `"ar"`, `"zh-CN"`).
-2. Extracts the base code (`fr`, `ar`, `zh`).
-3. Checks it against our `LANGUAGES` list (`en, fr, zh, es, id, ar`).
-4. Also checks `localStorage` first — if the user previously picked a language manually (via the language switcher), respect that choice instead of the browser default.
-5. Redirects to `/<detected>` if supported, else `/en`.
+Replace the desktop-grid accordion with a **stacked card row** that reads identically on phone and desktop. Each brand = one expandable row, but the row itself is a structured card — not a single horizontal line that collapses on mobile.
 
-### Detection priority (highest → lowest)
+### Collapsed row (always visible)
+
 ```text
-1. localStorage  → user's explicit prior choice
-2. navigator.languages[0..n]  → browser preference list
-3. navigator.language  → single fallback
-4. 'en'  → ultimate fallback
+┌───────────────────────────────────────────────────────────┐
+│  ●  COOK WARRIORS                              [ + ]      │
+│     Premium kitchenware · Eggscalibur                     │
+│                                                           │
+│  [CONSUMER GOODS] [DTC] [USA] [UAE]                       │
+└───────────────────────────────────────────────────────────┘
 ```
 
-Using `navigator.languages` (plural) is better than just `navigator.language` because it respects the user's full ranked preference list — e.g. a user with `["fr-CA", "fr", "en"]` who doesn't have `fr-CA` supported will still match `fr`.
+- **Status dot** (pulsing green = active, hollow = in dev) — leftmost, always.
+- **Brand name** in Inter Tight medium, uppercase, larger than today.
+- **One-line pitch** (new short field, ~60 chars) — gives context without expanding.
+- **Tags row** as proper TAG UI — pills with mono caps, 1px border, rounded-none (per design system: no rounded edges → square pills with subtle border). Two tag families, visually distinct:
+  - **Sector tags** — foreground border (e.g. `CONSUMER GOODS`, `DTC`)
+  - **Geo tags** — dim border + globe-style prefix dot (e.g. `· USA`, `· UAE`)
+- **+ / ×** affordance on the right.
 
-## Files to Change
+### Expanded panel
 
-**1. `src/components/LanguageRedirect.tsx`** — new file
-Tiny component that runs the detection logic and returns `<Navigate to={detected} replace />`.
+Two-column on desktop (`lg:grid-cols-[1.1fr_1fr]`), single-column stack on mobile.
 
-**2. `src/App.tsx`** — one-line change
-Swap the `/` route element from `<Navigate to="/en" replace />` to `<LanguageRedirect />`.
+**Left column — Brand intel**
+- Large featured logo (or wordmark fallback, as today).
+- Full description paragraph.
+- **Metrics strip** (active brands only) — 3 small stat blocks:
+  ```text
+  STATUS         MARKETS         SINCE
+  Profitable     USA · UAE       2024
+  ```
+  Numbers in Inter Tight medium ~24px, labels in JetBrains Mono 9px caps. Pulled from new `metrics` field in `brands.ts` — strings only, no live data, fully editable per-brand. Hidden for `dev` brands; replaced by a single `IN DEVELOPMENT — Q3 2026` line.
+- Action links (right-arrow style, as user previously requested for CTAs):
+  - `Visit brand →`
+  - `Download deck →`
 
-## What stays the same
-- `/en`, `/fr`, `/ar`, etc. — all direct URLs keep working exactly as today (great for SEO + sharing).
-- `LanguageRoute` already syncs `i18n.language`, `<html lang>`, `<html dir>` once on the language route — no change needed.
-- `SeoHead` already emits `hreflang` alternates for all 6 languages — Google will still see distinct localized pages.
-- The language switcher still overrides via `localStorage`, so manual choices persist across sessions.
+**Right column — Visual**
+- Same auto-scrolling 300×300 gallery, but:
+  - On mobile: collapses to a single fixed 4:3 hero image (lighter, no infinite scroll on small screens — perf + clarity).
+  - On desktop: gallery height matches left column, smaller (240×240) so the row doesn't feel oversized.
 
-## SEO note
-Auto-detection happens **only on `/`** (the bare root). Search engines crawling `/fr`, `/ar`, etc. directly are unaffected — they get the correct localized HTML immediately, no redirect chain. This is the recommended pattern (Google explicitly warns against auto-redirecting localized URLs based on browser language).
+### Section header (rewritten copy direction)
+
+Current: *"The brands and intellectual property we design, build, and own…"*
+
+New (more IP-Holding, more accurate):
+> **Portfolio.** Six brands. One holding. Every IP designed, owned, and operated in-house — from Hong Kong, Bali, and Marrakech. No licenses. No partners on the cap table. Just brands we built to last.
+
+Also adds a small meta-strip under the headline:
+```text
+6 BRANDS · 2 ACTIVE · 4 IN DEVELOPMENT · 3 CONTINENTS
+```
+Computed automatically from `BRANDS_DATA`.
+
+## Data model changes (`src/data/brands.ts`)
+
+Add three optional fields per brand. No breaking changes — old portfolio still reads what it needs.
+
+```ts
+{
+  // ...existing fields
+  sectorTags: ['Consumer Goods', 'DTC'],     // replaces freeform "sector" string
+  geoTags:    ['USA', 'UAE'],
+  pitch:      'Premium kitchenware · Eggscalibur',  // ~60 char one-liner
+  metrics: {                                  // active brands only
+    status:  'Profitable',     // or 'Scaling', 'Launch phase'
+    since:   '2024',
+    channel: 'DTC + Amazon',   // optional
+  },
+  devTimeline: 'Q3 2026',      // dev brands only
+}
+```
+
+The existing `tags` array stays for backwards compatibility with v1 — v2 reads from the new structured fields.
+
+## i18n updates (`locales/*.json`)
+
+New `portfolio.v2` block with: rewritten `intro`, `metaStrip` template, `metricsLabels` (`status`, `markets`, `since`), `inDevelopmentSince`. Updated for all 6 languages (EN drafted, others get translated copies of the same structure).
+
+The per-brand `pitch` field is added to each `brands[i]` entry in every locale.
+
+## Files
+
+| File | Action |
+|---|---|
+| `src/components/sections/VorvnPortfolioSectionV2.tsx` | **new** — full implementation |
+| `src/data/brands.ts` | extend with `sectorTags`, `geoTags`, `pitch`, `metrics`, `devTimeline` |
+| `src/i18n/locales/en.json` (+ fr/es/zh/id/ar) | add `portfolio.v2` block + `pitch` per brand |
+| `src/pages/Index.tsx` | swap `VorvnPortfolioSection` → `VorvnPortfolioSectionV2` |
+| `mem://features/portfolio-accordion` | update to reflect new structure |
+
+## Mobile-friendliness checklist
+- All text scales via `clamp()`, no fixed `lg:` reveals.
+- Tags wrap freely (`flex-wrap gap-2`).
+- Gallery → single static image under `md`.
+- Tap targets ≥44px on the toggle.
+- Description max-width caps at full container on mobile (no `max-w-[440px]` clipping).
+- Status dot + name always sit on first line; tags row reflows under.
+
+## Two open decisions for you
+
+1. **Profitability wording** — for active brands, what's safest/preferred?
+   a) `Profitable` / `Scaling` (concrete, asserts strength)
+   b) `Revenue-generating` (factual, neutral)
+   c) Skip the status field, just show `SINCE 2024 · MARKETS USA · UAE`
+2. **Dev brands in metrics strip** — show a `Target launch: Q3 2026` line, or leave blank with just the status dot?
+
+If you don't answer, I default to **1a + show target launch** — the boldest, most IP-Holding read.
 
