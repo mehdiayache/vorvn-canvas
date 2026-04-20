@@ -111,11 +111,11 @@ function VorvnPortfolioItem({
             isActive
               ? 'bg-green-500 animate-[pulse_2s_ease-in-out_infinite]'
               : isExited
-                ? 'bg-mid/30'
+                ? 'bg-foreground'
                 : 'bg-mid/40'
           }`} />
           <span className={`font-mono text-[8.5px] tracking-[0.12em] uppercase whitespace-nowrap ${
-            isActive ? 'text-foreground' : isExited ? 'text-mid line-through decoration-1 decoration-dim' : 'text-mid'
+            isActive || isExited ? 'text-foreground' : 'text-mid'
           }`}>
             {brand.statusLabel}
           </span>
