@@ -71,9 +71,12 @@ export default function Nav() {
           >
             {t('investors.label')}
           </button>
-          <a href="mailto:contact@vorvn.com" className="font-sans text-[11px] font-medium tracking-[0.1em] uppercase text-foreground hover:text-mid transition-colors duration-200">
+          <button
+            onClick={() => navigate(`/${i18n.language}/contact`)}
+            className="font-sans text-[11px] font-medium tracking-[0.1em] uppercase text-foreground hover:text-mid transition-colors duration-200 bg-transparent border-none p-0 cursor-pointer"
+          >
             {t('nav.contact')}
-          </a>
+          </button>
         </div>
 
         {/* Mobile trigger */}
@@ -123,12 +126,15 @@ export default function Nav() {
                 </span>
               </div>
 
-              <a
-                href="mailto:contact@vorvn.com"
-                className="block px-5 py-3 font-sans text-[15px] font-semibold tracking-[0.01em] text-foreground hover:text-mid transition-colors duration-200"
+              <button
+                onClick={() => {
+                  navigate(`/${i18n.language}/contact`);
+                  setMobileOpen(false);
+                }}
+                className="block w-full text-left px-5 py-3 font-sans text-[15px] font-semibold tracking-[0.01em] text-foreground hover:text-mid transition-colors duration-200 bg-transparent border-none"
               >
                 {t('nav.contact')}
-              </a>
+              </button>
 
               {/* Divider */}
               <div className="mx-5 my-2 border-t border-rule" />

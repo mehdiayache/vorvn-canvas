@@ -94,10 +94,7 @@ export default function Contact() {
 
   return (
     <div ref={scrollRef} className="min-h-screen bg-[hsl(var(--bg))]">
-      <SeoHead
-        title="Contact — VORVN"
-        description="Speak with VORVN. Investor & partnership inquiries, brand collaborations, press, and careers — Hong Kong & Bali."
-      />
+      <SeoHead />
       <Nav />
 
       <main style={{ paddingTop: '120px' }}>

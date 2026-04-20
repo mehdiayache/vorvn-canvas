@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import LanguageRoute from "./components/LanguageRoute";
 import LanguageRedirect from "./components/LanguageRedirect";
 import Index from "./pages/Index";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,14 @@ const App = () => (
             element={
               <LanguageRoute>
                 <Index />
+              </LanguageRoute>
+            }
+          />
+          <Route
+            path="/:lang/contact"
+            element={
+              <LanguageRoute>
+                <Contact />
               </LanguageRoute>
             }
           />
