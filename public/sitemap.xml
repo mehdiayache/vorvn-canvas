@@ -3,9 +3,12 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
 >
-  <!-- Home -->
+  <!-- ============ HOME ============ -->
   <url>
     <loc>https://www.vorvn.com/en</loc>
+    <lastmod>2025-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr" />
     <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es" />
@@ -13,18 +16,79 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+  </url>
+  <url>
+    <loc>https://www.vorvn.com/fr</loc>
+    <lastmod>2025-04-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
   </url>
-  <url><loc>https://www.vorvn.com/fr</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.vorvn.com/es</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.vorvn.com/zh</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.vorvn.com/id</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.vorvn.com/ar</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url>
+    <loc>https://www.vorvn.com/es</loc>
+    <lastmod>2025-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+  </url>
+  <url>
+    <loc>https://www.vorvn.com/zh</loc>
+    <lastmod>2025-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+  </url>
+  <url>
+    <loc>https://www.vorvn.com/id</loc>
+    <lastmod>2025-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+  </url>
+  <url>
+    <loc>https://www.vorvn.com/ar</loc>
+    <lastmod>2025-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+  </url>
 
-  <!-- Contact -->
+  <!-- ============ CONTACT ============ -->
   <url>
     <loc>https://www.vorvn.com/en/contact</loc>
+    <lastmod>2025-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr/contact" />
     <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es/contact" />
@@ -32,12 +96,70 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id/contact" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar/contact" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en/contact" />
+  </url>
+  <url>
+    <loc>https://www.vorvn.com/fr/contact</loc>
+    <lastmod>2025-04-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en/contact" />
   </url>
-  <url><loc>https://www.vorvn.com/fr/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.vorvn.com/es/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.vorvn.com/zh/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.vorvn.com/id/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.vorvn.com/ar/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url>
+    <loc>https://www.vorvn.com/es/contact</loc>
+    <lastmod>2025-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en/contact" />
+  </url>
+  <url>
+    <loc>https://www.vorvn.com/zh/contact</loc>
+    <lastmod>2025-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en/contact" />
+  </url>
+  <url>
+    <loc>https://www.vorvn.com/id/contact</loc>
+    <lastmod>2025-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en/contact" />
+  </url>
+  <url>
+    <loc>https://www.vorvn.com/ar/contact</loc>
+    <lastmod>2025-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en/contact" />
+  </url>
 </urlset>

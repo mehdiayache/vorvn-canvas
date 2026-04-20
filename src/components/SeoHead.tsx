@@ -141,13 +141,16 @@ export default function SeoHead({ page = 'home', pathSuffix, noindex = false }: 
     upsertMeta('meta[property="og:url"]', 'property', 'og:url', url);
     upsertMeta('meta[property="og:site_name"]', 'property', 'og:site_name', 'VORVN');
     upsertMeta('meta[property="og:locale"]', 'property', 'og:locale', toOgLocale(lang));
-    upsertMeta('meta[property="og:image"]', 'property', 'og:image', `${BASE_URL}/apple-touch-icon.png`);
+    upsertMeta('meta[property="og:image"]', 'property', 'og:image', `${BASE_URL}/og-image.jpg`);
+    upsertMeta('meta[property="og:image:width"]', 'property', 'og:image:width', '1200');
+    upsertMeta('meta[property="og:image:height"]', 'property', 'og:image:height', '630');
+    upsertMeta('meta[property="og:image:alt"]', 'property', 'og:image:alt', seo.title);
 
     // Twitter
     upsertMeta('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image');
     upsertMeta('meta[name="twitter:title"]', 'name', 'twitter:title', seo.title);
     upsertMeta('meta[name="twitter:description"]', 'name', 'twitter:description', seo.desc);
-    upsertMeta('meta[name="twitter:image"]', 'name', 'twitter:image', `${BASE_URL}/apple-touch-icon.png`);
+    upsertMeta('meta[name="twitter:image"]', 'name', 'twitter:image', `${BASE_URL}/og-image.jpg`);
 
     // Canonical
     upsertLink('canonical', url);
