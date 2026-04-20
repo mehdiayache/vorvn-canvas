@@ -251,6 +251,8 @@
       "body": "Merci de nous avoir contactés. Nous lisons chaque message et répondons sous 48 heures — généralement plus vite.",
       "again": "Envoyer un autre →"
     },
-    "phones": "Téléphones"
+    "phones": "Téléphones",
+    "directLabel": "Direct",
+    "writeUs": "Utilisez le formulaire ci-dessous →"
   }
 }

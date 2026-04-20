@@ -251,6 +251,8 @@
       "body": "Thanks for reaching out. We read every message and reply within 48 hours — usually faster.",
       "again": "Send another →"
     },
-    "phones": "Phones"
+    "phones": "Phones",
+    "directLabel": "Direct",
+    "writeUs": "Use the form below →"
   }
 }

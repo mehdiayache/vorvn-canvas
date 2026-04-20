@@ -251,6 +251,8 @@
       "body": "Terima kasih telah menghubungi kami. Kami membaca setiap pesan dan membalas dalam 48 jam — biasanya lebih cepat.",
       "again": "Kirim pesan lain →"
     },
-    "phones": "Telepon"
+    "phones": "Telepon",
+    "directLabel": "Langsung",
+    "writeUs": "Gunakan formulir di bawah →"
   }
 }
