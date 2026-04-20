@@ -35,11 +35,6 @@ export default function Nav() {
 
   const currentLang = LANGUAGES.find((l) => l.code === i18n.language);
 
-  // (theme toggle removed — site is dark-only)
-  void 0;
-
-  const currentLang = LANGUAGES.find((l) => l.code === i18n.language);
-
   return (
     <>
       <nav className="fixed top-0 inset-x-0 z-[100] flex justify-between items-center py-5 bg-[hsl(var(--bg))] border-b border-rule" style={{ padding: '20px var(--gutter)' }}>
@@ -152,14 +147,6 @@ export default function Nav() {
 
               {/* Divider */}
               <div className="mx-5 my-2 border-t border-rule" />
-
-              {/* Theme toggle */}
-              <div className="px-5 py-3 flex items-center justify-between">
-                <span className="font-sans text-[14px] font-medium text-foreground">
-                  {isDark ? t('nav.light') : t('nav.dark')}
-                </span>
-                <ThemeToggle />
-              </div>
 
               {/* Language as expandable menu item */}
               <button
