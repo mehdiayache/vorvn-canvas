@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { ArrowRight } from 'lucide-react';
+import { toast } from 'sonner';
 import Nav from '@/components/Nav';
 import SeoHead from '@/components/SeoHead';
 import VorvnFooter from '@/components/sections/VorvnFooter';
@@ -73,6 +74,12 @@ export default function Contact() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'sent'>('idle');
   const [sendError, setSendError] = useState<string>('');
   const [website, setWebsite] = useState(''); // honeypot
+  const [sentAt, setSentAt] = useState<Date | null>(null);
+
+  const formatReceipt = (d: Date) => {
+    const pad = (n: number) => String(n).padStart(2, '0');
+    return `${d.getUTCFullYear()}.${pad(d.getUTCMonth() + 1)}.${pad(d.getUTCDate())} ${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())} UTC`;
+  };
 
   const update = (key: keyof typeof values, v: string) => {
     setValues((prev) => ({ ...prev, [key]: v }));
@@ -105,8 +112,13 @@ export default function Contact() {
         return;
       }
       setStatus('sent');
+      setSentAt(new Date());
       setValues({ name: '', email: '', company: '', topic: '', message: '' });
       setWebsite('');
+      toast.success(t('contact.success.title'), {
+        description: t('contact.success.body'),
+        duration: 6000,
+      });
     } catch {
       setStatus('idle');
       setSendError(t('contact.errors.send'));
@@ -244,32 +256,55 @@ export default function Contact() {
               </h3>
 
               {status === 'sent' ? (
-                <div className="mt-12 reveal d2 border border-foreground p-10" role="status" aria-live="polite">
-                  <div className="flex items-center gap-2 mb-6">
-                    <span className="inline-block w-[7px] h-[7px] rounded-full bg-foreground" />
-                    <span className="font-mono text-[9px] tracking-[0.16em] uppercase text-foreground">
-                      ✓ {t('contact.success.tag')}
+                <div
+                  className="mt-12 border border-foreground p-10 md:p-12 relative"
+                  style={{ animation: 'fadeUpIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both' }}
+                  role="status"
+                  aria-live="polite"
+                >
+                  <div className="flex items-center gap-3 mb-8">
+                    <span
+                      className="inline-block w-[8px] h-[8px] rounded-full bg-foreground"
+                      style={{ animation: 'dotPulse 2s ease-in-out infinite' }}
+                    />
+                    <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground">
+                      {t('contact.success.tag')}
+                    </span>
+                    <span className="font-mono text-[10px] tracking-[0.14em] uppercase text-mid">
+                      · {sentAt ? formatReceipt(sentAt) : ''}
                     </span>
                   </div>
                   <p
-                    className="font-sans font-medium text-foreground"
-                    style={{ fontSize: 'clamp(20px, 2vw, 28px)', lineHeight: 1.35 }}
+                    className="font-sans font-medium text-foreground tracking-[-0.01em] m-0"
+                    style={{ fontSize: 'clamp(26px, 3vw, 40px)', lineHeight: 1.2 }}
                   >
                     {t('contact.success.title')}
                   </p>
                   <p
-                    className="mt-5 font-sans font-normal text-mid max-w-[560px]"
+                    className="mt-6 font-sans font-normal text-mid max-w-[560px]"
                     style={{ fontSize: 'clamp(15px, 1.15vw, 18px)', lineHeight: 1.7 }}
                   >
                     {t('contact.success.body')}
                   </p>
-                  <button
-                    type="button"
-                    onClick={() => setStatus('idle')}
-                    className="mt-8 font-sans text-[15px] font-medium text-foreground border-b border-foreground pb-[3px] hover:text-mid hover:border-mid transition-colors duration-200 bg-transparent"
-                  >
-                    {t('contact.success.again')}
-                  </button>
+                  <div className="mt-10 pt-8 border-t border-rule flex flex-col sm:flex-row sm:items-center gap-6">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setStatus('idle');
+                        setSentAt(null);
+                      }}
+                      className="inline-flex items-center gap-3 bg-foreground text-background font-sans text-[15px] font-medium px-7 py-4 hover:opacity-90 transition-opacity duration-200 group"
+                    >
+                      {t('contact.success.again')}
+                      <ArrowRight
+                        size={16}
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    </button>
+                    <span className="font-mono text-[10px] tracking-[0.16em] uppercase text-mid">
+                      {t('contact.success.tag')} · Reply window 48h
+                    </span>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={onSubmit} noValidate className="mt-12 space-y-10 reveal d2">
@@ -404,22 +439,35 @@ export default function Contact() {
 
                   {/* Submit */}
                   <div className="pt-8 border-t border-rule flex flex-col sm:flex-row sm:items-center gap-6">
-                    <button
-                      type="submit"
-                      disabled={status === 'submitting'}
-                      className="inline-flex items-center gap-3 bg-foreground text-background font-sans text-[15px] font-medium px-7 py-4 hover:opacity-90 transition-opacity duration-200 group disabled:opacity-60 disabled:cursor-not-allowed"
-                    >
+                    <div className="relative">
+                      <button
+                        type="submit"
+                        disabled={status === 'submitting'}
+                        className="inline-flex items-center gap-3 bg-foreground text-background font-sans text-[15px] font-medium px-7 py-4 hover:opacity-90 transition-opacity duration-200 group disabled:opacity-60 disabled:cursor-not-allowed"
+                      >
+                        {status === 'submitting' && (
+                          <span
+                            className="inline-block w-[7px] h-[7px] rounded-full bg-background"
+                            style={{ animation: 'dotPulse 1.1s ease-in-out infinite' }}
+                          />
+                        )}
+                        {status === 'submitting'
+                          ? t('contact.submitting')
+                          : t('contact.submit')}
+                        <ArrowRight
+                          size={16}
+                          className="transition-transform duration-200 group-hover:translate-x-1"
+                        />
+                      </button>
                       {status === 'submitting' && (
-                        <span className="inline-block w-[7px] h-[7px] rounded-full bg-background animate-[pulse_1.2s_ease-in-out_infinite]" />
+                        <div className="absolute left-0 right-0 -bottom-[2px] h-[1px] overflow-hidden bg-rule">
+                          <div
+                            className="h-full w-[30%] bg-foreground"
+                            style={{ animation: 'shimmerSlide 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite' }}
+                          />
+                        </div>
                       )}
-                      {status === 'submitting'
-                        ? t('contact.submitting')
-                        : t('contact.submit')}
-                      <ArrowRight
-                        size={16}
-                        className="transition-transform duration-200 group-hover:translate-x-1"
-                      />
-                    </button>
+                    </div>
                     <p className="font-sans text-[13px] text-dim">{t('contact.privacy')}</p>
                   </div>
                   {sendError && (
