@@ -162,4 +162,18 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar/contact" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en/contact" />
   </url>
+
+  <!-- ============ LEGAL (English-only) ============ -->
+  <url>
+    <loc>https://www.vorvn.com/legal/privacy</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.vorvn.com/legal/notice</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
 </urlset>
