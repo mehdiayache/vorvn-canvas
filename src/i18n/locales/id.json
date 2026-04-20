@@ -222,7 +222,11 @@
       "company": "Perusahaan / Proyek",
       "message": "Pesan Anda",
       "messagePlaceholder": "Ceritakan apa yang Anda bangun, mengapa sekarang, dan apa yang Anda butuhkan dari kami.",
-      "messageHint": "Min. 10 karakter"
+      "messageHint": "Min. 10 karakter",
+      "topicHelp": "Pilih yang paling sesuai — pesan Anda akan diarahkan ke orang yang tepat.",
+      "namePlaceholder": "Nama lengkap Anda",
+      "emailPlaceholder": "nama@contoh.com",
+      "companyPlaceholder": "Opsional — perusahaan atau proyek Anda"
     },
     "topics": {
       "investor": "Investor / Kemitraan",
@@ -245,6 +249,7 @@
       "title": "Pesan terkirim.",
       "body": "Terima kasih telah menghubungi. Kami membaca setiap pesan dan membalas dalam 48 jam — biasanya lebih cepat.",
       "again": "Kirim lagi →"
-    }
+    },
+    "phones": "Telepon"
   }
 }
