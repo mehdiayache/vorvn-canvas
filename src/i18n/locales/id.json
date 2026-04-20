@@ -203,5 +203,48 @@
     "cta": "Kembali ke VORVN",
     "footerLeft": "404 · Tidak Ditemukan",
     "footerRight": "VORVN LIMITED · HK"
+  },
+  "contact": {
+    "label": "Kontak",
+    "headline": "Bicara langsung\ndengan kami.",
+    "body": "Pengantar investor, kolaborasi merek, pers, karier — pilih topik dan tulis pesan yang nyata. Kami menjawab yang penting.",
+    "offices": "Kantor",
+    "formLabel": "Formulir",
+    "formHeadline": "Kirim pesan",
+    "directEmail": "Langsung",
+    "submit": "Kirim Pesan",
+    "submitting": "Mengirim…",
+    "privacy": "Kami membalas dalam 48 jam. Tanpa newsletter. Tanpa spam.",
+    "fields": {
+      "topic": "Tentang apa?",
+      "name": "Nama lengkap",
+      "email": "Email",
+      "company": "Perusahaan / Proyek",
+      "message": "Pesan Anda",
+      "messagePlaceholder": "Ceritakan apa yang Anda bangun, mengapa sekarang, dan apa yang Anda butuhkan dari kami.",
+      "messageHint": "Min. 10 karakter"
+    },
+    "topics": {
+      "investor": "Investor / Kemitraan",
+      "brand": "Kolaborasi merek",
+      "press": "Pers & Media",
+      "careers": "Karier / Umum",
+      "other": "Lainnya"
+    },
+    "errors": {
+      "name": "Mohon masukkan nama lengkap (min. 2 karakter)",
+      "nameMax": "Nama harus kurang dari 100 karakter",
+      "email": "Mohon masukkan alamat email yang valid",
+      "emailMax": "Email harus kurang dari 255 karakter",
+      "topic": "Mohon pilih topik",
+      "messageMin": "Pesan minimal 10 karakter",
+      "messageMax": "Pesan harus kurang dari 2000 karakter"
+    },
+    "success": {
+      "tag": "Diterima",
+      "title": "Pesan terkirim.",
+      "body": "Terima kasih telah menghubungi. Kami membaca setiap pesan dan membalas dalam 48 jam — biasanya lebih cepat.",
+      "again": "Kirim lagi →"
+    }
   }
 }

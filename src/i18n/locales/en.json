@@ -74,12 +74,42 @@
       },
       "inDevelopmentSince": "In development — {{timeline}}",
       "brands": [
-        { "name": "Cook Warriors", "pitch": "Premium kitchenware · Eggscalibur", "statusLabel": "Active", "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand." },
-        { "name": "Hearts Notes", "pitch": "Faith-centred gifting for the Christian home", "statusLabel": "Active", "desc": "A Christian gifting brand delivering faith-centred products through Etsy and direct-to-consumer channels. Workbooks, digital kits, and heartfelt gifts designed for the Christian home." },
-        { "name": "MAQTOB", "pitch": "Modest fashion · Balinese craftsmanship", "statusLabel": "In Development", "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds." },
-        { "name": "xVoyager", "pitch": "An exploration-first brand for global nomads", "statusLabel": "In Development", "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address." },
-        { "name": "Warung Marrakech", "pitch": "Where Morocco meets Bali · Spice & hospitality", "statusLabel": "In Development", "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate." },
-        { "name": "Davi Properties", "pitch": "Real estate · Indonesian archipelago", "statusLabel": "In Development", "desc": "A real estate venture in development, leveraging VORVN's Southeast Asia network and operational infrastructure across the Indonesian archipelago." }
+        {
+          "name": "Cook Warriors",
+          "pitch": "Premium kitchenware · Eggscalibur",
+          "statusLabel": "Active",
+          "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
+        },
+        {
+          "name": "Hearts Notes",
+          "pitch": "Faith-centred gifting for the Christian home",
+          "statusLabel": "Active",
+          "desc": "A Christian gifting brand delivering faith-centred products through Etsy and direct-to-consumer channels. Workbooks, digital kits, and heartfelt gifts designed for the Christian home."
+        },
+        {
+          "name": "MAQTOB",
+          "pitch": "Modest fashion · Balinese craftsmanship",
+          "statusLabel": "In Development",
+          "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
+        },
+        {
+          "name": "xVoyager",
+          "pitch": "An exploration-first brand for global nomads",
+          "statusLabel": "In Development",
+          "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
+        },
+        {
+          "name": "Warung Marrakech",
+          "pitch": "Where Morocco meets Bali · Spice & hospitality",
+          "statusLabel": "In Development",
+          "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
+        },
+        {
+          "name": "Davi Properties",
+          "pitch": "Real estate · Indonesian archipelago",
+          "statusLabel": "In Development",
+          "desc": "A real estate venture in development, leveraging VORVN's Southeast Asia network and operational infrastructure across the Indonesian archipelago."
+        }
       ]
     },
     "brands": [
@@ -173,5 +203,48 @@
     "cta": "Return to VORVN",
     "footerLeft": "404 · Not Found",
     "footerRight": "VORVN LIMITED · HK"
+  },
+  "contact": {
+    "label": "Contact",
+    "headline": "Talk to us.\nDirectly.",
+    "body": "Investor introductions, brand collaborations, press, careers — pick a topic and write us a real message. We answer the ones that matter.",
+    "offices": "Offices",
+    "formLabel": "Form",
+    "formHeadline": "Send a message",
+    "directEmail": "Direct",
+    "submit": "Send Message",
+    "submitting": "Sending…",
+    "privacy": "We reply within 48h. No newsletters. No spam.",
+    "fields": {
+      "topic": "What's it about?",
+      "name": "Full name",
+      "email": "Email",
+      "company": "Company / Project",
+      "message": "Your message",
+      "messagePlaceholder": "Tell us what you're building, why now, and what you need from us.",
+      "messageHint": "Min. 10 characters"
+    },
+    "topics": {
+      "investor": "Investor / Partnership",
+      "brand": "Brand collaboration",
+      "press": "Press & Media",
+      "careers": "Careers / General",
+      "other": "Other"
+    },
+    "errors": {
+      "name": "Please enter your full name (min. 2 characters)",
+      "nameMax": "Name must be less than 100 characters",
+      "email": "Please enter a valid email address",
+      "emailMax": "Email must be less than 255 characters",
+      "topic": "Please select a topic",
+      "messageMin": "Message must be at least 10 characters",
+      "messageMax": "Message must be less than 2000 characters"
+    },
+    "success": {
+      "tag": "Received",
+      "title": "Message sent.",
+      "body": "Thanks for reaching out. We read every message and reply within 48 hours — usually faster.",
+      "again": "Send another →"
+    }
   }
 }
