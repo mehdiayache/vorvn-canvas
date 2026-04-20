@@ -15,21 +15,22 @@ export default function VorvnFounderSection() {
         </span>
       </div>
 
-      {/* Quote — refined editorial scale */}
+      {/* Quote — preserves intentional line breaks and paragraph rhythm */}
       <blockquote
-        className="font-sans font-medium text-foreground mb-12 max-w-[760px] reveal d1 tracking-[-0.015em]"
-        style={{ fontSize: 'clamp(20px, 2vw, 30px)', lineHeight: 1.42 }}
+        className="font-sans font-medium text-foreground mb-12 max-w-[780px] reveal d1 tracking-[-0.015em]"
+        style={{ fontSize: 'clamp(20px, 2vw, 30px)', lineHeight: 1.45 }}
       >
-        {t('founder.quote')
-          .split('\n')
-          .map((line) => line.trim())
-          .filter((line) => line.length > 0)
-          .map((line, i, arr) => (
-            <span key={i}>
-              {line}
-              {i < arr.length - 1 && ' '}
+        {t('founder.quote').split('\n').map((line, i) => {
+          const trimmed = line.trim();
+          if (trimmed.length === 0) {
+            return <span key={i} className="block h-4" aria-hidden="true" />;
+          }
+          return (
+            <span key={i} className="block">
+              {trimmed}
             </span>
-          ))}
+          );
+        })}
       </blockquote>
 
       {/* Founder info — smaller, CEO card style */}
