@@ -285,7 +285,6 @@ export default function Contact() {
                     <legend className="font-sans text-[15px] font-medium text-foreground">
                       {t('contact.fields.topic')} <span className="text-foreground">*</span>
                     </legend>
-                    </legend>
                     <p
                       className="font-sans font-normal text-mid mt-2 mb-5"
                       style={{ fontSize: '15px', lineHeight: 1.6 }}
