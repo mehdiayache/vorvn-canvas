@@ -13,22 +13,22 @@ export default function VorvnInvestorsSection() {
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20 gap-y-12">
         {/* Left: label */}
         <div className="reveal">
-          <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">
+          <h2 className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground m-0">
             {t('investors.label')}
-          </span>
+          </h2>
         </div>
 
         {/* Right: content */}
         <div>
           {/* Headline */}
-          <p
-            className="font-sans font-medium text-foreground reveal d1"
+          <h3
+            className="font-sans font-medium text-foreground reveal d1 m-0"
             style={{ fontSize: 'clamp(22px, 2.8vw, 44px)', lineHeight: 1.35 }}
           >
             {t('investors.headline').split('\n').map((line, i) => (
               <span key={i} className="block">{line}</span>
             ))}
-          </p>
+          </h3>
 
           {/* Body */}
           <p

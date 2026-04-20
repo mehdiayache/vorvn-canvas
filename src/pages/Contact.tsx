@@ -109,17 +109,17 @@ export default function Contact() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20 gap-y-12">
             <div className="reveal">
-              <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">
+              <h2 className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground m-0">
                 {t('contact.label')}
-              </span>
+              </h2>
             </div>
             <div>
-              <p
-                className="font-sans font-medium text-foreground reveal d1 whitespace-pre-line"
+              <h1
+                className="font-sans font-medium text-foreground reveal d1 whitespace-pre-line m-0"
                 style={{ fontSize: 'clamp(22px, 2.8vw, 44px)', lineHeight: 1.35 }}
               >
                 {t('contact.headline')}
-              </p>
+              </h1>
               <p
                 className="mt-8 font-sans font-normal text-mid reveal d2 max-w-[640px]"
                 style={{ fontSize: 'clamp(15px, 1.15vw, 18px)', lineHeight: 1.7 }}
@@ -137,9 +137,9 @@ export default function Contact() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20 gap-y-12">
             <div className="reveal">
-              <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">
+              <h2 className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground m-0">
                 {t('contact.offices')}
-              </span>
+              </h2>
             </div>
             <div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
@@ -148,12 +148,12 @@ export default function Contact() {
                     <div className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid mb-4">
                       {o.region}
                     </div>
-                    <div
-                      className="font-sans font-medium tracking-[-0.02em] mb-[10px]"
+                    <h3
+                      className="font-sans font-medium tracking-[-0.02em] mb-[10px] m-0"
                       style={{ fontSize: 'clamp(18px, 1.9vw, 26px)' }}
                     >
                       {o.city}
-                    </div>
+                    </h3>
                     <div className="font-mono text-[9px] tracking-[0.1em] text-mid mb-[18px]">
                       {o.entity}
                     </div>
@@ -213,17 +213,17 @@ export default function Contact() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20 gap-y-12">
             <div className="reveal">
-              <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">
+              <h2 className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground m-0">
                 {t('contact.formLabel')}
-              </span>
+              </h2>
             </div>
             <div>
-              <p
-                className="font-sans font-medium text-foreground reveal d1"
+              <h3
+                className="font-sans font-medium text-foreground reveal d1 m-0"
                 style={{ fontSize: 'clamp(22px, 2.8vw, 44px)', lineHeight: 1.35 }}
               >
                 {t('contact.formHeadline')}
-              </p>
+              </h3>
 
               {status === 'sent' ? (
                 <div className="mt-12 border-t border-rule pt-10 reveal d2">

@@ -13,9 +13,9 @@ export default function VorvnFounderSection() {
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20 gap-y-12">
         {/* Left: label */}
         <div className="reveal">
-          <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">
+          <h2 className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground m-0">
             {t('founder.label')}
-          </span>
+          </h2>
         </div>
 
         {/* Right: content */}

@@ -101,9 +101,9 @@ function VorvnPortfolioItem({
             <span className="w-6 h-6 border border-rule" />
           )}
         </span>
-        <span className="font-sans font-medium tracking-[0.01em] uppercase" style={{ fontSize: 'clamp(13px, 1.4vw, 18px)' }}>
+        <h3 className="font-sans font-medium tracking-[0.01em] uppercase m-0" style={{ fontSize: 'clamp(13px, 1.4vw, 18px)' }}>
           {brand.name}
-        </span>
+        </h3>
         <span className="hidden lg:block font-sans text-[13px] font-normal text-mid">{brand.sector}</span>
         <span className="flex items-center gap-[6px]">
           <span className={`inline-block w-[7px] h-[7px] rounded-full ${
@@ -200,9 +200,9 @@ export default function VorvnPortfolioSection() {
   return (
     <section id="portfolio" className="border-t border-rule" style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}>
       <div className="reveal" style={{ marginBottom: 'clamp(48px, 7vh, 88px)' }}>
-        <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">
+        <h2 className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground m-0">
           {t('portfolio.label')}
-        </span>
+        </h2>
       </div>
 
       <p

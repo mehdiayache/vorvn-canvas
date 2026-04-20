@@ -13,7 +13,7 @@ export default function PresenceSection() {
   return (
     <section id="presence" className="border-t border-rule" style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}>
       <div className="reveal" style={{ marginBottom: 'clamp(48px, 7vh, 88px)' }}>
-        <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">{t('presence.label')}</span>
+        <h2 className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground m-0">{t('presence.label')}</h2>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3">
         {locations.map((loc, i) => (
@@ -26,9 +26,9 @@ export default function PresenceSection() {
             }`}
           >
             <div className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid mb-4">{loc.region}</div>
-            <div className="font-sans font-medium tracking-[-0.02em] mb-[10px]" style={{ fontSize: 'clamp(18px, 1.9vw, 26px)' }}>
+            <h3 className="font-sans font-medium tracking-[-0.02em] mb-[10px] m-0" style={{ fontSize: 'clamp(18px, 1.9vw, 26px)' }}>
               {loc.city}
-            </div>
+            </h3>
             <div className="font-mono text-[9px] tracking-[0.1em] text-mid mb-[18px]">{loc.entity}</div>
             <div className="font-sans text-[13px] font-normal leading-[1.78] text-mid">
               {loc.address.split('\n').map((line, j) => (
