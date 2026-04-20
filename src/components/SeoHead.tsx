@@ -215,11 +215,6 @@ export default function SeoHead({ page = 'home', pathSuffix, noindex = false }: 
             contactType: 'customer service',
             areaServed: 'Worldwide',
           },
-          {
-            '@type': 'ContactPoint',
-            email: 'contact@vorvn.com',
-            contactType: 'customer service',
-          },
         ],
       };
       const script = document.createElement('script');

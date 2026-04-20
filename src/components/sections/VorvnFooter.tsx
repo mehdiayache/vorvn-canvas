@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language || 'en';
 
   return (
     <footer className="border-t border-rule grid grid-cols-1 lg:grid-cols-3 items-end gap-6 lg:gap-6" style={{ padding: '44px var(--gutter) 52px' }}>
@@ -25,9 +27,12 @@ export default function Footer() {
         </a>
       </div>
       <div className="lg:text-right">
-        <a href="mailto:contact@vorvn.com" className="font-mono text-[11px] tracking-[0.06em] text-foreground block mb-[10px] hover:text-mid transition-colors duration-200">
-          contact@vorvn.com
-        </a>
+        <Link
+          to={`/${lang}/contact`}
+          className="font-mono text-[11px] tracking-[0.06em] text-foreground block mb-[10px] hover:text-mid transition-colors duration-200"
+        >
+          {t('contact.writeUs')}
+        </Link>
         <div className="font-mono text-[9px] tracking-[0.14em] text-mid">
           {t('footer.geo')}
         </div>

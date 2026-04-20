@@ -1,8 +1,10 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 export default function VorvnInvestorsSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language || 'en';
 
   return (
     <section
@@ -100,13 +102,13 @@ export default function VorvnInvestorsSection() {
 
           {/* CTA — visible, prominent */}
           <div className="mt-16 reveal d4">
-            <a
-              href="mailto:invest@vorvn.com"
+            <Link
+              to={`/${lang}/contact`}
               className="inline-flex items-center gap-3 bg-foreground text-background font-sans text-[15px] font-medium px-7 py-4 hover:opacity-90 transition-opacity duration-200 group"
             >
               {t('investors.cta')}
               <ArrowRight size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
-            </a>
+            </Link>
             <p className="mt-5 font-sans text-[13px] text-dim">
               {t('investors.ctaSub')}
             </p>
