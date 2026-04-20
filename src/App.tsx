@@ -26,6 +26,14 @@ const App = () => (
               </LanguageRoute>
             }
           />
+          <Route
+            path="/:lang/*"
+            element={
+              <LanguageRoute>
+                <NotFound />
+              </LanguageRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
