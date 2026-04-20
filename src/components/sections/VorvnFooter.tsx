@@ -45,14 +45,6 @@ export default function Footer() {
           >
             {t('footer.linkedin')}
           </a>
-          <a
-            href="https://vorvn.com/careers"
-            target="_blank"
-            rel="noopener"
-            className="text-[11px] font-normal tracking-[0.1em] uppercase text-mid hover:text-foreground transition-colors duration-200"
-          >
-            {t('footer.careers')}
-          </a>
         </div>
       </div>
 
