@@ -48,14 +48,6 @@
     --gutter: clamp(40px, 8vw, 140px);
   }
 
-  [data-theme="light"] {
-    --bg: 36 12% 94%;
-    --surface: 36 11% 91%;
-    --foreground: 0 0% 5.5%;
-    --mid: 0 0% 33%;
-    --dim: 36 4% 74%;
-    --rule: 0 0% 5.5% / 0.10;
-  }
 }
 
 @layer base {
@@ -94,19 +86,6 @@
   [dir="rtl"] {
     text-align: right;
   }
-}
-
-/* Theme switching animation */
-html.switching,
-html.switching *,
-html.switching *::before,
-html.switching *::after {
-  transition:
-    background-color 0.38s ease,
-    color 0.38s ease,
-    border-color 0.38s ease,
-    stroke 0.38s ease,
-    opacity 0.38s ease !important;
 }
 
 /* Scroll reveal */

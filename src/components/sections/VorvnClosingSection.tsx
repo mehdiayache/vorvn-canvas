@@ -28,7 +28,7 @@ export default function ClosingSection() {
         >
           We build both.
         </p>
-        <div className="mt-10 font-mono text-[10px] tracking-[0.14em] uppercase text-dim [html[data-theme='light']_&]:text-mid reveal d3">
+        <div className="mt-10 font-mono text-[10px] tracking-[0.14em] uppercase text-dim reveal d3">
           {t('closing.sub')}
         </div>
       </div>

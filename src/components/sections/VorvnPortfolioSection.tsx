@@ -39,7 +39,7 @@ function VorvnGallery({ images }: { images: string[] }) {
             src={src}
             alt=""
             loading="lazy"
-            className="w-[300px] h-[300px] object-cover block shrink-0 grayscale-[18%] [html[data-theme='light']_&]:grayscale-[5%]"
+            className="w-[300px] h-[300px] object-cover block shrink-0 grayscale-[18%]"
           />
         ))}
       </div>
@@ -96,7 +96,7 @@ function VorvnPortfolioItem({
       >
         <span className="w-7 h-7 flex items-center justify-center shrink-0">
           {data.logo ? (
-            <img src={data.logo} alt="" className="max-h-6 max-w-7 object-contain block [html[data-theme='light']_&]:invert" />
+            <img src={data.logo} alt="" className="max-h-6 max-w-7 object-contain block" />
           ) : (
             <span className="w-6 h-6 border border-rule" />
           )}
@@ -132,7 +132,7 @@ function VorvnPortfolioItem({
         <div className="border-t border-rule py-10 pb-14">
           <div className="mb-8">
             {data.logo ? (
-              <div className="inline-block [html[data-theme='light']_&]:bg-[#181818] [html[data-theme='light']_&]:p-3 [html[data-theme='light']_&]:px-5">
+              <div className="inline-block">
                 <img src={data.logo} alt={brand.name} loading="lazy" className="h-16 max-w-[220px] object-contain object-left block" />
               </div>
             ) : (

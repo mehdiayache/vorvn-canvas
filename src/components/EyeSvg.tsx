@@ -1,7 +1,7 @@
 export default function EyeSvg() {
   return (
     <svg
-      className="absolute top-1/2 -translate-y-1/2 text-foreground opacity-[0.05] [html[data-theme='light']_&]:opacity-[0.07] pointer-events-none"
+      className="absolute top-1/2 -translate-y-1/2 text-foreground opacity-[0.05] pointer-events-none"
       style={{
         right: 'calc(var(--gutter) * -0.2)',
         width: 'clamp(260px, 46vw, 740px)',

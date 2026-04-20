@@ -16,7 +16,7 @@ export default function PrinciplesSection() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-11 lg:gap-x-14">
         {items.map((item, i) => (
           <div key={i} className={`pt-8 border-t border-rule reveal d${i + 1}`}>
-            <div className="font-sans text-[48px] font-medium leading-none text-dim [html[data-theme='light']_&]:text-mid mb-6">
+            <div className="font-sans text-[48px] font-medium leading-none text-dim mb-6">
               {item.numeral}
             </div>
             <div
