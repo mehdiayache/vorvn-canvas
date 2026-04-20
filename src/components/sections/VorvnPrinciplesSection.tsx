@@ -11,7 +11,7 @@ export default function PrinciplesSection() {
   return (
     <section id="principles" className="border-t border-rule" style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}>
       <div className="reveal" style={{ marginBottom: 'clamp(48px, 7vh, 88px)' }}>
-        <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">{t('principles.label')}</span>
+        <h2 className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground m-0">{t('principles.label')}</h2>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-11 lg:gap-x-14">
         {items.map((item, i) => (
@@ -19,12 +19,12 @@ export default function PrinciplesSection() {
             <div className="font-sans text-[48px] font-medium leading-none text-dim mb-6">
               {item.numeral}
             </div>
-            <div
-              className="font-sans font-medium tracking-[-0.02em] mb-[14px] text-foreground"
+            <h3
+              className="font-sans font-medium tracking-[-0.02em] mb-[14px] text-foreground m-0"
               style={{ fontSize: 'clamp(18px, 1.9vw, 26px)' }}
             >
               {item.title}
-            </div>
+            </h3>
             <p className="font-sans font-normal text-mid leading-[1.88]" style={{ fontSize: 'clamp(13px, 1.05vw, 15px)' }}>
               {item.body}
             </p>
