@@ -28,10 +28,11 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Security headers
+# Security headers + no-cache for HTML/document responses
 [[headers]]
   for = "/*"
   [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
