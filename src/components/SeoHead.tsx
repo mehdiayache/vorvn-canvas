@@ -10,63 +10,63 @@ type PageKey = 'home' | 'contact' | 'notFound';
 const SEO: Record<PageKey, Record<string, { title: string; desc: string }>> = {
   home: {
     en: {
-      title: 'VORVN — Autonomous IP & Brand Holdings',
+      title: 'VORVN — Autonomous IP & Brand Holdings | Hong Kong · Bali',
       desc: 'VORVN is an independent IP & brand holdings company. We design, build & own digital-first brands across Hong Kong, Bali, and Morocco.',
     },
     fr: {
-      title: 'VORVN — Holding indépendant de marques & PI',
+      title: 'VORVN — Holding indépendant de marques & PI | Hong Kong · Bali',
       desc: "VORVN est un holding indépendant de propriété intellectuelle et de marques. Nous concevons, construisons et possédons des marques digitales — Hong Kong, Bali, Maroc.",
     },
     es: {
-      title: 'VORVN — Holding autónomo de marcas y PI',
+      title: 'VORVN — Holding autónomo de marcas y PI | Hong Kong · Bali',
       desc: 'VORVN es un holding independiente de propiedad intelectual y marcas. Diseñamos, construimos y poseemos marcas digitales — Hong Kong, Bali, Marruecos.',
     },
     zh: {
-      title: 'VORVN — 自主知识产权与品牌控股',
+      title: 'VORVN — 自主知识产权与品牌控股公司 | 香港 · 巴厘岛 · 摩洛哥',
       desc: 'VORVN 是独立的知识产权与品牌控股公司。我们设计、构建并拥有数字优先品牌 —— 香港、巴厘岛、摩洛哥。',
     },
     id: {
-      title: 'VORVN — Holding IP & Merek Independen',
+      title: 'VORVN — Holding IP & Merek Independen | Hong Kong · Bali · Maroko',
       desc: 'VORVN adalah perusahaan holding IP & merek yang independen. Kami merancang, membangun, dan memiliki merek digital — Hong Kong, Bali, Maroko.',
     },
     ar: {
-      title: 'VORVN — حيازات مستقلة للعلامات والملكية الفكرية',
+      title: 'VORVN — حيازات مستقلة للعلامات والملكية الفكرية | هونغ كونغ · بالي',
       desc: 'VORVN شركة حيازات مستقلة للعلامات التجارية والملكية الفكرية. نصمم ونبني ونمتلك علامات رقمية — هونغ كونغ، بالي، المغرب.',
     },
   },
   contact: {
     en: {
-      title: 'Contact — VORVN',
+      title: 'Contact VORVN — Investors, Brand Collaborations & Press',
       desc: 'Talk to VORVN directly. Investor introductions, brand collaborations, press, and careers — Hong Kong & Bali. We reply within 48 hours.',
     },
     fr: {
-      title: 'Contact — VORVN',
+      title: 'Contact VORVN — Investisseurs, Collaborations & Presse',
       desc: "Parlez directement à VORVN. Introductions investisseurs, collaborations de marque, presse, carrières — Hong Kong & Bali. Réponse sous 48h.",
     },
     es: {
-      title: 'Contacto — VORVN',
-      desc: 'Habla directamente con VORVN. Inversores, colaboraciones de marca, prensa y carreras — Hong Kong y Bali. Respondemos en 48 horas.',
+      title: 'Contacto VORVN — Inversores, Colaboraciones y Prensa',
+      desc: 'Habla directamente con VORVN. Inversores, colaboraciones de marca, prensa y carreras — Hong Kong y Bali. Respondemos en 48 horas.",
     },
     zh: {
-      title: '联系 — VORVN',
+      title: '联系 VORVN — 投资人、品牌合作、媒体与招聘',
       desc: '直接联系 VORVN。投资人介绍、品牌合作、媒体与招聘 —— 香港与巴厘岛。我们在 48 小时内回复。',
     },
     id: {
-      title: 'Kontak — VORVN',
+      title: 'Kontak VORVN — Investor, Kolaborasi Merek & Pers',
       desc: 'Hubungi VORVN langsung. Pengantar investor, kolaborasi merek, pers, dan karier — Hong Kong & Bali. Kami membalas dalam 48 jam.',
     },
     ar: {
-      title: 'اتصل بنا — VORVN',
+      title: 'اتصل بـ VORVN — مستثمرون، تعاونات وعلامات وصحافة',
       desc: 'تحدث مع VORVN مباشرة. مقدمات للمستثمرين، تعاونات العلامات، الصحافة والوظائف — هونغ كونغ وبالي. نرد خلال 48 ساعة.',
     },
   },
   notFound: {
-    en: { title: '404 — VORVN', desc: 'Page not found.' },
-    fr: { title: '404 — VORVN', desc: 'Page introuvable.' },
-    es: { title: '404 — VORVN', desc: 'Página no encontrada.' },
-    zh: { title: '404 — VORVN', desc: '页面未找到。' },
-    id: { title: '404 — VORVN', desc: 'Halaman tidak ditemukan.' },
-    ar: { title: '404 — VORVN', desc: 'الصفحة غير موجودة.' },
+    en: { title: '404 — Page Not Found | VORVN', desc: 'Page not found.' },
+    fr: { title: '404 — Page introuvable | VORVN', desc: 'Page introuvable.' },
+    es: { title: '404 — Página no encontrada | VORVN', desc: 'Página no encontrada.' },
+    zh: { title: '404 — 页面未找到 | VORVN', desc: '页面未找到。' },
+    id: { title: '404 — Halaman tidak ditemukan | VORVN', desc: 'Halaman tidak ditemukan.' },
+    ar: { title: '404 — الصفحة غير موجودة | VORVN', desc: 'الصفحة غير موجودة.' },
   },
 };
 
