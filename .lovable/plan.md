@@ -1,85 +1,66 @@
 
 
-## Assessment — what's actually wrong
+## Root cause — confirmed
 
-### Issue 1: Stories of Bible row is invisible — i18n key mismatch (the real bug)
+The success card is **invisible**, not black-on-black. Here's why:
 
-`src/i18n/locales/en.json` accidentally contains **two** `portfolio.brands` arrays:
-- **Lines 76–113** — a `portfolio.v2.brands` array (5 entries with `pitch`) — used by nothing
-- **Lines 115–140** — `portfolio.brands` (the one the component reads) — only **4 entries**: Cook Warriors, MAQTOB, xVoyager, Warung Marrakech. **Stories of Bible was never added here.**
+1. The card uses `className="... reveal d2 ..."`
+2. CSS `.reveal` sets `opacity: 0` until `.on` is added
+3. `useScrollReveal` runs **once on mount** and only observes elements that already exist
+4. The success card mounts **after** submit — long after the observer was set up
+5. Result: card stays at `opacity: 0` forever → looks like nothing happened
 
-`VorvnPortfolioSection` does:
-```ts
-const brand = t(`portfolio.brands.${index}`, { returnObjects: true })
+Same trap will hit `sendError` (also missing reveal but rendered conditionally — that one is fine).
+
+The colors themselves are correct (white border + white text on dark bg). The card is just literally invisible.
+
+## Fixes
+
+### 1. Strip `reveal` from post-submit UI (the real bug)
+- Success card: remove `reveal d2`, replace with a real entrance animation that fires on mount (`animate-[fadeUp_0.6s_cubic-bezier(0.16,1,0.3,1)_both]`).
+- Add a matching `fadeUp` keyframe (or reuse existing) so the card slides in confidently.
+
+### 2. Premium 2026 success card (refined, brand-native)
+Layout, all monochrome — no off-brand greens:
 ```
-
-`BRANDS_DATA` is now: `[Cookwarriors, StoriesOfBible, MAQTOB, xVoyager, Warung]` (5 items)
-`portfolio.brands` i18n is: `[Cookwarriors, MAQTOB, xVoyager, Warung]` (4 items)
-
-→ At index 1, the row pulls **MAQTOB's text** but renders against Stories-of-Bible data
-→ At index 2, 3, 4, indexes are now shifted — every row below Cookwarriors shows the WRONG text or empty text (i18next returns the key string when out of bounds, which then gets cast to `{ name, sector, ...} = "portfolio.brands.4"`, accessing `.name` on a string returns `undefined` → blank row)
-
-This must be fixed in **all 6 locale files** (en, fr, es, zh, id, ar) — insert "Stories of Bible" entry at index 1 with `name`, `sector`, `statusLabel`, `desc` fields.
-
-### Issue 2: Contact form — submit button is invisible/broken-looking
-
-Line 402: `bg-foreground text-background font-sans ...`
-- `bg-foreground` = HSL(42 11% 91%) = near-white ✓
-- `text-background` ← **`background` token doesn't exist** in our CSS vars. We define `--bg`, not `--background` directly mapped to text. Tailwind's `text-background` resolves to `hsl(var(--background))` = `var(--bg)` = `0 0% 6.7%` (very dark) — actually this IS correct.
-
-Looking again at the real issue: the button works. The actual contact-page problems are:
-
-**a. Success state is dull/lifeless** — when `status === 'sent'`, the success block is just plain text. No visual confirmation chip, no green dot, no border accent. User says "no feedback" — they likely don't realize the form succeeded because the layout barely changes.
-
-**b. The "Received" tag (`contact.success.tag`) defined in i18n is NEVER rendered** in `Contact.tsx` — the success block at lines 246–267 only shows `success.title`, `success.body`, `success.again`. The tag/chip is lost.
-
-**c. The submitting state has no spinner / loading visual** — just text swap.
-
-**d. `sendError` message uses `text-destructive` (red) which clashes** with the strict dark-minimal palette (no other red anywhere on the site).
-
-### Issue 3: Color tokens
-
-The codebase color tokens are correct. The real "color" complaint is about the contact form:
-- destructive red for errors clashes with the brand (no red elsewhere)
-- success state has no color feedback at all
-
----
-
-## Plan — focused fixes only
-
-### Fix A: Restore portfolio i18n integrity (6 files)
-Insert Stories of Bible at **index 1** of `portfolio.brands` in each locale (`en`, `fr`, `es`, `id`, `zh`, `ar`):
-```json
-{
-  "name": "Stories of Bible",
-  "sector": "Christian Publishing · USA",
-  "statusLabel": "Exited",
-  "desc": "Incubated and co-built one of the fastest-growing Christian book brands in the US market. Led the full production side — design systems, team building, content production, and delivery infrastructure. Assembled a creative studio that produced illustrated Bible books at scale. The brand generated over $2M in revenue across the partnership period."
-}
+┌─────────────────────────────────────────────┐
+│  ●  RECEIVED · 2026.04.20 14:32 UTC         │  ← live mono timestamp
+│                                             │
+│  Message sent.                              │  ← large display text
+│                                             │
+│  Thanks for reaching out. We read every     │  ← body
+│  message and reply within 48 hours…         │
+│                                             │
+│  ─────────────────────────────────────────  │  ← 1px rule
+│                                             │
+│  [ Send another → ]    Reply window · 48h   │  ← primary action + meta
+└─────────────────────────────────────────────┘
 ```
-Translate `sector`, `statusLabel`, `desc` for each locale.
+- Solid 1px foreground border, generous padding (`p-10 md:p-12`)
+- Top-left animated dot (slow pulse, white)
+- Mono micro-tag with timestamp captured at submit-time (gives the "2026 confirmation receipt" feel)
+- Big serif-free display title in `text-foreground`
+- Body in `text-mid`
+- Primary "Send another" rendered as a real solid `bg-foreground text-background` button (matches the original Send button), not a thin underline — so the next action is unmistakable
+- Footer mono row reiterates the 48h reply window
 
-Also: **remove the orphaned `portfolio.v2.brands` array** (lines 76–113 in en.json) in all 6 locales — it's dead weight causing confusion.
+### 3. Sonner toast on success
+Trigger `toast.success(t('contact.success.title'), { description: t('contact.success.body') })` right after `setStatus('sent')`. Sonner's `<Toaster />` is already mounted in `App.tsx`. Style it brand-native via `toastOptions` (mono, no green, white-on-dark) — adjust in `src/components/ui/sonner.tsx` so future toasts match.
 
-### Fix B: Contact form — proper submitted feedback
-Rework the success block in `src/pages/Contact.tsx` (lines 246–267):
-- Add a status chip at top: small mono "✓ RECEIVED" using `contact.success.tag` with a foreground-colored dot
-- Wrap the block in a subtle 1px foreground border with extra padding (mirrors the entity-section card feel)
-- Keep typography minimal, no bright colors — use brand-native foreground/mid
+### 4. Submitting state polish
+Already has a pulse dot. Add a subtle progress bar shimmer under the button (1px rule with a 30% segment animating left→right) so "Sending…" feels alive.
 
-### Fix C: Submitting state visual
-Add a tiny inline pulsing dot before "Sending…" text on the submit button (uses existing `animate-[pulse_...]` keyframe).
+### 5. Error state — confirm brand consistency
+Already cleaned (no red). Keep as-is.
 
-### Fix D: Replace destructive red with brand-native error treatment
-Change `text-destructive` and `border-destructive` in Contact.tsx (4 occurrences) to `text-foreground` + `border-foreground` with a small leading mono "ERR ·" prefix on error text. Keeps the strict palette intact, errors still read clearly.
+## Files to touch
 
-### Files touched
-- `src/i18n/locales/en.json`, `fr.json`, `es.json`, `id.json`, `zh.json`, `ar.json` — insert SoB entry at index 1 of `portfolio.brands`, drop the orphan `v2.brands` block
-- `src/pages/Contact.tsx` — rebuild success block, add submit-state pulse dot, replace destructive colors with brand-native error styling
+- `src/pages/Contact.tsx` — rebuild success block, drop `reveal`, add mount animation, fire toast, add submit progress shimmer
+- `src/components/ui/sonner.tsx` — restyle toasts to brand (mono labels, white border, dark surface, no green)
+- `src/index.css` — add `@keyframes fadeUpIn` and `@keyframes shimmer` if not already usable; ensure animations work without observer
 
-### Out of scope (not changing)
-- BRANDS_DATA structure
-- VorvnPortfolioSection.tsx (already correct, just needs matching i18n)
-- Global color tokens — they're fine; only the form was using off-brand red
-- Any other section
+## Out of scope
+- Color tokens (correct as-is)
+- `useScrollReveal` (works correctly for static content; we just shouldn't put dynamic UI inside it)
+- All other sections
 
