@@ -71,6 +71,8 @@ export default function Contact() {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<'idle' | 'submitting' | 'sent'>('idle');
+  const [sendError, setSendError] = useState<string>('');
+  const [website, setWebsite] = useState(''); // honeypot
 
   const update = (key: keyof typeof values, v: string) => {
     setValues((prev) => ({ ...prev, [key]: v }));
@@ -79,6 +81,7 @@ export default function Contact() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSendError('');
     const parsed = schema.safeParse(values);
     if (!parsed.success) {
       const fieldErrors: Record<string, string> = {};
@@ -90,10 +93,24 @@ export default function Contact() {
       return;
     }
     setStatus('submitting');
-    // SMTP wiring will be added once credentials are provided.
-    await new Promise((r) => setTimeout(r, 600));
-    setStatus('sent');
-    setValues({ name: '', email: '', company: '', topic: '', message: '' });
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...parsed.data, website }),
+      });
+      if (!res.ok) {
+        setStatus('idle');
+        setSendError(t('contact.errors.send'));
+        return;
+      }
+      setStatus('sent');
+      setValues({ name: '', email: '', company: '', topic: '', message: '' });
+      setWebsite('');
+    } catch {
+      setStatus('idle');
+      setSendError(t('contact.errors.send'));
+    }
   };
 
   return (
