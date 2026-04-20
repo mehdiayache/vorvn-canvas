@@ -170,7 +170,17 @@
     "legal": "© 2025 VORVN LIMITED. All rights reserved.\nRegistered in Hong Kong, SAR.",
     "instagram": "Instagram",
     "linkedin": "LinkedIn",
-    "careers": "Careers",
+    "careers": "招聘",
     "geo": "HK · ID · MA"
+  },
+  "notFound": {
+    "label": "信号丢失",
+    "signal": "● 离线",
+    "headline": "此页面不存在于我们的控股范围内。",
+    "body": "您访问的路径未对应 VORVN 旗下任何品牌、实体或文件。它可能已被移动 — 或从未存在。",
+    "attempted": "请求路径：",
+    "cta": "返回 VORVN",
+    "footerLeft": "404 · 未找到",
+    "footerRight": "VORVN LIMITED · HK"
   }
 }
