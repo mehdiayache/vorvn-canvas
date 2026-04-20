@@ -282,14 +282,14 @@ export default function Contact() {
                   onChange={(v) => update('company', v)}
                   error={errors.company}
                   autoComplete="organization"
-                  placeholder="VORVN Limited"
+                  placeholder={t('contact.fields.companyPlaceholder')}
                 />
 
                 {/* Message */}
                 <div>
                   <label
                     htmlFor="message"
-                    className="block font-mono text-[10px] tracking-[0.2em] uppercase text-mid mb-3"
+                    className="block font-sans text-[14px] font-medium text-foreground mb-3"
                   >
                     {t('contact.fields.message')} <span className="text-foreground">*</span>
                   </label>
