@@ -20,7 +20,7 @@ export default function NotFound() {
 
   return (
     <>
-      <SeoHead />
+      <SeoHead page="notFound" noindex />
       <main className="relative min-h-screen flex flex-col bg-background text-foreground">
         {/* Top rule + meta */}
         <div className="border-b border-rule" style={{ padding: '28px var(--gutter)' }}>
