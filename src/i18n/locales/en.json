@@ -172,5 +172,15 @@
     "linkedin": "LinkedIn",
     "careers": "Careers",
     "geo": "HK · ID · MA"
+  },
+  "notFound": {
+    "label": "Lost Signal",
+    "signal": "● Off-grid",
+    "headline": "This page doesn't exist in our holding.",
+    "body": "The route you followed doesn't map to any brand, entity, or document under VORVN. It may have moved, or it was never here.",
+    "attempted": "Attempted route:",
+    "cta": "Return to VORVN",
+    "footerLeft": "404 · Not Found",
+    "footerRight": "VORVN LIMITED · HK"
   }
 }
