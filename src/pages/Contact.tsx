@@ -71,6 +71,8 @@ export default function Contact() {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<'idle' | 'submitting' | 'sent'>('idle');
+  const [sendError, setSendError] = useState<string>('');
+  const [website, setWebsite] = useState(''); // honeypot
 
   const update = (key: keyof typeof values, v: string) => {
     setValues((prev) => ({ ...prev, [key]: v }));
@@ -79,6 +81,7 @@ export default function Contact() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSendError('');
     const parsed = schema.safeParse(values);
     if (!parsed.success) {
       const fieldErrors: Record<string, string> = {};
@@ -90,10 +93,24 @@ export default function Contact() {
       return;
     }
     setStatus('submitting');
-    // SMTP wiring will be added once credentials are provided.
-    await new Promise((r) => setTimeout(r, 600));
-    setStatus('sent');
-    setValues({ name: '', email: '', company: '', topic: '', message: '' });
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...parsed.data, website }),
+      });
+      if (!res.ok) {
+        setStatus('idle');
+        setSendError(t('contact.errors.send'));
+        return;
+      }
+      setStatus('sent');
+      setValues({ name: '', email: '', company: '', topic: '', message: '' });
+      setWebsite('');
+    } catch {
+      setStatus('idle');
+      setSendError(t('contact.errors.send'));
+    }
   };
 
   return (
@@ -249,6 +266,20 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={onSubmit} noValidate className="mt-12 space-y-10 reveal d2">
+                  {/* Honeypot — hidden from users, bots fill it */}
+                  <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
+                    <label htmlFor="website">Website</label>
+                    <input
+                      id="website"
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                    />
+                  </div>
+
                   {/* Topic */}
                   <fieldset>
                     <legend className="font-sans text-[15px] font-medium text-foreground">
@@ -379,6 +410,11 @@ export default function Contact() {
                     </button>
                     <p className="font-sans text-[13px] text-dim">{t('contact.privacy')}</p>
                   </div>
+                  {sendError && (
+                    <p className="font-sans text-[14px] text-destructive" role="alert">
+                      {sendError}
+                    </p>
+                  )}
                 </form>
               )}
             </div>

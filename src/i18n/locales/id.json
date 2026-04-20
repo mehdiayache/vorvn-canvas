@@ -242,7 +242,8 @@
       "emailMax": "Email harus kurang dari 255 karakter",
       "topic": "Mohon pilih sebuah topik",
       "messageMin": "Pesan harus minimal 10 karakter",
-      "messageMax": "Pesan harus kurang dari 2000 karakter"
+      "messageMax": "Pesan harus kurang dari 2000 karakter",
+      "send": "Tidak dapat mengirim pesan. Coba lagi atau kirim email langsung."
     },
     "success": {
       "tag": "Diterima",
