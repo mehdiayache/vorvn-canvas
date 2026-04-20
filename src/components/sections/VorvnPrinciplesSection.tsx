@@ -19,7 +19,10 @@ export default function PrinciplesSection() {
             <div className="font-sans text-[48px] font-medium leading-none text-dim [html[data-theme='light']_&]:text-mid mb-6">
               {item.numeral}
             </div>
-            <div className="font-sans text-[13px] font-medium tracking-[0.01em] mb-[14px] text-foreground">
+            <div
+              className="font-sans font-semibold tracking-[-0.01em] mb-5 text-foreground"
+              style={{ fontSize: 'clamp(20px, 1.9vw, 26px)', lineHeight: 1.22 }}
+            >
               {item.title}
             </div>
             <p className="font-sans font-normal text-mid leading-[1.88]" style={{ fontSize: 'clamp(13px, 1.05vw, 15px)' }}>
