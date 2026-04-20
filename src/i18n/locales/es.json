@@ -1,174 +1,174 @@
 {
   "nav": {
-    "tag": "IP Holdings · Est. 2023",
-    "contact": "Contact",
-    "light": "Light",
-    "dark": "Dark",
-    "menu": "Menu"
+    "tag": "Holding de IP · Fundada en 2023",
+    "contact": "Contacto",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "menu": "Menú"
   },
   "hero": {
-    "headline": "Autonomous & Independent\nIP & Brand Owners.",
-    "taglinePre": "We",
-    "taglinePost": "Digital-First Brands.",
+    "headline": "Propietarios de IP y Marcas\nAutónomos e Independientes.",
+    "taglinePre": "Nosotros",
+    "taglinePost": "marcas nativamente digitales.",
     "words": {
-      "build": "Build",
-      "design": "Design",
-      "own": "Own"
+      "build": "Construimos",
+      "design": "Diseñamos",
+      "own": "Poseemos"
     },
-    "basedIn": "Based in Hong Kong.\nOperating Worldwide.",
-    "scroll": "Scroll"
+    "basedIn": "Con sede en Hong Kong.\nOperaciones globales.",
+    "scroll": "Desplazar"
   },
   "entity": {
-    "label": "The Entity",
-    "statement": "VORVN is not an agency.\nIt is the architecture\nbehind the brands.",
-    "detail": "Design is not decoration — it is the first decision. Every structure we build, every brand we deploy, starts from a single design question: does this create real value? VORVN is a private IP holdings company registered in Hong Kong, with participations across Southeast Asia, Northwest Africa, and Western consumer markets. We own, license, and deploy brand intellectual property across verticals — consumer goods, faith-driven gifting, modest fashion — without intermediaries, without compromise. Pure execution.",
-    "designNote": "Design · Strategy · Execution · No middlemen. No shortcuts."
+    "label": "La Entidad",
+    "statement": "VORVN no es una agencia.\nEs la arquitectura\ndetrás de las marcas.",
+    "detail": "VORVN es una holding privada de IP registrada en Hong Kong. Poseemos y operamos marcas en el Sudeste Asiático, el Noroeste de África y los mercados de consumo occidentales — utensilios de cocina, moda modesta, alimentación. Cada marca se diseña internamente, se produce en nuestro estudio de Bali y se distribuye bajo nuestra propia estructura. Sin clientes de agencia. Sin socios de licencia.",
+    "designNote": "Diseño · Estrategia · Ejecución · Sin intermediarios. Sin atajos."
   },
   "presence": {
-    "label": "Presence",
+    "label": "Presencia",
     "locations": [
       {
-        "region": "Holding Entity",
+        "region": "Entidad Holding",
         "city": "Hong Kong",
         "entity": "VORVN LIMITED",
         "address": "RM4 16/F, Ho King Commercial Centre\n2–16 Fa Yuen Street, Mongkok\nKowloon, Hong Kong",
-        "badge": "Headquarters"
+        "badge": "Sede Central"
       },
       {
-        "region": "Design Studio",
+        "region": "Estudio de Diseño",
         "city": "Bali, Indonesia",
         "entity": "PT. VORVN GROUP INDONESIA",
         "address": "Jl. Seroja No.28, Tonja\nKec. Denpasar Utara, Bali 80235",
-        "badge": "Operations"
+        "badge": "Operaciones"
       },
       {
-        "region": "Origin Market",
-        "city": "Morocco",
+        "region": "Mercado de Origen",
+        "city": "Marruecos",
         "entity": "PARTICIPATIONS",
-        "address": "Northwest Africa\nFrench-speaking market\nGulf export corridor",
-        "badge": "Expansion"
+        "address": "Noroeste de África\nMercado francófono\nCorredor de exportación al Golfo",
+        "badge": "Expansión"
       }
     ]
   },
   "portfolio": {
-    "label": "Portfolio",
-    "intro": "The brands and intellectual property we design, build, and own — deployed across consumer markets worldwide.",
-    "visitBrand": "Visit Brand →",
-    "inDevelopment": "In Development",
-    "downloadPresentation": "Download Presentation →",
-    "prev": "← Prev",
-    "next": "Next →",
+    "label": "Portafolio",
+    "intro": "Las marcas y propiedad intelectual que diseñamos, construimos y poseemos — desplegadas en mercados de consumo en todo el mundo.",
+    "visitBrand": "Visitar Marca →",
+    "inDevelopment": "En Desarrollo",
+    "downloadPresentation": "Descargar Presentación →",
+    "prev": "← Anterior",
+    "next": "Siguiente →",
     "v2": {
-      "intro": "Six brands. One holding. Every IP designed, owned, and operated in-house — from Hong Kong, Bali, and Marrakech. No licenses. No partners on the cap table. Just brands we built to last.",
+      "intro": "Seis marcas. Una holding. Cada IP diseñada, poseída y operada internamente — desde Hong Kong, Bali y Marrakech. Sin licencias. Sin socios en la cap table. Solo marcas construidas para durar.",
       "metaStrip": {
-        "brands": "{{count}} Brands",
-        "active": "{{count}} Active",
-        "dev": "{{count}} In Development",
-        "continents": "{{count}} Continents"
+        "brands": "{{count}} Marcas",
+        "active": "{{count}} Activas",
+        "dev": "{{count}} En Desarrollo",
+        "continents": "{{count}} Continentes"
       },
       "metricsLabels": {
-        "status": "Status",
-        "markets": "Markets",
-        "since": "Since",
-        "timeline": "Target Launch"
+        "status": "Estado",
+        "markets": "Mercados",
+        "since": "Desde",
+        "timeline": "Lanzamiento previsto"
       },
-      "inDevelopmentSince": "In development — {{timeline}}",
+      "inDevelopmentSince": "En desarrollo — {{timeline}}",
       "brands": [
         {
           "name": "Cook Warriors",
-          "pitch": "Premium kitchenware · Eggscalibur",
-          "statusLabel": "Active",
-          "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
+          "pitch": "Utensilios de cocina premium · Eggscalibur",
+          "statusLabel": "Activa",
+          "desc": "Una marca de utensilios de cocina premium construida en torno al Eggscalibur — la icónica sartén con mango de espada. Desde el concepto hasta la entrega desde los EAU a los hogares estadounidenses, Cook Warriors es la marca insignia de bienes de consumo de VORVN."
         },
         {
           "name": "Hearts Notes",
-          "pitch": "Faith-centred gifting for the Christian home",
-          "statusLabel": "Active",
-          "desc": "A Christian gifting brand delivering faith-centred products through Etsy and direct-to-consumer channels. Workbooks, digital kits, and heartfelt gifts designed for the Christian home."
+          "pitch": "Regalos de fe para el hogar cristiano",
+          "statusLabel": "Activa",
+          "desc": "Una marca de regalos cristianos que entrega productos centrados en la fe a través de Etsy y canales directos al consumidor. Cuadernos, kits digitales y obsequios sinceros pensados para el hogar cristiano."
         },
         {
           "name": "MAQTOB",
-          "pitch": "Modest fashion · Balinese craftsmanship",
-          "statusLabel": "In Development",
-          "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
+          "pitch": "Moda modesta · Artesanía balinesa",
+          "statusLabel": "En Desarrollo",
+          "desc": "Conjuntos de oración mukena premium indonesios para el mercado musulmán europeo, con lanzamiento en Francia. La moda modesta se encuentra con la artesanía balinesa — un puente entre dos mundos."
         },
         {
           "name": "xVoyager",
-          "pitch": "An exploration-first brand for global nomads",
-          "statusLabel": "In Development",
-          "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
+          "pitch": "Una marca de exploración para nómadas globales",
+          "statusLabel": "En Desarrollo",
+          "desc": "Una marca centrada en la exploración para nómadas y aventureros globales. Actualmente en desarrollo conceptual dentro del laboratorio VORVN — diseñada para quienes se mueven sin dirección fija."
         },
         {
           "name": "Warung Marrakech",
-          "pitch": "Where Morocco meets Bali · Spice & hospitality",
-          "statusLabel": "In Development",
-          "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
+          "pitch": "Donde Marruecos se encuentra con Bali · Especias y hospitalidad",
+          "statusLabel": "En Desarrollo",
+          "desc": "Un concepto en la intersección entre el patrimonio marroquí y la hospitalidad balinesa. Especias, calidez y cultura — donde dos continentes se encuentran en un mismo plato."
         },
         {
           "name": "Davi Properties",
-          "pitch": "Real estate · Indonesian archipelago",
-          "statusLabel": "In Development",
-          "desc": "A real estate venture in development, leveraging VORVN's Southeast Asia network and operational infrastructure across the Indonesian archipelago."
+          "pitch": "Inmobiliaria · Archipiélago indonesio",
+          "statusLabel": "En Desarrollo",
+          "desc": "Una iniciativa inmobiliaria en desarrollo, apoyada en la red de VORVN en el Sudeste Asiático y su infraestructura operativa en todo el archipiélago indonesio."
         }
       ]
     },
     "brands": [
       {
         "name": "Cook Warriors",
-        "sector": "Consumer Goods · USA / UAE",
-        "statusLabel": "Active",
-        "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
+        "sector": "Bienes de Consumo · USA / EAU",
+        "statusLabel": "Activa",
+        "desc": "Una marca de utensilios de cocina premium construida en torno al Eggscalibur — la icónica sartén con mango de espada. Desde el concepto hasta la entrega desde los EAU a los hogares estadounidenses, Cook Warriors es la marca insignia de bienes de consumo de VORVN."
       },
       {
         "name": "MAQTOB",
-        "sector": "Modest Fashion · EU / France",
-        "statusLabel": "In Development",
-        "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
+        "sector": "Moda Modesta · UE / Francia",
+        "statusLabel": "En Desarrollo",
+        "desc": "Conjuntos de oración mukena premium indonesios para el mercado musulmán europeo, con lanzamiento en Francia. La moda modesta se encuentra con la artesanía balinesa — un puente entre dos mundos."
       },
       {
         "name": "xVoyager",
-        "sector": "Exploration · Global",
-        "statusLabel": "In Development",
-        "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
+        "sector": "Exploración · Global",
+        "statusLabel": "En Desarrollo",
+        "desc": "Una marca centrada en la exploración para nómadas y aventureros globales. Actualmente en desarrollo conceptual dentro del laboratorio VORVN — diseñada para quienes se mueven sin dirección fija."
       },
       {
         "name": "Warung Marrakech",
-        "sector": "Food & Beverage",
-        "statusLabel": "In Development",
-        "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
+        "sector": "Alimentación y Bebidas",
+        "statusLabel": "En Desarrollo",
+        "desc": "Un concepto en la intersección entre el patrimonio marroquí y la hospitalidad balinesa. Especias, calidez y cultura — donde dos continentes se encuentran en un mismo plato."
       }
     ]
   },
   "principles": {
-    "label": "How We Operate",
+    "label": "Cómo Operamos",
     "items": [
       {
         "numeral": "I",
-        "title": "Own the IP. Always.",
-        "body": "No middlemen. No licensing dependency. Every brand we build, every asset we create — stays within the structure. Ownership is the non-negotiable premise."
+        "title": "Poseer la IP. Siempre.",
+        "body": "Sin intermediarios. Sin dependencia de licencias. Cada marca que construimos, cada activo que creamos — permanece dentro de la estructura. La propiedad es la premisa no negociable."
       },
       {
         "numeral": "II",
-        "title": "Execute without friction.",
-        "body": "Ideas without systems are noise. We structure, build, and deploy with operational precision — from concept to market, without compromise or delay."
+        "title": "Ejecutar sin fricción.",
+        "body": "Las ideas sin sistemas son ruido. Estructuramos, construimos y desplegamos con precisión operativa — del concepto al mercado, sin concesiones ni demoras."
       },
       {
         "numeral": "III",
-        "title": "Human first. AI amplified.",
-        "body": "We got this early. AI doesn't replace the creative — it accelerates the builder. VORVN is built by humans, for humans, with intelligence as the sharpest tool."
+        "title": "Humano primero. IA como amplificador.",
+        "body": "Lo entendimos pronto. La IA no reemplaza al creativo — acelera al constructor. VORVN está construido por humanos, para humanos, con la inteligencia como la herramienta más afilada."
       }
     ]
   },
   "founder": {
-    "label": "Founder",
-    "quote": "\"I believe the world belongs to those who design it, and that's exactly what we do.\n\nWe Design.\"",
+    "label": "Fundador",
+    "quote": "«Creo que el mundo pertenece a quienes lo diseñan, y eso es exactamente lo que hacemos.\n\nDiseñamos.»",
     "name": "Mehdi Ayache Berberos",
-    "title": "CEO & Founder — VORVN Limited"
+    "title": "CEO y Fundador — VORVN Limited"
   },
   "investors": {
     "label": "Inversores",
     "headline": "No levantamos capital.\nElegimos socios.",
-    "body": "VORVN es privada y rentable. Trabajamos con dos tipos de socios — operadores que construyen con nosotros en Bali, e inversores que co-construyen ventures desde Hong Kong. Lo demás, lo hacemos solos.",
+    "body": "VORVN es privada y rentable. Trabajamos con dos tipos de socios — operadores que construyen con nosotros en Bali, e inversores que co-construyen ventures desde Hong Kong. Todo lo demás lo hacemos solos.",
     "schemaTitle": "Dos formas de trabajar con nosotros",
     "incubatorBadge": "01 — Incubadora",
     "incubatorTitle": "Design-to-Market",
@@ -178,52 +178,52 @@
     "ventureTitle": "Co-Construcción Estratégica",
     "ventureLocation": "Hong Kong · Global",
     "ventureDesc": "Co-fundamos ventures con socios de capital. Cap table compartida, convicción compartida, horizonte largo.",
-    "cta": "Solicitar Introducción",
+    "cta": "Solicitar introducción",
     "ctaSub": "Por invitación · Solo entidades cualificadas"
   },
   "closing": {
-    "statement": "Creativity without process\n{chaos}\n\nProcess without creativity\n{lifeless}\n\nWe build both.",
-    "chaos": "is chaos.",
-    "lifeless": "is lifeless.",
-    "sub": "VORVN · VE VOLD™ · Est. 2023"
+    "statement": "La creatividad sin proceso\n{chaos}\n\nEl proceso sin creatividad\n{lifeless}\n\nConstruimos ambos.",
+    "chaos": "es caos.",
+    "lifeless": "es sin vida.",
+    "sub": "VORVN · VE VOLD™ · Fundada en 2023"
   },
   "footer": {
-    "legal": "© 2025 VORVN LIMITED. All rights reserved.\nRegistered in Hong Kong, SAR.",
+    "legal": "© 2025 VORVN LIMITED. Todos los derechos reservados.\nRegistrada en Hong Kong, SAR.",
     "instagram": "Instagram",
     "linkedin": "LinkedIn",
-    "careers": "Empleo",
+    "careers": "Carreras",
     "geo": "HK · ID · MA"
   },
   "notFound": {
     "label": "Señal Perdida",
     "signal": "● Fuera de red",
-    "headline": "Esta página no existe en nuestro holding.",
-    "body": "La ruta que seguiste no corresponde a ninguna marca, entidad o documento de VORVN. Es posible que se haya movido — o que nunca haya estado aquí.",
+    "headline": "Esta página no existe en nuestra holding.",
+    "body": "La ruta que seguiste no corresponde a ninguna marca, entidad ni documento dentro de VORVN. Puede haberse movido — o nunca estuvo aquí.",
     "attempted": "Ruta solicitada:",
     "cta": "Volver a VORVN",
-    "footerLeft": "404 · No Encontrado",
+    "footerLeft": "404 · No Encontrada",
     "footerRight": "VORVN LIMITED · HK"
   },
   "contact": {
     "label": "Contacto",
-    "headline": "Habla con nosotros.\nDirectamente.",
-    "body": "Introducciones a inversores, colaboraciones de marca, prensa, carreras — elige un tema y escríbenos un mensaje real. Respondemos a los que importan.",
+    "headline": "Háblanos.\nDirectamente.",
+    "body": "Introducciones de inversores, colaboraciones de marca, prensa, carreras — elige un tema y escríbenos un mensaje real. Respondemos a los que importan.",
     "offices": "Oficinas",
     "formLabel": "Formulario",
     "formHeadline": "Enviar un mensaje",
     "directEmail": "Directo",
     "submit": "Enviar mensaje",
     "submitting": "Enviando…",
-    "privacy": "Respondemos en 48h. Sin newsletter. Sin spam.",
+    "privacy": "Respondemos en 48h. Sin newsletters. Sin spam.",
     "fields": {
-      "topic": "¿Sobre qué?",
+      "topic": "¿Sobre qué tema?",
       "name": "Nombre completo",
-      "email": "Correo",
+      "email": "Email",
       "company": "Empresa / Proyecto",
       "message": "Tu mensaje",
-      "messagePlaceholder": "Cuéntanos qué estás construyendo, por qué ahora y qué necesitas de nosotros.",
+      "messagePlaceholder": "Cuéntanos qué estás construyendo, por qué ahora, y qué necesitas de nosotros.",
       "messageHint": "Mín. 10 caracteres",
-      "topicHelp": "Elige el que mejor se ajuste — tu mensaje irá a la persona adecuada.",
+      "topicHelp": "Elige el que mejor encaje — tu mensaje irá a la persona correcta.",
       "namePlaceholder": "Tu nombre completo",
       "emailPlaceholder": "nombre@ejemplo.com",
       "companyPlaceholder": "Opcional — tu empresa o proyecto"
@@ -231,16 +231,16 @@
     "topics": {
       "investor": "Inversor / Asociación",
       "brand": "Colaboración de marca",
-      "press": "Prensa y Medios",
+      "press": "Prensa & Medios",
       "careers": "Carreras / General",
       "other": "Otro"
     },
     "errors": {
-      "name": "Por favor ingresa tu nombre (mín. 2 caracteres)",
+      "name": "Por favor, introduce tu nombre completo (mín. 2 caracteres)",
       "nameMax": "El nombre debe tener menos de 100 caracteres",
-      "email": "Por favor ingresa un correo válido",
-      "emailMax": "El correo debe tener menos de 255 caracteres",
-      "topic": "Por favor selecciona un tema",
+      "email": "Por favor, introduce una dirección de email válida",
+      "emailMax": "El email debe tener menos de 255 caracteres",
+      "topic": "Por favor, selecciona un tema",
       "messageMin": "El mensaje debe tener al menos 10 caracteres",
       "messageMax": "El mensaje debe tener menos de 2000 caracteres"
     },
