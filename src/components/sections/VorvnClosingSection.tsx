@@ -13,18 +13,14 @@ export default function ClosingSection() {
         <BreathingEye />
       </div>
 
-      <div>
+      <div className="max-w-[640px]">
         <p
-          className="font-sans font-semibold text-foreground reveal d1 tracking-[-0.01em]"
-          style={{ fontSize: 'clamp(24px, 3.2vw, 52px)', lineHeight: 1.18 }}
+          className="font-sans font-medium text-foreground reveal d1 tracking-[-0.012em]"
+          style={{ fontSize: 'clamp(18px, 1.7vw, 26px)', lineHeight: 1.5 }}
         >
-          Creativity without process {t('closing.chaos')}
-          <br />
-          Process without creativity {t('closing.lifeless')}
-          <br />
-          We build both.
+          Creativity without process {t('closing.chaos')} Process without creativity {t('closing.lifeless')} We build both.
         </p>
-        <div className="mt-8 font-mono text-[10px] tracking-[0.14em] uppercase text-dim [html[data-theme='light']_&]:text-mid reveal d2">
+        <div className="mt-10 font-mono text-[10px] tracking-[0.14em] uppercase text-dim [html[data-theme='light']_&]:text-mid reveal d2">
           {t('closing.sub')}
         </div>
       </div>
