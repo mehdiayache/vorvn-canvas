@@ -74,12 +74,42 @@
       },
       "inDevelopmentSince": "In development — {{timeline}}",
       "brands": [
-        { "name": "Cook Warriors", "pitch": "Premium kitchenware · Eggscalibur", "statusLabel": "Active", "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand." },
-        { "name": "Hearts Notes", "pitch": "Faith-centred gifting for the Christian home", "statusLabel": "Active", "desc": "A Christian gifting brand delivering faith-centred products through Etsy and direct-to-consumer channels. Workbooks, digital kits, and heartfelt gifts designed for the Christian home." },
-        { "name": "MAQTOB", "pitch": "Modest fashion · Balinese craftsmanship", "statusLabel": "In Development", "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds." },
-        { "name": "xVoyager", "pitch": "An exploration-first brand for global nomads", "statusLabel": "In Development", "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address." },
-        { "name": "Warung Marrakech", "pitch": "Where Morocco meets Bali · Spice & hospitality", "statusLabel": "In Development", "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate." },
-        { "name": "Davi Properties", "pitch": "Real estate · Indonesian archipelago", "statusLabel": "In Development", "desc": "A real estate venture in development, leveraging VORVN's Southeast Asia network and operational infrastructure across the Indonesian archipelago." }
+        {
+          "name": "Cook Warriors",
+          "pitch": "Premium kitchenware · Eggscalibur",
+          "statusLabel": "Active",
+          "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
+        },
+        {
+          "name": "Hearts Notes",
+          "pitch": "Faith-centred gifting for the Christian home",
+          "statusLabel": "Active",
+          "desc": "A Christian gifting brand delivering faith-centred products through Etsy and direct-to-consumer channels. Workbooks, digital kits, and heartfelt gifts designed for the Christian home."
+        },
+        {
+          "name": "MAQTOB",
+          "pitch": "Modest fashion · Balinese craftsmanship",
+          "statusLabel": "In Development",
+          "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
+        },
+        {
+          "name": "xVoyager",
+          "pitch": "An exploration-first brand for global nomads",
+          "statusLabel": "In Development",
+          "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
+        },
+        {
+          "name": "Warung Marrakech",
+          "pitch": "Where Morocco meets Bali · Spice & hospitality",
+          "statusLabel": "In Development",
+          "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
+        },
+        {
+          "name": "Davi Properties",
+          "pitch": "Real estate · Indonesian archipelago",
+          "statusLabel": "In Development",
+          "desc": "A real estate venture in development, leveraging VORVN's Southeast Asia network and operational infrastructure across the Indonesian archipelago."
+        }
       ]
     },
     "brands": [
@@ -88,12 +118,6 @@
         "sector": "Consumer Goods · USA / UAE",
         "statusLabel": "Active",
         "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
-      },
-      {
-        "name": "Hearts Notes",
-        "sector": "Faith & Gifting · USA",
-        "statusLabel": "Active",
-        "desc": "A Christian gifting brand delivering faith-centred products through Etsy and direct-to-consumer channels. Workbooks, digital kits, and heartfelt gifts designed for the Christian home."
       },
       {
         "name": "MAQTOB",
@@ -112,12 +136,6 @@
         "sector": "Food & Beverage",
         "statusLabel": "In Development",
         "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
-      },
-      {
-        "name": "Davi Properties",
-        "sector": "Real Estate",
-        "statusLabel": "In Development",
-        "desc": "A real estate venture in development, leveraging VORVN's Southeast Asia network and operational infrastructure across the Indonesian archipelago."
       }
     ]
   },

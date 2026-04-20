@@ -142,8 +142,6 @@ function VorvnPortfolioItem({
 
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-x-[60px] gap-y-9">
             <div>
-              <div className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground mb-3">{brand.name}</div>
-              
               <div className="flex flex-wrap gap-2 mb-5">
                 {data.tags.map((tag) => (
                   <span
