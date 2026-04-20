@@ -4,7 +4,7 @@ import SeoHead from '@/components/SeoHead';
 import VorvnHero from '@/components/sections/VorvnHero';
 import VorvnEntitySection from '@/components/sections/VorvnEntitySection';
 import VorvnPresenceSection from '@/components/sections/VorvnPresenceSection';
-import VorvnPortfolioSection from '@/components/sections/VorvnPortfolioSection';
+import VorvnPortfolioSection from '@/components/sections/VorvnPortfolioSectionV2';
 import VorvnPrinciplesSection from '@/components/sections/VorvnPrinciplesSection';
 import VorvnFounderSection from '@/components/sections/VorvnFounderSection';
 import VorvnInvestorsSection from '@/components/sections/VorvnInvestorsSection';
