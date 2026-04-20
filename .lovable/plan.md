@@ -1,65 +1,60 @@
 
-## Issue diagnosis
 
-You're seeing English on `/fr` (and same will happen on `/es /zh /id /ar`) because **the locale JSON files are not actually translated**. They were created as scaffolds that copy the English strings verbatim for every section except a small handful (`investors`, `contact`, `notFound`, `footer.careers` — and those only in `fr.json`).
+## What you're asking for vs. what this project is
 
-So `i18n.changeLanguage('fr')` *is* working — it just loads a French file that contains English text. Nothing is broken in routing or the switcher; the content payload itself is missing.
+Your spec assumes Next.js / Express / Netlify Functions. **This project is none of those.** It's a pure client-side React + Vite SPA deployed to Netlify as static files (`netlify.toml` → `publish = "dist"`, no `functions` directory, no Next.js, no Express). There is **zero** backend running today.
 
-## Plan
+So "just add a Node endpoint" is not a one-line change — we have to introduce a backend. There are exactly two realistic ways to do that, and you've already declined one of them twice (Lovable Cloud / Supabase Edge Functions). Let me lay out the honest options so you can pick.
 
-Translate every locale file fully and natively (no machine-fluff, no AI tone), keeping `VORVN` as the brand name in Latin letters across all languages including Arabic and Chinese.
+## The 3 real options
 
-### Files to update
+### Option A — Netlify Functions (matches your spec almost exactly)
+Add `netlify/functions/contact.ts` with Nodemailer. Netlify auto-detects it on deploy, endpoint becomes `/.netlify/functions/contact`. Env vars (`GMAIL_USER`, `GMAIL_APP_PASSWORD`, `CONTACT_TO_EMAIL`) are set in the Netlify dashboard by you.
 
-1. `src/i18n/locales/fr.json` — finish translating the English-leftover sections
-2. `src/i18n/locales/es.json` — full Spanish translation
-3. `src/i18n/locales/zh.json` — full Simplified Chinese translation (VORVN stays Latin)
-4. `src/i18n/locales/id.json` — full Bahasa Indonesia translation
-5. `src/i18n/locales/ar.json` — full Arabic translation (VORVN stays Latin, RTL already handled)
+- Pros: exactly your spec, Gmail SMTP + Nodemailer, no extra service, free tier covers this easily.
+- Cons: **only runs on the deployed Netlify site.** It will NOT work in the Lovable preview (the preview is not Netlify). You'd test it after pushing to your Netlify deploy.
+- Secret handling: you add the app password directly in Netlify dashboard. Lovable never sees it.
 
-### Sections to translate in each file
+### Option B — Lovable Cloud Edge Function (works in preview AND production)
+One Supabase Edge Function calling Gmail SMTP. You've declined this twice. The blocker isn't technical — it's that you don't want to enable Lovable Cloud. If you change your mind, this is the smoothest path because it works inside the Lovable preview too.
 
-- `nav` (tag, contact, menu — keep "VORVN" untouched in code, not in JSON anyway)
-- `hero` (headline, taglinePre/Post, words.build/design/own, basedIn, scroll)
-- `entity` (label, statement, detail, designNote)
-- `presence` (label, three location blocks: region/city/entity/address/badge — keep entity legal names like "VORVN LIMITED" untouched)
-- `portfolio` (label, intro, v2.intro, metaStrip, metricsLabels, inDevelopmentSince, all 6 brand pitches/desc, statusLabel; keep brand names intact: Cook Warriors, Hearts Notes, MAQTOB, xVoyager, Warung Marrakech, Davi Properties)
-- `principles` (label, 3 items title + body)
-- `founder` (label, quote, title — name stays "Mehdi Ayache Berberos")
-- `investors` (already done in FR; needs doing in ES/ZH/ID/AR)
-- `closing` (statement, chaos, lifeless, sub)
-- `footer` (legal, careers, geo)
-- `notFound` (full)
-- `contact` (already done in FR; needs review in others)
+### Option C — A browser-safe form service (no backend, no app password)
+Web3Forms / Formspree / Formspark. Drop-in `fetch` from the existing form, free tier, emails land in `hi@vorvn.com` and `m@mehdiayache.com`. Takes ~10 minutes. **Throws away your Gmail app password entirely** — which is actually a feature, since you already leaked it.
 
-### Translation rules
+## My honest recommendation
 
-- **VORVN**: never transliterated. Stays "VORVN" in 中文, العربية, etc.
-- **Brand names** (Cook Warriors, MAQTOB, Eggscalibur, etc.): never translated.
-- **Legal entities** (VORVN LIMITED, PT. VORVN GROUP INDONESIA): never translated.
-- **Tone**: terse, operator voice — match the FR investor copy. No marketing fluff, no "we are passionate about…".
-- **Arabic**: native RTL phrasing; punctuation `،` and `؟`; numerals can stay Western (01, 02, 2023) to match the design system's mono-numeric style.
-- **Chinese**: Simplified, concise; em-dash `——`; keep `·` separators as they are part of the visual system.
+Given (a) you've leaked the app password in chat, (b) you don't want Lovable Cloud, and (c) the project is static on Netlify — **Option A (Netlify Functions)** is the right fit for your spec. But understand: the form will appear non-functional inside the Lovable preview. Real testing happens on your live Netlify URL.
 
-### Hero rotating word
+## Plan for Option A (if you confirm)
 
-Currently the words `Build / Design / Own` rotate via `t('hero.words.build|design|own')`. These will be translated per locale — verify in `VorvnHero.tsx` that it reads from i18n (not hardcoded). I'll check during implementation; if hardcoded, switch to i18n keys.
+**Files added/changed**
+- `netlify/functions/contact.ts` — new. Nodemailer + Gmail SMTP, Zod validation, honeypot, simple in-memory rate limit (per cold-start instance — good enough for low traffic), HTML escaping, proper status codes, no input echoed back.
+- `netlify.toml` — add `[functions] node_bundler = "esbuild"` and a redirect `/api/contact → /.netlify/functions/contact` so the frontend can call a clean URL.
+- `package.json` — add `nodemailer`, `zod`, `@types/nodemailer` (dev).
+- `src/pages/Contact.tsx` — replace the placeholder `setTimeout` in `onSubmit` with a `fetch('/api/contact', { method: 'POST', body: JSON.stringify(values) })`. Add the hidden `website` honeypot input. Use existing success/error UI states.
+- `src/i18n/locales/{en,fr,es,zh,id,ar}.json` — one new key `contact.errors.send` for the inline failure message.
 
-### Verification step after edits
+**Endpoint contract**
+- POST `/api/contact` with `{ name, email, company, topic, message, website }`
+- Validates: required fields, email regex, name ≤ 200, message ≤ 5000, honeypot empty
+- Rate limit: 5 req / 15 min per IP (in-memory, per-instance)
+- Sends via `smtp.gmail.com:465` as `"VORVN Contact" <hi@vorvn.com>` to `hi@vorvn.com, m@mehdiayache.com`, `Reply-To` = visitor
+- Returns `{ ok: true }` (200) or `{ error: "validation" | "rate_limited" | "server" }` (400/429/500) — never leaks SMTP details
 
-- Switch through `/en /fr /es /zh /id /ar` and confirm every section renders in the target language.
-- Confirm `VORVN` wordmark stays Latin everywhere.
-- Confirm Arabic flips RTL and reads naturally.
-- Confirm `/contact` page also fully translates in every language.
+**What you do**
+1. **Revoke the leaked app password in Google Workspace right now** and generate a new one.
+2. After I push the code, go to Netlify → Site settings → Environment variables and add:
+   - `GMAIL_USER=hi@vorvn.com`
+   - `GMAIL_APP_PASSWORD=<new 16-char password, no spaces>`
+   - `CONTACT_TO_EMAIL=hi@vorvn.com,m@mehdiayache.com`
+3. Trigger a Netlify deploy. Test on the live URL (not the Lovable preview).
 
-### What I will NOT touch
+**What stays untouched**
+Design, fonts, layout, gutter, dark theme, i18n, routing, SEO, all section components.
 
-- No layout, no component, no routing changes.
-- No SEO/`SeoHead` changes (already wired to pull `t('seo.*')` — I'll add seo blocks where missing per language).
-- No `LanguageSwitcher` / `Nav` changes — they work correctly.
+## Confirm one of these to proceed
 
-### Out of scope (flag for later if you want)
-
-- Auto-translation pipeline / CMS — staying with the JSON-file CMS as per memory.
-- Per-language SEO sitemap entries already exist.
+1. **Option A — Netlify Functions** (matches your spec, Gmail SMTP, only works on live Netlify deploy)
+2. **Option B — Lovable Cloud Edge Function** (works in preview too, but requires enabling Lovable Cloud)
+3. **Option C — Web3Forms / Formspree** (no backend, no app password, fastest)
 
