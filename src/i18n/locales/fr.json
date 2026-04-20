@@ -222,7 +222,11 @@
       "company": "Société / Projet",
       "message": "Votre message",
       "messagePlaceholder": "Dites-nous ce que vous construisez, pourquoi maintenant, et ce que vous attendez de nous.",
-      "messageHint": "Min. 10 caractères"
+      "messageHint": "Min. 10 caractères",
+      "topicHelp": "Choisissez celui qui correspond le mieux — votre message ira à la bonne personne.",
+      "namePlaceholder": "Votre nom complet",
+      "emailPlaceholder": "nom@exemple.com",
+      "companyPlaceholder": "Optionnel — votre société ou projet"
     },
     "topics": {
       "investor": "Investisseur / Partenariat",
@@ -245,6 +249,7 @@
       "title": "Message envoyé.",
       "body": "Merci de nous avoir contactés. Nous lisons chaque message et répondons sous 48 heures — généralement plus vite.",
       "again": "Envoyer un autre →"
-    }
+    },
+    "phones": "Téléphones"
   }
 }

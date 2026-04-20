@@ -222,7 +222,11 @@
       "company": "公司 / 项目",
       "message": "您的消息",
       "messagePlaceholder": "告诉我们您在构建什么，为什么是现在，以及您需要我们做什么。",
-      "messageHint": "至少 10 个字符"
+      "messageHint": "至少 10 个字符",
+      "topicHelp": "选择最匹配的一项 —— 您的消息将转给相应的负责人。",
+      "namePlaceholder": "您的全名",
+      "emailPlaceholder": "name@example.com",
+      "companyPlaceholder": "可选 —— 您的公司或项目"
     },
     "topics": {
       "investor": "投资 / 合作",
@@ -245,6 +249,7 @@
       "title": "消息已发送。",
       "body": "感谢您的联系。我们阅读每一条消息，并在48小时内回复 —— 通常更快。",
       "again": "再发一条 →"
-    }
+    },
+    "phones": "电话"
   }
 }
