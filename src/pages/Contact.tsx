@@ -244,7 +244,13 @@ export default function Contact() {
               </h3>
 
               {status === 'sent' ? (
-                <div className="mt-12 border-t border-rule pt-10 reveal d2">
+                <div className="mt-12 reveal d2 border border-foreground p-10" role="status" aria-live="polite">
+                  <div className="flex items-center gap-2 mb-6">
+                    <span className="inline-block w-[7px] h-[7px] rounded-full bg-foreground" />
+                    <span className="font-mono text-[9px] tracking-[0.16em] uppercase text-foreground">
+                      ✓ {t('contact.success.tag')}
+                    </span>
+                  </div>
                   <p
                     className="font-sans font-medium text-foreground"
                     style={{ fontSize: 'clamp(20px, 2vw, 28px)', lineHeight: 1.35 }}
@@ -320,8 +326,8 @@ export default function Contact() {
                       })}
                     </div>
                     {errors.topic && (
-                      <p className="font-sans text-[14px] text-destructive mt-3">
-                        {errors.topic}
+                      <p className="font-mono text-[12px] tracking-[0.06em] text-foreground mt-3">
+                        <span className="text-mid">ERR ·</span> {errors.topic}
                       </p>
                     )}
                   </fieldset>
@@ -376,13 +382,15 @@ export default function Contact() {
                       placeholder={t('contact.fields.messagePlaceholder')}
                       className={`w-full bg-transparent border px-4 py-3 font-sans text-[16px] leading-[1.6] text-foreground placeholder:text-dim focus:outline-none transition-colors duration-200 ${
                         errors.message
-                          ? 'border-destructive focus:border-destructive'
+                          ? 'border-foreground focus:border-foreground'
                           : 'border-rule focus:border-foreground'
                       }`}
                     />
                     <div className="flex justify-between items-center mt-2">
                       {errors.message ? (
-                        <p className="font-sans text-[14px] text-destructive">{errors.message}</p>
+                        <p className="font-mono text-[12px] tracking-[0.06em] text-foreground">
+                          <span className="text-mid">ERR ·</span> {errors.message}
+                        </p>
                       ) : (
                         <span className="font-sans text-[13px] text-mid">
                           {t('contact.fields.messageHint')}
@@ -401,6 +409,9 @@ export default function Contact() {
                       disabled={status === 'submitting'}
                       className="inline-flex items-center gap-3 bg-foreground text-background font-sans text-[15px] font-medium px-7 py-4 hover:opacity-90 transition-opacity duration-200 group disabled:opacity-60 disabled:cursor-not-allowed"
                     >
+                      {status === 'submitting' && (
+                        <span className="inline-block w-[7px] h-[7px] rounded-full bg-background animate-[pulse_1.2s_ease-in-out_infinite]" />
+                      )}
                       {status === 'submitting'
                         ? t('contact.submitting')
                         : t('contact.submit')}
@@ -412,8 +423,8 @@ export default function Contact() {
                     <p className="font-sans text-[13px] text-dim">{t('contact.privacy')}</p>
                   </div>
                   {sendError && (
-                    <p className="font-sans text-[14px] text-destructive" role="alert">
-                      {sendError}
+                    <p className="font-mono text-[12px] tracking-[0.06em] text-foreground border border-foreground px-4 py-3" role="alert">
+                      <span className="text-mid">ERR ·</span> {sendError}
                     </p>
                   )}
                 </form>
@@ -464,11 +475,15 @@ function Field({
         placeholder={placeholder}
         className={`w-full bg-transparent border px-4 py-3 font-sans text-[16px] text-foreground placeholder:text-dim focus:outline-none transition-colors duration-200 ${
           error
-            ? 'border-destructive focus:border-destructive'
+            ? 'border-foreground focus:border-foreground'
             : 'border-rule focus:border-foreground'
         }`}
       />
-      {error && <p className="font-sans text-[14px] text-destructive mt-2">{error}</p>}
+      {error && (
+        <p className="font-mono text-[12px] tracking-[0.06em] text-foreground mt-2">
+          <span className="text-mid">ERR ·</span> {error}
+        </p>
+      )}
     </div>
   );
 }
