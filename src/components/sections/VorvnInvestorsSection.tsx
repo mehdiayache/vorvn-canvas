@@ -10,81 +10,109 @@ export default function VorvnInvestorsSection() {
       className="border-t border-rule"
       style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}
     >
-      {/* Header row: label left, CTA right */}
-      <div className="flex items-start justify-between reveal">
-        <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">
-          {t('investors.label')}
-        </span>
-        <a
-          href="mailto:invest@vorvn.com"
-          className="hidden md:inline-flex items-center gap-2 font-sans text-[13px] font-medium tracking-[0.04em] text-foreground hover:opacity-60 transition-opacity duration-300 group"
-        >
-          {t('investors.cta')}
-          <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
-        </a>
-      </div>
-
-      {/* Statement */}
-      <div className="mt-16 md:mt-24 max-w-[720px] reveal d1">
-        <p
-          className="font-sans font-medium text-foreground"
-          style={{ fontSize: 'clamp(24px, 3vw, 48px)', lineHeight: 1.25 }}
-        >
-          {t('investors.headline')}
-        </p>
-      </div>
-
-      {/* Body */}
-      <div className="mt-8 md:mt-12 max-w-[580px] reveal d2">
-        <p
-          className="font-sans text-mid"
-          style={{ fontSize: 'clamp(14px, 1.1vw, 17px)', lineHeight: 1.75 }}
-        >
-          {t('investors.body')}
-        </p>
-      </div>
-
-      {/* Inline details — subtle, no boxes */}
-      <div className="mt-14 md:mt-20 flex flex-col md:flex-row md:gap-24 gap-10 reveal d3">
-        <div className="flex flex-col gap-2">
-          <span className="font-mono text-[8px] tracking-[0.2em] uppercase text-dim">
-            {t('investors.path1Badge')}
-          </span>
-          <span className="font-sans text-[14px] md:text-[16px] font-medium text-foreground">
-            {t('investors.path1Title')}
-          </span>
-          <span className="font-mono text-[9px] tracking-[0.12em] uppercase text-dim">
-            {t('investors.path1Location')}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20 gap-y-12">
+        {/* Left: label */}
+        <div className="reveal">
+          <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">
+            {t('investors.label')}
           </span>
         </div>
-        <div className="flex flex-col gap-2">
-          <span className="font-mono text-[8px] tracking-[0.2em] uppercase text-dim">
-            {t('investors.path2Badge')}
-          </span>
-          <span className="font-sans text-[14px] md:text-[16px] font-medium text-foreground">
-            {t('investors.path2Title')}
-          </span>
-          <span className="font-mono text-[9px] tracking-[0.12em] uppercase text-dim">
-            {t('investors.path2Location')}
-          </span>
+
+        {/* Right: content */}
+        <div>
+          {/* Headline */}
+          <p
+            className="font-sans font-medium text-foreground reveal d1"
+            style={{ fontSize: 'clamp(22px, 2.8vw, 44px)', lineHeight: 1.35 }}
+          >
+            {t('investors.headline').split('\n').map((line, i) => (
+              <span key={i} className="block">{line}</span>
+            ))}
+          </p>
+
+          {/* Body */}
+          <p
+            className="mt-8 font-sans font-normal text-mid reveal d2 max-w-[640px]"
+            style={{ fontSize: 'clamp(15px, 1.15vw, 18px)', lineHeight: 1.7 }}
+          >
+            {t('investors.body')}
+          </p>
+
+          {/* Schema — two paths visual */}
+          <div className="mt-16 reveal d3">
+            <div className="font-sans text-[15px] font-medium text-foreground mb-8">
+              {t('investors.schemaTitle')}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 border-t border-rule">
+              {/* Incubator */}
+              <div className="border-b md:border-b-0 md:border-r border-rule py-8 pr-0 md:pr-10 relative">
+                <div className="font-sans text-[13px] font-medium text-mid mb-4">
+                  {t('investors.incubatorBadge')}
+                </div>
+                <div className="font-sans text-[22px] md:text-[26px] font-medium text-foreground tracking-[-0.01em] mb-2">
+                  {t('investors.incubatorTitle')}
+                </div>
+                <div className="font-sans text-[14px] text-dim mb-6">
+                  {t('investors.incubatorLocation')}
+                </div>
+                <p className="font-sans text-[15px] text-mid max-w-[360px]" style={{ lineHeight: 1.65 }}>
+                  {t('investors.incubatorDesc')}
+                </p>
+
+                {/* Visual flow */}
+                <div className="mt-8 flex items-center gap-3 flex-wrap">
+                  <span className="font-sans text-[13px] text-foreground border border-rule px-3 py-1.5">Design</span>
+                  <span className="text-dim">→</span>
+                  <span className="font-sans text-[13px] text-foreground border border-rule px-3 py-1.5">Build</span>
+                  <span className="text-dim">→</span>
+                  <span className="font-sans text-[13px] text-foreground border border-rule px-3 py-1.5">Ship</span>
+                </div>
+              </div>
+
+              {/* Venture */}
+              <div className="border-b md:border-b-0 border-rule py-8 pl-0 md:pl-10">
+                <div className="font-sans text-[13px] font-medium text-mid mb-4">
+                  {t('investors.ventureBadge')}
+                </div>
+                <div className="font-sans text-[22px] md:text-[26px] font-medium text-foreground tracking-[-0.01em] mb-2">
+                  {t('investors.ventureTitle')}
+                </div>
+                <div className="font-sans text-[14px] text-dim mb-6">
+                  {t('investors.ventureLocation')}
+                </div>
+                <p className="font-sans text-[15px] text-mid max-w-[360px]" style={{ lineHeight: 1.65 }}>
+                  {t('investors.ventureDesc')}
+                </p>
+
+                {/* Visual flow */}
+                <div className="mt-8 flex items-center gap-3 flex-wrap">
+                  <span className="font-sans text-[13px] text-foreground border border-rule px-3 py-1.5">VORVN</span>
+                  <span className="text-dim">+</span>
+                  <span className="font-sans text-[13px] text-foreground border border-rule px-3 py-1.5">Partner</span>
+                  <span className="text-dim">=</span>
+                  <span className="font-sans text-[13px] text-foreground border border-foreground px-3 py-1.5">Co-Built Venture</span>
+                </div>
+              </div>
+            </div>
+            <div className="border-b border-rule" />
+          </div>
+
+          {/* CTA — visible, prominent */}
+          <div className="mt-16 reveal d4">
+            <a
+              href="mailto:invest@vorvn.com"
+              className="inline-flex items-center gap-3 bg-foreground text-background font-sans text-[15px] font-medium px-7 py-4 hover:opacity-90 transition-opacity duration-200 group"
+            >
+              {t('investors.cta')}
+              <ArrowRight size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
+            </a>
+            <p className="mt-5 font-sans text-[13px] text-dim">
+              {t('investors.ctaSub')}
+            </p>
+          </div>
         </div>
       </div>
-
-      {/* Mobile CTA */}
-      <div className="mt-12 md:hidden reveal d4">
-        <a
-          href="mailto:invest@vorvn.com"
-          className="inline-flex items-center gap-2 font-sans text-[13px] font-medium tracking-[0.04em] text-foreground"
-        >
-          {t('investors.cta')}
-          <ArrowRight size={14} />
-        </a>
-      </div>
-
-      {/* Subtle footnote */}
-      <p className="font-mono text-[9px] tracking-[0.14em] uppercase text-dim mt-10 reveal d4">
-        {t('investors.ctaSub')}
-      </p>
     </section>
   );
 }
