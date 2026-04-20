@@ -1,194 +1,194 @@
 {
   "nav": {
-    "tag": "IP Holdings · Est. 2023",
-    "contact": "Contact",
-    "light": "Light",
-    "dark": "Dark",
-    "menu": "Menu"
+    "tag": "قابضة ملكية فكرية · تأسست 2023",
+    "contact": "تواصل",
+    "light": "فاتح",
+    "dark": "داكن",
+    "menu": "القائمة"
   },
   "hero": {
-    "headline": "Autonomous & Independent\nIP & Brand Owners.",
-    "taglinePre": "We",
-    "taglinePost": "Digital-First Brands.",
+    "headline": "ملّاك ملكية فكرية وعلامات\nمستقلون وذاتيون.",
+    "taglinePre": "نحن",
+    "taglinePost": "علامات تجارية رقمية أولاً.",
     "words": {
-      "build": "Build",
-      "design": "Design",
-      "own": "Own"
+      "build": "نبني",
+      "design": "نصمّم",
+      "own": "نمتلك"
     },
-    "basedIn": "Based in Hong Kong.\nOperating Worldwide.",
-    "scroll": "Scroll"
+    "basedIn": "مقرّنا في هونغ كونغ.\nنعمل حول العالم.",
+    "scroll": "مرّر"
   },
   "entity": {
-    "label": "The Entity",
-    "statement": "VORVN is not an agency.\nIt is the architecture\nbehind the brands.",
-    "detail": "Design is not decoration — it is the first decision. Every structure we build, every brand we deploy, starts from a single design question: does this create real value? VORVN is a private IP holdings company registered in Hong Kong, with participations across Southeast Asia, Northwest Africa, and Western consumer markets. We own, license, and deploy brand intellectual property across verticals — consumer goods, faith-driven gifting, modest fashion — without intermediaries, without compromise. Pure execution.",
-    "designNote": "Design · Strategy · Execution · No middlemen. No shortcuts."
+    "label": "الكيان",
+    "statement": "VORVN ليست وكالة.\nبل هي البنية\nالقائمة خلف العلامات.",
+    "detail": "VORVN شركة قابضة خاصة للملكية الفكرية، مسجّلة في هونغ كونغ. نمتلك ونُشغّل علاماتنا في جنوب شرق آسيا، وشمال غرب إفريقيا، وأسواق المستهلك الغربية — أدوات مطبخ، أزياء محتشمة، ومأكولات. كل علامة تُصمَّم داخلياً، وتُنتَج في استوديونا في بالي، وتُسلَّم تحت بنيتنا الخاصة. لا عملاء وكالات. لا شركاء ترخيص.",
+    "designNote": "تصميم · استراتيجية · تنفيذ · بلا وسطاء، وبلا اختصارات."
   },
   "presence": {
-    "label": "Presence",
+    "label": "الحضور",
     "locations": [
       {
-        "region": "Holding Entity",
-        "city": "Hong Kong",
+        "region": "الكيان القابض",
+        "city": "هونغ كونغ",
         "entity": "VORVN LIMITED",
         "address": "RM4 16/F, Ho King Commercial Centre\n2–16 Fa Yuen Street, Mongkok\nKowloon, Hong Kong",
-        "badge": "Headquarters"
+        "badge": "المقر الرئيسي"
       },
       {
-        "region": "Design Studio",
-        "city": "Bali, Indonesia",
+        "region": "استوديو التصميم",
+        "city": "بالي، إندونيسيا",
         "entity": "PT. VORVN GROUP INDONESIA",
         "address": "Jl. Seroja No.28, Tonja\nKec. Denpasar Utara, Bali 80235",
-        "badge": "Operations"
+        "badge": "العمليات"
       },
       {
-        "region": "Origin Market",
-        "city": "Morocco",
+        "region": "السوق الأصلي",
+        "city": "المغرب",
         "entity": "PARTICIPATIONS",
-        "address": "Northwest Africa\nFrench-speaking market\nGulf export corridor",
-        "badge": "Expansion"
+        "address": "شمال غرب إفريقيا\nالسوق الناطق بالفرنسية\nممر التصدير نحو الخليج",
+        "badge": "التوسّع"
       }
     ]
   },
   "portfolio": {
-    "label": "Portfolio",
-    "intro": "The brands and intellectual property we design, build, and own — deployed across consumer markets worldwide.",
-    "visitBrand": "Visit Brand →",
-    "inDevelopment": "In Development",
-    "downloadPresentation": "Download Presentation →",
-    "prev": "← Prev",
-    "next": "Next →",
+    "label": "المحفظة",
+    "intro": "العلامات والملكية الفكرية التي نصمّمها ونبنيها ونمتلكها — منتشرة في أسواق المستهلك حول العالم.",
+    "visitBrand": "زيارة العلامة ←",
+    "inDevelopment": "قيد التطوير",
+    "downloadPresentation": "تحميل العرض ←",
+    "prev": "← السابق",
+    "next": "التالي ←",
     "v2": {
-      "intro": "Six brands. One holding. Every IP designed, owned, and operated in-house — from Hong Kong, Bali, and Marrakech. No licenses. No partners on the cap table. Just brands we built to last.",
+      "intro": "ست علامات. قابضة واحدة. كل ملكية فكرية مصمّمة ومملوكة ومُشغَّلة داخلياً — من هونغ كونغ، وبالي، ومراكش. لا تراخيص. لا شركاء في جدول الملكية. فقط علامات بنيناها لتدوم.",
       "metaStrip": {
-        "brands": "{{count}} Brands",
-        "active": "{{count}} Active",
-        "dev": "{{count}} In Development",
-        "continents": "{{count}} Continents"
+        "brands": "{{count}} علامات",
+        "active": "{{count}} نشطة",
+        "dev": "{{count}} قيد التطوير",
+        "continents": "{{count}} قارات"
       },
       "metricsLabels": {
-        "status": "Status",
-        "markets": "Markets",
-        "since": "Since",
-        "timeline": "Target Launch"
+        "status": "الحالة",
+        "markets": "الأسواق",
+        "since": "منذ",
+        "timeline": "الإطلاق المستهدف"
       },
-      "inDevelopmentSince": "In development — {{timeline}}",
+      "inDevelopmentSince": "قيد التطوير — {{timeline}}",
       "brands": [
         {
           "name": "Cook Warriors",
-          "pitch": "Premium kitchenware · Eggscalibur",
-          "statusLabel": "Active",
-          "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
+          "pitch": "أدوات مطبخ راقية · Eggscalibur",
+          "statusLabel": "نشطة",
+          "desc": "علامة أدوات مطبخ راقية مبنية حول Eggscalibur — المقلاة الأيقونية بمقبض على شكل سيف. من الفكرة إلى التوصيل عبر الإمارات وصولاً إلى البيوت الأمريكية، Cook Warriors هي العلامة الاستهلاكية الرئيسية لـ VORVN."
         },
         {
           "name": "Hearts Notes",
-          "pitch": "Faith-centred gifting for the Christian home",
-          "statusLabel": "Active",
-          "desc": "A Christian gifting brand delivering faith-centred products through Etsy and direct-to-consumer channels. Workbooks, digital kits, and heartfelt gifts designed for the Christian home."
+          "pitch": "هدايا روحية للبيت المسيحي",
+          "statusLabel": "نشطة",
+          "desc": "علامة هدايا مسيحية تقدّم منتجات تتمحور حول الإيمان عبر Etsy والقنوات المباشرة. كرّاسات، ومجموعات رقمية، وهدايا صادقة مصمّمة للبيت المسيحي."
         },
         {
           "name": "MAQTOB",
-          "pitch": "Modest fashion · Balinese craftsmanship",
-          "statusLabel": "In Development",
-          "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
+          "pitch": "أزياء محتشمة · حرفية بالينية",
+          "statusLabel": "قيد التطوير",
+          "desc": "أطقم صلاة Mukena إندونيسية راقية للسوق المسلم في أوروبا، مع انطلاق من فرنسا. الأزياء المحتشمة تلتقي بالحرفية البالينية — جسر بين عالمَين."
         },
         {
           "name": "xVoyager",
-          "pitch": "An exploration-first brand for global nomads",
-          "statusLabel": "In Development",
-          "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
+          "pitch": "علامة استكشاف للمسافرين حول العالم",
+          "statusLabel": "قيد التطوير",
+          "desc": "علامة قائمة على الاستكشاف موجّهة للرحّالة والمغامرين حول العالم. حالياً في مرحلة التطوير المفاهيمي داخل مختبر VORVN — مصمّمة لمن يتنقّل بلا عنوان ثابت."
         },
         {
           "name": "Warung Marrakech",
-          "pitch": "Where Morocco meets Bali · Spice & hospitality",
-          "statusLabel": "In Development",
-          "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
+          "pitch": "حيث يلتقي المغرب ببالي · توابل وضيافة",
+          "statusLabel": "قيد التطوير",
+          "desc": "مفهوم عند ملتقى الإرث المغربي والضيافة البالينية. توابل، ودفء، وثقافة — حيث تلتقي قارّتان في طبق واحد."
         },
         {
           "name": "Davi Properties",
-          "pitch": "Real estate · Indonesian archipelago",
-          "statusLabel": "In Development",
-          "desc": "A real estate venture in development, leveraging VORVN's Southeast Asia network and operational infrastructure across the Indonesian archipelago."
+          "pitch": "عقارات · الأرخبيل الإندونيسي",
+          "statusLabel": "قيد التطوير",
+          "desc": "مشروع عقاري قيد التطوير، يستفيد من شبكة VORVN في جنوب شرق آسيا وبنيتها التشغيلية عبر الأرخبيل الإندونيسي."
         }
       ]
     },
     "brands": [
       {
         "name": "Cook Warriors",
-        "sector": "Consumer Goods · USA / UAE",
-        "statusLabel": "Active",
-        "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
+        "sector": "سلع استهلاكية · USA / UAE",
+        "statusLabel": "نشطة",
+        "desc": "علامة أدوات مطبخ راقية مبنية حول Eggscalibur — المقلاة الأيقونية بمقبض على شكل سيف. من الفكرة إلى التوصيل عبر الإمارات وصولاً إلى البيوت الأمريكية، Cook Warriors هي العلامة الاستهلاكية الرئيسية لـ VORVN."
       },
       {
         "name": "MAQTOB",
-        "sector": "Modest Fashion · EU / France",
-        "statusLabel": "In Development",
-        "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
+        "sector": "أزياء محتشمة · أوروبا / فرنسا",
+        "statusLabel": "قيد التطوير",
+        "desc": "أطقم صلاة Mukena إندونيسية راقية للسوق المسلم في أوروبا، مع انطلاق من فرنسا. الأزياء المحتشمة تلتقي بالحرفية البالينية — جسر بين عالمَين."
       },
       {
         "name": "xVoyager",
-        "sector": "Exploration · Global",
-        "statusLabel": "In Development",
-        "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
+        "sector": "استكشاف · عالمي",
+        "statusLabel": "قيد التطوير",
+        "desc": "علامة قائمة على الاستكشاف موجّهة للرحّالة والمغامرين حول العالم. حالياً في مرحلة التطوير المفاهيمي داخل مختبر VORVN — مصمّمة لمن يتنقّل بلا عنوان ثابت."
       },
       {
         "name": "Warung Marrakech",
-        "sector": "Food & Beverage",
-        "statusLabel": "In Development",
-        "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
+        "sector": "أطعمة ومشروبات",
+        "statusLabel": "قيد التطوير",
+        "desc": "مفهوم عند ملتقى الإرث المغربي والضيافة البالينية. توابل، ودفء، وثقافة — حيث تلتقي قارّتان في طبق واحد."
       }
     ]
   },
   "principles": {
-    "label": "How We Operate",
+    "label": "كيف نعمل",
     "items": [
       {
         "numeral": "I",
-        "title": "Own the IP. Always.",
-        "body": "No middlemen. No licensing dependency. Every brand we build, every asset we create — stays within the structure. Ownership is the non-negotiable premise."
+        "title": "نمتلك الملكية الفكرية. دائماً.",
+        "body": "بلا وسطاء، وبلا اعتماد على تراخيص. كل علامة نبنيها، وكل أصل نُنشئه — يبقى داخل البنية. الملكية شرط غير قابل للتفاوض."
       },
       {
         "numeral": "II",
-        "title": "Execute without friction.",
-        "body": "Ideas without systems are noise. We structure, build, and deploy with operational precision — from concept to market, without compromise or delay."
+        "title": "تنفيذ بلا احتكاك.",
+        "body": "الأفكار بلا أنظمة مجرّد ضوضاء. نُنظّم ونبني وننشر بدقّة تشغيلية — من الفكرة إلى السوق، بلا تنازلات ولا تأخير."
       },
       {
         "numeral": "III",
-        "title": "Human first. AI amplified.",
-        "body": "We got this early. AI doesn't replace the creative — it accelerates the builder. VORVN is built by humans, for humans, with intelligence as the sharpest tool."
+        "title": "الإنسان أولاً، الذكاء الاصطناعي مضاعف.",
+        "body": "أدركنا ذلك مبكراً. الذكاء الاصطناعي لا يستبدل المبدع — بل يُسرّع البنّاء. VORVN يُبنى من البشر، للبشر، والذكاء أحدّ أدواته."
       }
     ]
   },
   "founder": {
-    "label": "Founder",
-    "quote": "\"I believe the world belongs to those who design it, and that's exactly what we do.\n\nWe Design.\"",
+    "label": "المؤسّس",
+    "quote": "«أؤمن بأن العالم لمن يصمّمه، وهذا تماماً ما نفعله.\n\nنحن نصمّم.»",
     "name": "Mehdi Ayache Berberos",
-    "title": "CEO & Founder — VORVN Limited"
+    "title": "الرئيس التنفيذي والمؤسّس — VORVN Limited"
   },
   "investors": {
     "label": "المستثمرون",
-    "headline": "نحن لا نجمع رأس المال.\nنحن نختار الشركاء.",
-    "body": "VORVN شركة خاصة ومربحة. نعمل مع نوعين من الشركاء — مشغّلون يبنون معنا في بالي، ومستثمرون يشاركوننا بناء المشاريع من هونغ كونغ. ما تبقى، نقوم به وحدنا.",
+    "headline": "نحن لا نجمع رؤوس الأموال.\nنحن نختار الشركاء.",
+    "body": "VORVN شركة خاصة ومربحة. نعمل مع نوعَين من الشركاء — مشغّلين يبنون معنا في بالي، ومستثمرين يشاركوننا بناء المشاريع من هونغ كونغ. ما عدا ذلك نُنجزه وحدنا.",
     "schemaTitle": "طريقتان للعمل معنا",
     "incubatorBadge": "01 — حاضنة",
-    "incubatorTitle": "من التصميم إلى السوق",
+    "incubatorTitle": "Design-to-Market",
     "incubatorLocation": "بالي، إندونيسيا",
-    "incubatorDesc": "نأخذ العلامة من الفكرة إلى الرف داخل استوديو بالي. تصميم، إنتاج، توزيع — تحت سقف واحد.",
-    "ventureBadge": "02 — مشروع",
+    "incubatorDesc": "نأخذ العلامة من الفكرة إلى السوق داخل استوديونا في بالي. تصميم، إنتاج، توصيل — تحت سقف واحد.",
+    "ventureBadge": "02 — Venture",
     "ventureTitle": "بناء استراتيجي مشترك",
-    "ventureLocation": "هونغ كونغ · عالمي",
-    "ventureDesc": "نؤسس مشاريع مشتركة مع شركاء رأس المال. جدول ملكية مشترك، قناعة مشتركة، أفق طويل.",
-    "cta": "طلب تعارف",
-    "ctaSub": "بدعوة فقط · للجهات المؤهلة"
+    "ventureLocation": "هونغ كونغ · عالمياً",
+    "ventureDesc": "نُؤسّس مشاريع بالشراكة مع شركاء رأس مال. جدول ملكية مشترك، قناعة مشتركة، وأفق طويل الأمد.",
+    "cta": "طلب تعريف",
+    "ctaSub": "بدعوة فقط · للجهات المؤهَّلة"
   },
   "closing": {
-    "statement": "Creativity without process\n{chaos}\n\nProcess without creativity\n{lifeless}\n\nWe build both.",
-    "chaos": "is chaos.",
-    "lifeless": "is lifeless.",
-    "sub": "VORVN · VE VOLD™ · Est. 2023"
+    "statement": "الإبداع بلا منهج\n{chaos}\n\nالمنهج بلا إبداع\n{lifeless}\n\nنحن نبني الاثنين.",
+    "chaos": "فوضى.",
+    "lifeless": "بلا روح.",
+    "sub": "VORVN · VE VOLD™ · تأسست 2023"
   },
   "footer": {
-    "legal": "© 2025 VORVN LIMITED. All rights reserved.\nRegistered in Hong Kong, SAR.",
+    "legal": "© 2025 VORVN LIMITED. جميع الحقوق محفوظة.\nمسجَّلة في هونغ كونغ، SAR.",
     "instagram": "Instagram",
     "linkedin": "LinkedIn",
     "careers": "وظائف",
@@ -197,58 +197,58 @@
   "notFound": {
     "label": "إشارة مفقودة",
     "signal": "● خارج الشبكة",
-    "headline": "هذه الصفحة غير موجودة ضمن مجموعتنا القابضة.",
-    "body": "المسار الذي اتّبعته لا يطابق أي علامة تجارية أو كيان أو مستند تابع لـ VORVN. قد يكون قد نُقل — أو لم يكن موجوداً أصلاً.",
+    "headline": "هذه الصفحة غير موجودة في قابضتنا.",
+    "body": "المسار الذي اتّبعتَه لا يقابل أي علامة أو كيان أو مستند تابع لـ VORVN. ربما نُقل، أو لم يكن هنا أصلاً.",
     "attempted": "المسار المطلوب:",
     "cta": "العودة إلى VORVN",
     "footerLeft": "404 · غير موجود",
     "footerRight": "VORVN LIMITED · HK"
   },
   "contact": {
-    "label": "اتصل",
-    "headline": "تحدث إلينا.\nمباشرة.",
-    "body": "مقدمات للمستثمرين، تعاونات العلامات التجارية، الصحافة، الوظائف — اختر موضوعًا واكتب لنا رسالة حقيقية. نرد على ما يهم.",
+    "label": "تواصل",
+    "headline": "تحدّث إلينا.\nمباشرةً.",
+    "body": "تعريفات للمستثمرين، وتعاونات بين العلامات، وصحافة، ووظائف — اختر موضوعاً واكتب لنا رسالة حقيقية. نردّ على ما يستحقّ الردّ.",
     "offices": "المكاتب",
     "formLabel": "نموذج",
     "formHeadline": "إرسال رسالة",
     "directEmail": "مباشر",
     "submit": "إرسال الرسالة",
     "submitting": "جارٍ الإرسال…",
-    "privacy": "نرد خلال 48 ساعة. بدون نشرات إخبارية. بدون رسائل مزعجة.",
+    "privacy": "نردّ خلال 48 ساعة. لا نشرات بريدية، ولا رسائل مزعجة.",
     "fields": {
-      "topic": "حول ماذا؟",
+      "topic": "بشأن أي موضوع؟",
       "name": "الاسم الكامل",
       "email": "البريد الإلكتروني",
       "company": "الشركة / المشروع",
       "message": "رسالتك",
-      "messagePlaceholder": "أخبرنا بما تبنيه، ولماذا الآن، وما تحتاجه منا.",
-      "messageHint": "10 أحرف على الأقل",
-      "topicHelp": "اختر الموضوع الأنسب — ستصل رسالتك إلى الشخص المناسب.",
+      "messagePlaceholder": "أخبرنا بما تبنيه، ولماذا الآن، وما الذي تحتاجه منّا.",
+      "messageHint": "10 أحرف كحدّ أدنى",
+      "topicHelp": "اختر الأنسب — ستُوجَّه رسالتك إلى الشخص المناسب.",
       "namePlaceholder": "اسمك الكامل",
       "emailPlaceholder": "name@example.com",
       "companyPlaceholder": "اختياري — شركتك أو مشروعك"
     },
     "topics": {
       "investor": "مستثمر / شراكة",
-      "brand": "تعاون العلامة التجارية",
-      "press": "الصحافة والإعلام",
+      "brand": "تعاون بين علامتَين",
+      "press": "صحافة وإعلام",
       "careers": "وظائف / عام",
-      "other": "أخرى"
+      "other": "غير ذلك"
     },
     "errors": {
       "name": "يرجى إدخال اسمك الكامل (حرفان على الأقل)",
       "nameMax": "يجب أن يكون الاسم أقل من 100 حرف",
-      "email": "يرجى إدخال بريد إلكتروني صحيح",
-      "emailMax": "يجب أن يكون البريد أقل من 255 حرفًا",
+      "email": "يرجى إدخال بريد إلكتروني صالح",
+      "emailMax": "يجب أن يكون البريد الإلكتروني أقل من 255 حرفاً",
       "topic": "يرجى اختيار موضوع",
       "messageMin": "يجب أن تكون الرسالة 10 أحرف على الأقل",
       "messageMax": "يجب أن تكون الرسالة أقل من 2000 حرف"
     },
     "success": {
-      "tag": "تم الاستلام",
-      "title": "تم إرسال الرسالة.",
-      "body": "شكرًا للتواصل. نقرأ كل رسالة ونرد خلال 48 ساعة — عادة أسرع.",
-      "again": "إرسال أخرى →"
+      "tag": "تمّ الاستلام",
+      "title": "تمّ إرسال الرسالة.",
+      "body": "شكراً لتواصلك. نقرأ كل رسالة ونردّ خلال 48 ساعة — وعادةً أسرع.",
+      "again": "إرسال رسالة أخرى ←"
     },
     "phones": "الهواتف"
   }

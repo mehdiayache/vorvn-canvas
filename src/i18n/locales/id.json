@@ -1,213 +1,213 @@
 {
   "nav": {
-    "tag": "IP Holdings · Est. 2023",
-    "contact": "Contact",
-    "light": "Light",
-    "dark": "Dark",
+    "tag": "IP Holdings · Berdiri 2023",
+    "contact": "Kontak",
+    "light": "Terang",
+    "dark": "Gelap",
     "menu": "Menu"
   },
   "hero": {
-    "headline": "Autonomous & Independent\nIP & Brand Owners.",
-    "taglinePre": "We",
-    "taglinePost": "Digital-First Brands.",
+    "headline": "Pemilik IP & Merek\nyang Otonom & Independen.",
+    "taglinePre": "Kami",
+    "taglinePost": "merek yang lahir dari ranah digital.",
     "words": {
-      "build": "Build",
-      "design": "Design",
-      "own": "Own"
+      "build": "Membangun",
+      "design": "Merancang",
+      "own": "Memiliki"
     },
-    "basedIn": "Based in Hong Kong.\nOperating Worldwide.",
-    "scroll": "Scroll"
+    "basedIn": "Berbasis di Hong Kong.\nBeroperasi di seluruh dunia.",
+    "scroll": "Gulir"
   },
   "entity": {
-    "label": "The Entity",
-    "statement": "VORVN is not an agency.\nIt is the architecture\nbehind the brands.",
-    "detail": "Design is not decoration — it is the first decision. Every structure we build, every brand we deploy, starts from a single design question: does this create real value? VORVN is a private IP holdings company registered in Hong Kong, with participations across Southeast Asia, Northwest Africa, and Western consumer markets. We own, license, and deploy brand intellectual property across verticals — consumer goods, faith-driven gifting, modest fashion — without intermediaries, without compromise. Pure execution.",
-    "designNote": "Design · Strategy · Execution · No middlemen. No shortcuts."
+    "label": "Entitas",
+    "statement": "VORVN bukan agensi.\nIni adalah arsitektur\ndi balik merek-mereknya.",
+    "detail": "VORVN adalah perusahaan holding IP swasta yang terdaftar di Hong Kong. Kami memiliki dan mengoperasikan merek-merek di Asia Tenggara, Afrika Barat Laut, dan pasar konsumen Barat — perlengkapan dapur, modest fashion, kuliner. Setiap merek dirancang secara internal, diproduksi melalui studio kami di Bali, dan didistribusikan di bawah struktur kami sendiri. Tanpa klien agensi. Tanpa mitra lisensi.",
+    "designNote": "Desain · Strategi · Eksekusi · Tanpa perantara. Tanpa jalan pintas."
   },
   "presence": {
-    "label": "Presence",
+    "label": "Kehadiran",
     "locations": [
       {
-        "region": "Holding Entity",
+        "region": "Entitas Holding",
         "city": "Hong Kong",
         "entity": "VORVN LIMITED",
         "address": "RM4 16/F, Ho King Commercial Centre\n2–16 Fa Yuen Street, Mongkok\nKowloon, Hong Kong",
-        "badge": "Headquarters"
+        "badge": "Kantor Pusat"
       },
       {
-        "region": "Design Studio",
+        "region": "Studio Desain",
         "city": "Bali, Indonesia",
         "entity": "PT. VORVN GROUP INDONESIA",
         "address": "Jl. Seroja No.28, Tonja\nKec. Denpasar Utara, Bali 80235",
-        "badge": "Operations"
+        "badge": "Operasi"
       },
       {
-        "region": "Origin Market",
-        "city": "Morocco",
+        "region": "Pasar Asal",
+        "city": "Maroko",
         "entity": "PARTICIPATIONS",
-        "address": "Northwest Africa\nFrench-speaking market\nGulf export corridor",
-        "badge": "Expansion"
+        "address": "Afrika Barat Laut\nPasar berbahasa Prancis\nKoridor ekspor Teluk",
+        "badge": "Ekspansi"
       }
     ]
   },
   "portfolio": {
-    "label": "Portfolio",
-    "intro": "The brands and intellectual property we design, build, and own — deployed across consumer markets worldwide.",
-    "visitBrand": "Visit Brand →",
-    "inDevelopment": "In Development",
-    "downloadPresentation": "Download Presentation →",
-    "prev": "← Prev",
-    "next": "Next →",
+    "label": "Portofolio",
+    "intro": "Merek dan kekayaan intelektual yang kami rancang, bangun, dan miliki — diluncurkan ke pasar konsumen di seluruh dunia.",
+    "visitBrand": "Kunjungi Merek →",
+    "inDevelopment": "Dalam Pengembangan",
+    "downloadPresentation": "Unduh Presentasi →",
+    "prev": "← Sebelumnya",
+    "next": "Berikutnya →",
     "v2": {
-      "intro": "Six brands. One holding. Every IP designed, owned, and operated in-house — from Hong Kong, Bali, and Marrakech. No licenses. No partners on the cap table. Just brands we built to last.",
+      "intro": "Enam merek. Satu holding. Setiap IP dirancang, dimiliki, dan dioperasikan secara internal — dari Hong Kong, Bali, dan Marrakech. Tanpa lisensi. Tanpa mitra di cap table. Hanya merek yang kami bangun untuk bertahan lama.",
       "metaStrip": {
-        "brands": "{{count}} Brands",
-        "active": "{{count}} Active",
-        "dev": "{{count}} In Development",
-        "continents": "{{count}} Continents"
+        "brands": "{{count}} Merek",
+        "active": "{{count}} Aktif",
+        "dev": "{{count}} Dalam Pengembangan",
+        "continents": "{{count}} Benua"
       },
       "metricsLabels": {
         "status": "Status",
-        "markets": "Markets",
-        "since": "Since",
-        "timeline": "Target Launch"
+        "markets": "Pasar",
+        "since": "Sejak",
+        "timeline": "Target Peluncuran"
       },
-      "inDevelopmentSince": "In development — {{timeline}}",
+      "inDevelopmentSince": "Dalam pengembangan — {{timeline}}",
       "brands": [
         {
           "name": "Cook Warriors",
-          "pitch": "Premium kitchenware · Eggscalibur",
-          "statusLabel": "Active",
-          "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
+          "pitch": "Perlengkapan dapur premium · Eggscalibur",
+          "statusLabel": "Aktif",
+          "desc": "Merek perlengkapan dapur premium yang dibangun di sekitar Eggscalibur — wajan ikonik bergagang pedang. Dari konsep hingga pengiriman dari UEA ke rumah-rumah di AS, Cook Warriors adalah merek konsumen unggulan VORVN."
         },
         {
           "name": "Hearts Notes",
-          "pitch": "Faith-centred gifting for the Christian home",
-          "statusLabel": "Active",
-          "desc": "A Christian gifting brand delivering faith-centred products through Etsy and direct-to-consumer channels. Workbooks, digital kits, and heartfelt gifts designed for the Christian home."
+          "pitch": "Hadiah berbasis iman untuk rumah Kristen",
+          "statusLabel": "Aktif",
+          "desc": "Merek hadiah Kristen yang menghadirkan produk berbasis iman melalui Etsy dan kanal direct-to-consumer. Buku kerja, kit digital, dan hadiah penuh makna untuk rumah Kristen."
         },
         {
           "name": "MAQTOB",
-          "pitch": "Modest fashion · Balinese craftsmanship",
-          "statusLabel": "In Development",
-          "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
+          "pitch": "Modest fashion · Kerajinan tangan Bali",
+          "statusLabel": "Dalam Pengembangan",
+          "desc": "Mukena premium asal Indonesia untuk pasar Muslim Eropa, peluncuran perdana di Prancis. Modest fashion bertemu kerajinan tangan Bali — jembatan antara dua dunia."
         },
         {
           "name": "xVoyager",
-          "pitch": "An exploration-first brand for global nomads",
-          "statusLabel": "In Development",
-          "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
+          "pitch": "Merek eksplorasi untuk para nomaden global",
+          "statusLabel": "Dalam Pengembangan",
+          "desc": "Merek dengan semangat eksplorasi untuk para nomaden dan petualang global. Saat ini dalam pengembangan konsep di lab VORVN — dirancang untuk mereka yang bergerak tanpa alamat tetap."
         },
         {
           "name": "Warung Marrakech",
-          "pitch": "Where Morocco meets Bali · Spice & hospitality",
-          "statusLabel": "In Development",
-          "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
+          "pitch": "Maroko bertemu Bali · Rempah & keramahan",
+          "statusLabel": "Dalam Pengembangan",
+          "desc": "Konsep di persimpangan warisan Maroko dan keramahan khas Bali. Rempah, kehangatan, dan budaya — tempat dua benua bertemu di satu piring."
         },
         {
           "name": "Davi Properties",
-          "pitch": "Real estate · Indonesian archipelago",
-          "statusLabel": "In Development",
-          "desc": "A real estate venture in development, leveraging VORVN's Southeast Asia network and operational infrastructure across the Indonesian archipelago."
+          "pitch": "Properti · Kepulauan Indonesia",
+          "statusLabel": "Dalam Pengembangan",
+          "desc": "Usaha properti yang sedang dikembangkan, memanfaatkan jaringan VORVN di Asia Tenggara dan infrastruktur operasional di seluruh kepulauan Indonesia."
         }
       ]
     },
     "brands": [
       {
         "name": "Cook Warriors",
-        "sector": "Consumer Goods · USA / UAE",
-        "statusLabel": "Active",
-        "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
+        "sector": "Barang Konsumen · USA / UEA",
+        "statusLabel": "Aktif",
+        "desc": "Merek perlengkapan dapur premium yang dibangun di sekitar Eggscalibur — wajan ikonik bergagang pedang. Dari konsep hingga pengiriman dari UEA ke rumah-rumah di AS, Cook Warriors adalah merek konsumen unggulan VORVN."
       },
       {
         "name": "MAQTOB",
-        "sector": "Modest Fashion · EU / France",
-        "statusLabel": "In Development",
-        "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
+        "sector": "Modest Fashion · UE / Prancis",
+        "statusLabel": "Dalam Pengembangan",
+        "desc": "Mukena premium asal Indonesia untuk pasar Muslim Eropa, peluncuran perdana di Prancis. Modest fashion bertemu kerajinan tangan Bali — jembatan antara dua dunia."
       },
       {
         "name": "xVoyager",
-        "sector": "Exploration · Global",
-        "statusLabel": "In Development",
-        "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
+        "sector": "Eksplorasi · Global",
+        "statusLabel": "Dalam Pengembangan",
+        "desc": "Merek dengan semangat eksplorasi untuk para nomaden dan petualang global. Saat ini dalam pengembangan konsep di lab VORVN — dirancang untuk mereka yang bergerak tanpa alamat tetap."
       },
       {
         "name": "Warung Marrakech",
-        "sector": "Food & Beverage",
-        "statusLabel": "In Development",
-        "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
+        "sector": "Makanan & Minuman",
+        "statusLabel": "Dalam Pengembangan",
+        "desc": "Konsep di persimpangan warisan Maroko dan keramahan khas Bali. Rempah, kehangatan, dan budaya — tempat dua benua bertemu di satu piring."
       }
     ]
   },
   "principles": {
-    "label": "How We Operate",
+    "label": "Cara Kami Beroperasi",
     "items": [
       {
         "numeral": "I",
-        "title": "Own the IP. Always.",
-        "body": "No middlemen. No licensing dependency. Every brand we build, every asset we create — stays within the structure. Ownership is the non-negotiable premise."
+        "title": "Miliki IP-nya. Selalu.",
+        "body": "Tanpa perantara. Tanpa ketergantungan lisensi. Setiap merek yang kami bangun, setiap aset yang kami ciptakan — tetap berada di dalam struktur. Kepemilikan adalah premis yang tidak dapat ditawar."
       },
       {
         "numeral": "II",
-        "title": "Execute without friction.",
-        "body": "Ideas without systems are noise. We structure, build, and deploy with operational precision — from concept to market, without compromise or delay."
+        "title": "Eksekusi tanpa friksi.",
+        "body": "Ide tanpa sistem hanyalah kebisingan. Kami menyusun, membangun, dan meluncurkan dengan presisi operasional — dari konsep ke pasar, tanpa kompromi atau penundaan."
       },
       {
         "numeral": "III",
-        "title": "Human first. AI amplified.",
-        "body": "We got this early. AI doesn't replace the creative — it accelerates the builder. VORVN is built by humans, for humans, with intelligence as the sharpest tool."
+        "title": "Manusia dulu. AI sebagai pengganda.",
+        "body": "Kami menyadarinya lebih awal. AI tidak menggantikan kreator — ia mempercepat sang pembangun. VORVN dibangun oleh manusia, untuk manusia, dengan kecerdasan sebagai alat tertajam."
       }
     ]
   },
   "founder": {
-    "label": "Founder",
-    "quote": "\"I believe the world belongs to those who design it, and that's exactly what we do.\n\nWe Design.\"",
+    "label": "Pendiri",
+    "quote": "\"Saya percaya dunia adalah milik mereka yang merancangnya, dan itulah yang kami lakukan.\n\nKami merancang.\"",
     "name": "Mehdi Ayache Berberos",
-    "title": "CEO & Founder — VORVN Limited"
+    "title": "CEO & Pendiri — VORVN Limited"
   },
   "investors": {
     "label": "Investor",
     "headline": "Kami tidak menggalang dana.\nKami memilih mitra.",
-    "body": "VORVN adalah perusahaan privat dan menguntungkan. Kami bekerja dengan dua jenis mitra — operator yang membangun bersama kami di Bali, dan investor yang ikut membangun usaha dari Hong Kong. Sisanya, kami kerjakan sendiri.",
-    "schemaTitle": "Dua cara bekerja bersama kami",
+    "body": "VORVN dimiliki secara privat dan profitabel. Kami bekerja dengan dua jenis mitra — operator yang membangun bersama kami di Bali, dan investor yang turut membangun usaha dari Hong Kong. Selebihnya, kami kerjakan sendiri.",
+    "schemaTitle": "Dua cara untuk bekerja sama dengan kami",
     "incubatorBadge": "01 — Inkubator",
     "incubatorTitle": "Design-to-Market",
     "incubatorLocation": "Bali, Indonesia",
-    "incubatorDesc": "Kami membawa brand dari konsep ke pasar di studio Bali kami. Desain, produksi, fulfillment — dalam satu atap.",
+    "incubatorDesc": "Kami membawa sebuah merek dari konsep hingga ke pasar di studio kami di Bali. Desain, produksi, distribusi — di bawah satu atap.",
     "ventureBadge": "02 — Venture",
-    "ventureTitle": "Strategic Co-Build",
+    "ventureTitle": "Co-Build Strategis",
     "ventureLocation": "Hong Kong · Global",
-    "ventureDesc": "Kami mendirikan usaha bersama mitra kapital. Cap table bersama, keyakinan bersama, horizon panjang.",
+    "ventureDesc": "Kami turut mendirikan venture bersama mitra modal. Cap table bersama, keyakinan bersama, horizon panjang.",
     "cta": "Minta Perkenalan",
-    "ctaSub": "Berdasarkan undangan · Entitas berkualifikasi"
+    "ctaSub": "Berdasarkan undangan · Hanya entitas yang memenuhi syarat"
   },
   "closing": {
-    "statement": "Creativity without process\n{chaos}\n\nProcess without creativity\n{lifeless}\n\nWe build both.",
-    "chaos": "is chaos.",
-    "lifeless": "is lifeless.",
-    "sub": "VORVN · VE VOLD™ · Est. 2023"
+    "statement": "Kreativitas tanpa proses\n{chaos}\n\nProses tanpa kreativitas\n{lifeless}\n\nKami membangun keduanya.",
+    "chaos": "adalah kekacauan.",
+    "lifeless": "adalah tanpa nyawa.",
+    "sub": "VORVN · VE VOLD™ · Berdiri 2023"
   },
   "footer": {
-    "legal": "© 2025 VORVN LIMITED. All rights reserved.\nRegistered in Hong Kong, SAR.",
+    "legal": "© 2025 VORVN LIMITED. Hak cipta dilindungi.\nTerdaftar di Hong Kong, SAR.",
     "instagram": "Instagram",
     "linkedin": "LinkedIn",
-    "careers": "Karier",
+    "careers": "Karir",
     "geo": "HK · ID · MA"
   },
   "notFound": {
     "label": "Sinyal Hilang",
     "signal": "● Di luar jaringan",
-    "headline": "Halaman ini tidak ada dalam holding kami.",
-    "body": "Rute yang Anda ikuti tidak sesuai dengan merek, entitas, atau dokumen mana pun di bawah VORVN. Mungkin telah dipindahkan — atau memang tidak pernah ada.",
-    "attempted": "Rute yang dituju:",
+    "headline": "Halaman ini tidak ada di holding kami.",
+    "body": "Rute yang Anda ikuti tidak terhubung ke merek, entitas, atau dokumen mana pun di bawah VORVN. Mungkin telah dipindahkan — atau memang tidak pernah ada.",
+    "attempted": "Rute yang dicoba:",
     "cta": "Kembali ke VORVN",
     "footerLeft": "404 · Tidak Ditemukan",
     "footerRight": "VORVN LIMITED · HK"
   },
   "contact": {
     "label": "Kontak",
-    "headline": "Bicara langsung\ndengan kami.",
-    "body": "Pengantar investor, kolaborasi merek, pers, karier — pilih topik dan tulis pesan yang nyata. Kami menjawab yang penting.",
+    "headline": "Bicaralah dengan kami.\nLangsung.",
+    "body": "Perkenalan investor, kolaborasi merek, media, karir — pilih topik dan kirimkan pesan yang sebenarnya. Kami menjawab yang penting.",
     "offices": "Kantor",
     "formLabel": "Formulir",
     "formHeadline": "Kirim pesan",
@@ -221,9 +221,9 @@
       "email": "Email",
       "company": "Perusahaan / Proyek",
       "message": "Pesan Anda",
-      "messagePlaceholder": "Ceritakan apa yang Anda bangun, mengapa sekarang, dan apa yang Anda butuhkan dari kami.",
+      "messagePlaceholder": "Ceritakan apa yang sedang Anda bangun, mengapa sekarang, dan apa yang Anda butuhkan dari kami.",
       "messageHint": "Min. 10 karakter",
-      "topicHelp": "Pilih yang paling sesuai — pesan Anda akan diarahkan ke orang yang tepat.",
+      "topicHelp": "Pilih yang paling sesuai — pesan Anda akan diteruskan ke orang yang tepat.",
       "namePlaceholder": "Nama lengkap Anda",
       "emailPlaceholder": "nama@contoh.com",
       "companyPlaceholder": "Opsional — perusahaan atau proyek Anda"
@@ -231,24 +231,24 @@
     "topics": {
       "investor": "Investor / Kemitraan",
       "brand": "Kolaborasi merek",
-      "press": "Pers & Media",
-      "careers": "Karier / Umum",
+      "press": "Media & Pers",
+      "careers": "Karir / Umum",
       "other": "Lainnya"
     },
     "errors": {
-      "name": "Mohon masukkan nama lengkap (min. 2 karakter)",
+      "name": "Mohon masukkan nama lengkap Anda (min. 2 karakter)",
       "nameMax": "Nama harus kurang dari 100 karakter",
       "email": "Mohon masukkan alamat email yang valid",
       "emailMax": "Email harus kurang dari 255 karakter",
-      "topic": "Mohon pilih topik",
-      "messageMin": "Pesan minimal 10 karakter",
+      "topic": "Mohon pilih sebuah topik",
+      "messageMin": "Pesan harus minimal 10 karakter",
       "messageMax": "Pesan harus kurang dari 2000 karakter"
     },
     "success": {
       "tag": "Diterima",
       "title": "Pesan terkirim.",
-      "body": "Terima kasih telah menghubungi. Kami membaca setiap pesan dan membalas dalam 48 jam — biasanya lebih cepat.",
-      "again": "Kirim lagi →"
+      "body": "Terima kasih telah menghubungi kami. Kami membaca setiap pesan dan membalas dalam 48 jam — biasanya lebih cepat.",
+      "again": "Kirim pesan lain →"
     },
     "phones": "Telepon"
   }

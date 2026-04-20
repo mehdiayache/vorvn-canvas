@@ -1,194 +1,194 @@
 {
   "nav": {
-    "tag": "IP Holdings · Est. 2023",
-    "contact": "Contact",
-    "light": "Light",
-    "dark": "Dark",
-    "menu": "Menu"
+    "tag": "IP 控股 · 创立于 2023",
+    "contact": "联系",
+    "light": "浅色",
+    "dark": "深色",
+    "menu": "菜单"
   },
   "hero": {
-    "headline": "Autonomous & Independent\nIP & Brand Owners.",
-    "taglinePre": "We",
-    "taglinePost": "Digital-First Brands.",
+    "headline": "自主且独立的\nIP 与品牌持有者。",
+    "taglinePre": "我们",
+    "taglinePost": "数字优先的品牌。",
     "words": {
-      "build": "Build",
-      "design": "Design",
-      "own": "Own"
+      "build": "构建",
+      "design": "设计",
+      "own": "持有"
     },
-    "basedIn": "Based in Hong Kong.\nOperating Worldwide.",
-    "scroll": "Scroll"
+    "basedIn": "总部位于香港。\n业务遍及全球。",
+    "scroll": "滚动"
   },
   "entity": {
-    "label": "The Entity",
-    "statement": "VORVN is not an agency.\nIt is the architecture\nbehind the brands.",
-    "detail": "Design is not decoration — it is the first decision. Every structure we build, every brand we deploy, starts from a single design question: does this create real value? VORVN is a private IP holdings company registered in Hong Kong, with participations across Southeast Asia, Northwest Africa, and Western consumer markets. We own, license, and deploy brand intellectual property across verticals — consumer goods, faith-driven gifting, modest fashion — without intermediaries, without compromise. Pure execution.",
-    "designNote": "Design · Strategy · Execution · No middlemen. No shortcuts."
+    "label": "实体",
+    "statement": "VORVN 不是代理公司。\n它是品牌背后的\n架构本体。",
+    "detail": "VORVN 是一家在香港注册的私人 IP 控股公司。我们在东南亚、西北非及西方消费市场拥有并运营品牌——涵盖厨房用品、端庄时装与食品。每一个品牌均由内部设计、巴厘岛工作室生产，并在我们自己的体系下交付。没有代理客户，没有授权合作方。",
+    "designNote": "设计 · 战略 · 执行 · 无中间人，无捷径。"
   },
   "presence": {
-    "label": "Presence",
+    "label": "全球布局",
     "locations": [
       {
-        "region": "Holding Entity",
-        "city": "Hong Kong",
+        "region": "控股实体",
+        "city": "香港",
         "entity": "VORVN LIMITED",
         "address": "RM4 16/F, Ho King Commercial Centre\n2–16 Fa Yuen Street, Mongkok\nKowloon, Hong Kong",
-        "badge": "Headquarters"
+        "badge": "总部"
       },
       {
-        "region": "Design Studio",
-        "city": "Bali, Indonesia",
+        "region": "设计工作室",
+        "city": "印度尼西亚 巴厘岛",
         "entity": "PT. VORVN GROUP INDONESIA",
         "address": "Jl. Seroja No.28, Tonja\nKec. Denpasar Utara, Bali 80235",
-        "badge": "Operations"
+        "badge": "运营"
       },
       {
-        "region": "Origin Market",
-        "city": "Morocco",
+        "region": "起源市场",
+        "city": "摩洛哥",
         "entity": "PARTICIPATIONS",
-        "address": "Northwest Africa\nFrench-speaking market\nGulf export corridor",
-        "badge": "Expansion"
+        "address": "西北非\n法语市场\n海湾出口走廊",
+        "badge": "拓展"
       }
     ]
   },
   "portfolio": {
-    "label": "Portfolio",
-    "intro": "The brands and intellectual property we design, build, and own — deployed across consumer markets worldwide.",
-    "visitBrand": "Visit Brand →",
-    "inDevelopment": "In Development",
-    "downloadPresentation": "Download Presentation →",
-    "prev": "← Prev",
-    "next": "Next →",
+    "label": "品牌组合",
+    "intro": "由我们设计、构建并持有的品牌与知识产权——部署于全球各消费市场。",
+    "visitBrand": "访问品牌 →",
+    "inDevelopment": "开发中",
+    "downloadPresentation": "下载介绍 →",
+    "prev": "← 上一个",
+    "next": "下一个 →",
     "v2": {
-      "intro": "Six brands. One holding. Every IP designed, owned, and operated in-house — from Hong Kong, Bali, and Marrakech. No licenses. No partners on the cap table. Just brands we built to last.",
+      "intro": "六个品牌，一家控股。每一项 IP 均由内部设计、持有与运营——来自香港、巴厘岛与马拉喀什。没有授权，没有股权外部合伙人。只有为长远而建的品牌。",
       "metaStrip": {
-        "brands": "{{count}} Brands",
-        "active": "{{count}} Active",
-        "dev": "{{count}} In Development",
-        "continents": "{{count}} Continents"
+        "brands": "{{count}} 个品牌",
+        "active": "{{count}} 个运营中",
+        "dev": "{{count}} 个开发中",
+        "continents": "{{count}} 个大洲"
       },
       "metricsLabels": {
-        "status": "Status",
-        "markets": "Markets",
-        "since": "Since",
-        "timeline": "Target Launch"
+        "status": "状态",
+        "markets": "市场",
+        "since": "自",
+        "timeline": "目标上线"
       },
-      "inDevelopmentSince": "In development — {{timeline}}",
+      "inDevelopmentSince": "开发中 —— {{timeline}}",
       "brands": [
         {
           "name": "Cook Warriors",
-          "pitch": "Premium kitchenware · Eggscalibur",
-          "statusLabel": "Active",
-          "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
+          "pitch": "高端厨具 · Eggscalibur",
+          "statusLabel": "运营中",
+          "desc": "围绕 Eggscalibur——以剑柄为造型的标志性煎锅——打造的高端厨具品牌。从概念到阿联酋履约，再到美国家庭，Cook Warriors 是 VORVN 的旗舰消费品品牌。"
         },
         {
           "name": "Hearts Notes",
-          "pitch": "Faith-centred gifting for the Christian home",
-          "statusLabel": "Active",
-          "desc": "A Christian gifting brand delivering faith-centred products through Etsy and direct-to-consumer channels. Workbooks, digital kits, and heartfelt gifts designed for the Christian home."
+          "pitch": "为基督徒家庭打造的信仰礼品",
+          "statusLabel": "运营中",
+          "desc": "通过 Etsy 与直面消费者渠道交付以信仰为核心的产品。手册、数字套件与诚意礼品，专为基督徒家庭设计。"
         },
         {
           "name": "MAQTOB",
-          "pitch": "Modest fashion · Balinese craftsmanship",
-          "statusLabel": "In Development",
-          "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
+          "pitch": "端庄时装 · 巴厘岛工艺",
+          "statusLabel": "开发中",
+          "desc": "面向欧洲穆斯林市场的高端印尼祈祷服 mukena，首发法国。端庄时装与巴厘岛手工工艺相遇——连接两个世界的桥梁。"
         },
         {
           "name": "xVoyager",
-          "pitch": "An exploration-first brand for global nomads",
-          "statusLabel": "In Development",
-          "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
+          "pitch": "为全球游牧者打造的探索品牌",
+          "statusLabel": "开发中",
+          "desc": "面向全球游牧者与冒险家、以探索为核心的品牌。目前在 VORVN 内部实验室进行概念研发——为没有固定地址的人而设计。"
         },
         {
           "name": "Warung Marrakech",
-          "pitch": "Where Morocco meets Bali · Spice & hospitality",
-          "statusLabel": "In Development",
-          "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
+          "pitch": "摩洛哥与巴厘岛交汇 · 香料与款待",
+          "statusLabel": "开发中",
+          "desc": "一个介于摩洛哥传承与巴厘岛款待之间的概念。香料、温度与文化——两个大陆在同一盘菜中相遇。"
         },
         {
           "name": "Davi Properties",
-          "pitch": "Real estate · Indonesian archipelago",
-          "statusLabel": "In Development",
-          "desc": "A real estate venture in development, leveraging VORVN's Southeast Asia network and operational infrastructure across the Indonesian archipelago."
+          "pitch": "房地产 · 印尼群岛",
+          "statusLabel": "开发中",
+          "desc": "正在开发中的房地产业务，依托 VORVN 在东南亚的网络与遍及印尼群岛的运营基础设施。"
         }
       ]
     },
     "brands": [
       {
         "name": "Cook Warriors",
-        "sector": "Consumer Goods · USA / UAE",
-        "statusLabel": "Active",
-        "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
+        "sector": "消费品 · 美国 / 阿联酋",
+        "statusLabel": "运营中",
+        "desc": "围绕 Eggscalibur——以剑柄为造型的标志性煎锅——打造的高端厨具品牌。从概念到阿联酋履约，再到美国家庭，Cook Warriors 是 VORVN 的旗舰消费品品牌。"
       },
       {
         "name": "MAQTOB",
-        "sector": "Modest Fashion · EU / France",
-        "statusLabel": "In Development",
-        "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
+        "sector": "端庄时装 · 欧盟 / 法国",
+        "statusLabel": "开发中",
+        "desc": "面向欧洲穆斯林市场的高端印尼祈祷服 mukena，首发法国。端庄时装与巴厘岛手工工艺相遇——连接两个世界的桥梁。"
       },
       {
         "name": "xVoyager",
-        "sector": "Exploration · Global",
-        "statusLabel": "In Development",
-        "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
+        "sector": "探索 · 全球",
+        "statusLabel": "开发中",
+        "desc": "面向全球游牧者与冒险家、以探索为核心的品牌。目前在 VORVN 内部实验室进行概念研发——为没有固定地址的人而设计。"
       },
       {
         "name": "Warung Marrakech",
-        "sector": "Food & Beverage",
-        "statusLabel": "In Development",
-        "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
+        "sector": "餐饮",
+        "statusLabel": "开发中",
+        "desc": "一个介于摩洛哥传承与巴厘岛款待之间的概念。香料、温度与文化——两个大陆在同一盘菜中相遇。"
       }
     ]
   },
   "principles": {
-    "label": "How We Operate",
+    "label": "我们的运作方式",
     "items": [
       {
         "numeral": "I",
-        "title": "Own the IP. Always.",
-        "body": "No middlemen. No licensing dependency. Every brand we build, every asset we create — stays within the structure. Ownership is the non-negotiable premise."
+        "title": "始终持有 IP。",
+        "body": "无中间人，不依赖授权。我们构建的每一个品牌、创造的每一项资产——都留在体系之内。所有权是不可妥协的前提。"
       },
       {
         "numeral": "II",
-        "title": "Execute without friction.",
-        "body": "Ideas without systems are noise. We structure, build, and deploy with operational precision — from concept to market, without compromise or delay."
+        "title": "无摩擦执行。",
+        "body": "没有体系的想法只是噪音。我们以运营的精度进行结构化、构建与部署——从概念到市场，毫无妥协与延迟。"
       },
       {
         "numeral": "III",
-        "title": "Human first. AI amplified.",
-        "body": "We got this early. AI doesn't replace the creative — it accelerates the builder. VORVN is built by humans, for humans, with intelligence as the sharpest tool."
+        "title": "以人为本，AI 加速。",
+        "body": "我们很早就意识到这一点。AI 不取代创意——它加速建造者。VORVN 由人构建，为人而生，以智能为最锋利的工具。"
       }
     ]
   },
   "founder": {
-    "label": "Founder",
-    "quote": "\"I believe the world belongs to those who design it, and that's exactly what we do.\n\nWe Design.\"",
+    "label": "创始人",
+    "quote": "「我相信，世界属于那些设计它的人，而这正是我们所做的。\n\n我们设计。」",
     "name": "Mehdi Ayache Berberos",
-    "title": "CEO & Founder — VORVN Limited"
+    "title": "首席执行官与创始人 —— VORVN Limited"
   },
   "investors": {
-    "label": "投资者",
-    "headline": "我们不融资。\n我们选择合作伙伴。",
-    "body": "VORVN 是私营且盈利的。我们与两类伙伴合作——在巴厘岛与我们共建的运营者,以及从香港共同构建项目的投资者。其余的事,我们独立完成。",
-    "schemaTitle": "两种合作方式",
-    "incubatorBadge": "01 — 孵化器",
-    "incubatorTitle": "设计到市场",
-    "incubatorLocation": "印尼巴厘岛",
-    "incubatorDesc": "我们在巴厘岛工作室中将品牌从概念带到货架。设计、生产、履约——一站式完成。",
-    "ventureBadge": "02 — 风险投资",
+    "label": "投资人",
+    "headline": "我们不募资。\n我们选择伙伴。",
+    "body": "VORVN 是一家盈利的私人公司。我们与两类伙伴合作——在巴厘岛与我们一起建造的运营者，以及从香港共同打造企业的投资人。其余的事，我们独立完成。",
+    "schemaTitle": "与我们合作的两种方式",
+    "incubatorBadge": "01 —— 孵化器",
+    "incubatorTitle": "Design-to-Market",
+    "incubatorLocation": "印度尼西亚 巴厘岛",
+    "incubatorDesc": "我们在巴厘岛工作室将品牌从概念带到市场。设计、生产、履约——同在一个屋檐下。",
+    "ventureBadge": "02 —— Venture",
     "ventureTitle": "战略共建",
     "ventureLocation": "香港 · 全球",
-    "ventureDesc": "我们与资本伙伴共同创立项目。共享股权结构,共享信念,长期视野。",
+    "ventureDesc": "我们与资本伙伴共同创立 venture。共享股权结构，共享信念，长期视野。",
     "cta": "申请引荐",
-    "ctaSub": "仅限受邀 · 合格机构"
+    "ctaSub": "凭邀请 · 仅限合资格实体"
   },
   "closing": {
-    "statement": "Creativity without process\n{chaos}\n\nProcess without creativity\n{lifeless}\n\nWe build both.",
-    "chaos": "is chaos.",
-    "lifeless": "is lifeless.",
-    "sub": "VORVN · VE VOLD™ · Est. 2023"
+    "statement": "没有流程的创意\n{chaos}\n\n没有创意的流程\n{lifeless}\n\n两者我们都建造。",
+    "chaos": "是混乱。",
+    "lifeless": "是无生命的。",
+    "sub": "VORVN · VE VOLD™ · 创立于 2023"
   },
   "footer": {
-    "legal": "© 2025 VORVN LIMITED. All rights reserved.\nRegistered in Hong Kong, SAR.",
+    "legal": "© 2025 VORVN LIMITED 版权所有。\n注册于香港特别行政区。",
     "instagram": "Instagram",
     "linkedin": "LinkedIn",
     "careers": "招聘",
@@ -197,8 +197,8 @@
   "notFound": {
     "label": "信号丢失",
     "signal": "● 离线",
-    "headline": "此页面不存在于我们的控股范围内。",
-    "body": "您访问的路径未对应 VORVN 旗下任何品牌、实体或文件。它可能已被移动 — 或从未存在。",
+    "headline": "此页面在我们的控股内不存在。",
+    "body": "你访问的路径未对应 VORVN 旗下任何品牌、实体或文档。它可能已被移除——或从未存在。",
     "attempted": "请求路径：",
     "cta": "返回 VORVN",
     "footerLeft": "404 · 未找到",
@@ -206,48 +206,48 @@
   },
   "contact": {
     "label": "联系",
-    "headline": "直接\n与我们联系。",
-    "body": "投资人介绍、品牌合作、媒体、招聘 —— 选择一个主题，写一条真实的信息。我们会回复重要的来信。",
+    "headline": "直接\n与我们交谈。",
+    "body": "投资人引荐、品牌合作、媒体、招聘——选择一个主题，写下一条真实的信息。我们会回复值得回复的每一条。",
     "offices": "办公室",
     "formLabel": "表单",
-    "formHeadline": "发送消息",
-    "directEmail": "直接",
-    "submit": "发送",
+    "formHeadline": "发送信息",
+    "directEmail": "直接联系",
+    "submit": "发送信息",
     "submitting": "发送中…",
-    "privacy": "我们在48小时内回复。无邮件订阅。无垃圾邮件。",
+    "privacy": "我们在 48 小时内回复。无新闻订阅，无垃圾邮件。",
     "fields": {
       "topic": "关于什么？",
       "name": "全名",
-      "email": "邮箱",
+      "email": "电子邮箱",
       "company": "公司 / 项目",
-      "message": "您的消息",
-      "messagePlaceholder": "告诉我们您在构建什么，为什么是现在，以及您需要我们做什么。",
+      "message": "你的信息",
+      "messagePlaceholder": "告诉我们你在做什么、为何是现在，以及你需要我们做什么。",
       "messageHint": "至少 10 个字符",
-      "topicHelp": "选择最匹配的一项 —— 您的消息将转给相应的负责人。",
-      "namePlaceholder": "您的全名",
+      "topicHelp": "选择最匹配的一项——你的信息将转给合适的人。",
+      "namePlaceholder": "你的全名",
       "emailPlaceholder": "name@example.com",
-      "companyPlaceholder": "可选 —— 您的公司或项目"
+      "companyPlaceholder": "可选 —— 你的公司或项目"
     },
     "topics": {
-      "investor": "投资 / 合作",
+      "investor": "投资人 / 合作",
       "brand": "品牌合作",
-      "press": "媒体",
+      "press": "媒体与新闻",
       "careers": "招聘 / 一般咨询",
       "other": "其他"
     },
     "errors": {
-      "name": "请输入您的全名（至少2个字符）",
-      "nameMax": "姓名必须少于100个字符",
-      "email": "请输入有效的邮箱地址",
-      "emailMax": "邮箱必须少于255个字符",
+      "name": "请输入你的全名（至少 2 个字符）",
+      "nameMax": "姓名长度需少于 100 个字符",
+      "email": "请输入有效的电子邮箱地址",
+      "emailMax": "电子邮箱长度需少于 255 个字符",
       "topic": "请选择一个主题",
-      "messageMin": "消息至少需要10个字符",
-      "messageMax": "消息必须少于2000个字符"
+      "messageMin": "信息长度至少 10 个字符",
+      "messageMax": "信息长度需少于 2000 个字符"
     },
     "success": {
       "tag": "已收到",
-      "title": "消息已发送。",
-      "body": "感谢您的联系。我们阅读每一条消息，并在48小时内回复 —— 通常更快。",
+      "title": "信息已发送。",
+      "body": "感谢你的来信。我们会阅读每一条信息，并在 48 小时内回复——通常更快。",
       "again": "再发一条 →"
     },
     "phones": "电话"
