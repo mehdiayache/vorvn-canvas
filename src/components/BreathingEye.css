@@ -1,0 +1,50 @@
+/* BreathingEye — scoped styles. Do not mix with other component CSS. */
+
+.eye {
+  --eye-size: 100%;
+  width: var(--eye-size);
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+}
+
+.eye svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  display: block;
+}
+
+.eye-lens,
+.eye-sclera {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+
+.eye-pupil {
+  fill: currentColor;
+}
+
+.eye-lid {
+  /* Matches the page background in any theme */
+  fill: hsl(var(--bg));
+  transform: scaleY(0);
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: eye-blink 6.5s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+@keyframes eye-blink {
+  0%, 93%, 100% { transform: scaleY(0); }
+  95%, 96%      { transform: scaleY(1); }
+  98%           { transform: scaleY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eye-lid { animation: none; }
+}
