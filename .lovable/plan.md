@@ -1,60 +1,85 @@
 
 
-## What you're asking for vs. what this project is
+## Assessment — what's actually wrong
 
-Your spec assumes Next.js / Express / Netlify Functions. **This project is none of those.** It's a pure client-side React + Vite SPA deployed to Netlify as static files (`netlify.toml` → `publish = "dist"`, no `functions` directory, no Next.js, no Express). There is **zero** backend running today.
+### Issue 1: Stories of Bible row is invisible — i18n key mismatch (the real bug)
 
-So "just add a Node endpoint" is not a one-line change — we have to introduce a backend. There are exactly two realistic ways to do that, and you've already declined one of them twice (Lovable Cloud / Supabase Edge Functions). Let me lay out the honest options so you can pick.
+`src/i18n/locales/en.json` accidentally contains **two** `portfolio.brands` arrays:
+- **Lines 76–113** — a `portfolio.v2.brands` array (5 entries with `pitch`) — used by nothing
+- **Lines 115–140** — `portfolio.brands` (the one the component reads) — only **4 entries**: Cook Warriors, MAQTOB, xVoyager, Warung Marrakech. **Stories of Bible was never added here.**
 
-## The 3 real options
+`VorvnPortfolioSection` does:
+```ts
+const brand = t(`portfolio.brands.${index}`, { returnObjects: true })
+```
 
-### Option A — Netlify Functions (matches your spec almost exactly)
-Add `netlify/functions/contact.ts` with Nodemailer. Netlify auto-detects it on deploy, endpoint becomes `/.netlify/functions/contact`. Env vars (`GMAIL_USER`, `GMAIL_APP_PASSWORD`, `CONTACT_TO_EMAIL`) are set in the Netlify dashboard by you.
+`BRANDS_DATA` is now: `[Cookwarriors, StoriesOfBible, MAQTOB, xVoyager, Warung]` (5 items)
+`portfolio.brands` i18n is: `[Cookwarriors, MAQTOB, xVoyager, Warung]` (4 items)
 
-- Pros: exactly your spec, Gmail SMTP + Nodemailer, no extra service, free tier covers this easily.
-- Cons: **only runs on the deployed Netlify site.** It will NOT work in the Lovable preview (the preview is not Netlify). You'd test it after pushing to your Netlify deploy.
-- Secret handling: you add the app password directly in Netlify dashboard. Lovable never sees it.
+→ At index 1, the row pulls **MAQTOB's text** but renders against Stories-of-Bible data
+→ At index 2, 3, 4, indexes are now shifted — every row below Cookwarriors shows the WRONG text or empty text (i18next returns the key string when out of bounds, which then gets cast to `{ name, sector, ...} = "portfolio.brands.4"`, accessing `.name` on a string returns `undefined` → blank row)
 
-### Option B — Lovable Cloud Edge Function (works in preview AND production)
-One Supabase Edge Function calling Gmail SMTP. You've declined this twice. The blocker isn't technical — it's that you don't want to enable Lovable Cloud. If you change your mind, this is the smoothest path because it works inside the Lovable preview too.
+This must be fixed in **all 6 locale files** (en, fr, es, zh, id, ar) — insert "Stories of Bible" entry at index 1 with `name`, `sector`, `statusLabel`, `desc` fields.
 
-### Option C — A browser-safe form service (no backend, no app password)
-Web3Forms / Formspree / Formspark. Drop-in `fetch` from the existing form, free tier, emails land in `hi@vorvn.com` and `m@mehdiayache.com`. Takes ~10 minutes. **Throws away your Gmail app password entirely** — which is actually a feature, since you already leaked it.
+### Issue 2: Contact form — submit button is invisible/broken-looking
 
-## My honest recommendation
+Line 402: `bg-foreground text-background font-sans ...`
+- `bg-foreground` = HSL(42 11% 91%) = near-white ✓
+- `text-background` ← **`background` token doesn't exist** in our CSS vars. We define `--bg`, not `--background` directly mapped to text. Tailwind's `text-background` resolves to `hsl(var(--background))` = `var(--bg)` = `0 0% 6.7%` (very dark) — actually this IS correct.
 
-Given (a) you've leaked the app password in chat, (b) you don't want Lovable Cloud, and (c) the project is static on Netlify — **Option A (Netlify Functions)** is the right fit for your spec. But understand: the form will appear non-functional inside the Lovable preview. Real testing happens on your live Netlify URL.
+Looking again at the real issue: the button works. The actual contact-page problems are:
 
-## Plan for Option A (if you confirm)
+**a. Success state is dull/lifeless** — when `status === 'sent'`, the success block is just plain text. No visual confirmation chip, no green dot, no border accent. User says "no feedback" — they likely don't realize the form succeeded because the layout barely changes.
 
-**Files added/changed**
-- `netlify/functions/contact.ts` — new. Nodemailer + Gmail SMTP, Zod validation, honeypot, simple in-memory rate limit (per cold-start instance — good enough for low traffic), HTML escaping, proper status codes, no input echoed back.
-- `netlify.toml` — add `[functions] node_bundler = "esbuild"` and a redirect `/api/contact → /.netlify/functions/contact` so the frontend can call a clean URL.
-- `package.json` — add `nodemailer`, `zod`, `@types/nodemailer` (dev).
-- `src/pages/Contact.tsx` — replace the placeholder `setTimeout` in `onSubmit` with a `fetch('/api/contact', { method: 'POST', body: JSON.stringify(values) })`. Add the hidden `website` honeypot input. Use existing success/error UI states.
-- `src/i18n/locales/{en,fr,es,zh,id,ar}.json` — one new key `contact.errors.send` for the inline failure message.
+**b. The "Received" tag (`contact.success.tag`) defined in i18n is NEVER rendered** in `Contact.tsx` — the success block at lines 246–267 only shows `success.title`, `success.body`, `success.again`. The tag/chip is lost.
 
-**Endpoint contract**
-- POST `/api/contact` with `{ name, email, company, topic, message, website }`
-- Validates: required fields, email regex, name ≤ 200, message ≤ 5000, honeypot empty
-- Rate limit: 5 req / 15 min per IP (in-memory, per-instance)
-- Sends via `smtp.gmail.com:465` as `"VORVN Contact" <hi@vorvn.com>` to `hi@vorvn.com, m@mehdiayache.com`, `Reply-To` = visitor
-- Returns `{ ok: true }` (200) or `{ error: "validation" | "rate_limited" | "server" }` (400/429/500) — never leaks SMTP details
+**c. The submitting state has no spinner / loading visual** — just text swap.
 
-**What you do**
-1. **Revoke the leaked app password in Google Workspace right now** and generate a new one.
-2. After I push the code, go to Netlify → Site settings → Environment variables and add:
-   - `GMAIL_USER=hi@vorvn.com`
-   - `GMAIL_APP_PASSWORD=<new 16-char password, no spaces>`
-   - `CONTACT_TO_EMAIL=hi@vorvn.com,m@mehdiayache.com`
-3. Trigger a Netlify deploy. Test on the live URL (not the Lovable preview).
+**d. `sendError` message uses `text-destructive` (red) which clashes** with the strict dark-minimal palette (no other red anywhere on the site).
 
-**What stays untouched**
-Design, fonts, layout, gutter, dark theme, i18n, routing, SEO, all section components.
+### Issue 3: Color tokens
 
-## Confirm one of these to proceed
+The codebase color tokens are correct. The real "color" complaint is about the contact form:
+- destructive red for errors clashes with the brand (no red elsewhere)
+- success state has no color feedback at all
 
-1. **Option A — Netlify Functions** (matches your spec, Gmail SMTP, only works on live Netlify deploy)
-2. **Option B — Lovable Cloud Edge Function** (works in preview too, but requires enabling Lovable Cloud)
-3. **Option C — Web3Forms / Formspree** (no backend, no app password, fastest)
+---
+
+## Plan — focused fixes only
+
+### Fix A: Restore portfolio i18n integrity (6 files)
+Insert Stories of Bible at **index 1** of `portfolio.brands` in each locale (`en`, `fr`, `es`, `id`, `zh`, `ar`):
+```json
+{
+  "name": "Stories of Bible",
+  "sector": "Christian Publishing · USA",
+  "statusLabel": "Exited",
+  "desc": "Incubated and co-built one of the fastest-growing Christian book brands in the US market. Led the full production side — design systems, team building, content production, and delivery infrastructure. Assembled a creative studio that produced illustrated Bible books at scale. The brand generated over $2M in revenue across the partnership period."
+}
+```
+Translate `sector`, `statusLabel`, `desc` for each locale.
+
+Also: **remove the orphaned `portfolio.v2.brands` array** (lines 76–113 in en.json) in all 6 locales — it's dead weight causing confusion.
+
+### Fix B: Contact form — proper submitted feedback
+Rework the success block in `src/pages/Contact.tsx` (lines 246–267):
+- Add a status chip at top: small mono "✓ RECEIVED" using `contact.success.tag` with a foreground-colored dot
+- Wrap the block in a subtle 1px foreground border with extra padding (mirrors the entity-section card feel)
+- Keep typography minimal, no bright colors — use brand-native foreground/mid
+
+### Fix C: Submitting state visual
+Add a tiny inline pulsing dot before "Sending…" text on the submit button (uses existing `animate-[pulse_...]` keyframe).
+
+### Fix D: Replace destructive red with brand-native error treatment
+Change `text-destructive` and `border-destructive` in Contact.tsx (4 occurrences) to `text-foreground` + `border-foreground` with a small leading mono "ERR ·" prefix on error text. Keeps the strict palette intact, errors still read clearly.
+
+### Files touched
+- `src/i18n/locales/en.json`, `fr.json`, `es.json`, `id.json`, `zh.json`, `ar.json` — insert SoB entry at index 1 of `portfolio.brands`, drop the orphan `v2.brands` block
+- `src/pages/Contact.tsx` — rebuild success block, add submit-state pulse dot, replace destructive colors with brand-native error styling
+
+### Out of scope (not changing)
+- BRANDS_DATA structure
+- VorvnPortfolioSection.tsx (already correct, just needs matching i18n)
+- Global color tokens — they're fine; only the form was using off-brand red
+- Any other section
 
