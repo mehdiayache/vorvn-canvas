@@ -72,6 +72,8 @@
     color: hsl(var(--foreground));
     font-family: var(--f-sans);
     font-weight: 400;
+    font-size: 17px;
+    line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
