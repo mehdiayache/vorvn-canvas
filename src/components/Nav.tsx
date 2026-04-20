@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ChevronRight, X, Globe } from 'lucide-react';
 import { LANGUAGES } from '@/i18n';
-import ThemeToggle from '@/components/ThemeToggle';
 
 const SECTIONS = [
   { id: 'entity', key: 'entity.label' },
@@ -34,16 +33,10 @@ export default function Nav() {
     setMobileOpen(false);
   };
 
-  const isDark = typeof document !== 'undefined'
-    ? document.documentElement.dataset.theme !== 'light'
-    : true;
+  const currentLang = LANGUAGES.find((l) => l.code === i18n.language);
 
-  const toggleTheme = () => {
-    const html = document.documentElement;
-    html.classList.add('switching');
-    html.dataset.theme = html.dataset.theme === 'light' ? 'dark' : 'light';
-    setTimeout(() => html.classList.remove('switching'), 420);
-  };
+  // (theme toggle removed — site is dark-only)
+  void 0;
 
   const currentLang = LANGUAGES.find((l) => l.code === i18n.language);
 
