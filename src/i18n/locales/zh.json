@@ -203,5 +203,48 @@
     "cta": "返回 VORVN",
     "footerLeft": "404 · 未找到",
     "footerRight": "VORVN LIMITED · HK"
+  },
+  "contact": {
+    "label": "联系",
+    "headline": "直接\n与我们联系。",
+    "body": "投资人介绍、品牌合作、媒体、招聘 —— 选择一个主题，写一条真实的信息。我们会回复重要的来信。",
+    "offices": "办公室",
+    "formLabel": "表单",
+    "formHeadline": "发送消息",
+    "directEmail": "直接",
+    "submit": "发送",
+    "submitting": "发送中…",
+    "privacy": "我们在48小时内回复。无邮件订阅。无垃圾邮件。",
+    "fields": {
+      "topic": "关于什么？",
+      "name": "全名",
+      "email": "邮箱",
+      "company": "公司 / 项目",
+      "message": "您的消息",
+      "messagePlaceholder": "告诉我们您在构建什么，为什么是现在，以及您需要我们做什么。",
+      "messageHint": "至少 10 个字符"
+    },
+    "topics": {
+      "investor": "投资 / 合作",
+      "brand": "品牌合作",
+      "press": "媒体",
+      "careers": "招聘 / 一般咨询",
+      "other": "其他"
+    },
+    "errors": {
+      "name": "请输入您的全名（至少2个字符）",
+      "nameMax": "姓名必须少于100个字符",
+      "email": "请输入有效的邮箱地址",
+      "emailMax": "邮箱必须少于255个字符",
+      "topic": "请选择一个主题",
+      "messageMin": "消息至少需要10个字符",
+      "messageMax": "消息必须少于2000个字符"
+    },
+    "success": {
+      "tag": "已收到",
+      "title": "消息已发送。",
+      "body": "感谢您的联系。我们阅读每一条消息，并在48小时内回复 —— 通常更快。",
+      "again": "再发一条 →"
+    }
   }
 }

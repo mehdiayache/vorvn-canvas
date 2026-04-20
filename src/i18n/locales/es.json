@@ -203,5 +203,48 @@
     "cta": "Volver a VORVN",
     "footerLeft": "404 · No Encontrado",
     "footerRight": "VORVN LIMITED · HK"
+  },
+  "contact": {
+    "label": "Contacto",
+    "headline": "Habla con nosotros.\nDirectamente.",
+    "body": "Introducciones a inversores, colaboraciones de marca, prensa, carreras — elige un tema y escríbenos un mensaje real. Respondemos a los que importan.",
+    "offices": "Oficinas",
+    "formLabel": "Formulario",
+    "formHeadline": "Enviar un mensaje",
+    "directEmail": "Directo",
+    "submit": "Enviar mensaje",
+    "submitting": "Enviando…",
+    "privacy": "Respondemos en 48h. Sin newsletter. Sin spam.",
+    "fields": {
+      "topic": "¿Sobre qué?",
+      "name": "Nombre completo",
+      "email": "Correo",
+      "company": "Empresa / Proyecto",
+      "message": "Tu mensaje",
+      "messagePlaceholder": "Cuéntanos qué estás construyendo, por qué ahora y qué necesitas de nosotros.",
+      "messageHint": "Mín. 10 caracteres"
+    },
+    "topics": {
+      "investor": "Inversor / Asociación",
+      "brand": "Colaboración de marca",
+      "press": "Prensa y Medios",
+      "careers": "Carreras / General",
+      "other": "Otro"
+    },
+    "errors": {
+      "name": "Por favor ingresa tu nombre (mín. 2 caracteres)",
+      "nameMax": "El nombre debe tener menos de 100 caracteres",
+      "email": "Por favor ingresa un correo válido",
+      "emailMax": "El correo debe tener menos de 255 caracteres",
+      "topic": "Por favor selecciona un tema",
+      "messageMin": "El mensaje debe tener al menos 10 caracteres",
+      "messageMax": "El mensaje debe tener menos de 2000 caracteres"
+    },
+    "success": {
+      "tag": "Recibido",
+      "title": "Mensaje enviado.",
+      "body": "Gracias por contactarnos. Leemos cada mensaje y respondemos en 48 horas — normalmente antes.",
+      "again": "Enviar otro →"
+    }
   }
 }
