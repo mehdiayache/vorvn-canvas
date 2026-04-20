@@ -58,66 +58,18 @@
     "downloadPresentation": "Unduh Presentasi →",
     "prev": "← Sebelumnya",
     "next": "Berikutnya →",
-    "v2": {
-      "intro": "Enam merek. Satu holding. Setiap IP dirancang, dimiliki, dan dioperasikan secara internal — dari Hong Kong, Bali, dan Marrakech. Tanpa lisensi. Tanpa mitra di cap table. Hanya merek yang kami bangun untuk bertahan lama.",
-      "metaStrip": {
-        "brands": "{{count}} Merek",
-        "active": "{{count}} Aktif",
-        "dev": "{{count}} Dalam Pengembangan",
-        "continents": "{{count}} Benua"
-      },
-      "metricsLabels": {
-        "status": "Status",
-        "markets": "Pasar",
-        "since": "Sejak",
-        "timeline": "Target Peluncuran"
-      },
-      "inDevelopmentSince": "Dalam pengembangan — {{timeline}}",
-      "brands": [
-        {
-          "name": "Cook Warriors",
-          "pitch": "Perlengkapan dapur premium · Eggscalibur",
-          "statusLabel": "Aktif",
-          "desc": "Merek perlengkapan dapur premium yang dibangun di sekitar Eggscalibur — wajan ikonik bergagang pedang. Dari konsep hingga pengiriman dari UEA ke rumah-rumah di AS, Cook Warriors adalah merek konsumen unggulan VORVN."
-        },
-        {
-          "name": "Stories of Bible",
-          "pitch": "Penerbitan Kristen · Pasar AS",
-          "statusLabel": "Exited",
-          "desc": "Menginkubasi dan turut membangun salah satu merek buku Kristen dengan pertumbuhan tercepat di pasar AS. Memimpin seluruh sisi produksi — design system, pembentukan tim, produksi konten, dan infrastruktur distribusi. Membentuk dan mengelola studio kreatif yang memproduksi buku Alkitab berilustrasi dalam skala besar, dijual terutama ke pasar Kristen di AS. Merek ini menghasilkan pendapatan lebih dari $2 juta selama periode kemitraan."
-        },
-        {
-          "name": "MAQTOB",
-          "pitch": "Modest fashion · Kerajinan tangan Bali",
-          "statusLabel": "Dalam Pengembangan",
-          "desc": "Mukena premium asal Indonesia untuk pasar Muslim Eropa, peluncuran perdana di Prancis. Modest fashion bertemu kerajinan tangan Bali — jembatan antara dua dunia."
-        },
-        {
-          "name": "xVoyager",
-          "pitch": "Merek eksplorasi untuk para nomaden global",
-          "statusLabel": "Dalam Pengembangan",
-          "desc": "Merek dengan semangat eksplorasi untuk para nomaden dan petualang global. Saat ini dalam pengembangan konsep di lab VORVN — dirancang untuk mereka yang bergerak tanpa alamat tetap."
-        },
-        {
-          "name": "Warung Marrakech",
-          "pitch": "Maroko bertemu Bali · Rempah & keramahan",
-          "statusLabel": "Dalam Pengembangan",
-          "desc": "Konsep di persimpangan warisan Maroko dan keramahan khas Bali. Rempah, kehangatan, dan budaya — tempat dua benua bertemu di satu piring."
-        },
-        {
-          "name": "Davi Properties",
-          "pitch": "Properti · Kepulauan Indonesia",
-          "statusLabel": "Dalam Pengembangan",
-          "desc": "Usaha properti yang sedang dikembangkan, memanfaatkan jaringan VORVN di Asia Tenggara dan infrastruktur operasional di seluruh kepulauan Indonesia."
-        }
-      ]
-    },
     "brands": [
       {
         "name": "Cook Warriors",
         "sector": "Barang Konsumen · USA / UEA",
         "statusLabel": "Aktif",
         "desc": "Merek perlengkapan dapur premium yang dibangun di sekitar Eggscalibur — wajan ikonik bergagang pedang. Dari konsep hingga pengiriman dari UEA ke rumah-rumah di AS, Cook Warriors adalah merek konsumen unggulan VORVN."
+      },
+      {
+        "name": "Stories of Bible",
+        "sector": "Penerbitan Kristen · AS",
+        "statusLabel": "Exited",
+        "desc": "Menginkubasi dan turut membangun salah satu merek buku Kristen dengan pertumbuhan tercepat di pasar AS. Memimpin seluruh sisi produksi — design system, pembentukan tim, produksi konten, dan infrastruktur distribusi. Membentuk dan mengelola studio kreatif yang memproduksi buku Alkitab berilustrasi dalam skala besar, dijual terutama ke pasar Kristen di AS. Merek ini menghasilkan pendapatan lebih dari $2 juta selama periode kemitraan."
       },
       {
         "name": "MAQTOB",
