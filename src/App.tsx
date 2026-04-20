@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import LanguageRoute from "./components/LanguageRoute";
+import LanguageRedirect from "./components/LanguageRedirect";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -16,7 +17,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="/en" replace />} />
+          <Route path="/" element={<LanguageRedirect />} />
           <Route
             path="/:lang"
             element={
