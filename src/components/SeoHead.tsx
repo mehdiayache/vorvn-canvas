@@ -45,7 +45,7 @@ const SEO: Record<PageKey, Record<string, { title: string; desc: string }>> = {
     },
     es: {
       title: 'Contacto VORVN — Inversores, Colaboraciones y Prensa',
-      desc: 'Habla directamente con VORVN. Inversores, colaboraciones de marca, prensa y carreras — Hong Kong y Bali. Respondemos en 48 horas.",
+      desc: 'Habla directamente con VORVN. Inversores, colaboraciones de marca, prensa y carreras — Hong Kong y Bali. Respondemos en 48 horas.',
     },
     zh: {
       title: '联系 VORVN — 投资人、品牌合作、媒体与招聘',
