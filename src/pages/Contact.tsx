@@ -111,11 +111,12 @@ export default function Contact() {
         setSendError(t('contact.errors.send'));
         return;
       }
+      const receiptTime = new Date();
+      setSentAt(receiptTime);
       setStatus('sent');
-      setSentAt(new Date());
       setValues({ name: '', email: '', company: '', topic: '', message: '' });
       setWebsite('');
-      toast.success(t('contact.success.title'), {
+      toast(t('contact.success.title'), {
         description: t('contact.success.body'),
         duration: 6000,
       });
