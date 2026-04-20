@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import founderPhoto from '@/assets/founder-mehdi.png';
 
 export default function VorvnFounderSection() {
   const { t } = useTranslation();
@@ -38,10 +39,10 @@ export default function VorvnFounderSection() {
         {/* Circle photo */}
         <div className="w-[72px] h-[72px] rounded-full overflow-hidden border border-rule shrink-0">
           <img
-            src="https://vorvn.com/wp-content/uploads/2024/08/mehdi-ayache-berberos-morocco-designer-creative-director-morocco-maroc-designer-3-designer-bali.png"
+            src={founderPhoto}
             alt="Mehdi Ayache Berberos"
             loading="lazy"
-            className="w-full h-full object-cover object-[center_top] block grayscale contrast-[1.08] [html[data-theme='light']_&]:contrast-[1.04]"
+            className="w-full h-full object-cover object-[center_top] block"
           />
         </div>
 
