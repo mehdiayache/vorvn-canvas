@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
+import { ArrowRight } from 'lucide-react';
 import Nav from '@/components/Nav';
 import SeoHead from '@/components/SeoHead';
 import VorvnFooter from '@/components/sections/VorvnFooter';
@@ -11,16 +12,18 @@ type TopicKey = (typeof TOPIC_KEYS)[number];
 
 const OFFICES = [
   {
-    badge: 'Holding Entity',
+    region: 'Holding Entity',
     city: 'Hong Kong',
     entity: 'VORVN LIMITED',
     address: 'RM4 16/F, Ho King Commercial Centre\n2–16 Fa Yuen Street, Mongkok\nKowloon, Hong Kong',
+    badge: 'Headquarters',
   },
   {
-    badge: 'Incubator Studio',
+    region: 'Incubator Studio',
     city: 'Bali, Indonesia',
     entity: 'ADUH (LAGI) STUDIO',
     address: 'Jl. Seroja No.28, Tonja\nKec. Denpasar Utara, Bali 80235',
+    badge: 'Operations',
   },
 ];
 
@@ -98,247 +101,287 @@ export default function Contact() {
       <SeoHead />
       <Nav />
 
-      <main style={{ paddingTop: '120px' }}>
-        {/* Header */}
+      <main style={{ paddingTop: '88px' }}>
+        {/* HEADER — mirrors landing section system */}
         <section
-          className="border-b border-rule grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12"
-          style={{ padding: '40px var(--gutter) 64px' }}
+          className="border-t border-rule"
+          style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}
         >
-          <div className="lg:col-span-4">
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-mid">
-              {t('contact.label')}
-            </span>
-          </div>
-          <div className="lg:col-span-8">
-            <h1 className="font-sans font-medium text-[clamp(32px,4.6vw,56px)] leading-[1.05] tracking-[-0.015em] text-foreground whitespace-pre-line">
-              {t('contact.headline')}
-            </h1>
-            <p className="font-sans text-[18px] leading-[1.55] text-mid mt-6 max-w-[60ch]">
-              {t('contact.body')}
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20 gap-y-12">
+            <div className="reveal">
+              <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">
+                {t('contact.label')}
+              </span>
+            </div>
+            <div>
+              <p
+                className="font-sans font-medium text-foreground reveal d1 whitespace-pre-line"
+                style={{ fontSize: 'clamp(22px, 2.8vw, 44px)', lineHeight: 1.35 }}
+              >
+                {t('contact.headline')}
+              </p>
+              <p
+                className="mt-8 font-sans font-normal text-mid reveal d2 max-w-[640px]"
+                style={{ fontSize: 'clamp(15px, 1.15vw, 18px)', lineHeight: 1.7 }}
+              >
+                {t('contact.body')}
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Form + Offices */}
+        {/* OFFICES */}
         <section
-          className="border-b border-rule grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16"
-          style={{ padding: '64px var(--gutter)' }}
+          className="border-t border-rule"
+          style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}
         >
-          {/* Left: Offices */}
-          <aside className="lg:col-span-4 space-y-10">
-            <div>
-              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-mid">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20 gap-y-12">
+            <div className="reveal">
+              <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">
                 {t('contact.offices')}
               </span>
             </div>
-            {OFFICES.map((o) => (
-              <div key={o.entity} className="space-y-3">
-                <div className="font-mono text-[9px] tracking-[0.18em] uppercase text-dim">
-                  {o.badge}
-                </div>
-                <div className="font-sans font-semibold text-[18px] tracking-[-0.005em] text-foreground">
-                  {o.city}
-                </div>
-                <div className="font-mono text-[10px] tracking-[0.12em] uppercase text-mid">
-                  {o.entity}
-                </div>
-                <address className="not-italic font-sans text-[15px] leading-[1.6] text-foreground/80 whitespace-pre-line">
-                  {o.address}
-                </address>
-              </div>
-            ))}
-
-            {/* Phones — independent of offices */}
-            <div className="pt-6 border-t border-rule space-y-3">
-              <div className="font-mono text-[9px] tracking-[0.18em] uppercase text-dim mb-2">
-                {t('contact.phones')}
-              </div>
-              {PHONES.map((p) => (
-                <a
-                  key={p.value}
-                  href={p.href}
-                  className="block font-mono text-[13px] tracking-[0.04em] text-foreground hover:text-mid transition-colors duration-200"
-                >
-                  {p.value}
-                </a>
-              ))}
-            </div>
-
-            <div className="pt-6 border-t border-rule">
-              <div className="font-mono text-[9px] tracking-[0.18em] uppercase text-dim mb-2">
-                {t('contact.directEmail')}
-              </div>
-              <a
-                href="mailto:contact@vorvn.com"
-                className="font-mono text-[13px] tracking-[0.04em] text-foreground hover:text-mid transition-colors duration-200"
-              >
-                contact@vorvn.com
-              </a>
-            </div>
-          </aside>
-
-          {/* Right: Form */}
-          <div className="lg:col-span-8">
-            <div className="mb-8">
-              <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-mid">
-                {t('contact.formLabel')}
-              </span>
-              <h2 className="font-sans font-semibold text-[clamp(22px,2.4vw,30px)] leading-[1.15] tracking-[-0.01em] text-foreground mt-3">
-                {t('contact.formHeadline')}
-              </h2>
-            </div>
-
-            {status === 'sent' ? (
-              <div className="border border-rule p-10">
-                <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-mid mb-3">
-                  {t('contact.success.tag')}
-                </div>
-                <div className="font-sans font-semibold text-[24px] leading-[1.2] tracking-[-0.01em] text-foreground mb-4">
-                  {t('contact.success.title')}
-                </div>
-                <p className="font-sans text-[16px] leading-[1.55] text-mid max-w-[50ch]">
-                  {t('contact.success.body')}
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setStatus('idle')}
-                  className="mt-8 inline-block font-mono text-[11px] tracking-[0.16em] uppercase text-foreground border-b border-foreground pb-[3px] hover:text-mid hover:border-mid transition-colors duration-200 bg-transparent"
-                >
-                  {t('contact.success.again')}
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={onSubmit} noValidate className="space-y-8">
-                {/* Topic — clearly a required selection */}
-                <fieldset>
-                  <legend className="block font-sans text-[14px] font-medium text-foreground mb-1">
-                    {t('contact.fields.topic')} <span className="text-foreground">*</span>
-                  </legend>
-                  <p className="font-sans text-[13px] text-mid mb-4">
-                    {t('contact.fields.topicHelp')}
-                  </p>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2" role="radiogroup">
-                    {TOPIC_KEYS.map((key) => {
-                      const active = values.topic === key;
-                      return (
-                        <button
-                          key={key}
-                          type="button"
-                          role="radio"
-                          aria-checked={active}
-                          onClick={() => update('topic', key)}
-                          className={`flex items-center gap-3 text-left px-4 py-3 border font-sans text-[14px] tracking-[0.01em] transition-colors duration-200 ${
-                            active
-                              ? 'border-foreground text-foreground bg-foreground/5'
-                              : 'border-rule text-mid hover:text-foreground hover:border-foreground/40'
-                          }`}
-                        >
-                          <span
-                            aria-hidden
-                            className={`inline-block w-3 h-3 border ${
-                              active ? 'border-foreground bg-foreground' : 'border-mid'
-                            }`}
-                          />
-                          {t(`contact.topics.${key}`)}
-                        </button>
-                      );
-                    })}
-                  </div>
-                  {errors.topic && (
-                    <p className="font-sans text-[13px] text-destructive mt-3">
-                      {errors.topic}
-                    </p>
-                  )}
-                </fieldset>
-
-                {/* Name + Email */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <Field
-                    id="name"
-                    label={`${t('contact.fields.name')} *`}
-                    value={values.name}
-                    onChange={(v) => update('name', v)}
-                    error={errors.name}
-                    autoComplete="name"
-                    placeholder={t('contact.fields.namePlaceholder')}
-                  />
-                  <Field
-                    id="email"
-                    type="email"
-                    label={`${t('contact.fields.email')} *`}
-                    value={values.email}
-                    onChange={(v) => update('email', v)}
-                    error={errors.email}
-                    autoComplete="email"
-                    placeholder={t('contact.fields.emailPlaceholder')}
-                  />
-                </div>
-
-                {/* Company */}
-                <Field
-                  id="company"
-                  label={t('contact.fields.company')}
-                  value={values.company}
-                  onChange={(v) => update('company', v)}
-                  error={errors.company}
-                  autoComplete="organization"
-                  placeholder={t('contact.fields.companyPlaceholder')}
-                />
-
-                {/* Message */}
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block font-sans text-[14px] font-medium text-foreground mb-3"
-                  >
-                    {t('contact.fields.message')} <span className="text-foreground">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={6}
-                    value={values.message}
-                    onChange={(e) => update('message', e.target.value)}
-                    placeholder={t('contact.fields.messagePlaceholder')}
-                    className={`w-full bg-transparent border px-4 py-3 font-sans text-[16px] leading-[1.55] text-foreground placeholder:text-dim focus:outline-none transition-colors duration-200 ${
-                      errors.message
-                        ? 'border-destructive focus:border-destructive'
-                        : 'border-rule focus:border-foreground'
-                    }`}
-                  />
-                  <div className="flex justify-between items-center mt-2">
-                    {errors.message ? (
-                      <p className="font-mono text-[11px] tracking-[0.04em] text-destructive">
-                        {errors.message}
-                      </p>
-                    ) : (
-                      <span className="font-mono text-[10px] tracking-[0.1em] uppercase text-dim">
-                        {t('contact.fields.messageHint')}
-                      </span>
-                    )}
-                    <span className="font-mono text-[10px] tracking-[0.1em] text-dim">
-                      {values.message.length}/2000
+            <div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+                {OFFICES.map((o, i) => (
+                  <div key={o.entity} className={`reveal d${i + 1}`}>
+                    <div className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid mb-4">
+                      {o.region}
+                    </div>
+                    <div
+                      className="font-sans font-medium tracking-[-0.02em] mb-[10px]"
+                      style={{ fontSize: 'clamp(18px, 1.9vw, 26px)' }}
+                    >
+                      {o.city}
+                    </div>
+                    <div className="font-mono text-[9px] tracking-[0.1em] text-mid mb-[18px]">
+                      {o.entity}
+                    </div>
+                    <address className="not-italic font-sans text-[13px] font-normal leading-[1.78] text-mid">
+                      {o.address.split('\n').map((line, j) => (
+                        <span key={j}>
+                          {line}
+                          <br />
+                        </span>
+                      ))}
+                    </address>
+                    <span className="inline-block mt-6 font-mono text-[8px] tracking-[0.16em] uppercase text-mid border border-rule py-[5px] px-[11px]">
+                      {o.badge}
                     </span>
                   </div>
-                </div>
+                ))}
+              </div>
 
-                {/* Submit */}
-                <div className="flex flex-col sm:flex-row sm:items-center gap-6 pt-4 border-t border-rule">
-                  <button
-                    type="submit"
-                    disabled={status === 'submitting'}
-                    className="font-mono text-[12px] tracking-[0.18em] uppercase text-bg bg-foreground px-8 py-4 hover:bg-foreground/90 transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
-                    style={{ color: 'hsl(var(--bg))' }}
-                  >
-                    {status === 'submitting'
-                      ? t('contact.submitting')
-                      : t('contact.submit')}
-                  </button>
-                  <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-dim">
-                    {t('contact.privacy')}
-                  </p>
+              {/* Phones + Email */}
+              <div className="mt-16 pt-10 border-t border-rule grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 reveal d3">
+                <div>
+                  <div className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid mb-4">
+                    {t('contact.phones')}
+                  </div>
+                  <div className="space-y-2">
+                    {PHONES.map((p) => (
+                      <a
+                        key={p.value}
+                        href={p.href}
+                        className="block font-sans text-[18px] font-medium text-foreground hover:text-mid transition-colors duration-200"
+                      >
+                        {p.value}
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </form>
-            )}
+                <div>
+                  <div className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid mb-4">
+                    {t('contact.directEmail')}
+                  </div>
+                  <a
+                    href="mailto:contact@vorvn.com"
+                    className="font-sans text-[18px] font-medium text-foreground hover:text-mid transition-colors duration-200"
+                  >
+                    contact@vorvn.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FORM */}
+        <section
+          className="border-t border-rule"
+          style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20 gap-y-12">
+            <div className="reveal">
+              <span className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground">
+                {t('contact.formLabel')}
+              </span>
+            </div>
+            <div>
+              <p
+                className="font-sans font-medium text-foreground reveal d1"
+                style={{ fontSize: 'clamp(22px, 2.8vw, 44px)', lineHeight: 1.35 }}
+              >
+                {t('contact.formHeadline')}
+              </p>
+
+              {status === 'sent' ? (
+                <div className="mt-12 border-t border-rule pt-10 reveal d2">
+                  <p
+                    className="font-sans font-medium text-foreground"
+                    style={{ fontSize: 'clamp(20px, 2vw, 28px)', lineHeight: 1.35 }}
+                  >
+                    {t('contact.success.title')}
+                  </p>
+                  <p
+                    className="mt-5 font-sans font-normal text-mid max-w-[560px]"
+                    style={{ fontSize: 'clamp(15px, 1.15vw, 18px)', lineHeight: 1.7 }}
+                  >
+                    {t('contact.success.body')}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setStatus('idle')}
+                    className="mt-8 font-sans text-[15px] font-medium text-foreground border-b border-foreground pb-[3px] hover:text-mid hover:border-mid transition-colors duration-200 bg-transparent"
+                  >
+                    {t('contact.success.again')}
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={onSubmit} noValidate className="mt-12 space-y-10 reveal d2">
+                  {/* Topic */}
+                  <fieldset>
+                    <legend className="font-sans text-[15px] font-medium text-foreground">
+                      {t('contact.fields.topic')} <span className="text-foreground">*</span>
+                    </legend>
+                    <p
+                      className="font-sans font-normal text-mid mt-2 mb-5"
+                      style={{ fontSize: '15px', lineHeight: 1.6 }}
+                    >
+                      {t('contact.fields.topicHelp')}
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2" role="radiogroup">
+                      {TOPIC_KEYS.map((key) => {
+                        const active = values.topic === key;
+                        return (
+                          <button
+                            key={key}
+                            type="button"
+                            role="radio"
+                            aria-checked={active}
+                            onClick={() => update('topic', key)}
+                            className={`flex items-center gap-3 text-left px-4 py-4 border font-sans text-[15px] transition-colors duration-200 ${
+                              active
+                                ? 'border-foreground text-foreground bg-foreground/5'
+                                : 'border-rule text-mid hover:text-foreground hover:border-foreground/40'
+                            }`}
+                          >
+                            <span
+                              aria-hidden
+                              className={`inline-block w-3 h-3 border shrink-0 ${
+                                active ? 'border-foreground bg-foreground' : 'border-mid'
+                              }`}
+                            />
+                            {t(`contact.topics.${key}`)}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    {errors.topic && (
+                      <p className="font-sans text-[14px] text-destructive mt-3">
+                        {errors.topic}
+                      </p>
+                    )}
+                  </fieldset>
+
+                  {/* Name + Email */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <Field
+                      id="name"
+                      label={`${t('contact.fields.name')} *`}
+                      value={values.name}
+                      onChange={(v) => update('name', v)}
+                      error={errors.name}
+                      autoComplete="name"
+                      placeholder={t('contact.fields.namePlaceholder')}
+                    />
+                    <Field
+                      id="email"
+                      type="email"
+                      label={`${t('contact.fields.email')} *`}
+                      value={values.email}
+                      onChange={(v) => update('email', v)}
+                      error={errors.email}
+                      autoComplete="email"
+                      placeholder={t('contact.fields.emailPlaceholder')}
+                    />
+                  </div>
+
+                  {/* Company */}
+                  <Field
+                    id="company"
+                    label={t('contact.fields.company')}
+                    value={values.company}
+                    onChange={(v) => update('company', v)}
+                    error={errors.company}
+                    autoComplete="organization"
+                    placeholder={t('contact.fields.companyPlaceholder')}
+                  />
+
+                  {/* Message */}
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block font-sans text-[15px] font-medium text-foreground mb-3"
+                    >
+                      {t('contact.fields.message')} <span className="text-foreground">*</span>
+                    </label>
+                    <textarea
+                      id="message"
+                      rows={6}
+                      value={values.message}
+                      onChange={(e) => update('message', e.target.value)}
+                      placeholder={t('contact.fields.messagePlaceholder')}
+                      className={`w-full bg-transparent border px-4 py-3 font-sans text-[16px] leading-[1.6] text-foreground placeholder:text-dim focus:outline-none transition-colors duration-200 ${
+                        errors.message
+                          ? 'border-destructive focus:border-destructive'
+                          : 'border-rule focus:border-foreground'
+                      }`}
+                    />
+                    <div className="flex justify-between items-center mt-2">
+                      {errors.message ? (
+                        <p className="font-sans text-[14px] text-destructive">{errors.message}</p>
+                      ) : (
+                        <span className="font-sans text-[13px] text-mid">
+                          {t('contact.fields.messageHint')}
+                        </span>
+                      )}
+                      <span className="font-mono text-[11px] tracking-[0.06em] text-dim">
+                        {values.message.length}/2000
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Submit */}
+                  <div className="pt-8 border-t border-rule flex flex-col sm:flex-row sm:items-center gap-6">
+                    <button
+                      type="submit"
+                      disabled={status === 'submitting'}
+                      className="inline-flex items-center gap-3 bg-foreground text-background font-sans text-[15px] font-medium px-7 py-4 hover:opacity-90 transition-opacity duration-200 group disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      {status === 'submitting'
+                        ? t('contact.submitting')
+                        : t('contact.submit')}
+                      <ArrowRight
+                        size={16}
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    </button>
+                    <p className="font-sans text-[13px] text-dim">{t('contact.privacy')}</p>
+                  </div>
+                </form>
+              )}
+            </div>
           </div>
         </section>
       </main>
@@ -371,7 +414,7 @@ function Field({
     <div>
       <label
         htmlFor={id}
-        className="block font-sans text-[14px] font-medium text-foreground mb-3"
+        className="block font-sans text-[15px] font-medium text-foreground mb-3"
       >
         {label}
       </label>
@@ -388,9 +431,7 @@ function Field({
             : 'border-rule focus:border-foreground'
         }`}
       />
-      {error && (
-        <p className="font-mono text-[11px] tracking-[0.04em] text-destructive mt-2">{error}</p>
-      )}
+      {error && <p className="font-sans text-[14px] text-destructive mt-2">{error}</p>}
     </div>
   );
 }
