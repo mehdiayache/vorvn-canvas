@@ -98,7 +98,7 @@ export default function Contact() {
 
   return (
     <div ref={scrollRef} className="min-h-screen bg-[hsl(var(--bg))]">
-      <SeoHead />
+      <SeoHead page="contact" pathSuffix="/contact" />
       <Nav />
 
       <main style={{ paddingTop: '88px' }}>

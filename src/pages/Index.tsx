@@ -16,7 +16,7 @@ export default function Index() {
 
   return (
     <div ref={scrollRef}>
-      <SeoHead />
+      <SeoHead page="home" pathSuffix="" />
       <Nav />
       <VorvnHero />
       <VorvnFounderSection />
