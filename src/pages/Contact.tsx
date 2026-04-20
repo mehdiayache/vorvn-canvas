@@ -136,7 +136,7 @@ export default function Contact() {
                 <div className="font-mono text-[9px] tracking-[0.18em] uppercase text-dim">
                   {o.badge}
                 </div>
-                <div className="font-brand text-[22px] tracking-[0.02em] text-foreground uppercase">
+                <div className="font-sans font-semibold text-[18px] tracking-[-0.005em] text-foreground">
                   {o.city}
                 </div>
                 <div className="font-mono text-[10px] tracking-[0.12em] uppercase text-mid">
@@ -145,16 +145,26 @@ export default function Contact() {
                 <address className="not-italic font-sans text-[15px] leading-[1.6] text-foreground/80 whitespace-pre-line">
                   {o.address}
                 </address>
-                <a
-                  href={o.phoneHref}
-                  className="inline-block font-mono text-[12px] tracking-[0.06em] text-foreground hover:text-mid transition-colors duration-200 border-b border-rule pb-[2px]"
-                >
-                  {o.phone}
-                </a>
               </div>
             ))}
 
-            <div className="pt-4 border-t border-rule">
+            {/* Phones — independent of offices */}
+            <div className="pt-6 border-t border-rule space-y-3">
+              <div className="font-mono text-[9px] tracking-[0.18em] uppercase text-dim mb-2">
+                {t('contact.phones')}
+              </div>
+              {PHONES.map((p) => (
+                <a
+                  key={p.value}
+                  href={p.href}
+                  className="block font-mono text-[13px] tracking-[0.04em] text-foreground hover:text-mid transition-colors duration-200"
+                >
+                  {p.value}
+                </a>
+              ))}
+            </div>
+
+            <div className="pt-6 border-t border-rule">
               <div className="font-mono text-[9px] tracking-[0.18em] uppercase text-dim mb-2">
                 {t('contact.directEmail')}
               </div>
@@ -173,7 +183,7 @@ export default function Contact() {
               <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-mid">
                 {t('contact.formLabel')}
               </span>
-              <h2 className="font-brand text-[clamp(28px,3.4vw,44px)] leading-[1.05] tracking-[-0.005em] text-foreground uppercase mt-3">
+              <h2 className="font-sans font-semibold text-[clamp(22px,2.4vw,30px)] leading-[1.15] tracking-[-0.01em] text-foreground mt-3">
                 {t('contact.formHeadline')}
               </h2>
             </div>
@@ -183,7 +193,7 @@ export default function Contact() {
                 <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-mid mb-3">
                   {t('contact.success.tag')}
                 </div>
-                <div className="font-brand text-[28px] leading-[1.05] tracking-[-0.005em] text-foreground uppercase mb-4">
+                <div className="font-sans font-semibold text-[24px] leading-[1.2] tracking-[-0.01em] text-foreground mb-4">
                   {t('contact.success.title')}
                 </div>
                 <p className="font-sans text-[16px] leading-[1.55] text-mid max-w-[50ch]">
@@ -199,37 +209,47 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={onSubmit} noValidate className="space-y-8">
-                {/* Topic */}
-                <div>
-                  <label className="block font-mono text-[10px] tracking-[0.2em] uppercase text-mid mb-4">
+                {/* Topic — clearly a required selection */}
+                <fieldset>
+                  <legend className="block font-sans text-[14px] font-medium text-foreground mb-1">
                     {t('contact.fields.topic')} <span className="text-foreground">*</span>
-                  </label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                  </legend>
+                  <p className="font-sans text-[13px] text-mid mb-4">
+                    {t('contact.fields.topicHelp')}
+                  </p>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2" role="radiogroup">
                     {TOPIC_KEYS.map((key) => {
                       const active = values.topic === key;
                       return (
                         <button
                           key={key}
                           type="button"
+                          role="radio"
+                          aria-checked={active}
                           onClick={() => update('topic', key)}
-                          className={`text-left px-4 py-3 border font-sans text-[13px] tracking-[0.01em] transition-colors duration-200 ${
+                          className={`flex items-center gap-3 text-left px-4 py-3 border font-sans text-[14px] tracking-[0.01em] transition-colors duration-200 ${
                             active
                               ? 'border-foreground text-foreground bg-foreground/5'
                               : 'border-rule text-mid hover:text-foreground hover:border-foreground/40'
                           }`}
-                          aria-pressed={active}
                         >
+                          <span
+                            aria-hidden
+                            className={`inline-block w-3 h-3 border ${
+                              active ? 'border-foreground bg-foreground' : 'border-mid'
+                            }`}
+                          />
                           {t(`contact.topics.${key}`)}
                         </button>
                       );
                     })}
                   </div>
                   {errors.topic && (
-                    <p className="font-mono text-[11px] tracking-[0.04em] text-destructive mt-3">
+                    <p className="font-sans text-[13px] text-destructive mt-3">
                       {errors.topic}
                     </p>
                   )}
-                </div>
+                </fieldset>
 
                 {/* Name + Email */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -240,7 +260,7 @@ export default function Contact() {
                     onChange={(v) => update('name', v)}
                     error={errors.name}
                     autoComplete="name"
-                    placeholder="Mehdi Ayache"
+                    placeholder={t('contact.fields.namePlaceholder')}
                   />
                   <Field
                     id="email"
@@ -250,7 +270,7 @@ export default function Contact() {
                     onChange={(v) => update('email', v)}
                     error={errors.email}
                     autoComplete="email"
-                    placeholder="you@company.com"
+                    placeholder={t('contact.fields.emailPlaceholder')}
                   />
                 </div>
 
