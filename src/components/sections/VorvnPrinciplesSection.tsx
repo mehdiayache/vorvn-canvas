@@ -20,8 +20,8 @@ export default function PrinciplesSection() {
               {item.numeral}
             </div>
             <div
-              className="font-sans font-semibold tracking-[-0.01em] mb-5 text-foreground"
-              style={{ fontSize: 'clamp(20px, 1.9vw, 26px)', lineHeight: 1.22 }}
+              className="font-sans font-medium tracking-[-0.02em] mb-[14px] text-foreground"
+              style={{ fontSize: 'clamp(18px, 1.9vw, 26px)' }}
             >
               {item.title}
             </div>
