@@ -19,11 +19,11 @@ export default function Index() {
       <SeoHead />
       <Nav />
       <VorvnHero />
+      <VorvnFounderSection />
       <VorvnEntitySection />
       <VorvnPresenceSection />
       <VorvnPortfolioSection />
       <VorvnPrinciplesSection />
-      <VorvnFounderSection />
       <VorvnInvestorsSection />
       <VorvnClosingSection />
       <VorvnFooter />

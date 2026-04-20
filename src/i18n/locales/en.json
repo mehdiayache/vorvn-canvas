@@ -21,7 +21,7 @@
   "entity": {
     "label": "The Entity",
     "statement": "VORVN is not an agency.\nIt is the architecture\nbehind the brands.",
-    "detail": "Design is not decoration — it is the first decision. Every structure we build, every brand we deploy, starts from a single design question: does this create real value? VORVN is a private IP holdings company registered in Hong Kong, with participations across Southeast Asia, Northwest Africa, and Western consumer markets. We own, license, and deploy brand intellectual property across verticals — consumer goods, faith-driven gifting, modest fashion — without intermediaries, without compromise. Pure execution.",
+    "detail": "VORVN is a private IP holdings company registered in Hong Kong. We own and operate brands across Southeast Asia, Northwest Africa, and Western consumer markets — kitchenware, modest fashion, food. Every brand is designed in-house, produced through our Bali studio, and shipped under our own structure. No agency clients. No licensing partners.",
     "designNote": "Design · Strategy · Execution · No middlemen. No shortcuts."
   },
   "presence": {
@@ -138,13 +138,16 @@
   "investors": {
     "label": "Investors",
     "headline": "We don't raise capital.\nWe choose partners.",
-    "body": "VORVN is privately held and fully operational. We are not looking for funding — we are looking for alignment. The rare kind. If you build, if you think in decades, if you move without noise — we should talk.",
-    "path1Badge": "Incubator",
-    "path1Title": "Design-to-Market · Bali",
-    "path1Location": "Bali, Indonesia",
-    "path2Badge": "Venture",
-    "path2Title": "Strategic Co-Build",
-    "path2Location": "Hong Kong · Global",
+    "body": "VORVN is privately held and profitable. We work with two types of partners — operators who build with us in Bali, and investors who co-build ventures from Hong Kong. Everything else, we do alone.",
+    "schemaTitle": "Two ways to work with us",
+    "incubatorBadge": "01 — Incubator",
+    "incubatorTitle": "Design-to-Market",
+    "incubatorLocation": "Bali, Indonesia",
+    "incubatorDesc": "We take a brand from concept to shelf inside our Bali studio. Design, production, fulfillment — under one roof.",
+    "ventureBadge": "02 — Venture",
+    "ventureTitle": "Strategic Co-Build",
+    "ventureLocation": "Hong Kong · Global",
+    "ventureDesc": "We co-found ventures with capital partners. Shared cap table, shared conviction, long horizon.",
     "cta": "Request Introduction",
     "ctaSub": "By invitation · Qualified entities only"
   },
