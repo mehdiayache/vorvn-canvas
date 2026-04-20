@@ -242,7 +242,8 @@
       "emailMax": "L'email doit faire moins de 255 caractères",
       "topic": "Veuillez sélectionner un sujet",
       "messageMin": "Le message doit faire au moins 10 caractères",
-      "messageMax": "Le message doit faire moins de 2000 caractères"
+      "messageMax": "Le message doit faire moins de 2000 caractères",
+      "send": "Impossible d'envoyer votre message. Réessayez ou écrivez-nous directement."
     },
     "success": {
       "tag": "Reçu",

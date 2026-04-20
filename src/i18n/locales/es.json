@@ -242,7 +242,8 @@
       "emailMax": "El email debe tener menos de 255 caracteres",
       "topic": "Por favor, selecciona un tema",
       "messageMin": "El mensaje debe tener al menos 10 caracteres",
-      "messageMax": "El mensaje debe tener menos de 2000 caracteres"
+      "messageMax": "El mensaje debe tener menos de 2000 caracteres",
+      "send": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbenos directamente."
     },
     "success": {
       "tag": "Recibido",
