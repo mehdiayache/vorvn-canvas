@@ -209,13 +209,13 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid mb-4">
-                    {t('contact.directEmail')}
+                    {t('contact.directLabel')}
                   </div>
                   <a
-                    href="mailto:contact@vorvn.com"
+                    href="#form"
                     className="font-sans text-[18px] font-medium text-foreground hover:text-mid transition-colors duration-200"
                   >
-                    contact@vorvn.com
+                    {t('contact.writeUs')}
                   </a>
                 </div>
               </div>
@@ -225,8 +225,9 @@ export default function Contact() {
 
         {/* FORM */}
         <section
+          id="form"
           className="border-t border-rule"
-          style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}
+          style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)', scrollMarginTop: '88px' }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20 gap-y-12">
             <div className="reveal">
