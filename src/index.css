@@ -4,12 +4,20 @@
 
 @layer base {
   :root {
-    --bg: 0 0% 6.7%;
-    --surface: 0 0% 9.8%;
-    --foreground: 42 11% 91%;
-    --mid: 0 0% 60%;
-    --dim: 0 0% 26.7%;
-    --rule: 42 11% 91% / 0.09;
+    /* ============================================================
+       VORVN — Light UI v2.0
+       Two colors only. No transparency. No grays. No rounded.
+       Background: #f1f0ec (cream)
+       Foreground: #000000 (pure black)
+       All "mid" / "dim" / "rule" tokens collapse to solid black —
+       hierarchy comes from size, weight, and spacing only.
+       ============================================================ */
+    --bg: 42 11% 93%;            /* #f1f0ec */
+    --surface: 42 11% 93%;       /* same as bg — no surface variation */
+    --foreground: 0 0% 0%;       /* #000000 */
+    --mid: 0 0% 0%;              /* collapsed to black */
+    --dim: 0 0% 0%;              /* collapsed to black */
+    --rule: 0 0% 0%;             /* solid black, no opacity */
 
     --background: var(--bg);
     --card: var(--surface);
@@ -24,8 +32,8 @@
     --muted-foreground: var(--mid);
     --accent: var(--surface);
     --accent-foreground: var(--foreground);
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 0% 0%;
+    --destructive-foreground: 42 11% 93%;
     --border: var(--rule);
     --input: var(--rule);
     --ring: var(--foreground);
@@ -69,14 +77,17 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Grain texture */
+  /* Grain texture — recalibrated for light bg.
+     Darker noise, lower opacity so it reads on cream as
+     subtle grain instead of fog. */
   body::after {
     content: '';
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 9999;
-    opacity: 0.022;
+    opacity: 0.045;
+    mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
@@ -84,7 +95,49 @@
   [dir="rtl"] {
     text-align: right;
   }
+
+  /* Kill rounded corners globally — design law. */
+  *,
+  *::before,
+  *::after {
+    border-radius: 0 !important;
+  }
 }
+
+/* ============================================================
+   .arrow-link — the ONLY CTA primitive on the site.
+   Replaces every button. Underline + arrow + nudge on hover.
+   ============================================================ */
+.arrow-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5em;
+  font-family: var(--f-sans);
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  line-height: 1.4;
+}
+.arrow-link::after {
+  content: '→';
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[dir="rtl"] .arrow-link::after { content: '←'; }
+.arrow-link:hover::after { transform: translateX(4px); }
+[dir="rtl"] .arrow-link:hover::after { transform: translateX(-4px); }
+.arrow-link > .arrow-link-label,
+.arrow-link {
+  border-bottom: 1px solid hsl(var(--foreground));
+  padding-bottom: 2px;
+}
+.arrow-link:disabled { opacity: 0.5; cursor: not-allowed; }
+.arrow-link:disabled:hover::after { transform: none; }
 
 /* Scroll reveal */
 .reveal {
@@ -130,24 +183,24 @@
 }
 
 /* ===== Legal pages prose ===== */
-/* Brand-native typography for long-form legal copy. No defaults from Tailwind
-   typography plugin so this stays minimal and matches the dark design system. */
+/* Brand-native typography for long-form legal copy.
+   Light UI: solid black on cream throughout. Hierarchy via size/weight. */
 .legal-prose {
   font-family: 'Inter Tight', system-ui, sans-serif;
   font-size: 15px;
   line-height: 1.75;
-  color: hsl(var(--mid));
+  color: hsl(var(--foreground));
 }
 .legal-prose h2 {
   font-family: 'Inter Tight', system-ui, sans-serif;
   font-size: clamp(20px, 2vw, 26px);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.3;
   color: hsl(var(--foreground));
   margin: 56px 0 16px;
   padding-top: 32px;
-  border-top: 1px solid hsl(var(--rule));
+  border-top: 1px solid hsl(var(--foreground));
   scroll-margin-top: 110px;
 }
 .legal-prose h2:first-child {
@@ -158,7 +211,7 @@
 .legal-prose h3 {
   font-family: 'Inter Tight', system-ui, sans-serif;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   color: hsl(var(--foreground));
   margin: 28px 0 10px;
   scroll-margin-top: 110px;
@@ -177,23 +230,21 @@
   margin-bottom: 8px;
 }
 .legal-prose li::marker {
-  color: hsl(var(--dim));
+  color: hsl(var(--foreground));
 }
 .legal-prose strong {
   color: hsl(var(--foreground));
-  font-weight: 500;
+  font-weight: 600;
 }
 .legal-prose a {
   color: hsl(var(--foreground));
-  border-bottom: 1px solid hsl(var(--rule));
-  transition: border-color 0.2s ease, color 0.2s ease;
+  border-bottom: 1px solid hsl(var(--foreground));
+  transition: opacity 0.2s ease;
 }
 .legal-prose a:hover {
-  color: hsl(var(--mid));
-  border-bottom-color: hsl(var(--mid));
+  opacity: 0.6;
 }
 .legal-prose em {
   font-style: italic;
   color: hsl(var(--foreground));
 }
-

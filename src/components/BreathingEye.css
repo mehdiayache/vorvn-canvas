@@ -1,4 +1,4 @@
-/* BreathingEye — scoped styles. Do not mix with other component CSS. */
+/* BreathingEye — Light UI. Black strokes on cream. */
 
 .eye {
   --eye-size: 100%;
@@ -7,7 +7,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: currentColor;
+  color: hsl(var(--foreground));
 }
 
 .eye svg {
@@ -30,7 +30,7 @@
 }
 
 .eye-lid {
-  /* Matches the page background in any theme */
+  /* Matches the cream page background so the blink reads cleanly. */
   fill: hsl(var(--bg));
   transform: scaleY(0);
   transform-origin: center;
