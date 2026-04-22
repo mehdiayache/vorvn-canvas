@@ -53,9 +53,9 @@ function VorvnGallery({ images }: { images: string[] }) {
       aria-roledescription="carousel"
       aria-label={t('portfolio.galleryLabel', 'Brand gallery') as string}
     >
-      {/* Square frame, full width on mobile, capped on desktop */}
-      <div className="relative w-full mx-auto" style={{ maxWidth: 540 }}>
-        <div className="relative w-full overflow-hidden r-card aspect-square">
+      {/* Frame — full width of the column, original aspect ratio */}
+      <div className="relative w-full">
+        <div className="relative w-full overflow-hidden r-card aspect-[4/3]">
           {/* Track: translate by current index. We render all slides; only neighbors are eagerly hinted. */}
           <div
             className="flex h-full w-full transition-transform duration-[520ms]"
@@ -80,29 +80,24 @@ function VorvnGallery({ images }: { images: string[] }) {
           </div>
         </div>
 
-        {/* Controls */}
-        <div className="mt-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              aria-label={t('portfolio.prev', 'Previous image') as string}
-              onClick={() => go(-1)}
-              className="r-pill inline-flex items-center justify-center w-10 h-10 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-            </button>
-            <button
-              type="button"
-              aria-label={t('portfolio.next', 'Next image') as string}
-              onClick={() => go(1)}
-              className="r-pill inline-flex items-center justify-center w-10 h-10 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
-            >
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-          <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground/70 tabular-nums">
-            {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-          </span>
+        {/* Controls — prev / next only, no counter */}
+        <div className="mt-4 flex items-center gap-2">
+          <button
+            type="button"
+            aria-label={t('portfolio.prev', 'Previous image') as string}
+            onClick={() => go(-1)}
+            className="r-pill inline-flex items-center justify-center w-10 h-10 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+          </button>
+          <button
+            type="button"
+            aria-label={t('portfolio.next', 'Next image') as string}
+            onClick={() => go(1)}
+            className="r-pill inline-flex items-center justify-center w-10 h-10 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+          >
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </div>
