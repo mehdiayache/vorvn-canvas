@@ -40,29 +40,29 @@ export default function CookieBanner({ enabled = false }: { enabled?: boolean })
       style={{ padding: '20px var(--gutter)' }}
     >
       <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
-        <p className="font-sans text-[13px] leading-[1.6] text-mid flex-1">
+        <p className="font-sans text-[13px] leading-[1.6] text-foreground flex-1">
           We use essential cookies to operate this site. We'd like your consent to load Meta
           Pixel for measuring marketing performance. See our{' '}
           <a
             href="/legal/privacy"
-            className="text-foreground border-b border-foreground hover:text-mid hover:border-mid transition-colors duration-200"
+            className="text-foreground border-b border-foreground hover:opacity-70 transition-opacity duration-200"
           >
             Privacy Policy
           </a>
           .
         </p>
-        <div className="flex gap-2 shrink-0">
+        <div className="flex gap-6 shrink-0">
           <button
             type="button"
             onClick={() => decide('denied')}
-            className="font-sans text-[13px] font-medium text-mid border border-rule px-4 py-2 hover:text-foreground hover:border-foreground/40 transition-colors duration-200 bg-transparent"
+            className="arrow-link text-[13px]"
           >
             Reject all
           </button>
           <button
             type="button"
             onClick={() => decide('granted')}
-            className="font-sans text-[13px] font-medium text-background bg-foreground px-4 py-2 hover:opacity-90 transition-opacity duration-200"
+            className="arrow-link text-[13px]"
           >
             Accept all
           </button>

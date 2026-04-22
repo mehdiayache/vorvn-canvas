@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
 
 export default function VorvnInvestorsSection() {
   const { t, i18n } = useTranslation();
@@ -100,16 +99,15 @@ export default function VorvnInvestorsSection() {
             <div className="border-b border-rule" />
           </div>
 
-          {/* CTA — visible, prominent */}
+          {/* CTA — arrow link, no button */}
           <div className="mt-16 reveal d4">
             <Link
               to={`/${lang}/contact`}
-              className="inline-flex items-center gap-3 bg-foreground text-background font-sans text-[15px] font-medium px-7 py-4 hover:opacity-90 transition-opacity duration-200 group"
+              className="arrow-link text-[17px] md:text-[20px]"
             >
               {t('investors.cta')}
-              <ArrowRight size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
-            <p className="mt-5 font-sans text-[13px] text-dim">
+            <p className="mt-5 font-sans text-[13px] text-foreground opacity-70">
               {t('investors.ctaSub')}
             </p>
           </div>

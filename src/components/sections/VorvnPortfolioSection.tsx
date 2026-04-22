@@ -107,15 +107,11 @@ function VorvnPortfolioItem({
         </h3>
         <span className="hidden lg:block font-sans text-[13px] font-normal text-mid">{brand.sector}</span>
         <span className="flex items-center gap-[6px]">
-          <span className={`inline-block w-[7px] h-[7px] rounded-full ${
-            isActive
-              ? 'bg-green-500 animate-[pulse_2s_ease-in-out_infinite]'
-              : isExited
-                ? 'bg-foreground'
-                : 'bg-mid/40'
+          <span className={`inline-block w-[7px] h-[7px] bg-foreground ${
+            isActive ? 'animate-[pulse_2s_ease-in-out_infinite]' : isExited ? '' : 'opacity-40'
           }`} />
-          <span className={`font-mono text-[8.5px] tracking-[0.12em] uppercase whitespace-nowrap ${
-            isActive || isExited ? 'text-foreground' : 'text-mid'
+          <span className={`font-mono text-[8.5px] tracking-[0.12em] uppercase whitespace-nowrap text-foreground ${
+            isActive || isExited ? '' : 'opacity-60'
           }`}>
             {brand.statusLabel}
           </span>
@@ -149,7 +145,7 @@ function VorvnPortfolioItem({
                 {data.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-block font-mono text-[9px] tracking-[0.1em] uppercase px-[10px] py-[4px] border border-rule text-mid rounded-full"
+                    className="inline-block font-mono text-[9px] tracking-[0.1em] uppercase px-[10px] py-[4px] border border-foreground text-foreground"
                   >
                     {tag}
                   </span>
