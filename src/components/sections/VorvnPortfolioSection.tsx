@@ -1,47 +1,109 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { BRANDS_DATA } from '@/data/brands';
+import LoadingImage from '@/components/LoadingImage';
 
+/**
+ * VorvnGallery — manual one-by-one infinite carousel.
+ * - No autoplay.
+ * - Prev / Next controls advance a single slide at a time.
+ * - Wraps around (infinite).
+ * - On-demand image loading with breathing-eye loader.
+ * - Square (1:1) frames, perfectly responsive on mobile.
+ */
 function VorvnGallery({ images }: { images: string[] }) {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
+  const [index, setIndex] = useState(0);
+  const total = images.length;
 
+  const go = useCallback(
+    (dir: 1 | -1) => {
+      if (total === 0) return;
+      setIndex((i) => (i + dir + total) % total);
+    },
+    [total],
+  );
+
+  // Keyboard support when the gallery has focus
+  const wrapRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const el = scrollRef.current;
+    const el = wrapRef.current;
     if (!el) return;
-    let animId: number;
-    let scrollPos = 0;
-    const speed = 0.5;
-
-    const step = () => {
-      scrollPos += speed;
-      if (scrollPos >= el.scrollWidth / 2) {
-        scrollPos = 0;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        go(-1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        go(1);
       }
-      el.scrollLeft = scrollPos;
-      animId = requestAnimationFrame(step);
     };
-    animId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(animId);
-  }, [images]);
+    el.addEventListener('keydown', onKey);
+    return () => el.removeEventListener('keydown', onKey);
+  }, [go]);
 
-  const loopImages = [...images, ...images];
+  if (total === 0) return null;
 
   return (
-    <div className="relative overflow-hidden">
-      <div
-        ref={scrollRef}
-        className="flex gap-3 overflow-hidden"
-        style={{ scrollBehavior: 'auto' }}
-      >
-        {loopImages.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt=""
-            loading="lazy"
-            className="r-card w-[300px] h-[300px] object-cover block shrink-0 grayscale-[18%]"
-          />
-        ))}
+    <div
+      ref={wrapRef}
+      tabIndex={0}
+      className="relative w-full focus:outline-none"
+      aria-roledescription="carousel"
+      aria-label={t('portfolio.galleryLabel', 'Brand gallery') as string}
+    >
+      {/* Square frame, full width on mobile, capped on desktop */}
+      <div className="relative w-full mx-auto" style={{ maxWidth: 540 }}>
+        <div className="relative w-full overflow-hidden r-card aspect-square">
+          {/* Track: translate by current index. We render all slides; only neighbors are eagerly hinted. */}
+          <div
+            className="flex h-full w-full transition-transform duration-[520ms]"
+            style={{
+              transform: `translateX(-${index * 100}%)`,
+              transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+            }}
+          >
+            {images.map((src, i) => {
+              // Only mount neighbors to keep DOM light, but always mount current.
+              const isNear = Math.abs(i - index) <= 1 || (index === 0 && i === total - 1) || (index === total - 1 && i === 0);
+              return (
+                <div key={i} className="relative shrink-0 w-full h-full">
+                  {isNear ? (
+                    <LoadingImage src={src} alt="" className="w-full h-full" loaderSize={48} />
+                  ) : (
+                    <span className="block w-full h-full bg-background" />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Controls */}
+        <div className="mt-4 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              aria-label={t('portfolio.prev', 'Previous image') as string}
+              onClick={() => go(-1)}
+              className="r-pill inline-flex items-center justify-center w-10 h-10 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button
+              type="button"
+              aria-label={t('portfolio.next', 'Next image') as string}
+              onClick={() => go(1)}
+              className="r-pill inline-flex items-center justify-center w-10 h-10 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+          <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground/70 tabular-nums">
+            {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+          </span>
+        </div>
       </div>
     </div>
   );
@@ -169,21 +231,19 @@ function VorvnPortfolioItem({
         aria-hidden={!isOpen}
       >
         <div className="border-t border-rule py-10 pb-14">
-          {/* Logo block — square ratio, larger, sharp (no rounded corners on the box) */}
+          {/* Logo — bare, no wrapper, no padding. Square 1:1 ratio. */}
           <div className="mb-8">
             {data.logo ? (
-              <div className="r-card inline-flex items-center justify-center w-[140px] h-[140px] bg-background border border-rule p-5 overflow-hidden">
-                <img
-                  src={data.logo}
-                  alt={brand.name}
-                  loading="lazy"
-                  className="max-w-full max-h-full object-contain block"
-                  style={{ borderRadius: 0 }}
-                />
-              </div>
+              <img
+                src={data.logo}
+                alt={brand.name}
+                loading="lazy"
+                decoding="async"
+                className="block w-[160px] h-[160px] object-contain"
+              />
             ) : (
-              <div className="r-card inline-flex items-center justify-center w-[140px] h-[140px] bg-background border border-rule">
-                <span className="font-sans text-[20px] font-bold tracking-[-0.01em] text-foreground text-center px-3">
+              <div className="inline-flex items-center justify-center w-[160px] h-[160px]">
+                <span className="font-sans text-[22px] font-bold tracking-[-0.01em] text-foreground text-center">
                   {brand.name}
                 </span>
               </div>
