@@ -70,9 +70,8 @@ export default function LegalLayout({
       <Nav />
 
       <main style={{ paddingTop: '88px' }}>
-        {/* HEADER */}
+        {/* HEADER — no top border; the fixed Nav's bottom border already provides the rule */}
         <section
-          className="border-t border-rule"
           style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20 gap-y-12">
