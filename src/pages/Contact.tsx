@@ -338,16 +338,18 @@ export default function Contact() {
                             role="radio"
                             aria-checked={active}
                             onClick={() => update('topic', key)}
-                            className={`flex items-center gap-3 text-left px-4 py-4 border border-foreground font-sans text-[15px] transition-opacity duration-200 ${
+                            className={`r-pill flex items-center gap-3 text-left px-5 py-3 border border-foreground font-sans text-[14px] transition-all duration-200 ${
                               active
-                                ? 'opacity-100'
-                                : 'opacity-60 hover:opacity-100'
+                                ? 'bg-foreground text-background'
+                                : 'bg-transparent text-foreground hover:bg-foreground hover:text-background'
                             }`}
                           >
                             <span
                               aria-hidden
-                              className={`inline-block w-3 h-3 border border-foreground shrink-0 ${
-                                active ? 'bg-foreground' : 'bg-transparent'
+                              className={`r-pill inline-block w-2.5 h-2.5 border shrink-0 ${
+                                active
+                                  ? 'border-background bg-background'
+                                  : 'border-foreground bg-transparent group-hover:border-background'
                               }`}
                             />
                             {t(`contact.topics.${key}`)}
