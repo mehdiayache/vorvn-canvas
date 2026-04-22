@@ -96,11 +96,16 @@
     text-align: right;
   }
 
-  /* Kill rounded corners globally — design law. */
-  *,
-  *::before,
-  *::after {
+  /* Kill rounded corners globally — design law.
+     Opt-out: add `.allow-round` to elements that intentionally need a circle
+     (e.g. the language switcher pill). */
+  *:not(.allow-round):not(.allow-round *),
+  *:not(.allow-round):not(.allow-round *)::before,
+  *:not(.allow-round):not(.allow-round *)::after {
     border-radius: 0 !important;
+  }
+  .allow-round {
+    border-radius: 9999px !important;
   }
 }
 
