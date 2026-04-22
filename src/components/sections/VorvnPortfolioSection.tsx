@@ -5,18 +5,21 @@ import { BRANDS_DATA } from '@/data/brands';
 import LoadingImage from '@/components/LoadingImage';
 
 /**
- * VorvnGallery — manual one-by-one infinite carousel.
+ * VorvnGallery — manual filmstrip carousel.
  * - No autoplay.
- * - Prev / Next controls advance a single slide at a time.
- * - Wraps around (infinite).
- * - On-demand image loading with breathing-eye loader.
- * - Square (1:1) frames, perfectly responsive on mobile.
+ * - Shows ~2.5 slides at once (peek of next image), snaps one image per click.
+ * - Infinite wrap. Prev / Next controls only. No counter.
+ * - On-demand loading with breathing-eye loader.
+ * - On mobile: ~1.25 slides visible (one full + peek).
  */
 function VorvnGallery({ images }: { images: string[] }) {
   const { t } = useTranslation();
   const [index, setIndex] = useState(0);
   const total = images.length;
 
+  // Slide width as % of the viewport container.
+  // Mobile: ~80% (1 full + peek). Desktop: ~40% (2 full + half peek).
+  // Implemented via CSS variables + Tailwind responsive utility on each slide.
   const go = useCallback(
     (dir: 1 | -1) => {
       if (total === 0) return;
@@ -25,25 +28,23 @@ function VorvnGallery({ images }: { images: string[] }) {
     [total],
   );
 
-  // Keyboard support when the gallery has focus
   const wrapRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        go(-1);
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        go(1);
-      }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
     };
     el.addEventListener('keydown', onKey);
     return () => el.removeEventListener('keydown', onKey);
   }, [go]);
 
   if (total === 0) return null;
+
+  // Slide width %: mobile 80% (one full + peek), desktop 40% (2.5 visible)
+  const slideBasisMobile = 80;
+  const slideBasisDesktop = 40;
 
   return (
     <div
@@ -53,57 +54,64 @@ function VorvnGallery({ images }: { images: string[] }) {
       aria-roledescription="carousel"
       aria-label={t('portfolio.galleryLabel', 'Brand gallery') as string}
     >
-      {/* Square frame, full width on mobile, capped on desktop */}
-      <div className="relative w-full mx-auto" style={{ maxWidth: 540 }}>
-        <div className="relative w-full overflow-hidden r-card aspect-square">
-          {/* Track: translate by current index. We render all slides; only neighbors are eagerly hinted. */}
-          <div
-            className="flex h-full w-full transition-transform duration-[520ms]"
-            style={{
-              transform: `translateX(-${index * 100}%)`,
-              transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-            }}
-          >
-            {images.map((src, i) => {
-              // Only mount neighbors to keep DOM light, but always mount current.
-              const isNear = Math.abs(i - index) <= 1 || (index === 0 && i === total - 1) || (index === total - 1 && i === 0);
-              return (
-                <div key={i} className="relative shrink-0 w-full h-full">
+      <div className="relative w-full overflow-hidden">
+        <div
+          className="flex transition-transform duration-[520ms]"
+          style={{
+            transform: `translateX(-${index * slideBasisMobile}%)`,
+            transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
+          // Apply desktop translate via inline media query workaround: use CSS var
+          ref={(el) => {
+            if (el) {
+              const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+              const basis = isDesktop ? slideBasisDesktop : slideBasisMobile;
+              el.style.transform = `translateX(-${index * basis}%)`;
+            }
+          }}
+        >
+          {images.map((src, i) => {
+            const isNear =
+              Math.abs(i - index) <= 2 ||
+              (index <= 1 && i >= total - 2) ||
+              (index >= total - 2 && i <= 1);
+            return (
+              <div
+                key={i}
+                className="relative shrink-0 aspect-square pr-3"
+                style={{ flexBasis: `${slideBasisMobile}%` }}
+              >
+                <div className="lg:!basis-[40%] w-full h-full" style={{ width: '100%', height: '100%' }}>
                   {isNear ? (
-                    <LoadingImage src={src} alt="" className="w-full h-full" loaderSize={48} />
+                    <LoadingImage src={src} alt="" className="w-full h-full" loaderSize={44} />
                   ) : (
                     <span className="block w-full h-full bg-background" />
                   )}
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
+      </div>
 
-        {/* Controls */}
-        <div className="mt-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              aria-label={t('portfolio.prev', 'Previous image') as string}
-              onClick={() => go(-1)}
-              className="r-pill inline-flex items-center justify-center w-10 h-10 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-            </button>
-            <button
-              type="button"
-              aria-label={t('portfolio.next', 'Next image') as string}
-              onClick={() => go(1)}
-              className="r-pill inline-flex items-center justify-center w-10 h-10 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
-            >
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-          <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground/70 tabular-nums">
-            {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-          </span>
-        </div>
+      {/* Controls — prev/next only, no counter */}
+      <div className="mt-4 flex items-center gap-2">
+        <button
+          type="button"
+          aria-label={t('portfolio.prev', 'Previous image') as string}
+          onClick={() => go(-1)}
+          className="r-pill inline-flex items-center justify-center w-10 h-10 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+        </button>
+        <button
+          type="button"
+          aria-label={t('portfolio.next', 'Next image') as string}
+          onClick={() => go(1)}
+          className="r-pill inline-flex items-center justify-center w-10 h-10 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+        >
+          <ArrowRight className="w-4 h-4" />
+        </button>
       </div>
     </div>
   );
