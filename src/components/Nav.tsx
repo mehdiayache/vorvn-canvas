@@ -65,7 +65,7 @@ export default function Nav() {
                 >
                   <span
                     aria-hidden
-                    className={`allow-round absolute inset-0 transition-colors duration-200 ${
+                    className={`r-pill absolute inset-0 transition-colors duration-200 ${
                       active ? 'bg-foreground' : 'bg-transparent group-hover:bg-foreground'
                     }`}
                   />

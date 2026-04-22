@@ -63,11 +63,11 @@ export default function VorvnInvestorsSection() {
 
                 {/* Visual flow */}
                 <div className="mt-8 flex items-center gap-3 flex-wrap">
-                  <span className="font-sans text-[13px] text-foreground border border-rule px-3 py-1.5">Design</span>
+                  <span className="r-pill font-sans text-[13px] text-foreground border border-rule px-4 py-1.5">Design</span>
                   <span className="text-dim">→</span>
-                  <span className="font-sans text-[13px] text-foreground border border-rule px-3 py-1.5">Build</span>
+                  <span className="r-pill font-sans text-[13px] text-foreground border border-rule px-4 py-1.5">Build</span>
                   <span className="text-dim">→</span>
-                  <span className="font-sans text-[13px] text-foreground border border-rule px-3 py-1.5">Ship</span>
+                  <span className="r-pill font-sans text-[13px] text-foreground border border-rule px-4 py-1.5">Ship</span>
                 </div>
               </div>
 
@@ -88,11 +88,11 @@ export default function VorvnInvestorsSection() {
 
                 {/* Visual flow */}
                 <div className="mt-8 flex items-center gap-3 flex-wrap">
-                  <span className="font-sans text-[13px] text-foreground border border-rule px-3 py-1.5">VORVN</span>
+                  <span className="r-pill font-sans text-[13px] text-foreground border border-rule px-4 py-1.5">VORVN</span>
                   <span className="text-dim">+</span>
-                  <span className="font-sans text-[13px] text-foreground border border-rule px-3 py-1.5">Partner</span>
+                  <span className="r-pill font-sans text-[13px] text-foreground border border-rule px-4 py-1.5">Partner</span>
                   <span className="text-dim">=</span>
-                  <span className="font-sans text-[13px] text-foreground border border-foreground px-3 py-1.5">Co-Built Venture</span>
+                  <span className="r-pill font-sans text-[13px] text-foreground border border-foreground bg-foreground text-background px-4 py-1.5">Co-Built Venture</span>
                 </div>
               </div>
             </div>

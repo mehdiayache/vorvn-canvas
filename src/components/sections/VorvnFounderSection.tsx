@@ -39,7 +39,7 @@ export default function VorvnFounderSection() {
 
           {/* Founder info */}
           <div className="mt-12 flex items-center gap-6 reveal d2">
-            <div className="w-[72px] h-[72px] rounded-full overflow-hidden border border-rule shrink-0">
+            <div className="r-pill w-[72px] h-[72px] overflow-hidden border border-foreground shrink-0">
               <img
                 src={founderPhoto}
                 alt="Mehdi Ayache Berberos"

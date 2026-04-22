@@ -193,7 +193,7 @@ export default function Contact() {
                         </span>
                       ))}
                     </address>
-                    <span className="inline-block mt-6 font-mono text-[8px] tracking-[0.16em] uppercase text-mid border border-rule py-[5px] px-[11px]">
+                    <span className="r-pill inline-block mt-6 font-mono text-[8px] tracking-[0.16em] uppercase text-mid border border-rule py-[5px] px-[11px]">
                       {o.badge}
                     </span>
                   </div>
@@ -256,14 +256,14 @@ export default function Contact() {
 
               {status === 'sent' ? (
                 <div
-                  className="mt-12 border border-foreground p-10 md:p-12 relative"
+                  className="r-card mt-12 border border-foreground p-10 md:p-12 relative"
                   style={{ animation: 'fadeUpIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both' }}
                   role="status"
                   aria-live="polite"
                 >
                   <div className="flex items-center gap-3 mb-8">
                     <span
-                      className="inline-block w-[8px] h-[8px] rounded-full bg-foreground"
+                      className="r-pill inline-block w-[8px] h-[8px] bg-foreground"
                       style={{ animation: 'dotPulse 2s ease-in-out infinite' }}
                     />
                     <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground">
@@ -338,16 +338,18 @@ export default function Contact() {
                             role="radio"
                             aria-checked={active}
                             onClick={() => update('topic', key)}
-                            className={`flex items-center gap-3 text-left px-4 py-4 border border-foreground font-sans text-[15px] transition-opacity duration-200 ${
+                            className={`r-pill flex items-center gap-3 text-left px-5 py-3 border border-foreground font-sans text-[14px] transition-all duration-200 ${
                               active
-                                ? 'opacity-100'
-                                : 'opacity-60 hover:opacity-100'
+                                ? 'bg-foreground text-background'
+                                : 'bg-transparent text-foreground hover:bg-foreground hover:text-background'
                             }`}
                           >
                             <span
                               aria-hidden
-                              className={`inline-block w-3 h-3 border border-foreground shrink-0 ${
-                                active ? 'bg-foreground' : 'bg-transparent'
+                              className={`r-pill inline-block w-2.5 h-2.5 border shrink-0 ${
+                                active
+                                  ? 'border-background bg-background'
+                                  : 'border-foreground bg-transparent group-hover:border-background'
                               }`}
                             />
                             {t(`contact.topics.${key}`)}
@@ -410,7 +412,7 @@ export default function Contact() {
                       value={values.message}
                       onChange={(e) => update('message', e.target.value)}
                       placeholder={t('contact.fields.messagePlaceholder')}
-                      className={`w-full bg-transparent border px-4 py-3 font-sans text-[16px] leading-[1.6] text-foreground placeholder:text-dim focus:outline-none transition-colors duration-200 ${
+                      className={`r-input w-full bg-transparent border px-5 py-4 font-sans text-[16px] leading-[1.6] text-foreground placeholder:text-foreground placeholder:opacity-40 focus:outline-none transition-colors duration-200 ${
                         errors.message
                           ? 'border-foreground focus:border-foreground'
                           : 'border-rule focus:border-foreground'
@@ -447,7 +449,7 @@ export default function Contact() {
                       {status === 'submitting' && (
                         <span
                           aria-hidden
-                          className="inline-block w-[8px] h-[8px] bg-foreground"
+                          className="r-pill inline-block w-[8px] h-[8px] bg-foreground"
                           style={{ animation: 'dotPulse 1.1s ease-in-out infinite' }}
                         />
                       )}
@@ -455,7 +457,7 @@ export default function Contact() {
                     <p className="font-sans text-[13px] text-foreground opacity-70">{t('contact.privacy')}</p>
                   </div>
                   {sendError && (
-                    <p className="font-mono text-[12px] tracking-[0.06em] text-foreground border border-foreground px-4 py-3" role="alert">
+                    <p className="r-card font-mono text-[12px] tracking-[0.06em] text-foreground border border-foreground px-5 py-4" role="alert">
                       <span className="text-mid">ERR ·</span> {sendError}
                     </p>
                   )}
@@ -505,7 +507,7 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         autoComplete={autoComplete}
         placeholder={placeholder}
-        className={`w-full bg-transparent border px-4 py-3 font-sans text-[16px] text-foreground placeholder:text-dim focus:outline-none transition-colors duration-200 ${
+        className={`r-input w-full bg-transparent border px-5 py-4 font-sans text-[16px] text-foreground placeholder:text-foreground placeholder:opacity-40 focus:outline-none transition-colors duration-200 ${
           error
             ? 'border-foreground focus:border-foreground'
             : 'border-rule focus:border-foreground'

@@ -1,8 +1,8 @@
 # Project Memory
 
 ## Core
-- Light UI v2.0. Background `#f1f0ec` (cream), foreground `#000000` (pure black). NO other colors, NO transparency, NO grays — hierarchy via size/weight/spacing.
-- ZERO rounded corners anywhere (enforced globally with `* { border-radius: 0 !important }`).
+- Light UI v2.1. Background `#f1f0ec` (cream), foreground `#000000` (pure black). NO other colors, NO transparency, NO grays — hierarchy via size/weight/spacing.
+- FULLY ROUNDED geometry. Tokens: `--radius: 16px` (cards), `--radius-pill: 9999px` (chips/dots), `--radius-input: 12px` (inputs). Helpers: `.r-pill`, `.r-tag`, `.r-input`, `.r-card`.
 - NO buttons. Every CTA is `.arrow-link` (text + 1px solid black underline + → arrow that nudges 4px on hover, ← in RTL).
 - Gasoek One (wordmarks), Inter Tight (text), JetBrains Mono (tags).
 - Fonts loaded locally via @fontsource for cross-browser stability.
