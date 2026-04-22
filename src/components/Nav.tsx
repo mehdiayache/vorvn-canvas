@@ -51,19 +51,35 @@ export default function Nav() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-4 md:gap-8">
-          {/* Desktop language switcher */}
+          {/* Desktop language switcher — active language sits inside a black circle.
+              Others get the same circle on hover. */}
           <div className="flex items-center gap-1">
-            {LANGUAGES.map((l) => (
-              <button
-                key={l.code}
-                onClick={() => switchLang(l.code)}
-                className={`font-mono text-[9px] tracking-[0.12em] uppercase px-2 py-1 transition-colors duration-200 ${
-                  i18n.language === l.code ? 'text-foreground' : 'text-mid hover:text-foreground'
-                }`}
-              >
-                {l.label}
-              </button>
-            ))}
+            {LANGUAGES.map((l) => {
+              const active = i18n.language === l.code;
+              return (
+                <button
+                  key={l.code}
+                  onClick={() => switchLang(l.code)}
+                  aria-pressed={active}
+                  className="group relative inline-flex items-center justify-center w-7 h-7 bg-transparent border-0 p-0 cursor-pointer"
+                >
+                  <span
+                    aria-hidden
+                    className={`absolute inset-0 transition-colors duration-200 ${
+                      active ? 'bg-foreground' : 'bg-transparent group-hover:bg-foreground'
+                    }`}
+                    style={{ borderRadius: '9999px' }}
+                  />
+                  <span
+                    className={`relative font-mono text-[9px] tracking-[0.12em] uppercase transition-colors duration-200 ${
+                      active ? 'text-background' : 'text-foreground group-hover:text-background'
+                    }`}
+                  >
+                    {l.label}
+                  </span>
+                </button>
+              );
+            })}
           </div>
           <button
             onClick={() => scrollTo('investors')}
