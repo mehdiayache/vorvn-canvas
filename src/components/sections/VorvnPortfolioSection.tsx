@@ -374,7 +374,7 @@ function VorvnPortfolioItem({
   );
 }
 
-const STATUS_ORDER: Record<string, number> = { active: 0, dev: 1, exited: 2 };
+const STATUS_ORDER: Record<string, number> = { active: 0, validation: 1, dev: 2, exited: 3 };
 
 export default function VorvnPortfolioSection() {
   const { t } = useTranslation();
