@@ -20,6 +20,11 @@
     --dim: 0 0% 0%;              /* collapsed to black */
     --rule: 0 0% 0%;             /* solid black, no opacity */
 
+    /* Status accents — only place where color exists outside cream/black.
+       Used exclusively for portfolio status dots. */
+    --status-active: 142 72% 38%;   /* green */
+    --status-exited: 0 72% 50%;     /* red */
+
     --background: var(--bg);
     --card: var(--surface);
     --card-foreground: var(--foreground);
