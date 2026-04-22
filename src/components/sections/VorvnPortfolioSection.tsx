@@ -104,8 +104,8 @@ function VorvnGallery({ images }: { images: string[] }) {
 
   if (total === 0) return null;
 
-  // Slide width %: mobile 80% (1 + peek), desktop 40% (2.5 visible).
-  const slideBasis = isDesktop ? 40 : 80;
+  // Slide width %: mobile 80% (1 + peek), desktop 45% (2 full + ~half visible).
+  const slideBasis = isDesktop ? 45 : 80;
 
   return (
     <div
@@ -125,9 +125,6 @@ function VorvnGallery({ images }: { images: string[] }) {
           }}
         >
           {cloned.map((src, i) => {
-            // Only mount images that are visible NOW or have been navigated to.
-            // visibleSet seeds with starting `pos`. Adjacent peek slots also load
-            // so the filmstrip never shows a blank tile during initial render.
             const isAdjacent = Math.abs(i - pos) <= 1;
             const shouldLoad = visibleSet.has(i) || isAdjacent;
             return (
@@ -136,17 +133,29 @@ function VorvnGallery({ images }: { images: string[] }) {
                 className="shrink-0 pr-3"
                 style={{ flexBasis: `${slideBasis}%` }}
               >
-                <div className="r-card relative aspect-square overflow-hidden">
+                <div className="r-card relative aspect-square overflow-hidden bg-foreground/[0.08]">
                   {shouldLoad ? (
                     <LoadingImage src={src} alt="" className="w-full h-full" loaderSize={44} />
                   ) : (
-                    <span className="block w-full h-full bg-background" />
+                    <span className="block w-full h-full" />
                   )}
                 </div>
               </div>
             );
           })}
         </div>
+
+        {/* Edge fade overlays — fade to background on both sides */}
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 w-12 lg:w-20 z-10"
+          style={{ background: 'linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background) / 0) 100%)' }}
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 w-16 lg:w-28 z-10"
+          style={{ background: 'linear-gradient(to left, hsl(var(--background)) 0%, hsl(var(--background) / 0) 100%)' }}
+          aria-hidden
+        />
       </div>
 
       {/* Controls — prev/next only, no counter */}
