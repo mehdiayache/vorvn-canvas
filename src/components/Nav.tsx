@@ -92,10 +92,10 @@ export default function Nav() {
       {mobileOpen && (
         <div className="fixed inset-0 z-[200] md:hidden">
           <div
-            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            className="absolute inset-0 bg-foreground opacity-20"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="absolute top-0 right-0 bottom-0 w-[280px] bg-[hsl(var(--bg))] border-l border-rule flex flex-col animate-slide-in-right">
+          <div className="absolute top-0 right-0 bottom-0 w-[280px] bg-[hsl(var(--bg))] border-l border-foreground flex flex-col animate-slide-in-right">
             {/* Header */}
             <div className="flex items-center justify-between p-5 border-b border-rule">
               <button
