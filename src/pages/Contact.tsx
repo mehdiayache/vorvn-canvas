@@ -256,7 +256,7 @@ export default function Contact() {
 
               {status === 'sent' ? (
                 <div
-                  className="mt-12 border border-foreground p-10 md:p-12 relative"
+                  className="r-card mt-12 border border-foreground p-10 md:p-12 relative"
                   style={{ animation: 'fadeUpIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both' }}
                   role="status"
                   aria-live="polite"
