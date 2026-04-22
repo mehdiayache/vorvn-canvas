@@ -5,12 +5,13 @@
 @layer base {
   :root {
     /* ============================================================
-       VORVN — Light UI v2.0
-       Two colors only. No transparency. No grays. No rounded.
+       VORVN — Light UI v2.1
+       Two colors only. No transparency. No grays. FULLY ROUNDED.
        Background: #f1f0ec (cream)
        Foreground: #000000 (pure black)
        All "mid" / "dim" / "rule" tokens collapse to solid black —
        hierarchy comes from size, weight, and spacing only.
+       Geometry: pills (full 9999px), cards & blocks (16px), inputs (12px).
        ============================================================ */
     --bg: 42 11% 93%;            /* #f1f0ec */
     --surface: 42 11% 93%;       /* same as bg — no surface variation */
@@ -37,7 +38,10 @@
     --border: var(--rule);
     --input: var(--rule);
     --ring: var(--foreground);
-    --radius: 0px;
+    --radius: 16px;
+    --radius-pill: 9999px;
+    --radius-input: 12px;
+    --radius-tag: 9999px;
 
     --sidebar-background: var(--bg);
     --sidebar-foreground: var(--foreground);
@@ -96,17 +100,11 @@
     text-align: right;
   }
 
-  /* Kill rounded corners globally — design law.
-     Opt-out: add `.allow-round` to elements that intentionally need a circle
-     (e.g. the language switcher pill). */
-  *:not(.allow-round):not(.allow-round *),
-  *:not(.allow-round):not(.allow-round *)::before,
-  *:not(.allow-round):not(.allow-round *)::after {
-    border-radius: 0 !important;
-  }
-  .allow-round {
-    border-radius: 9999px !important;
-  }
+  /* Radius helpers — use these instead of raw rounded-* classes for consistency. */
+  .r-pill { border-radius: var(--radius-pill); }
+  .r-tag { border-radius: var(--radius-tag); }
+  .r-input { border-radius: var(--radius-input); }
+  .r-card { border-radius: var(--radius); }
 }
 
 /* ============================================================
