@@ -193,7 +193,7 @@ export default function Contact() {
                         </span>
                       ))}
                     </address>
-                    <span className="inline-block mt-6 font-mono text-[8px] tracking-[0.16em] uppercase text-mid border border-rule py-[5px] px-[11px]">
+                    <span className="r-pill inline-block mt-6 font-mono text-[8px] tracking-[0.16em] uppercase text-mid border border-rule py-[5px] px-[11px]">
                       {o.badge}
                     </span>
                   </div>
