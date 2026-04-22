@@ -507,7 +507,7 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         autoComplete={autoComplete}
         placeholder={placeholder}
-        className={`w-full bg-transparent border px-4 py-3 font-sans text-[16px] text-foreground placeholder:text-dim focus:outline-none transition-colors duration-200 ${
+        className={`r-input w-full bg-transparent border px-5 py-4 font-sans text-[16px] text-foreground placeholder:text-foreground placeholder:opacity-40 focus:outline-none transition-colors duration-200 ${
           error
             ? 'border-foreground focus:border-foreground'
             : 'border-rule focus:border-foreground'
