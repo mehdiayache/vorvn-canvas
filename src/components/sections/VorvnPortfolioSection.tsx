@@ -15,11 +15,17 @@ import LoadingImage from '@/components/LoadingImage';
 function VorvnGallery({ images }: { images: string[] }) {
   const { t } = useTranslation();
   const [index, setIndex] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
   const total = images.length;
 
-  // Slide width as % of the viewport container.
-  // Mobile: ~80% (1 full + peek). Desktop: ~40% (2 full + half peek).
-  // Implemented via CSS variables + Tailwind responsive utility on each slide.
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
   const go = useCallback(
     (dir: 1 | -1) => {
       if (total === 0) return;
@@ -42,9 +48,8 @@ function VorvnGallery({ images }: { images: string[] }) {
 
   if (total === 0) return null;
 
-  // Slide width %: mobile 80% (one full + peek), desktop 40% (2.5 visible)
-  const slideBasisMobile = 80;
-  const slideBasisDesktop = 40;
+  // Slide width %: mobile 80% (1 + peek), desktop 40% (2.5 visible).
+  const slideBasis = isDesktop ? 40 : 80;
 
   return (
     <div
@@ -58,16 +63,8 @@ function VorvnGallery({ images }: { images: string[] }) {
         <div
           className="flex transition-transform duration-[520ms]"
           style={{
-            transform: `translateX(-${index * slideBasisMobile}%)`,
+            transform: `translateX(-${index * slideBasis}%)`,
             transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-          }}
-          // Apply desktop translate via inline media query workaround: use CSS var
-          ref={(el) => {
-            if (el) {
-              const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
-              const basis = isDesktop ? slideBasisDesktop : slideBasisMobile;
-              el.style.transform = `translateX(-${index * basis}%)`;
-            }
           }}
         >
           {images.map((src, i) => {
@@ -79,15 +76,13 @@ function VorvnGallery({ images }: { images: string[] }) {
               <div
                 key={i}
                 className="relative shrink-0 aspect-square pr-3"
-                style={{ flexBasis: `${slideBasisMobile}%` }}
+                style={{ flexBasis: `${slideBasis}%` }}
               >
-                <div className="lg:!basis-[40%] w-full h-full" style={{ width: '100%', height: '100%' }}>
-                  {isNear ? (
-                    <LoadingImage src={src} alt="" className="w-full h-full" loaderSize={44} />
-                  ) : (
-                    <span className="block w-full h-full bg-background" />
-                  )}
-                </div>
+                {isNear ? (
+                  <LoadingImage src={src} alt="" className="w-full h-full" loaderSize={44} />
+                ) : (
+                  <span className="block w-full h-full bg-background" />
+                )}
               </div>
             );
           })}
