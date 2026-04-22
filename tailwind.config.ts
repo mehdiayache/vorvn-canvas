@@ -30,6 +30,7 @@ export default {
         rule: "hsl(var(--rule))",
         "status-active": "hsl(var(--status-active))",
         "status-exited": "hsl(var(--status-exited))",
+        "status-validation": "hsl(var(--status-validation))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

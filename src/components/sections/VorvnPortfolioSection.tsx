@@ -206,6 +206,7 @@ function VorvnPortfolioItem({
   const data = BRANDS_DATA[brandIndex];
   const isActive = data.status === 'active';
   const isExited = data.status === 'exited';
+  const isValidation = data.status === 'validation';
   const sectorTags = useMemo(() => parseSectorTags(brand.sector), [brand.sector]);
 
   useEffect(() => {
@@ -226,12 +227,14 @@ function VorvnPortfolioItem({
     }
   }, [isOpen]);
 
-  // Status dot color — green for active, red for exited, black for dev.
+  // Status dot color — green for active, red for exited, orange for validation, neutral for dev.
   const dotColorClass = isActive
     ? 'bg-status-active'
     : isExited
       ? 'bg-status-exited'
-      : 'bg-foreground opacity-40';
+      : isValidation
+        ? 'bg-status-validation'
+        : 'bg-foreground opacity-40';
 
   return (
     <li className="border-b border-rule first:border-t">
@@ -267,12 +270,14 @@ function VorvnPortfolioItem({
         <span className="flex items-center gap-2">
           <span
             className={`r-pill inline-block w-[11px] h-[11px] ${dotColorClass} ${
-              isActive ? 'animate-[pulse_2s_ease-in-out_infinite]' : ''
+              isActive || isValidation ? 'animate-[pulse_2s_ease-in-out_infinite]' : ''
             }`}
             style={
               isActive
                 ? { boxShadow: '0 0 0 0 hsl(var(--status-active) / 0.6)' }
-                : undefined
+                : isValidation
+                  ? { boxShadow: '0 0 0 0 hsl(var(--status-validation) / 0.6)' }
+                  : undefined
             }
           />
           <span className="font-mono text-[9px] tracking-[0.14em] uppercase whitespace-nowrap text-foreground">
@@ -369,7 +374,7 @@ function VorvnPortfolioItem({
   );
 }
 
-const STATUS_ORDER: Record<string, number> = { active: 0, dev: 1, exited: 2 };
+const STATUS_ORDER: Record<string, number> = { active: 0, validation: 1, dev: 2, exited: 3 };
 
 export default function VorvnPortfolioSection() {
   const { t } = useTranslation();

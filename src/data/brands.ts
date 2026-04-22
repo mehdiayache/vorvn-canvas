@@ -8,7 +8,7 @@ export type BrandData = {
   logo: string | null;
   url: string | null;
   presentationUrl: string | null;
-  status: 'active' | 'dev' | 'exited';
+  status: 'active' | 'dev' | 'validation' | 'exited';
   tags: string[];                // legacy — kept for v1 compatibility
   images: string[];
   // v2 additions
@@ -60,10 +60,10 @@ export const BRANDS_DATA: BrandData[] = [
     logo: 'https://vorvn.com/wp-content/uploads/2024/08/maqtob.png',
     url: null,
     presentationUrl: null,
-    status: 'dev',
-    tags: ['Modest Fashion', 'EU Market', 'Craftsmanship'],
-    sectorTags: ['Modest Fashion', 'Craftsmanship'],
-    geoTags: ['France', 'EU'],
+    status: 'validation',
+    tags: ['Modest Fashion', 'Moroccan-Inspired', 'Indonesian Craft', 'France'],
+    sectorTags: ['Modest Fashion', 'Moroccan-Inspired', 'Indonesian Craft'],
+    geoTags: ['Indonesia', 'France', 'EU'],
     devTimeline: 'Q3 2026',
     images: [
       'https://picsum.photos/seed/mq-1/800/800',
