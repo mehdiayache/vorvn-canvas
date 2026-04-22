@@ -1,76 +1,123 @@
 
+Fix the Portfolio gallery so it behaves as truly infinite, keeps the current filmstrip size, restores rounded geometry, and shows the eye loader when a newly requested next/previous image appears.
 
-## Design system pivot — Light UI, monochrome, no buttons
+## What is wrong now
 
-A complete visual inversion of the site. Two colors only, links instead of buttons, zero rounded corners anywhere.
+1. The gallery is only using a circular index on the original array:
+   - `setIndex((i) => (i + dir + total) % total)`
+   - `translateX(-${index * slideBasis}%)`
+   This is cyclic state, but not a visually seamless infinite track. When the last image is reached, the track resets instead of continuing naturally.
 
-### New color system (strict, no exceptions)
+2. The next images are being preloaded too early:
+   - `isNear` loads images within roughly 2 positions of the current slide.
+   - Because of that, the next image is often already decoded before the click, so the eye loader is not visible after navigation.
 
-- **Background**: `#f1f0ec` (the accent — now the canvas)
-- **Foreground**: `#000000` (pure black — text, rules, dots, borders, icons)
-- **No transparency.** No white. No grays. No opacity tricks.
-- All "mid" / "dim" tones currently in the system → collapse to solid black. Hierarchy is created via **size, weight, and spacing**, not color.
+3. The gallery tiles are square, but not explicitly rounded:
+   - current slide shell uses `aspect-square`
+   - `LoadingImage` is inserted without a rounded wrapper/class
+   This conflicts with the fully rounded UI direction.
 
-This means every section, every component, every page (including legal pages, 404, contact form, navigation, footer) flips to black-on-cream.
+## Implementation plan
 
-### No buttons anywhere
+### 1) Rebuild the gallery track as a seamless infinite carousel
+Update `src/components/sections/VorvnPortfolioSection.tsx`:
 
-Every CTA on the site becomes a text link with underline + arrow:
+- Keep the same visual proportion:
+  - desktop: about `2.5` visible images
+  - mobile: one full image plus a peek
+- Replace the current single-array transform logic with a cloned-track strategy:
+  - duplicate slides before and after the real set
+  - start on the first “real” slide in the middle copy
+  - animate one slide per click
+  - after transition ends, silently snap back to the equivalent real slide position with transitions temporarily disabled
+- Result:
+  - clicking next on the last image continues naturally into the first image
+  - clicking prev on the first image continues naturally into the last image
+  - no visual reset/jump
 
+### 2) Keep the current gallery size and filmstrip behavior
+In the same gallery component:
+
+- Preserve the current ratio and width logic instead of changing to a single large square slider
+- Keep:
+  - desktop filmstrip with 2 images + half image visible
+  - mobile filmstrip with one image + partial next image
+- Remove any extra “counter” UI and keep only simple left/right navigation
+
+## 3) Make the gallery rounded
+Apply rounded styling to the visible image tiles:
+
+- Add rounded geometry to the image frame using the existing design tokens:
+  - use `.r-card` for the gallery item shell
+  - ensure the image container clips overflow so the image respects the rounded corners
+- Keep logos themselves untouched in the brand logo area above; only the gallery content tiles get rounded
+
+Files:
+- `src/components/sections/VorvnPortfolioSection.tsx`
+- possibly `src/components/LoadingImage.tsx` if the rounding/clipping is better centralized there
+
+## 4) Change loading behavior so the eye appears after click
+Adjust the lazy-loading strategy:
+
+- Stop preloading a wide `isNear` range
+- Only mount/load:
+  - currently visible slides
+  - optionally the immediate adjacent peek if required for layout smoothness
+- For the newly requested next/previous image:
+  - let it mount/load when it becomes active through navigation
+  - show `LoadingImage` with `EyeLoader` until decode completes
+- This ensures the eye is visible for newly entered images instead of silently showing an already preloaded asset
+
+### Recommended behavior
+- visible now = loaded now
+- clicked next/prev = next target starts loading if not already available
+- loader appears centered inside that rounded tile until the image is ready
+
+## 5) Keep mobile behavior clean
+While updating the carousel:
+
+- preserve swipe-like visual flow, even if navigation remains button-driven
+- ensure the rounded tiles, loader, and snapping all work at mobile widths
+- keep keyboard arrow support if it does not interfere with the infinite-track logic
+
+## Files to change
+
+- `src/components/sections/VorvnPortfolioSection.tsx`
+  - replace modulo-only carousel logic with cloned infinite track
+  - update loading window logic
+  - add rounded gallery shells
+- `src/components/LoadingImage.tsx`
+  - ensure it can inherit rounded clipping cleanly without flashing square corners
+
+## Technical notes
+
+```text
+Current:
+[1][2][3][4] + index wraps in state only
+
+Needed:
+[3][4][1][2][3][4][1][2]
+      ^
+   start here in middle set
+
+Click next:
+animate to next position
+if landed in cloned edge zone:
+snap instantly back to matching real slide
 ```
-Send a message →
-View portfolio →
-Send another →
+
+```text
+Desired desktop view:
+[ image ][ image ][ half image ]
+
+Desired mobile view:
+[ image ][ partial next ]
 ```
 
-- Underline is solid 1px black, sits directly under the text
-- Arrow is `→` (LTR) / `←` (RTL), part of the link text
-- Hover: arrow nudges 4px in reading direction, underline stays
-- Replaces every `<button>`-styled CTA: Hero CTA, Investors CTA, Contact submit, Contact "Send another", Footer links, etc.
+## Expected result
 
-The contact form **submit** also becomes a link-style action (`Send message →`), not a button block. The form still posts; only the visual treatment changes.
-
-### Zero rounded corners — confirmed everywhere
-
-- `--radius` already `0px` ✓
-- Audit and force `rounded-none` (or remove `rounded-*` classes) on: tags, chips, inputs, textareas, toasts, success card, cookie banner, language switcher, mobile menu, accordion triggers, any shadcn component still leaking radius.
-- The "Received" chip, status pills, mono tags — all sharp rectangles.
-
-### Texture & accents
-
-- Grain overlay stays but recalibrated for light bg (lower opacity, darker noise so it reads on cream instead of black)
-- 1px section rules: black at full opacity (no more `rule` token at 9% opacity)
-- Breathing Eye / Eye SVG / Globe SVG: re-stroke in black
-
-### Files to touch
-
-**Tokens & global styles**
-- `src/index.css` — invert `--bg` to `42 11% 93%` (≈ #f1f0ec), `--foreground` to `0 0% 0%`, collapse `--mid` and `--dim` to black, set `--rule` to solid black, recalibrate grain opacity, rewrite `.legal-prose` colors
-- `tailwind.config.ts` — verify token mapping, no extra color additions
-
-**Components — button removal & link styling**
-- `src/components/ui/button.tsx` — keep file (shadcn deps may import it) but variants `default` / `secondary` / `outline` get restyled to underline-link appearance so any leftover usage stays on-brand. Add a new `arrow-link` utility class in `index.css` for explicit use.
-- New utility class `.arrow-link` in `index.css`: underline + arrow + hover nudge animation
-
-**Pages & sections — black-on-cream pass + button→link swap**
-- `src/components/Nav.tsx`, `NavLink.tsx`, `LanguageSwitcher.tsx`, `CookieBanner.tsx`
-- `src/components/sections/VorvnHero.tsx` (CTA → arrow link)
-- `src/components/sections/VorvnInvestorsSection.tsx` (prominent CTA → arrow link, large but still text)
-- `src/components/sections/VorvnPortfolioSection.tsx` (status tags → sharp rectangles, black border/text)
-- `src/components/sections/VorvnFounderSection.tsx`, `VorvnEntitySection.tsx`, `VorvnPrinciplesSection.tsx`, `VorvnPresenceSection.tsx`, `VorvnClosingSection.tsx`, `VorvnFooter.tsx`
-- `src/pages/Contact.tsx` — submit becomes `Send message →` link; success card black border on cream, "Send another →" arrow link; "ERR ·" stays black
-- `src/pages/legal/LegalLayout.tsx`, `LegalNotice.tsx`, `PrivacyPolicy.tsx`
-- `src/pages/NotFound.tsx`
-- `src/components/BreathingEye.tsx` + `.css`, `EyeSvg.tsx`, `GlobeSvg.tsx` — stroke colors → black
-
-**Toasts**
-- `src/components/ui/sonner.tsx` — invert: cream bg, black border, black text, sharp corners
-
-### Out of scope
-- Layout, copy, sections order, fonts, animations — unchanged
-- i18n content — unchanged
-- Umami, Netlify function, routing — unchanged
-
-### Memory updates after approval
-Update `mem://style/brand-identity` and core memory: "Light UI. Background `#f1f0ec`, foreground `#000000`. No other colors, no transparency, no rounded corners, no buttons — only underlined arrow links."
-
+- Truly infinite next/previous behavior
+- Same gallery proportion as now
+- Rounded gallery tiles
+- Eye loader appears when a newly navigated image is still loading
+- Mobile remains smooth and readable
