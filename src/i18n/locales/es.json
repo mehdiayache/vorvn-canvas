@@ -61,25 +61,25 @@
     "brands": [
       {
         "name": "Cook Warriors",
-        "sector": "Bienes de Consumo · USA / EAU",
+        "sector": "Bienes de Consumo, USA, EAU",
         "statusLabel": "Activa",
         "desc": "Una marca de utensilios de cocina premium construida en torno al Eggscalibur — la icónica sartén con mango de espada. Desde el concepto hasta la entrega desde los EAU a los hogares estadounidenses, Cook Warriors es la marca insignia de bienes de consumo de VORVN."
       },
       {
         "name": "Stories of Bible",
-        "sector": "Editorial Cristiana · USA",
+        "sector": "Editorial Cristiana, USA",
         "statusLabel": "Salida",
         "desc": "Incubación y co-construcción de una de las marcas de libros cristianos de mayor crecimiento en el mercado estadounidense. Dirección completa de la producción — sistemas de diseño, formación de equipos, producción de contenido e infraestructura de entrega. Montaje y gestión de un estudio creativo que produjo libros bíblicos ilustrados a escala, vendidos principalmente al mercado cristiano de EE. UU. La marca generó más de 2M$ en ingresos durante el periodo de colaboración."
       },
       {
         "name": "MAQTOB",
-        "sector": "Moda Modesta · UE / Francia",
+        "sector": "Moda Modesta, UE, Francia",
         "statusLabel": "En Desarrollo",
         "desc": "Conjuntos de oración mukena premium indonesios para el mercado musulmán europeo, con lanzamiento en Francia. La moda modesta se encuentra con la artesanía balinesa — un puente entre dos mundos."
       },
       {
         "name": "xVoyager",
-        "sector": "Exploración · Global",
+        "sector": "Exploración, Global",
         "statusLabel": "En Desarrollo",
         "desc": "Una marca centrada en la exploración para nómadas y aventureros globales. Actualmente en desarrollo conceptual dentro del laboratorio VORVN — diseñada para quienes se mueven sin dirección fija."
       },

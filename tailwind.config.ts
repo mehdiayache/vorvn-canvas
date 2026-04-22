@@ -28,6 +28,8 @@ export default {
         dim: "hsl(var(--dim))",
         surface: "hsl(var(--surface))",
         rule: "hsl(var(--rule))",
+        "status-active": "hsl(var(--status-active))",
+        "status-exited": "hsl(var(--status-exited))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

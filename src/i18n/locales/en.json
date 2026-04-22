@@ -61,25 +61,25 @@
     "brands": [
       {
         "name": "Cook Warriors",
-        "sector": "Consumer Goods · USA / UAE",
+        "sector": "Consumer Goods, USA, UAE",
         "statusLabel": "Active",
         "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
       },
       {
         "name": "Stories of Bible",
-        "sector": "Christian Publishing · USA",
+        "sector": "Christian Publishing, USA",
         "statusLabel": "Exited",
         "desc": "Incubated and co-built one of the fastest-growing Christian book brands in the US market. Led the full production side — design systems, team building, content production, and delivery infrastructure. Assembled a creative studio that produced illustrated Bible books at scale, sold primarily to the US Christian market. The brand generated over $2M in revenue across the partnership period."
       },
       {
         "name": "MAQTOB",
-        "sector": "Modest Fashion · EU / France",
+        "sector": "Modest Fashion, EU, France",
         "statusLabel": "In Development",
         "desc": "Premium Indonesian mukena prayer sets for the European Muslim market, launching with France. Modest fashion meets Balinese craftsmanship — a bridge between two worlds."
       },
       {
         "name": "xVoyager",
-        "sector": "Exploration · Global",
+        "sector": "Exploration, Global",
         "statusLabel": "In Development",
         "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
       },

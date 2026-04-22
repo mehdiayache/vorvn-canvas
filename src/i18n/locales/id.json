@@ -61,25 +61,25 @@
     "brands": [
       {
         "name": "Cook Warriors",
-        "sector": "Barang Konsumen · USA / UEA",
+        "sector": "Barang Konsumen, USA, UEA",
         "statusLabel": "Aktif",
         "desc": "Merek perlengkapan dapur premium yang dibangun di sekitar Eggscalibur — wajan ikonik bergagang pedang. Dari konsep hingga pengiriman dari UEA ke rumah-rumah di AS, Cook Warriors adalah merek konsumen unggulan VORVN."
       },
       {
         "name": "Stories of Bible",
-        "sector": "Penerbitan Kristen · AS",
+        "sector": "Penerbitan Kristen, AS",
         "statusLabel": "Exited",
         "desc": "Menginkubasi dan turut membangun salah satu merek buku Kristen dengan pertumbuhan tercepat di pasar AS. Memimpin seluruh sisi produksi — design system, pembentukan tim, produksi konten, dan infrastruktur distribusi. Membentuk dan mengelola studio kreatif yang memproduksi buku Alkitab berilustrasi dalam skala besar, dijual terutama ke pasar Kristen di AS. Merek ini menghasilkan pendapatan lebih dari $2 juta selama periode kemitraan."
       },
       {
         "name": "MAQTOB",
-        "sector": "Modest Fashion · UE / Prancis",
+        "sector": "Modest Fashion, UE, Prancis",
         "statusLabel": "Dalam Pengembangan",
         "desc": "Mukena premium asal Indonesia untuk pasar Muslim Eropa, peluncuran perdana di Prancis. Modest fashion bertemu kerajinan tangan Bali — jembatan antara dua dunia."
       },
       {
         "name": "xVoyager",
-        "sector": "Eksplorasi · Global",
+        "sector": "Eksplorasi, Global",
         "statusLabel": "Dalam Pengembangan",
         "desc": "Merek dengan semangat eksplorasi untuk para nomaden dan petualang global. Saat ini dalam pengembangan konsep di lab VORVN — dirancang untuk mereka yang bergerak tanpa alamat tetap."
       },
