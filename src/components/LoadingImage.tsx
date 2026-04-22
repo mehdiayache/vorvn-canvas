@@ -17,7 +17,7 @@ export default function LoadingImage({ src, alt = '', className = '', loaderSize
   const [errored, setErrored] = useState(false);
 
   return (
-    <span className={`relative block bg-background ${className}`}>
+    <span className={`relative block overflow-hidden bg-background ${className}`}>
       {!loaded && !errored && (
         <span className="absolute inset-0 flex items-center justify-center">
           <EyeLoader size={loaderSize} />
