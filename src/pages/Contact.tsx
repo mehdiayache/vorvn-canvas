@@ -263,7 +263,7 @@ export default function Contact() {
                 >
                   <div className="flex items-center gap-3 mb-8">
                     <span
-                      className="inline-block w-[8px] h-[8px] rounded-full bg-foreground"
+                      className="r-pill inline-block w-[8px] h-[8px] bg-foreground"
                       style={{ animation: 'dotPulse 2s ease-in-out infinite' }}
                     />
                     <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground">
@@ -449,7 +449,7 @@ export default function Contact() {
                       {status === 'submitting' && (
                         <span
                           aria-hidden
-                          className="inline-block w-[8px] h-[8px] bg-foreground"
+                          className="r-pill inline-block w-[8px] h-[8px] bg-foreground"
                           style={{ animation: 'dotPulse 1.1s ease-in-out infinite' }}
                         />
                       )}
