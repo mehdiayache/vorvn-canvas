@@ -14,9 +14,15 @@ import LoadingImage from '@/components/LoadingImage';
  */
 function VorvnGallery({ images }: { images: string[] }) {
   const { t } = useTranslation();
-  const [index, setIndex] = useState(0);
-  const [isDesktop, setIsDesktop] = useState(false);
   const total = images.length;
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // Clone strategy: [...images, ...images, ...images]
+  // Start in middle copy. After transition into edge zone, snap to equivalent middle slot.
+  const cloned = useMemo(() => (total > 0 ? [...images, ...images, ...images] : []), [images, total]);
+  const [pos, setPos] = useState(total); // start at first slide of middle copy
+  const [animate, setAnimate] = useState(true);
+  const [visibleSet, setVisibleSet] = useState<Set<number>>(() => new Set([total]));
 
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 1024px)');
@@ -26,13 +32,63 @@ function VorvnGallery({ images }: { images: string[] }) {
     return () => mq.removeEventListener('change', update);
   }, []);
 
+  // Reset position if image set changes
+  useEffect(() => {
+    setPos(total);
+    setAnimate(true);
+    setVisibleSet(new Set([total]));
+  }, [total]);
+
   const go = useCallback(
     (dir: 1 | -1) => {
       if (total === 0) return;
-      setIndex((i) => (i + dir + total) % total);
+      setAnimate(true);
+      setPos((p) => {
+        const next = p + dir;
+        // Mark target as visible so its loader/image mounts now (eye shows during decode)
+        setVisibleSet((prev) => {
+          const s = new Set(prev);
+          s.add(next);
+          return s;
+        });
+        return next;
+      });
     },
     [total],
   );
+
+  // After a transition, if we are in an edge clone zone, snap silently back to the middle copy
+  const handleTransitionEnd = useCallback(() => {
+    if (total === 0) return;
+    if (pos < total) {
+      // snapped past the start — jump forward by `total`
+      setAnimate(false);
+      const newPos = pos + total;
+      setPos(newPos);
+      setVisibleSet((prev) => {
+        const s = new Set(prev);
+        s.add(newPos);
+        return s;
+      });
+    } else if (pos >= total * 2) {
+      // snapped past the end — jump back by `total`
+      setAnimate(false);
+      const newPos = pos - total;
+      setPos(newPos);
+      setVisibleSet((prev) => {
+        const s = new Set(prev);
+        s.add(newPos);
+        return s;
+      });
+    }
+  }, [pos, total]);
+
+  // Re-enable animation on next frame after a silent snap
+  useEffect(() => {
+    if (animate) return;
+    const r = requestAnimationFrame(() => setAnimate(true));
+    return () => cancelAnimationFrame(r);
+  }, [animate]);
 
   const wrapRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -61,28 +117,32 @@ function VorvnGallery({ images }: { images: string[] }) {
     >
       <div className="relative w-full overflow-hidden">
         <div
-          className="flex transition-transform duration-[520ms]"
+          className="flex"
+          onTransitionEnd={handleTransitionEnd}
           style={{
-            transform: `translateX(-${index * slideBasis}%)`,
-            transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+            transform: `translateX(-${pos * slideBasis}%)`,
+            transition: animate ? 'transform 520ms cubic-bezier(0.16, 1, 0.3, 1)' : 'none',
           }}
         >
-          {images.map((src, i) => {
-            const isNear =
-              Math.abs(i - index) <= 2 ||
-              (index <= 1 && i >= total - 2) ||
-              (index >= total - 2 && i <= 1);
+          {cloned.map((src, i) => {
+            // Only mount images that are visible NOW or have been navigated to.
+            // visibleSet seeds with starting `pos`. Adjacent peek slots also load
+            // so the filmstrip never shows a blank tile during initial render.
+            const isAdjacent = Math.abs(i - pos) <= 1;
+            const shouldLoad = visibleSet.has(i) || isAdjacent;
             return (
               <div
                 key={i}
-                className="relative shrink-0 aspect-square pr-3"
+                className="shrink-0 pr-3"
                 style={{ flexBasis: `${slideBasis}%` }}
               >
-                {isNear ? (
-                  <LoadingImage src={src} alt="" className="w-full h-full" loaderSize={44} />
-                ) : (
-                  <span className="block w-full h-full bg-background" />
-                )}
+                <div className="r-card relative aspect-square overflow-hidden">
+                  {shouldLoad ? (
+                    <LoadingImage src={src} alt="" className="w-full h-full" loaderSize={44} />
+                  ) : (
+                    <span className="block w-full h-full bg-background" />
+                  )}
+                </div>
               </div>
             );
           })}
