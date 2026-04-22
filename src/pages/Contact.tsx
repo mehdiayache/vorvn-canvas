@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-import { ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
 import Nav from '@/components/Nav';
 import SeoHead from '@/components/SeoHead';
@@ -287,22 +286,18 @@ export default function Contact() {
                   >
                     {t('contact.success.body')}
                   </p>
-                  <div className="mt-10 pt-8 border-t border-rule flex flex-col sm:flex-row sm:items-center gap-6">
+                  <div className="mt-10 pt-8 border-t border-foreground flex flex-col sm:flex-row sm:items-center gap-6">
                     <button
                       type="button"
                       onClick={() => {
                         setStatus('idle');
                         setSentAt(null);
                       }}
-                      className="inline-flex items-center gap-3 bg-foreground text-background font-sans text-[15px] font-medium px-7 py-4 hover:opacity-90 transition-opacity duration-200 group"
+                      className="arrow-link text-[15px]"
                     >
                       {t('contact.success.again')}
-                      <ArrowRight
-                        size={16}
-                        className="transition-transform duration-200 group-hover:translate-x-1"
-                      />
                     </button>
-                    <span className="font-mono text-[10px] tracking-[0.16em] uppercase text-mid">
+                    <span className="font-mono text-[10px] tracking-[0.16em] uppercase text-foreground">
                       {t('contact.success.tag')} · Reply window 48h
                     </span>
                   </div>
@@ -344,16 +339,16 @@ export default function Contact() {
                             role="radio"
                             aria-checked={active}
                             onClick={() => update('topic', key)}
-                            className={`flex items-center gap-3 text-left px-4 py-4 border font-sans text-[15px] transition-colors duration-200 ${
+                            className={`flex items-center gap-3 text-left px-4 py-4 border border-foreground font-sans text-[15px] transition-opacity duration-200 ${
                               active
-                                ? 'border-foreground text-foreground bg-foreground/5'
-                                : 'border-rule text-mid hover:text-foreground hover:border-foreground/40'
+                                ? 'opacity-100'
+                                : 'opacity-60 hover:opacity-100'
                             }`}
                           >
                             <span
                               aria-hidden
-                              className={`inline-block w-3 h-3 border shrink-0 ${
-                                active ? 'border-foreground bg-foreground' : 'border-mid'
+                              className={`inline-block w-3 h-3 border border-foreground shrink-0 ${
+                                active ? 'bg-foreground' : 'bg-transparent'
                               }`}
                             />
                             {t(`contact.topics.${key}`)}
@@ -439,37 +434,26 @@ export default function Contact() {
                   </div>
 
                   {/* Submit */}
-                  <div className="pt-8 border-t border-rule flex flex-col sm:flex-row sm:items-center gap-6">
-                    <div className="relative">
+                  <div className="pt-8 border-t border-foreground flex flex-col sm:flex-row sm:items-center gap-8">
+                    <div className="relative inline-flex items-center gap-3">
                       <button
                         type="submit"
                         disabled={status === 'submitting'}
-                        className="inline-flex items-center gap-3 bg-foreground text-background font-sans text-[15px] font-medium px-7 py-4 hover:opacity-90 transition-opacity duration-200 group disabled:opacity-60 disabled:cursor-not-allowed"
+                        className="arrow-link text-[17px]"
                       >
-                        {status === 'submitting' && (
-                          <span
-                            className="inline-block w-[7px] h-[7px] rounded-full bg-background"
-                            style={{ animation: 'dotPulse 1.1s ease-in-out infinite' }}
-                          />
-                        )}
                         {status === 'submitting'
                           ? t('contact.submitting')
                           : t('contact.submit')}
-                        <ArrowRight
-                          size={16}
-                          className="transition-transform duration-200 group-hover:translate-x-1"
-                        />
                       </button>
                       {status === 'submitting' && (
-                        <div className="absolute left-0 right-0 -bottom-[2px] h-[1px] overflow-hidden bg-rule">
-                          <div
-                            className="h-full w-[30%] bg-foreground"
-                            style={{ animation: 'shimmerSlide 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite' }}
-                          />
-                        </div>
+                        <span
+                          aria-hidden
+                          className="inline-block w-[8px] h-[8px] bg-foreground"
+                          style={{ animation: 'dotPulse 1.1s ease-in-out infinite' }}
+                        />
                       )}
                     </div>
-                    <p className="font-sans text-[13px] text-dim">{t('contact.privacy')}</p>
+                    <p className="font-sans text-[13px] text-foreground opacity-70">{t('contact.privacy')}</p>
                   </div>
                   {sendError && (
                     <p className="font-mono text-[12px] tracking-[0.06em] text-foreground border border-foreground px-4 py-3" role="alert">
