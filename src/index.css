@@ -22,8 +22,9 @@
 
     /* Status accents — only place where color exists outside cream/black.
        Used exclusively for portfolio status dots. */
-    --status-active: 142 72% 38%;   /* green */
-    --status-exited: 0 72% 50%;     /* red */
+    --status-active: 142 72% 38%;     /* green */
+    --status-exited: 0 72% 50%;       /* red */
+    --status-validation: 28 92% 54%;  /* orange */
 
     --background: var(--bg);
     --card: var(--surface);
