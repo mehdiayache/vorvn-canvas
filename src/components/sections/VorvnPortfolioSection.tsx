@@ -145,12 +145,7 @@ function VorvnGallery({ images }: { images: string[] }) {
           })}
         </div>
 
-        {/* Edge fade overlays — fade to background on both sides */}
-        <div
-          className="pointer-events-none absolute inset-y-0 left-0 w-12 lg:w-20 z-10"
-          style={{ background: 'linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background) / 0) 100%)' }}
-          aria-hidden
-        />
+        {/* Edge fade overlay — only on the right where the half-peek image sits */}
         <div
           className="pointer-events-none absolute inset-y-0 right-0 w-16 lg:w-28 z-10"
           style={{ background: 'linear-gradient(to left, hsl(var(--background)) 0%, hsl(var(--background) / 0) 100%)' }}
