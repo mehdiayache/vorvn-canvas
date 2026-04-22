@@ -412,7 +412,7 @@ export default function Contact() {
                       value={values.message}
                       onChange={(e) => update('message', e.target.value)}
                       placeholder={t('contact.fields.messagePlaceholder')}
-                      className={`w-full bg-transparent border px-4 py-3 font-sans text-[16px] leading-[1.6] text-foreground placeholder:text-dim focus:outline-none transition-colors duration-200 ${
+                      className={`r-input w-full bg-transparent border px-5 py-4 font-sans text-[16px] leading-[1.6] text-foreground placeholder:text-foreground placeholder:opacity-40 focus:outline-none transition-colors duration-200 ${
                         errors.message
                           ? 'border-foreground focus:border-foreground'
                           : 'border-rule focus:border-foreground'
@@ -457,7 +457,7 @@ export default function Contact() {
                     <p className="font-sans text-[13px] text-foreground opacity-70">{t('contact.privacy')}</p>
                   </div>
                   {sendError && (
-                    <p className="font-mono text-[12px] tracking-[0.06em] text-foreground border border-foreground px-4 py-3" role="alert">
+                    <p className="r-card font-mono text-[12px] tracking-[0.06em] text-foreground border border-foreground px-5 py-4" role="alert">
                       <span className="text-mid">ERR ·</span> {sendError}
                     </p>
                   )}
