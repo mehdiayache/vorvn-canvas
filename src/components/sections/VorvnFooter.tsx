@@ -14,7 +14,7 @@ export default function Footer() {
       <div>
         <div className="font-brand text-[14px] tracking-[0.04em] text-foreground">VORVN</div>
         <div className="font-mono text-[9px] tracking-[0.06em] text-mid mt-[10px] leading-[1.65]">
-          {t('footer.legal').split('\n').map((line, i) => (
+          {t('footer.legal', { year: new Date().getFullYear() }).split('\n').map((line, i) => (
             <span key={i}>
               {line}
               <br />

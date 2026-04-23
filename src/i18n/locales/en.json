@@ -143,7 +143,7 @@
     "sub": "VORVN · VE VOLD™ · Est. 2023"
   },
   "footer": {
-    "legal": "© 2025 VORVN LIMITED. All rights reserved.\nRegistered in Hong Kong, SAR.",
+    "legal": "© {{year}} VORVN LIMITED. All rights reserved.\nRegistered in Hong Kong, SAR.",
     "instagram": "Instagram",
     "linkedin": "LinkedIn",
     "careers": "Careers",
