@@ -119,6 +119,9 @@ export default function SeoHead({ page = 'home', pathSuffix, noindex = false }: 
     const seo = SEO[page]?.[lang] || SEO[page]?.en;
     if (!seo) return;
 
+    // Remove prerendered JSON-LD so we don't double-emit after hydration.
+    document.head.querySelectorAll('script[data-prerender]').forEach((el) => el.remove());
+
     document.title = seo.title;
     document.documentElement.lang = lang;
     document.documentElement.dir = RTL_LANGUAGES.includes(lang) ? 'rtl' : 'ltr';
