@@ -24,7 +24,7 @@ export default function VorvnInvestorsSection() {
           {/* Headline */}
           <h3
             className="font-sans font-medium text-foreground reveal d1 m-0"
-            style={{ fontSize: 'clamp(22px, 2.8vw, 44px)', lineHeight: 1.35 }}
+            style={{ fontSize: 'clamp(22px, 2.8vw, 44px)', lineHeight: 1.25, letterSpacing: '-0.01em' }}
           >
             {t('investors.headline').split('\n').map((line, i) => (
               <span key={i} className="block">{line}</span>
@@ -33,7 +33,7 @@ export default function VorvnInvestorsSection() {
 
           {/* Body */}
           <p
-            className="mt-8 font-sans font-normal text-mid reveal d2 max-w-[640px]"
+            className="mt-8 font-sans font-normal text-foreground reveal d2 max-w-[680px]"
             style={{ fontSize: 'clamp(15px, 1.15vw, 18px)', lineHeight: 1.7 }}
           >
             {t('investors.body')}
@@ -41,65 +41,90 @@ export default function VorvnInvestorsSection() {
 
           {/* Schema — two paths visual */}
           <div className="mt-16 reveal d3">
-            <div className="font-sans text-[15px] font-medium text-foreground mb-8">
+            <div className="font-sans text-[13px] font-medium uppercase tracking-[0.12em] text-foreground mb-6">
               {t('investors.schemaTitle')}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 border-t border-rule">
-              {/* Incubator */}
-              <div className="border-b md:border-b-0 md:border-r border-rule py-8 pr-0 md:pr-10 relative">
-                <div className="font-sans text-[13px] font-medium text-mid mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* ───────── Incubator (light card) ───────── */}
+              <article className="rounded-[16px] border border-rule bg-background p-8 flex flex-col">
+                <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-foreground/70 mb-6">
                   {t('investors.incubatorBadge')}
                 </div>
-                <div className="font-sans text-[22px] md:text-[26px] font-medium text-foreground tracking-[-0.01em] mb-2">
+                <h4 className="font-sans text-[24px] md:text-[28px] font-semibold text-foreground tracking-[-0.01em] mb-2 leading-[1.15]">
                   {t('investors.incubatorTitle')}
-                </div>
-                <div className="font-sans text-[14px] text-dim mb-6">
+                </h4>
+                <div className="font-sans text-[13px] text-foreground/70 mb-6">
                   {t('investors.incubatorLocation')}
                 </div>
-                <p className="font-sans text-[15px] text-mid max-w-[360px]" style={{ lineHeight: 1.65 }}>
+                <p
+                  className="font-sans text-[15px] text-foreground mb-7"
+                  style={{ lineHeight: 1.65 }}
+                >
                   {t('investors.incubatorDesc')}
                 </p>
 
-                {/* Visual flow */}
-                <div className="mt-8 flex items-center gap-3 flex-wrap">
-                  <span className="r-pill font-sans text-[13px] text-foreground border border-rule px-4 py-1.5">Design</span>
-                  <span className="text-dim">→</span>
-                  <span className="r-pill font-sans text-[13px] text-foreground border border-rule px-4 py-1.5">Build</span>
-                  <span className="text-dim">→</span>
-                  <span className="r-pill font-sans text-[13px] text-foreground border border-rule px-4 py-1.5">Ship</span>
+                {/* Visual flow — outlined pills */}
+                <div className="flex items-center gap-2 flex-wrap mb-8">
+                  <span className="font-sans text-[12px] text-foreground border border-foreground rounded-full px-3 py-1">Design</span>
+                  <span className="text-foreground/60 text-[12px]">→</span>
+                  <span className="font-sans text-[12px] text-foreground border border-foreground rounded-full px-3 py-1">Build</span>
+                  <span className="text-foreground/60 text-[12px]">→</span>
+                  <span className="font-sans text-[12px] text-foreground border border-foreground rounded-full px-3 py-1">Validate</span>
+                  <span className="text-foreground/60 text-[12px]">→</span>
+                  <span className="font-sans text-[12px] text-foreground border border-foreground rounded-full px-3 py-1">Market</span>
                 </div>
-              </div>
 
-              {/* Venture */}
-              <div className="border-b md:border-b-0 border-rule py-8 pl-0 md:pl-10">
-                <div className="font-sans text-[13px] font-medium text-mid mb-4">
+                <div className="mt-auto pt-2">
+                  <Link
+                    to={`/${lang}/contact`}
+                    className="arrow-link text-[15px] md:text-[16px]"
+                  >
+                    {t('investors.incubatorCta')}
+                  </Link>
+                </div>
+              </article>
+
+              {/* ───────── Venture (inverted dark card) ───────── */}
+              <article className="rounded-[16px] border border-foreground bg-foreground text-background p-8 flex flex-col">
+                <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-background/70 mb-6">
                   {t('investors.ventureBadge')}
                 </div>
-                <div className="font-sans text-[22px] md:text-[26px] font-medium text-foreground tracking-[-0.01em] mb-2">
+                <h4 className="font-sans text-[24px] md:text-[28px] font-semibold text-background tracking-[-0.01em] mb-2 leading-[1.15]">
                   {t('investors.ventureTitle')}
-                </div>
-                <div className="font-sans text-[14px] text-dim mb-6">
+                </h4>
+                <div className="font-sans text-[13px] text-background/70 mb-6">
                   {t('investors.ventureLocation')}
                 </div>
-                <p className="font-sans text-[15px] text-mid max-w-[360px]" style={{ lineHeight: 1.65 }}>
+                <p
+                  className="font-sans text-[15px] text-background mb-7"
+                  style={{ lineHeight: 1.65 }}
+                >
                   {t('investors.ventureDesc')}
                 </p>
 
-                {/* Visual flow */}
-                <div className="mt-8 flex items-center gap-3 flex-wrap">
-                  <span className="r-pill font-sans text-[13px] text-foreground border border-rule px-4 py-1.5">VORVN</span>
-                  <span className="text-dim">+</span>
-                  <span className="r-pill font-sans text-[13px] text-foreground border border-rule px-4 py-1.5">Partner</span>
-                  <span className="text-dim">=</span>
-                  <span className="r-pill font-sans text-[13px] text-foreground border border-foreground bg-foreground text-background px-4 py-1.5">Co-Built Venture</span>
+                {/* Visual flow — pills on dark */}
+                <div className="flex items-center gap-2 flex-wrap mb-8">
+                  <span className="font-sans text-[12px] text-background border border-background rounded-full px-3 py-1">VORVN</span>
+                  <span className="text-background/60 text-[12px]">+</span>
+                  <span className="font-sans text-[12px] text-background border border-background rounded-full px-3 py-1">Capital</span>
+                  <span className="text-background/60 text-[12px]">=</span>
+                  <span className="font-sans text-[12px] text-foreground bg-background border border-background rounded-full px-3 py-1 font-medium">Co-Built Venture</span>
                 </div>
-              </div>
+
+                <div className="mt-auto pt-2">
+                  <Link
+                    to={`/${lang}/contact`}
+                    className="inline-flex items-center gap-2 font-sans text-[15px] md:text-[16px] text-background border-b border-background pb-[2px] hover:opacity-80 transition-opacity"
+                  >
+                    {t('investors.ventureCta')}
+                  </Link>
+                </div>
+              </article>
             </div>
-            <div className="border-b border-rule" />
           </div>
 
-          {/* CTA — arrow link, no button */}
+          {/* Primary CTA */}
           <div className="mt-16 reveal d4">
             <Link
               to={`/${lang}/contact`}
