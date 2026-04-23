@@ -4,76 +4,177 @@ import founderPhoto from '@/assets/founder-mehdi.png';
 export default function VorvnFounderSection() {
   const { t } = useTranslation();
 
+  const rawQuote = t('founder.quote');
+  // Strip surrounding quote marks (we render our own big quote glyph)
+  const quote = rawQuote.replace(/^[«"„"\s]+|[»"""\s]+$/g, '');
+
   return (
     <section
       id="founder"
       className="border-t border-rule"
-      style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}
     >
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20 gap-y-12">
-        {/* Left: label */}
-        <div className="reveal">
-          <h2 className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground m-0">
-            {t('founder.label')}
-          </h2>
+      <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-screen">
+        {/* LEFT PANEL — quote + identity */}
+        <div
+          className="flex flex-col justify-between"
+          style={{
+            padding:
+              'clamp(52px, 9vh, 120px) clamp(32px, 6vw, 100px)',
+          }}
+        >
+          {/* Quote block */}
+          <div className="reveal">
+            <span
+              aria-hidden="true"
+              className="block font-brand text-dim"
+              style={{
+                fontSize: 'clamp(40px, 6vw, 88px)',
+                lineHeight: 0.75,
+                marginBottom: 'clamp(18px, 2.5vh, 30px)',
+              }}
+            >
+              "
+            </span>
+            <blockquote
+              className="font-sans font-normal text-foreground tracking-[-0.02em]"
+              style={{
+                fontSize: 'clamp(24px, 3.2vw, 56px)',
+                lineHeight: 1.2,
+              }}
+            >
+              {quote.split('\n').map((line, i) => {
+                const trimmed = line.trim();
+                if (trimmed.length === 0) {
+                  return (
+                    <span
+                      key={i}
+                      className="block h-3"
+                      aria-hidden="true"
+                    />
+                  );
+                }
+                return (
+                  <span key={i} className="block">
+                    {trimmed}
+                  </span>
+                );
+              })}
+            </blockquote>
+          </div>
+
+          {/* Identity block */}
+          <div
+            className="reveal d2"
+            style={{ paddingTop: 'clamp(48px, 7vh, 88px)' }}
+          >
+            <div
+              className="font-brand text-foreground"
+              style={{
+                fontSize: 'clamp(15px, 1.6vw, 21px)',
+                letterSpacing: '0.03em',
+                marginBottom: '8px',
+              }}
+            >
+              {t('founder.name')}
+            </div>
+            <div
+              className="font-mono text-mid uppercase"
+              style={{
+                fontSize: '9px',
+                letterSpacing: '0.13em',
+                lineHeight: 1.72,
+                marginBottom: '20px',
+              }}
+            >
+              {t('founder.title')}
+            </div>
+
+            <div className="flex flex-wrap gap-5">
+              <a
+                href="https://www.linkedin.com/in/mehdiayacheberberos/"
+                target="_blank"
+                rel="noopener"
+                className="font-mono uppercase text-foreground border-b border-dim pb-[2px] hover:text-mid hover:border-transparent transition-colors duration-200"
+                style={{ fontSize: '9px', letterSpacing: '0.12em' }}
+              >
+                LinkedIn →
+              </a>
+              <a
+                href="https://mehdiayache.com"
+                target="_blank"
+                rel="noopener"
+                className="font-mono uppercase text-foreground border-b border-dim pb-[2px] hover:text-mid hover:border-transparent transition-colors duration-200"
+                style={{ fontSize: '9px', letterSpacing: '0.12em' }}
+              >
+                Site →
+              </a>
+            </div>
+          </div>
         </div>
 
-        {/* Right: content */}
-        <div>
-          <blockquote
-            className="font-sans font-medium text-foreground reveal d1 tracking-[-0.015em]"
-            style={{ fontSize: 'clamp(22px, 2.8vw, 44px)', lineHeight: 1.35 }}
+        {/* RIGHT PANEL — photo + caption */}
+        <div
+          className="relative overflow-hidden order-first lg:order-none"
+          style={{ minHeight: 'min(78vw, 520px)' }}
+        >
+          <img
+            src={founderPhoto}
+            alt="Mehdi Ayache Berberos"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              objectPosition: 'center top',
+              filter: 'grayscale(100%) contrast(1.06) brightness(0.96)',
+            }}
+          />
+
+          {/* Left edge fade into cream (desktop only) */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
+            style={{
+              background:
+                'linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background) / 0) 20%)',
+            }}
+          />
+          {/* Bottom fade — desktop */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
+            style={{
+              background:
+                'linear-gradient(to bottom, hsl(var(--background) / 0) 50%, hsl(var(--background) / 0.62) 100%)',
+            }}
+          />
+          {/* Bottom fade — mobile */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-[1] lg:hidden"
+            style={{
+              background:
+                'linear-gradient(to bottom, hsl(var(--background) / 0) 55%, hsl(var(--background) / 0.65) 100%)',
+            }}
+          />
+
+          {/* Caption overlay */}
+          <div
+            className="absolute z-[2] text-right"
+            style={{
+              bottom: 'clamp(20px, 4vh, 52px)',
+              right: 'clamp(20px, 3.5vw, 52px)',
+              maxWidth: '240px',
+            }}
           >
-            {t('founder.quote').split('\n').map((line, i) => {
-              const trimmed = line.trim();
-              if (trimmed.length === 0) {
-                return <span key={i} className="block h-4" aria-hidden="true" />;
-              }
-              return (
-                <span key={i} className="block">
-                  {trimmed}
-                </span>
-              );
-            })}
-          </blockquote>
-
-          {/* Founder info */}
-          <div className="mt-12 flex items-center gap-6 reveal d2">
-            <div className="r-pill w-[72px] h-[72px] overflow-hidden border border-foreground shrink-0">
-              <img
-                src={founderPhoto}
-                alt="Mehdi Ayache Berberos"
-                loading="lazy"
-                className="w-full h-full object-cover object-[center_top] block"
-              />
-            </div>
-
-            <div>
-              <div className="font-sans text-[15px] font-medium text-foreground mb-1">
-                {t('founder.name')}
-              </div>
-              <div className="font-sans text-[13px] text-mid mb-3">
-                {t('founder.title')}
-              </div>
-              <div className="flex items-center gap-5">
-                <a
-                  href="https://www.linkedin.com/in/mehdiayacheberberos/"
-                  target="_blank"
-                  rel="noopener"
-                  className="font-sans text-[13px] text-mid border-b border-dim pb-[2px] hover:text-foreground hover:border-foreground transition-colors duration-200"
-                >
-                  LinkedIn →
-                </a>
-                <a
-                  href="https://mehdiayache.com"
-                  target="_blank"
-                  rel="noopener"
-                  className="font-sans text-[13px] text-mid border-b border-dim pb-[2px] hover:text-foreground hover:border-foreground transition-colors duration-200"
-                >
-                  Website →
-                </a>
-              </div>
-            </div>
+            <p
+              className="font-mono text-mid"
+              style={{
+                fontSize: '9px',
+                letterSpacing: '0.07em',
+                lineHeight: 1.8,
+              }}
+            >
+              {t('founder.caption')}
+            </p>
           </div>
         </div>
       </div>
