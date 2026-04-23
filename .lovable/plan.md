@@ -1,123 +1,80 @@
 
-Fix the Portfolio gallery so it behaves as truly infinite, keeps the current filmstrip size, restores rounded geometry, and shows the eye loader when a newly requested next/previous image appears.
 
-## What is wrong now
+# Multilingual SEO — Make Google Understand Your 6 Languages
 
-1. The gallery is only using a circular index on the original array:
-   - `setIndex((i) => (i + dir + total) % total)`
-   - `translateX(-${index * slideBasis}%)`
-   This is cyclic state, but not a visually seamless infinite track. When the last image is reached, the track resets instead of continuing naturally.
+## The Problem (in plain words)
 
-2. The next images are being preloaded too early:
-   - `isNear` loads images within roughly 2 positions of the current slide.
-   - Because of that, the next image is often already decoded before the click, so the eye loader is not visible after navigation.
+When Google visits `vorvn.com/fr`, it currently downloads an HTML file that says **in English**:
+- Title: "VORVN — Autonomous IP & Brand Holdings"
+- Description: "VORVN is an independent IP & brand holdings company..."
+- Canonical: not set yet
 
-3. The gallery tiles are square, but not explicitly rounded:
-   - current slide shell uses `aspect-square`
-   - `LoadingImage` is inserted without a rounded wrapper/class
-   This conflicts with the fully rounded UI direction.
+Then JavaScript runs and *replaces* the meta tags with the French ones. Google does eventually run JavaScript — but:
+1. It takes a second crawl pass (sometimes weeks later)
+2. It's unreliable, especially for non-English pages
+3. Until then, all 6 language URLs look identical to Google → it picks one and ignores the rest, or worse, treats them as duplicates of the homepage
 
-## Implementation plan
+That's exactly the symptom you're describing: "I search VORVN and only get the homepage, languages don't show up properly."
 
-### 1) Rebuild the gallery track as a seamless infinite carousel
-Update `src/components/sections/VorvnPortfolioSection.tsx`:
+## The Solution: Prerender at Build Time
 
-- Keep the same visual proportion:
-  - desktop: about `2.5` visible images
-  - mobile: one full image plus a peek
-- Replace the current single-array transform logic with a cloned-track strategy:
-  - duplicate slides before and after the real set
-  - start on the first “real” slide in the middle copy
-  - animate one slide per click
-  - after transition ends, silently snap back to the equivalent real slide position with transitions temporarily disabled
-- Result:
-  - clicking next on the last image continues naturally into the first image
-  - clicking prev on the first image continues naturally into the last image
-  - no visual reset/jump
-
-### 2) Keep the current gallery size and filmstrip behavior
-In the same gallery component:
-
-- Preserve the current ratio and width logic instead of changing to a single large square slider
-- Keep:
-  - desktop filmstrip with 2 images + half image visible
-  - mobile filmstrip with one image + partial next image
-- Remove any extra “counter” UI and keep only simple left/right navigation
-
-## 3) Make the gallery rounded
-Apply rounded styling to the visible image tiles:
-
-- Add rounded geometry to the image frame using the existing design tokens:
-  - use `.r-card` for the gallery item shell
-  - ensure the image container clips overflow so the image respects the rounded corners
-- Keep logos themselves untouched in the brand logo area above; only the gallery content tiles get rounded
-
-Files:
-- `src/components/sections/VorvnPortfolioSection.tsx`
-- possibly `src/components/LoadingImage.tsx` if the rounding/clipping is better centralized there
-
-## 4) Change loading behavior so the eye appears after click
-Adjust the lazy-loading strategy:
-
-- Stop preloading a wide `isNear` range
-- Only mount/load:
-  - currently visible slides
-  - optionally the immediate adjacent peek if required for layout smoothness
-- For the newly requested next/previous image:
-  - let it mount/load when it becomes active through navigation
-  - show `LoadingImage` with `EyeLoader` until decode completes
-- This ensures the eye is visible for newly entered images instead of silently showing an already preloaded asset
-
-### Recommended behavior
-- visible now = loaded now
-- clicked next/prev = next target starts loading if not already available
-- loader appears centered inside that rounded tile until the image is ready
-
-## 5) Keep mobile behavior clean
-While updating the carousel:
-
-- preserve swipe-like visual flow, even if navigation remains button-driven
-- ensure the rounded tiles, loader, and snapping all work at mobile widths
-- keep keyboard arrow support if it does not interfere with the infinite-track logic
-
-## Files to change
-
-- `src/components/sections/VorvnPortfolioSection.tsx`
-  - replace modulo-only carousel logic with cloned infinite track
-  - update loading window logic
-  - add rounded gallery shells
-- `src/components/LoadingImage.tsx`
-  - ensure it can inherit rounded clipping cleanly without flashing square corners
-
-## Technical notes
+We generate **real static HTML files** for every language, with the correct title/description/canonical/hreflang already baked in **before** JavaScript runs. Google sees the right content on the first visit. No waiting. No guessing.
 
 ```text
-Current:
-[1][2][3][4] + index wraps in state only
-
-Needed:
-[3][4][1][2][3][4][1][2]
-      ^
-   start here in middle set
-
-Click next:
-animate to next position
-if landed in cloned edge zone:
-snap instantly back to matching real slide
+Before:                          After:
+/fr → index.html (English meta)  /fr/index.html (French meta, French hreflang, canonical=/fr)
+      ↓ JS runs                  /es/index.html (Spanish meta, canonical=/es)
+      ↓ meta swapped             /zh/index.html (Chinese meta, canonical=/zh)
+      ↓ Google maybe re-crawls   /ar/index.html (Arabic meta, dir=rtl, canonical=/ar)
+      → confused result          → Google indexes each language correctly
 ```
 
-```text
-Desired desktop view:
-[ image ][ image ][ half image ]
+## What Will Change
 
-Desired mobile view:
-[ image ][ partial next ]
-```
+### 1. Build-time prerendering (the core fix)
+- Add `vite-plugin-prerender-spa` (or a simple custom Node script) that runs after `vite build`
+- For each route in this list, output a real HTML file with localized `<title>`, `<meta description>`, `<link canonical>`, `<link hreflang>` × 6 + x-default, OG tags, and JSON-LD already inside `<head>`:
+  - `/en`, `/fr`, `/es`, `/zh`, `/id`, `/ar`
+  - `/en/contact`, `/fr/contact`, `/es/contact`, `/zh/contact`, `/id/contact`, `/ar/contact`
+  - `/legal/privacy`, `/legal/notice` (English only)
+- Also write the right `<html lang="xx" dir="...">` attribute per file
+- The React app still hydrates normally on top — no UX change
+
+### 2. Audit translation completeness
+- Read all 6 `src/i18n/locales/*.json` files and diff them against `en.json`
+- Report any missing keys (so Google doesn't crawl half-translated pages)
+- Fix any English fallback leaks found
+
+### 3. Improve meta descriptions per language
+- Current titles/descriptions in `SeoHead.tsx` are good but a bit generic. We'll tighten them so each language has unique, search-optimized copy (~155 chars desc, keyword-rich)
+- Add a language-aware `<title>` tag for the **root `/`** redirect HTML (currently English-only) so even the redirect page has correct meta
+
+### 4. Sitemap upgrade
+- Current sitemap is correct but lists `lastmod` as `2025-04-20`. Update to current date and verify all 14 URLs (6 home + 6 contact + 2 legal) resolve to prerendered files
+- Confirm `robots.txt` correctly references it (already does)
+
+### 5. Per-language JSON-LD enrichment
+- Add `WebSite` schema with `inLanguage` and `potentialAction` (SearchAction stub) on home for each locale
+- Localize `Organization.description` per language
+- Add `BreadcrumbList` schema on contact pages
+
+### 6. Verification tooling (one-time)
+- After build, run a small script that opens each prerendered `dist/<lang>/index.html` and asserts: title is non-English-default, canonical points to itself, all 6 hreflang links present, `<html lang>` matches
+- Print a green/red report so we know it worked before deploy
+
+## Technical details
+
+- **Prerender approach**: Use `vite-plugin-prerender` with `puppeteer` (renders React → static HTML), OR a leaner custom script using the existing `SeoHead` component output. Recommend the plugin route — battle-tested, no maintenance.
+- **Build pipeline**: Hooks into existing `npm run build`. Netlify picks up the new files automatically — no `netlify.toml` change needed (the existing SPA fallback still handles non-prerendered paths).
+- **No runtime cost**: Prerendering happens at build time only. Bundle size, load time, hydration are unchanged.
+- **Hydration safety**: We'll confirm `SeoHead` doesn't double-inject conflicting tags after hydration (it currently re-emits, which is fine — same content).
+- **Files touched**: `vite.config.ts` (add plugin), `package.json` (add devDep), `src/components/SeoHead.tsx` (minor tightening), `src/i18n/locales/*.json` (fill gaps if any), `public/sitemap.xml` (refresh dates), new `scripts/verify-seo.mjs` (post-build check).
 
 ## Expected result
 
-- Truly infinite next/previous behavior
-- Same gallery proportion as now
-- Rounded gallery tiles
-- Eye loader appears when a newly navigated image is still loading
-- Mobile remains smooth and readable
+- Search "VORVN" on Google.fr → French homepage shows up with French title and description
+- Search "VORVN Bali" → relevant language version surfaces based on user locale
+- Google Search Console "International Targeting" → all 6 hreflang pairs validate green
+- No more "duplicate content" warnings between language versions
+- Each `/contact` page indexes separately per language
+
