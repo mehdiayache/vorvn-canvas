@@ -6,7 +6,7 @@
   <!-- ============ HOME ============ -->
   <url>
     <loc>https://www.vorvn.com/en</loc>
-    <lastmod>2025-04-20</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
@@ -19,7 +19,7 @@
   </url>
   <url>
     <loc>https://www.vorvn.com/fr</loc>
-    <lastmod>2025-04-20</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://www.vorvn.com/es</loc>
-    <lastmod>2025-04-20</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
@@ -45,7 +45,7 @@
   </url>
   <url>
     <loc>https://www.vorvn.com/zh</loc>
-    <lastmod>2025-04-20</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
@@ -58,7 +58,7 @@
   </url>
   <url>
     <loc>https://www.vorvn.com/id</loc>
-    <lastmod>2025-04-20</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
@@ -71,7 +71,7 @@
   </url>
   <url>
     <loc>https://www.vorvn.com/ar</loc>
-    <lastmod>2025-04-20</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
@@ -86,7 +86,7 @@
   <!-- ============ CONTACT ============ -->
   <url>
     <loc>https://www.vorvn.com/en/contact</loc>
-    <lastmod>2025-04-20</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
@@ -99,7 +99,7 @@
   </url>
   <url>
     <loc>https://www.vorvn.com/fr/contact</loc>
-    <lastmod>2025-04-20</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
@@ -112,7 +112,7 @@
   </url>
   <url>
     <loc>https://www.vorvn.com/es/contact</loc>
-    <lastmod>2025-04-20</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
@@ -125,7 +125,7 @@
   </url>
   <url>
     <loc>https://www.vorvn.com/zh/contact</loc>
-    <lastmod>2025-04-20</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
@@ -138,7 +138,7 @@
   </url>
   <url>
     <loc>https://www.vorvn.com/id/contact</loc>
-    <lastmod>2025-04-20</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
@@ -151,7 +151,7 @@
   </url>
   <url>
     <loc>https://www.vorvn.com/ar/contact</loc>
-    <lastmod>2025-04-20</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
@@ -166,13 +166,13 @@
   <!-- ============ LEGAL (English-only) ============ -->
   <url>
     <loc>https://www.vorvn.com/legal/privacy</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://www.vorvn.com/legal/notice</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
