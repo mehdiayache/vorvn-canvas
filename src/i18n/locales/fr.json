@@ -143,7 +143,7 @@
     "sub": "VORVN · VE VOLD™ · Fondée en 2023"
   },
   "footer": {
-    "legal": "© 2025 VORVN LIMITED. Tous droits réservés.\nEnregistrée à Hong Kong, SAR.",
+    "legal": "© {{year}} VORVN LIMITED. Tous droits réservés.\nEnregistrée à Hong Kong, SAR.",
     "instagram": "Instagram",
     "linkedin": "LinkedIn",
     "careers": "Carrières",

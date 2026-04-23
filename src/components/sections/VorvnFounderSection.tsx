@@ -92,7 +92,7 @@ export default function VorvnFounderSection() {
 
             <div className="flex flex-wrap gap-5">
               <a
-                href="https://www.linkedin.com/in/mehdiayacheberberos/"
+                href="https://www.linkedin.com/in/mehdiayache/"
                 target="_blank"
                 rel="noopener"
                 className="font-mono uppercase text-foreground border-b border-dim pb-[2px] hover:text-mid hover:border-transparent transition-colors duration-200"

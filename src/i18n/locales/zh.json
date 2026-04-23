@@ -143,7 +143,7 @@
     "sub": "VORVN · VE VOLD™ · 创立于 2023"
   },
   "footer": {
-    "legal": "© 2025 VORVN LIMITED 版权所有。\n注册于香港特别行政区。",
+    "legal": "© {{year}} VORVN LIMITED 版权所有。\n注册于香港特别行政区。",
     "instagram": "Instagram",
     "linkedin": "LinkedIn",
     "careers": "招聘",

@@ -143,7 +143,7 @@
     "sub": "VORVN · VE VOLD™ · تأسست 2023"
   },
   "footer": {
-    "legal": "© 2025 VORVN LIMITED. جميع الحقوق محفوظة.\nمسجَّلة في هونغ كونغ، SAR.",
+    "legal": "© {{year}} VORVN LIMITED. جميع الحقوق محفوظة.\nمسجَّلة في هونغ كونغ، SAR.",
     "instagram": "Instagram",
     "linkedin": "LinkedIn",
     "careers": "وظائف",
