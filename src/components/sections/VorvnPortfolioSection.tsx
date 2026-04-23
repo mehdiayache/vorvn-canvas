@@ -12,7 +12,7 @@ import LoadingImage from '@/components/LoadingImage';
  * - On-demand loading with breathing-eye loader.
  * - On mobile: ~1.25 slides visible (one full + peek).
  */
-function VorvnGallery({ images }: { images: string[] }) {
+function VorvnGallery({ images, brandName }: { images: string[]; brandName: string }) {
   const { t } = useTranslation();
   const total = images.length;
   const [isDesktop, setIsDesktop] = useState(false);
@@ -135,7 +135,12 @@ function VorvnGallery({ images }: { images: string[] }) {
               >
                 <div className="r-card relative aspect-square overflow-hidden bg-foreground/[0.08]">
                   {shouldLoad ? (
-                    <LoadingImage src={src} alt="" className="w-full h-full" loaderSize={44} />
+                    <LoadingImage
+                      src={src}
+                      alt={`${brandName} brand visual ${(i % total) + 1}`}
+                      className="w-full h-full"
+                      loaderSize={44}
+                    />
                   ) : (
                     <span className="block w-full h-full" />
                   )}
@@ -366,7 +371,7 @@ function VorvnPortfolioItem({
                 )}
               </div>
             </div>
-            {isOpen && <VorvnGallery images={data.images} />}
+            {isOpen && <VorvnGallery images={data.images} brandName={brand.name} />}
           </div>
         </div>
       </div>
