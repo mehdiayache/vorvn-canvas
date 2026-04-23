@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import founderPhoto from '@/assets/founder-mehdi.png';
+import founderPhoto from '@/assets/founder-mehdi.webp';
 
 export default function VorvnFounderSection() {
   const { t } = useTranslation();
@@ -68,10 +68,10 @@ export default function VorvnFounderSection() {
             style={{ paddingTop: 'clamp(48px, 7vh, 88px)' }}
           >
             <div
-              className="font-brand text-foreground"
+              className="font-sans font-semibold text-foreground"
               style={{
                 fontSize: 'clamp(15px, 1.6vw, 21px)',
-                letterSpacing: '0.03em',
+                letterSpacing: '0.01em',
                 marginBottom: '8px',
               }}
             >
@@ -119,41 +119,11 @@ export default function VorvnFounderSection() {
         >
           <img
             src={founderPhoto}
-            alt="Mehdi Ayache Berberos"
+            alt="Portrait of Mehdi Ayache Berberos, Founder and CEO of VORVN, with illustrated hand graphics"
             loading="lazy"
+            decoding="async"
             className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              objectPosition: 'center top',
-              filter: 'grayscale(100%) contrast(1.06) brightness(0.96)',
-            }}
-          />
-
-          {/* Left edge fade into cream (desktop only) */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
-            style={{
-              background:
-                'linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background) / 0) 20%)',
-            }}
-          />
-          {/* Bottom fade — desktop */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
-            style={{
-              background:
-                'linear-gradient(to bottom, hsl(var(--background) / 0) 50%, hsl(var(--background) / 0.62) 100%)',
-            }}
-          />
-          {/* Bottom fade — mobile */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 z-[1] lg:hidden"
-            style={{
-              background:
-                'linear-gradient(to bottom, hsl(var(--background) / 0) 55%, hsl(var(--background) / 0.65) 100%)',
-            }}
+            style={{ objectPosition: 'center center' }}
           />
 
           {/* Caption overlay */}
