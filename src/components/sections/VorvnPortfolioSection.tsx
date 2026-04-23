@@ -311,12 +311,12 @@ function VorvnPortfolioItem({
           {/* Logo — bare, no wrapper, no padding. Square 1:1 ratio. */}
           <div className="mb-8">
             {data.logo ? (
-              <img
+              <LoadingImage
                 src={data.logo}
-                alt={brand.name}
-                loading="lazy"
-                decoding="async"
-                className="block w-[160px] h-[160px] object-contain"
+                alt={`${brand.name} logo`}
+                className="w-[160px] h-[160px]"
+                objectFit="contain"
+                loaderSize={36}
               />
             ) : (
               <div className="inline-flex items-center justify-center w-[160px] h-[160px]">
