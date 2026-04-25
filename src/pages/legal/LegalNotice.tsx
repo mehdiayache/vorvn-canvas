@@ -41,15 +41,8 @@ export default function LegalNotice() {
       <h2 id="group">2. Affiliated group entities</h2>
       <ul>
         <li>
-          <strong>PT. VORVN GROUP INDONESIA</strong> — design and operations studio,
-          Jl. Seroja No.28, Tonja, Kec. Denpasar Utara, Bali 80235, Indonesia.
-        </li>
-        <li>
-          <strong>ADUH (LAGI) STUDIO</strong> — incubator studio, same address as above.
-        </li>
-        <li>
-          <strong>Participations</strong> — operations in Northwest Africa (French-speaking
-          market and Gulf export corridor).
+          <strong>PT. Aduh (Lagi) Studio</strong> — incubator studio,
+          No. 12, Jl. Ciung Wanara 1, Denpasar Timur, Bali 80235, Indonesia.
         </li>
       </ul>
 
