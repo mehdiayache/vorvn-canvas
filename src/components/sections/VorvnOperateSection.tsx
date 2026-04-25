@@ -76,41 +76,21 @@ function Panel({ children, delay = '' }: { children: React.ReactNode; delay?: st
   );
 }
 
-/* --------- brand cell --------- */
+/* --------- portfolio logo cell (panel 3) --------- */
 
-function BrandCell({ brand }: { brand: Brand }) {
-  const isPipeline = brand.status === 'pipeline';
-  const dotClass =
-    brand.status === 'active' ? 'bg-status-active' :
-    brand.status === 'dev'    ? 'bg-status-validation' :
-                                'bg-foreground';
-
+function PortfolioLogo({ src, status }: { src: string; status: string }) {
   return (
     <div
-      className="r-card border border-foreground flex flex-col items-center text-center gap-2"
-      style={{ padding: 'clamp(18px, 2.6vh, 26px) clamp(14px, 2vw, 22px)', minHeight: 130 }}
+      className="flex items-center justify-center"
+      style={{ minWidth: 120, height: 80 }}
     >
-      <div className="flex items-center gap-2 font-mono uppercase text-foreground"
-           style={{ fontSize: 10, letterSpacing: '0.16em' }}>
-        {isPipeline ? (
-          <span aria-hidden="true">+</span>
-        ) : (
-          <span className={`inline-block ${dotClass}`} style={{ width: 7, height: 7, borderRadius: 9999 }} />
-        )}
-        {brand.status === 'active' ? 'Active' : brand.status === 'dev' ? 'Dev' : 'Open'}
-      </div>
-      <div
-        className="font-sans font-medium text-foreground"
-        style={{ fontSize: 'clamp(15px, 1.4vw, 18px)', letterSpacing: '-0.01em', lineHeight: 1.2 }}
-      >
-        {brand.name}
-      </div>
-      {brand.sector && (
-        <div className="font-mono uppercase text-foreground"
-             style={{ fontSize: 9, letterSpacing: '0.12em', lineHeight: 1.5 }}>
-          {brand.sector}
-        </div>
-      )}
+      <LoadingImage
+        src={src}
+        alt="Portfolio brand logo"
+        className={`max-h-[64px] w-auto h-auto ${status !== 'active' ? 'opacity-60' : ''}`}
+        objectFit="contain"
+        loaderSize={28}
+      />
     </div>
   );
 }
