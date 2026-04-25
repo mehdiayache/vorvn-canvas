@@ -61,6 +61,7 @@
     --f-brand: 'Gasoek One', sans-serif;
     --f-sans: 'Inter Tight', sans-serif;
     --f-mono: 'JetBrains Mono', monospace;
+    --f-display: 'Imbue', serif;
     --gutter: clamp(40px, 8vw, 140px);
   }
 
