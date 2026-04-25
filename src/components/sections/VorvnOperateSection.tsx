@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { BRANDS_DATA } from '@/data/brands';
-import LoadingImage from '@/components/LoadingImage';
 
 /**
  * VorvnOperateSection — "How We Operate"
