@@ -26,9 +26,13 @@ i18n
     fallbackLng: 'en',
     interpolation: { escapeValue: false },
     detection: {
-      order: ['querystring', 'localStorage', 'navigator'],
+      // localStorage intentionally excluded from both `order` and `caches`:
+      // the LanguageSplash component is the single source of truth for the
+      // user's chosen language. It writes `i18nextLng` itself, and
+      // LanguageRoute calls i18n.changeLanguage(lang) based on the URL.
+      order: ['querystring', 'navigator'],
       lookupQuerystring: 'lang',
-      caches: ['localStorage'],
+      caches: [],
     },
   });
 
