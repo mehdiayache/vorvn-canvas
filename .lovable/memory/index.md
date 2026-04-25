@@ -32,3 +32,4 @@
 - [Navigation](mem://features/navigation) — Header links, clickable logo, and mobile menu priority
 - [Closing Section](mem://features/closing-section) — Manifesto statement and "Breathing Eye" interactive visual
 - [404 Page](mem://features/404-page) — Custom 404 design and language-aware routing
+- [Presence](mem://features/presence) — Canonical entity names/addresses/badges (HK Holding, Bali PT. Aduh (Lagi) Studio Incubator, Morocco Coming soon) — sync across i18n, Contact OFFICES, JSON-LD, legal pages
