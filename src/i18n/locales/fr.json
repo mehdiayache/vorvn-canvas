@@ -91,25 +91,48 @@
       }
     ]
   },
-  "principles": {
+  "operate": {
     "label": "Notre Façon d'Opérer",
-    "items": [
-      {
-        "numeral": "I",
-        "title": "Posséder l'IP. Toujours.",
-        "body": "Sans intermédiaires. Sans dépendance à la licence. Chaque marque que nous construisons, chaque actif que nous créons — reste dans la structure. La propriété est la prémisse non négociable."
-      },
-      {
-        "numeral": "II",
-        "title": "Exécuter sans friction.",
-        "body": "Les idées sans système ne sont que du bruit. Nous structurons, construisons et déployons avec une précision opérationnelle — du concept au marché, sans compromis ni délai."
-      },
-      {
-        "numeral": "III",
-        "title": "L'humain d'abord. L'IA en levier.",
-        "body": "Nous l'avons compris tôt. L'IA ne remplace pas le créatif — elle accélère le bâtisseur. VORVN est construit par des humains, pour des humains, avec l'intelligence comme outil le plus tranchant."
-      }
-    ]
+    "kicker": "Un système qui transforme les idées\nen marques détenues.",
+    "p1": {
+      "role": "Opérateur",
+      "name": "VORVN",
+      "tagline": "Le système qui possède, définit et opère.",
+      "desc": "Chaque marque existe comme un module au sein de VORVN — conçue pour la réplication, le contrôle et l'expansion."
+    },
+    "p2": {
+      "role": "Incubateur",
+      "tagline": "Là où les marques sont construites avant d'exister.",
+      "desc": "L'unité opérationnelle créative, détenue et licenciée par VORVN. Elle façonne les marques à leur stade le plus précoce — identité, logique produit, systèmes visuels, premiers prototypes. Elle opère comme un incubateur où les concepts sont formés, affinés et préparés avant d'entrer en conditions réelles de marché. Elle ne gère pas la distribution. Elle se concentre sur la création, l'affinement et la préparation."
+    },
+    "p3": {
+      "role": "Actifs Indépendants",
+      "title": "Chaque marque devient une entité autonome une fois définie.",
+      "desc": "Chacune porte son propre positionnement, son audience et son modèle économique. Construite à l'intérieur du système, libérée comme une entreprise indépendante et structurée, adossée à l'IP et à l'infrastructure opérationnelle de VORVN."
+    },
+    "p4": {
+      "role": "Par Marque",
+      "title": "Couche d'Exécution Externe",
+      "desc": "Chaque marque construit ou connecte sa propre distribution, ses opérations et ses canaux de marché une fois validée. L'exécution est délibérément séparée de la création — aucune marque n'entre sur le marché sans être passée par l'incubateur et avoir reçu l'aval structurel de VORVN."
+    },
+    "p5": {
+      "role": "Approvisionnement & Export",
+      "title": "Construits ou en partenariat, selon le besoin du marché.",
+      "desc": "Des entités dédiées qui prennent en charge la production, le sourcing ou l'export régional lorsque la logique d'une marque l'exige. Ce ne sont pas des structures permanentes. Elles sont bâties quand la chaîne d'approvisionnement d'une marque le demande, structurées autour de ce besoin spécifique."
+    },
+    "c1": "Détient & Licencie",
+    "c2": "Libère",
+    "c3": "Se connecte à",
+    "c4": "Soutenu par",
+    "logic": {
+      "kicker": "Logique de Structure",
+      "lines": [
+        "VORVN définit et opère.",
+        "Aduh (Lagi) Studio construit.",
+        "Les marques déploient. Les entités de support approvisionnent."
+      ],
+      "outcome": "Un système où les marques sont créées dans un environnement contrôlé, puis libérées comme des entreprises indépendantes et structurées — chacune adossée à l'IP, aux opérations et à l'infrastructure d'approvisionnement que VORVN contrôle. Pas un studio. Pas une agence. Un système de holding conçu pour posséder, opérer et passer à l'échelle."
+    }
   },
   "founder": {
     "label": "Fondateur",

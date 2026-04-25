@@ -91,25 +91,48 @@
       }
     ]
   },
-  "principles": {
+  "operate": {
     "label": "How We Operate",
-    "items": [
-      {
-        "numeral": "I",
-        "title": "Own the IP. Always.",
-        "body": "No middlemen. No licensing dependency. Every brand we build, every asset we create — stays within the structure. Ownership is the non-negotiable premise."
-      },
-      {
-        "numeral": "II",
-        "title": "Execute without friction.",
-        "body": "Ideas without systems are noise. We structure, build, and deploy with operational precision — from concept to market, without compromise or delay."
-      },
-      {
-        "numeral": "III",
-        "title": "Human first. AI amplified.",
-        "body": "We got this early. AI doesn't replace the creative — it accelerates the builder. VORVN is built by humans, for humans, with intelligence as the sharpest tool."
-      }
-    ]
+    "kicker": "A system that turns ideas\ninto owned brands.",
+    "p1": {
+      "role": "Operator",
+      "name": "VORVN",
+      "tagline": "The system that owns, defines, and operates.",
+      "desc": "Every brand exists as a module within VORVN — designed for replication, control, and expansion."
+    },
+    "p2": {
+      "role": "Incubator",
+      "tagline": "Where brands are built before they exist.",
+      "desc": "The creative operating unit, held and licensed by VORVN. It shapes brands at their earliest stage — identity, product logic, visual systems, first prototypes. It operates as an incubator where concepts are formed, refined, and prepared before entering real market conditions. It does not handle distribution. It focuses on creation, refinement, and readiness."
+    },
+    "p3": {
+      "role": "Independent Assets",
+      "title": "Each brand becomes a standalone entity once defined.",
+      "desc": "Each one carries its own positioning, audience, and business model. Built inside the system, released as independent, structured businesses backed by VORVN's IP and operational infrastructure."
+    },
+    "p4": {
+      "role": "Per Brand",
+      "title": "External Execution Layer",
+      "desc": "Each brand builds or connects its own distribution, operations, and market channels once validated. Execution is deliberately separated from creation — no brand enters market without passing through the incubator and receiving VORVN's structural sign-off."
+    },
+    "p5": {
+      "role": "Supply & Export",
+      "title": "Built or partnered, per market need.",
+      "desc": "Dedicated entities handling production, sourcing, or regional export when brand logic requires it. These are not permanent structures. They are built when a brand's supply chain demands it, structured around that specific need."
+    },
+    "c1": "Holds & Licenses",
+    "c2": "Releases",
+    "c3": "Connects",
+    "c4": "Backed by",
+    "logic": {
+      "kicker": "Structure Logic",
+      "lines": [
+        "VORVN defines and operates.",
+        "Aduh (Lagi) Studio builds.",
+        "Brands deploy. Support entities supply."
+      ],
+      "outcome": "A system where brands are created in a controlled environment, then released as independent, structured businesses — each backed by the IP, operations, and supply infrastructure VORVN controls. Not a studio. Not an agency. A holding system built to own, operate, and scale."
+    }
   },
   "founder": {
     "label": "Founder",

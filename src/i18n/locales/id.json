@@ -91,25 +91,48 @@
       }
     ]
   },
-  "principles": {
+  "operate": {
     "label": "Cara Kami Beroperasi",
-    "items": [
-      {
-        "numeral": "I",
-        "title": "Miliki IP-nya. Selalu.",
-        "body": "Tanpa perantara. Tanpa ketergantungan lisensi. Setiap merek yang kami bangun, setiap aset yang kami ciptakan — tetap berada di dalam struktur. Kepemilikan adalah premis yang tidak dapat ditawar."
-      },
-      {
-        "numeral": "II",
-        "title": "Eksekusi tanpa friksi.",
-        "body": "Ide tanpa sistem hanyalah kebisingan. Kami menyusun, membangun, dan meluncurkan dengan presisi operasional — dari konsep ke pasar, tanpa kompromi atau penundaan."
-      },
-      {
-        "numeral": "III",
-        "title": "Manusia dulu. AI sebagai pengganda.",
-        "body": "Kami menyadarinya lebih awal. AI tidak menggantikan kreator — ia mempercepat sang pembangun. VORVN dibangun oleh manusia, untuk manusia, dengan kecerdasan sebagai alat tertajam."
-      }
-    ]
+    "kicker": "Sebuah sistem yang mengubah ide\nmenjadi merek yang dimiliki.",
+    "p1": {
+      "role": "Operator",
+      "name": "VORVN",
+      "tagline": "Sistem yang memiliki, mendefinisikan, dan menjalankan.",
+      "desc": "Setiap merek hadir sebagai modul di dalam VORVN — dirancang untuk replikasi, kontrol, dan ekspansi."
+    },
+    "p2": {
+      "role": "Inkubator",
+      "tagline": "Tempat merek dibangun sebelum mereka ada.",
+      "desc": "Unit operasional kreatif, dimiliki dan dilisensikan oleh VORVN. Membentuk merek pada tahap paling awal — identitas, logika produk, sistem visual, prototipe pertama. Beroperasi sebagai inkubator tempat konsep dibentuk, disempurnakan, dan disiapkan sebelum memasuki kondisi pasar nyata. Tidak menangani distribusi. Fokus pada penciptaan, penyempurnaan, dan kesiapan."
+    },
+    "p3": {
+      "role": "Aset Independen",
+      "title": "Setiap merek menjadi entitas mandiri setelah didefinisikan.",
+      "desc": "Masing-masing membawa positioning, audiens, dan model bisnisnya sendiri. Dibangun di dalam sistem, dilepas sebagai bisnis independen yang terstruktur, didukung oleh IP dan infrastruktur operasional VORVN."
+    },
+    "p4": {
+      "role": "Per Merek",
+      "title": "Lapisan Eksekusi Eksternal",
+      "desc": "Setiap merek membangun atau menghubungkan distribusi, operasi, dan kanal pasarnya sendiri setelah divalidasi. Eksekusi sengaja dipisahkan dari penciptaan — tidak ada merek yang masuk pasar tanpa melewati inkubator dan menerima persetujuan struktural dari VORVN."
+    },
+    "p5": {
+      "role": "Pasokan & Ekspor",
+      "title": "Dibangun atau dimitrai, sesuai kebutuhan pasar.",
+      "desc": "Entitas khusus yang menangani produksi, sourcing, atau ekspor regional ketika logika merek menuntutnya. Bukan struktur permanen. Dibangun ketika rantai pasok sebuah merek memerlukannya, distrukturkan di sekitar kebutuhan spesifik tersebut."
+    },
+    "c1": "Memiliki & Melisensikan",
+    "c2": "Melepas",
+    "c3": "Menghubungkan",
+    "c4": "Didukung oleh",
+    "logic": {
+      "kicker": "Logika Struktur",
+      "lines": [
+        "VORVN mendefinisikan dan menjalankan.",
+        "Aduh (Lagi) Studio membangun.",
+        "Merek beroperasi. Entitas pendukung memasok."
+      ],
+      "outcome": "Sebuah sistem di mana merek diciptakan dalam lingkungan terkontrol, lalu dilepas sebagai bisnis independen yang terstruktur — masing-masing didukung oleh IP, operasi, dan infrastruktur pasokan yang dikendalikan VORVN. Bukan studio. Bukan agensi. Sebuah sistem holding yang dibangun untuk memiliki, mengoperasikan, dan menumbuhkan."
+    }
   },
   "founder": {
     "label": "Pendiri",
