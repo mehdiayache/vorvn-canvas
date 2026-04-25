@@ -165,14 +165,23 @@ export default function VorvnOperateSection() {
         {/* PANEL 1 — OPERATOR / VORVN */}
         <Panel delay="d1">
           <div className="flex flex-col items-center text-center">
-            <RoleBadge>{t('operate.p1.role')}</RoleBadge>
             <h3
-              className="font-brand text-foreground mt-7"
-              style={{ fontSize: 'clamp(28px, 5vw, 56px)', letterSpacing: '0.01em', lineHeight: 1.0 }}
+              className="font-sans font-medium text-foreground"
+              style={{ fontSize: 'clamp(40px, 6.5vw, 72px)', letterSpacing: '-0.035em', lineHeight: 1.0 }}
             >
-              {t('operate.p1.name')}
+              {t('operate.p1.role')}
             </h3>
-            <p className="font-sans font-normal text-foreground mt-5 mx-auto"
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 mt-5">
+              <span
+                className="font-brand text-foreground"
+                style={{ fontSize: 'clamp(16px, 1.6vw, 20px)', letterSpacing: '0.02em', lineHeight: 1 }}
+              >
+                {t('operate.p1.name')}
+              </span>
+              <span aria-hidden="true" className="inline-block bg-foreground" style={{ width: 4, height: 4 }} />
+              <MonoTag>Hong Kong</MonoTag>
+            </div>
+            <p className="font-sans font-normal text-foreground mt-6 mx-auto"
                style={{ fontSize: 'clamp(15px, 1.5vw, 20px)', lineHeight: 1.5, maxWidth: 540 }}>
               {t('operate.p1.tagline')}
             </p>
