@@ -20,9 +20,9 @@
   },
   "entity": {
     "label": "The Entity",
-    "statement": "VORVN is not an agency.\nIt is the architecture\nbehind the brands.",
-    "detail": "VORVN is a private IP holdings company registered in Hong Kong. We own and operate brands across Southeast Asia, Northwest Africa, and Western consumer markets — kitchenware, modest fashion, food. Every brand is designed in-house, produced through our Bali studio, and shipped under our own structure. No agency clients. No licensing partners.",
-    "designNote": "Design · Strategy · Execution · No middlemen. No shortcuts."
+    "statement": "VORVN designs, builds, and runs\nits brands end-to-end —\nunder one operator,\nacross four markets.",
+    "detail": "Registered in Hong Kong. Run from Bali. Native fluency across the Maghreb, Europe, the Gulf, and Southeast Asia — in French, Arabic, English, and Indonesian. One founder controls the full chain: business design, identity, prototype, supply, ecommerce, marketing, fulfillment. We operate at the level of a top-tier business design agency — independently, internally, only for ideas we believe in. Every brand launches as a test unit in live market conditions and must pass three filters to survive: instant identity, operational simplicity, replicable execution. Those that pass become assets — built to scale, structured to sell, open to selective co-ownership.",
+    "designNote": ""
   },
   "presence": {
     "label": "Presence",
