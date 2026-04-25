@@ -39,12 +39,12 @@ export default function LanguageSplash({ onChoose }: LanguageSplashProps) {
       aria-label="Choose your language"
     >
       <div className="w-full max-w-[640px] flex flex-col items-center text-center">
-        <p className="font-display text-[clamp(40px,6vw,72px)] leading-none text-foreground mb-12 tracking-tight">
+        <p className="font-brand text-[clamp(44px,7vw,84px)] leading-none text-foreground mb-12">
           VORVN
         </p>
 
         <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground mb-10">
-          Select language
+          Select · Sélectionnez · 选择 · Seleccionar · Pilih · اختر
         </p>
 
         <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
