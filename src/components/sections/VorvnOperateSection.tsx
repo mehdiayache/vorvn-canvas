@@ -282,6 +282,7 @@ export default function VorvnOperateSection() {
             {t('operate.logic.outcome')}
           </p>
         </div>
+        </div>
       </div>
     </section>
   );
