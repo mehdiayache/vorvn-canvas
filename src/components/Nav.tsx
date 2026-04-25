@@ -8,7 +8,7 @@ const SECTIONS = [
   { id: 'entity', key: 'entity.label' },
   { id: 'presence', key: 'presence.label' },
   { id: 'portfolio', key: 'portfolio.label' },
-  { id: 'principles', key: 'principles.label' },
+  { id: 'operate', key: 'operate.label' },
   { id: 'founder', key: 'founder.label' },
   { id: 'investors', key: 'investors.label' },
 ];
