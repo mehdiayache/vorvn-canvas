@@ -1,42 +1,77 @@
-## Root cause
+# Global Scroll Reset on Route Change
 
-`src/i18n/index.ts` configures `i18next-browser-languagedetector` with:
+## The problem (confirmed)
 
-```ts
-detection: {
-  order: ['querystring', 'localStorage', 'navigator'],
-  caches: ['localStorage'],
-}
+React Router's client-side navigation swaps the rendered route but **never touches `window.scrollY`**. So if you're scrolled down on Page A and click any link to Page B, you land on Page B at the exact same scroll position. This affects **every navigation in the app**, not just the footer → contact case:
+
+- Footer links → Contact / Legal pages
+- Nav logo → Home
+- Language Splash → `/:lang`
+- Language Switcher (e.g. `/en` → `/fr`)
+- 404 → Home
+- Any future route added later
+
+It is a single global concern and deserves a single global fix.
+
+## The fix
+
+Create one tiny component that listens to pathname changes and resets scroll. Mount it once inside `<BrowserRouter>`. Zero changes to any existing `Link`, `Nav`, or `Footer`.
+
+### 1. New file — `src/components/ScrollToTop.tsx`
+
+```tsx
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 });
+  }, [pathname]);
+
+  return null;
+};
+
+export default ScrollToTop;
 ```
 
-On every app boot, the detector reads the navigator language and **writes it into `localStorage` under `i18nextLng`** — before `LanguageRedirect` runs. So `getStoredLanguage()` always finds a value, and the splash never appears (even after clearing site data).
+- Uses `pathname` only (not `search` / `hash`) so query-string changes don't trigger a reset.
+- Instant jump (no smooth scroll) — matches the feel of a real page load and avoids janky animation on slow devices.
+- Renders nothing.
 
-## Fix
+### 2. Edit `src/App.tsx`
 
-### 1. `src/i18n/index.ts` — stop i18next from auto-writing to localStorage
+Mount `<ScrollToTop />` as the first child of `<BrowserRouter>`, just before `<Routes>`:
 
-- Change `caches: ['localStorage']` → `caches: []`
-- Remove `'localStorage'` from `order` (keep `querystring`, `navigator`) so the detector doesn't read a stale value either. The splash component is now the single source of truth for the user's chosen language; it writes `i18nextLng` itself, and `LanguageRoute` calls `i18n.changeLanguage(lang)` based on the URL.
+```tsx
+<BrowserRouter>
+  <ScrollToTop />
+  <Routes>
+    ...
+  </Routes>
+  <CookieBanner enabled={COOKIE_CONSENT_REQUIRED} />
+</BrowserRouter>
+```
 
-This way:
-- First visit → no `i18nextLng` in storage → splash shows.
-- User picks a language → splash writes `i18nextLng` → next visit `LanguageRedirect` reads it and redirects silently. ✅
-- User clears storage → splash shows again. ✅
+That's it. Two files touched.
 
-### 2. `src/components/LanguageRedirect.tsx` — defensive cleanup (optional but recommended)
+## Behavior after the fix
 
-If a user has a stale `i18nextLng` from before this fix, the splash will be skipped on their next visit. That's actually fine (it's their previously-detected language). No code change needed, but worth noting.
+| Action | Result |
+|---|---|
+| Footer → Contact while scrolled down | Lands at top of Contact ✅ |
+| Nav logo → Home from any page | Lands at top of Home ✅ |
+| Language Splash → `/en` | Lands at top ✅ |
+| Language Switcher `/en` → `/fr` | Lands at top (treated as new entry) ✅ |
+| Browser back/forward | Also resets to top — clean and predictable ✅ |
+| In-page anchor jumps (if added later) | Unaffected (they use `hash`, not `pathname`) ✅ |
 
-### 3. Verify test path
+## What this does NOT do
 
-The splash only renders on `/` (root). Visiting `/en` directly will always skip it — that's correct behavior. To test: clear site data, then visit `/` (not `/en`).
+- Does not interfere with the Language Splash logic.
+- Does not affect SEO, prerendering, or `SeoHead`.
+- Does not touch any existing component, link, or style.
+- Does not add a dependency.
 
-## Out of scope (mentioned but not changing now)
-
-- Splash copy is currently English-only. Functional and matches the "premium picker" pattern (Louis Vuitton-style splashes are typically in one neutral language). Can be revisited later if you want each language label to also translate the heading.
-
-## Files to edit
-
-- `src/i18n/index.ts` — remove localStorage from detector `order` and `caches`.
-
-That's the only change needed to make the splash actually appear.
+One file added, one file edited, one rule enforced everywhere.

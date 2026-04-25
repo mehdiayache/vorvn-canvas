@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import LanguageRoute from "./components/LanguageRoute";
 import LanguageRedirect from "./components/LanguageRedirect";
+import ScrollToTop from "./components/ScrollToTop";
 import CookieBanner from "./components/CookieBanner";
 import Index from "./pages/Index";
 import Contact from "./pages/Contact";
@@ -24,6 +25,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<LanguageRedirect />} />
 
