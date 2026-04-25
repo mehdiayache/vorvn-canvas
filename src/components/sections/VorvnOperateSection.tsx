@@ -47,17 +47,55 @@ function MonoTag({ children, solid = false }: { children: React.ReactNode; solid
   );
 }
 
-/** Connector verb between panels: small label + descending caret. */
+/** Connector verb between panels: vertical line above + label + line + caret below. */
 function Connector({ label }: { label: string }) {
   return (
-    <div className="flex flex-col items-center gap-2 py-5">
-      <span className="font-mono uppercase text-foreground"
+    <div className="flex flex-col items-center py-2" aria-hidden="false">
+      <span aria-hidden="true" className="block bg-foreground" style={{ width: 1, height: 28 }} />
+      <span className="font-mono uppercase text-foreground my-3"
             style={{ fontSize: 10, letterSpacing: '0.22em' }}>
         {label}
       </span>
-      <svg width="10" height="22" viewBox="0 0 10 22" aria-hidden="true">
-        <line x1="5" y1="0" x2="5" y2="16" stroke="currentColor" strokeWidth="1" />
-        <polyline points="1,14 5,21 9,14" fill="none" stroke="currentColor" strokeWidth="1" />
+      <svg width="10" height="28" viewBox="0 0 10 28" aria-hidden="true" className="text-foreground">
+        <line x1="5" y1="0" x2="5" y2="22" stroke="currentColor" strokeWidth="1" />
+        <polyline points="1,20 5,27 9,20" fill="none" stroke="currentColor" strokeWidth="1" />
+      </svg>
+    </div>
+  );
+}
+
+/** Forking connector: single line down, splits into two lines pointing to two panels below. */
+function ForkConnector({ label }: { label: string }) {
+  return (
+    <div className="flex flex-col items-center py-2" aria-hidden="false">
+      {/* Top stem from previous panel */}
+      <span aria-hidden="true" className="block bg-foreground" style={{ width: 1, height: 28 }} />
+      <span className="font-mono uppercase text-foreground my-3"
+            style={{ fontSize: 10, letterSpacing: '0.22em' }}>
+        {label}
+      </span>
+      {/* Fork: vertical stem, horizontal bar, two descending arrows */}
+      <svg
+        width="100%"
+        height="60"
+        viewBox="0 0 200 60"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+        className="text-foreground"
+        style={{ maxWidth: '100%' }}
+      >
+        {/* short stem from top center */}
+        <line x1="100" y1="0" x2="100" y2="14" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        {/* horizontal bar */}
+        <line x1="25" y1="14" x2="175" y2="14" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        {/* left descending line */}
+        <line x1="25" y1="14" x2="25" y2="52" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        {/* right descending line */}
+        <line x1="175" y1="14" x2="175" y2="52" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        {/* left arrow head */}
+        <polyline points="21,48 25,55 29,48" fill="none" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        {/* right arrow head */}
+        <polyline points="171,48 175,55 179,48" fill="none" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke" />
       </svg>
     </div>
   );
@@ -120,14 +158,10 @@ export default function VorvnOperateSection() {
         </div>
       </div>
 
-      {/* Schema with continuous spine connecting all panels */}
+      {/* Schema — panels connected by individual line connectors. */}
       <div className="relative mx-auto" style={{ maxWidth: 980 }}>
-        <span
-          aria-hidden="true"
-          className="absolute bg-foreground pointer-events-none"
-          style={{ left: '50%', top: 0, bottom: 0, width: 1, transform: 'translateX(-0.5px)', zIndex: 0 }}
-        />
-        <div className="relative" style={{ zIndex: 1 }}>
+        <div className="relative">
+
         {/* PANEL 1 — OPERATOR / VORVN */}
         <Panel delay="d1">
           <div className="flex flex-col items-center text-center">
@@ -202,7 +236,7 @@ export default function VorvnOperateSection() {
           </div>
         </Panel>
 
-        <Connector label={t('operate.c3')} />
+        <ForkConnector label={t('operate.c3')} />
 
         {/* PANELS 4 + 5 — EXECUTION (PER BRAND) & SUPPLY (BACKED BY) — side by side */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
