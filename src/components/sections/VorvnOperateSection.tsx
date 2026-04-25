@@ -233,26 +233,29 @@ export default function VorvnOperateSection() {
         <Connector label={t('operate.c2')} />
 
         {/* PANEL 3 — INDEPENDENT ASSETS (BRANDS) */}
-        <Panel delay="d3">
+        <div
+          className="reveal d3 r-card border border-foreground bg-foreground text-background"
+          style={{ padding: 'clamp(48px, 8vh, 96px) clamp(24px, 5vw, 64px)' }}
+        >
           <div className="flex flex-col items-center text-center">
-            <RoleBadge>{t('operate.p3.role')}</RoleBadge>
+            <span
+              className="font-mono uppercase tracking-[0.2em] text-background/70"
+              style={{ fontSize: 'clamp(11px, 0.9vw, 13px)' }}
+            >
+              {t('operate.p3.role')}
+            </span>
             <h3
-              className="font-sans font-medium text-foreground mt-7"
-              style={{ fontSize: 'clamp(28px, 5vw, 56px)', letterSpacing: '-0.03em', lineHeight: 1.05 }}
+              className="font-sans font-medium text-background mt-7"
+              style={{ fontSize: 'clamp(36px, 6vw, 72px)', letterSpacing: '-0.03em', lineHeight: 1.05 }}
             >
               {t('operate.p3.title')}
             </h3>
-            <p className="font-sans font-normal text-foreground mt-5 mx-auto"
-               style={{ fontSize: 'clamp(13px, 1.1vw, 16px)', lineHeight: 1.75, maxWidth: 560 }}>
+            <p className="font-sans font-normal text-background/90 mt-7 mx-auto"
+               style={{ fontSize: 'clamp(15px, 1.25vw, 19px)', lineHeight: 1.7, maxWidth: 760 }}>
               {t('operate.p3.desc')}
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 mt-8 w-full">
-              {PORTFOLIO_LOGOS.map((logo, i) => (
-                <PortfolioLogo key={i} src={logo.src} status={logo.status} />
-              ))}
-            </div>
           </div>
-        </Panel>
+        </div>
 
         <ForkConnector label={t('operate.c3')} />
 
