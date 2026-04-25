@@ -16,14 +16,14 @@ const OFFICES = [
     city: 'Hong Kong',
     entity: 'VORVN LIMITED',
     address: 'RM4 16/F, Ho King Commercial Centre\n2–16 Fa Yuen Street, Mongkok\nKowloon, Hong Kong',
-    badge: 'Headquarters',
+    badge: 'Holding',
   },
   {
     region: 'Incubator Studio',
     city: 'Bali, Indonesia',
-    entity: 'ADUH (LAGI) STUDIO',
-    address: 'Jl. Seroja No.28, Tonja\nKec. Denpasar Utara, Bali 80235',
-    badge: 'Operations',
+    entity: 'PT. Aduh (Lagi) Studio',
+    address: 'No. 12, Jl. Ciung Wanara 1\nDenpasar Timur\nBali 80235',
+    badge: 'Incubator',
   },
 ];
 

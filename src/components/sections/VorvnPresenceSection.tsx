@@ -29,12 +29,16 @@ export default function PresenceSection() {
             <h3 className="font-sans font-medium tracking-[-0.02em] mb-[10px] m-0" style={{ fontSize: 'clamp(18px, 1.9vw, 26px)' }}>
               {loc.city}
             </h3>
-            <div className="font-mono text-[9px] tracking-[0.1em] text-mid mb-[18px]">{loc.entity}</div>
-            <div className="font-sans text-[13px] font-normal leading-[1.78] text-mid">
-              {loc.address.split('\n').map((line, j) => (
-                <span key={j}>{line}<br /></span>
-              ))}
-            </div>
+            {loc.entity && (
+              <div className="font-mono text-[9px] tracking-[0.1em] text-mid mb-[18px]">{loc.entity}</div>
+            )}
+            {loc.address && (
+              <div className="font-sans text-[13px] font-normal leading-[1.78] text-mid">
+                {loc.address.split('\n').map((line, j) => (
+                  <span key={j}>{line}<br /></span>
+                ))}
+              </div>
+            )}
             <span className="r-pill inline-block mt-6 font-mono text-[8px] tracking-[0.16em] uppercase text-mid border border-rule py-[5px] px-[12px]">
               {loc.badge}
             </span>
