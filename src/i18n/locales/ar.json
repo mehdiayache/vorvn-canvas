@@ -32,21 +32,21 @@
         "city": "هونغ كونغ",
         "entity": "VORVN LIMITED",
         "address": "RM4 16/F, Ho King Commercial Centre\n2–16 Fa Yuen Street, Mongkok\nKowloon, Hong Kong",
-        "badge": "المقر الرئيسي"
+        "badge": "قابضة"
       },
       {
-        "region": "استوديو التصميم",
+        "region": "استوديو الحاضنة",
         "city": "بالي، إندونيسيا",
-        "entity": "PT. VORVN GROUP INDONESIA",
-        "address": "Jl. Seroja No.28, Tonja\nKec. Denpasar Utara, Bali 80235",
-        "badge": "العمليات"
+        "entity": "PT. Aduh (Lagi) Studio",
+        "address": "No. 12, Jl. Ciung Wanara 1\nDenpasar Timur\nBali 80235",
+        "badge": "حاضنة"
       },
       {
         "region": "السوق الأصلي",
         "city": "المغرب",
-        "entity": "PARTICIPATIONS",
-        "address": "شمال غرب إفريقيا\nالسوق الناطق بالفرنسية\nممر التصدير نحو الخليج",
-        "badge": "التوسّع"
+        "entity": "",
+        "address": "",
+        "badge": "قريباً"
       }
     ]
   },

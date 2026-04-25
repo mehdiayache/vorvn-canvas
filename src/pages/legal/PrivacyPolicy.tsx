@@ -30,8 +30,8 @@ export default function PrivacyPolicy() {
         Hong Kong SAR (Business Registration: VORVN LIMITED, RM4 16/F, Ho King Commercial Centre,
         2–16 Fa Yuen Street, Mongkok, Kowloon, Hong Kong). We operate the website
         <span className="font-mono"> vorvn.com</span> and own and operate the brands listed on
-        our portfolio page through affiliated entities including PT. VORVN GROUP INDONESIA (Bali,
-        Indonesia) and ADUH (LAGI) STUDIO. VORVN LIMITED is the data controller for personal data
+        our portfolio page through our affiliated incubator studio PT. Aduh (Lagi) Studio
+        (Bali, Indonesia). VORVN LIMITED is the data controller for personal data
         processed via this website.
       </p>
 
