@@ -127,8 +127,8 @@ export default function VorvnOperateSection() {
           <div className="flex flex-col items-center text-center">
             <RoleBadge>{t('operate.p1.role')}</RoleBadge>
             <h3
-              className="font-sans font-semibold text-foreground mt-7"
-              style={{ fontSize: 'clamp(56px, 11vw, 140px)', letterSpacing: '-0.04em', lineHeight: 0.92 }}
+              className="font-brand text-foreground mt-7"
+              style={{ fontSize: 'clamp(28px, 5vw, 56px)', letterSpacing: '0.01em', lineHeight: 1.0 }}
             >
               {t('operate.p1.name')}
             </h3>
@@ -153,10 +153,10 @@ export default function VorvnOperateSection() {
           <div className="flex flex-col items-center text-center">
             <RoleBadge>{t('operate.p2.role')}</RoleBadge>
             <h3
-              className="font-sans font-semibold text-foreground mt-7"
-              style={{ fontSize: 'clamp(36px, 7vw, 88px)', letterSpacing: '-0.035em', lineHeight: 0.95 }}
+              className="font-display font-medium text-foreground mt-7"
+              style={{ fontSize: 'clamp(28px, 5vw, 56px)', letterSpacing: '-0.01em', lineHeight: 1.05 }}
             >
-              Aduh <span className="font-light">(Lagi)</span> Studio
+              Aduh (Lagi) Studio
             </h3>
             <p className="font-sans font-normal text-foreground mt-5 mx-auto"
                style={{ fontSize: 'clamp(15px, 1.5vw, 20px)', lineHeight: 1.5, maxWidth: 460 }}>
@@ -188,11 +188,10 @@ export default function VorvnOperateSection() {
                style={{ fontSize: 'clamp(13px, 1.1vw, 16px)', lineHeight: 1.75, maxWidth: 560 }}>
               {t('operate.p3.desc')}
             </p>
-            <div
-              className="grid w-full mt-8 gap-3"
-              style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))' }}
-            >
-              {BRANDS.map((b) => <BrandCell key={b.name} brand={b} />)}
+            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 mt-8 w-full">
+              {PORTFOLIO_LOGOS.map((logo, i) => (
+                <PortfolioLogo key={i} src={logo.src} status={logo.status} />
+              ))}
             </div>
           </div>
         </Panel>
