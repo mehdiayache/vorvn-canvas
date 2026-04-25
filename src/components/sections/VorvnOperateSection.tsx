@@ -13,7 +13,7 @@ import { BRANDS_DATA } from '@/data/brands';
  * Aduh (Lagi) Studio in Imbue (font-display) — at body-title scale.
  */
 
-type Brand = { status: 'active' | 'dev' | 'pipeline'; name: string; sector?: string };
+
 
 const OPERATOR_TAGS    = ['Holding', 'IP Core', 'Brand Strategy', 'Operations', 'Portfolio Control'];
 const INCUBATOR_TAGS   = ['Brand Identity', 'Product Design', 'Visual Systems', 'Prototyping', 'No Distribution'];
