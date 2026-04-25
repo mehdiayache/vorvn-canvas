@@ -1,14 +1,17 @@
 import { useTranslation } from 'react-i18next';
+import { BRANDS_DATA } from '@/data/brands';
+import LoadingImage from '@/components/LoadingImage';
 
 /**
  * VorvnOperateSection — "How We Operate"
  *
- * Translates the dark wireframe schema into our Light UI:
- *   Operator → Incubator → Independent Assets → Per Brand Execution → Supply
- * Connector verbs between panels carry the system logic.
+ * Five panels stacked along a continuous vertical spine:
+ *   Operator (VORVN) → Incubator (Aduh (Lagi) Studio) →
+ *   Independent Assets (portfolio logos) → Per Brand Execution → Supply
  *
- * Stays inside the design system: cream/black only, pills (r-pill / r-tag),
- * 1px black rules where the wireframe used dashed wires, mono micro-labels.
+ * Stays inside the design system: cream/black, pills, 1px black rules.
+ * Brand wordmarks use their typeface — VORVN in Gasoek (font-brand),
+ * Aduh (Lagi) Studio in Imbue (font-display) — at body-title scale.
  */
 
 type Brand = { status: 'active' | 'dev' | 'pipeline'; name: string; sector?: string };
