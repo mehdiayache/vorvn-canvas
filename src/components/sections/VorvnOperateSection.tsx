@@ -236,7 +236,7 @@ export default function VorvnOperateSection() {
           </div>
         </Panel>
 
-        <Connector label={t('operate.c3')} />
+        <ForkConnector label={t('operate.c3')} />
 
         {/* PANELS 4 + 5 — EXECUTION (PER BRAND) & SUPPLY (BACKED BY) — side by side */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
