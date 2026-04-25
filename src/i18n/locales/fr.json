@@ -20,9 +20,9 @@
   },
   "entity": {
     "label": "L'Entité",
-    "statement": "VORVN n'est pas une agence.\nC'est l'architecture\nderrière les marques.",
-    "detail": "VORVN est une holding privée d'IP enregistrée à Hong Kong. Nous possédons et exploitons des marques en Asie du Sud-Est, en Afrique du Nord-Ouest et sur les marchés grand public occidentaux — ustensiles de cuisine, mode pudique, alimentation. Chaque marque est conçue en interne, produite via notre studio de Bali et distribuée sous notre propre structure. Aucun client d'agence. Aucun partenaire de licence.",
-    "designNote": "Design · Stratégie · Exécution · Sans intermédiaires. Sans raccourcis."
+    "statement": "VORVN conçoit, construit et exploite\nses marques de bout en bout —\nsous un seul opérateur,\nsur quatre marchés.",
+    "detail": "Enregistrée à Hong Kong. Pilotée depuis Bali. Maîtrise native du Maghreb, de l'Europe, du Golfe et de l'Asie du Sud-Est — en français, arabe, anglais et indonésien. Un seul fondateur contrôle toute la chaîne : business design, identité, prototype, approvisionnement, ecommerce, marketing, logistique. Nous opérons au niveau d'une agence de business design de premier plan — de manière indépendante, en interne, uniquement pour les idées en lesquelles nous croyons. Chaque marque est lancée comme une unité de test en conditions réelles et doit passer trois filtres pour survivre : identité immédiate, simplicité opérationnelle, exécution réplicable. Celles qui passent deviennent des actifs — conçus pour scaler, structurés pour la cession, ouverts à une co-propriété sélective.",
+    "designNote": ""
   },
   "presence": {
     "label": "Présence",
