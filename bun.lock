@@ -6,6 +6,7 @@
       "name": "vite_react_shadcn_ts",
       "dependencies": {
         "@fontsource/gasoek-one": "^5.2.8",
+        "@fontsource/imbue": "^5.2.8",
         "@fontsource/inter-tight": "^5.2.7",
         "@fontsource/jetbrains-mono": "^5.2.8",
         "@hookform/resolvers": "^3.10.0",
@@ -179,6 +180,8 @@
     "@floating-ui/utils": ["@floating-ui/utils@0.2.10", "", {}, "sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ=="],
 
     "@fontsource/gasoek-one": ["@fontsource/gasoek-one@5.2.8", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/@fontsource/gasoek-one/-/gasoek-one-5.2.8.tgz", {}, "sha512-lZ5/STq0+SLp7LTCFaKzIaklQyd2FgsZcIlyjHO6cGP2fqV/o0LH0UocglTAVBLguJyDrRhTMg/FG8rbBqr0Bw=="],
+
+    "@fontsource/imbue": ["@fontsource/imbue@5.2.8", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/@fontsource/imbue/-/imbue-5.2.8.tgz", {}, "sha512-UFS5Ex3yi6LJIll6Jjyfoirx25FbMPWKFoqNGQLdamLVWW9AWs3Q3i4lz/3Bo3OpXcN9o+3421uPt8izGdGyGw=="],
 
     "@fontsource/inter-tight": ["@fontsource/inter-tight@5.2.7", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/@fontsource/inter-tight/-/inter-tight-5.2.7.tgz", {}, "sha512-44TmSfHdNQus/3MWOMIonUEnbxwQhiaFo2sfBJEGIE4c7TN+GO6kfLzsTH4Nu52BC9HDZFl9fPQ6Cwzp9vYTtQ=="],
 
