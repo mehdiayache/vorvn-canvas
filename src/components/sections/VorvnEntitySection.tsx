@@ -25,9 +25,11 @@ export default function EntitySection() {
           >
             {t('entity.detail')}
           </p>
-          <div className="mt-7 pt-7 border-t border-rule font-mono text-[11px] tracking-[0.08em] text-dim reveal d3" style={{ lineHeight: 1.7 }}>
-            {t('entity.designNote')}
-          </div>
+          {t('entity.designNote') && (
+            <div className="mt-7 pt-7 border-t border-rule font-mono text-[11px] tracking-[0.08em] text-dim reveal d3" style={{ lineHeight: 1.7 }}>
+              {t('entity.designNote')}
+            </div>
+          )}
         </div>
       </div>
     </section>
