@@ -81,15 +81,16 @@ function Panel({ children, delay = '' }: { children: React.ReactNode; delay?: st
 function PortfolioLogo({ src, status }: { src: string; status: string }) {
   return (
     <div
-      className="flex items-center justify-center"
-      style={{ minWidth: 120, height: 80 }}
+      className="flex items-center justify-center aspect-square"
+      style={{ width: 'clamp(80px, 10vw, 120px)' }}
     >
-      <LoadingImage
+      <img
         src={src}
         alt="Portfolio brand logo"
-        className={`max-h-[64px] w-auto h-auto ${status !== 'active' ? 'opacity-60' : ''}`}
-        objectFit="contain"
-        loaderSize={28}
+        loading="lazy"
+        decoding="async"
+        className={`block w-full h-full object-contain ${status !== 'active' ? 'opacity-60' : ''}`}
+        style={{ background: 'transparent', mixBlendMode: 'multiply' }}
       />
     </div>
   );
