@@ -1,30 +1,30 @@
 import { useTranslation } from 'react-i18next';
+import { BRANDS_DATA } from '@/data/brands';
+import LoadingImage from '@/components/LoadingImage';
 
 /**
  * VorvnOperateSection — "How We Operate"
  *
- * Translates the dark wireframe schema into our Light UI:
- *   Operator → Incubator → Independent Assets → Per Brand Execution → Supply
- * Connector verbs between panels carry the system logic.
+ * Five panels stacked along a continuous vertical spine:
+ *   Operator (VORVN) → Incubator (Aduh (Lagi) Studio) →
+ *   Independent Assets (portfolio logos) → Per Brand Execution → Supply
  *
- * Stays inside the design system: cream/black only, pills (r-pill / r-tag),
- * 1px black rules where the wireframe used dashed wires, mono micro-labels.
+ * Stays inside the design system: cream/black, pills, 1px black rules.
+ * Brand wordmarks use their typeface — VORVN in Gasoek (font-brand),
+ * Aduh (Lagi) Studio in Imbue (font-display) — at body-title scale.
  */
 
 type Brand = { status: 'active' | 'dev' | 'pipeline'; name: string; sector?: string };
-
-const BRANDS: Brand[] = [
-  { status: 'active', name: 'Cook Warriors', sector: 'Consumer Goods · USA / UAE' },
-  { status: 'dev',    name: 'MAQTOB',         sector: 'Modest Fashion · EU' },
-  { status: 'dev',    name: 'xVoyager',       sector: 'Lifestyle · Global' },
-  { status: 'dev',    name: 'Warung Marrakech', sector: 'F&B · MA / ID' },
-  { status: 'pipeline', name: 'Pipeline' },
-];
 
 const OPERATOR_TAGS    = ['Holding', 'IP Core', 'Brand Strategy', 'Operations', 'Portfolio Control'];
 const INCUBATOR_TAGS   = ['Brand Identity', 'Product Design', 'Visual Systems', 'Prototyping', 'No Distribution'];
 const EXECUTION_TAGS   = ['Distribution', 'DTC', 'Amazon', 'Wholesale', 'Regional Partners', 'Post-Validation Only'];
 const SUPPLY_NODES     = ['Production', 'Sourcing', 'Regional Export', 'Logistics'];
+
+/* Logos sourced from the canonical portfolio data (no fictional brand cards). */
+const PORTFOLIO_LOGOS = BRANDS_DATA
+  .filter((b) => !!b.logo)
+  .map((b) => ({ src: b.logo as string, status: b.status }));
 
 /* --------- atoms --------- */
 
@@ -76,41 +76,21 @@ function Panel({ children, delay = '' }: { children: React.ReactNode; delay?: st
   );
 }
 
-/* --------- brand cell --------- */
+/* --------- portfolio logo cell (panel 3) --------- */
 
-function BrandCell({ brand }: { brand: Brand }) {
-  const isPipeline = brand.status === 'pipeline';
-  const dotClass =
-    brand.status === 'active' ? 'bg-status-active' :
-    brand.status === 'dev'    ? 'bg-status-validation' :
-                                'bg-foreground';
-
+function PortfolioLogo({ src, status }: { src: string; status: string }) {
   return (
     <div
-      className="r-card border border-foreground flex flex-col items-center text-center gap-2"
-      style={{ padding: 'clamp(18px, 2.6vh, 26px) clamp(14px, 2vw, 22px)', minHeight: 130 }}
+      className="flex items-center justify-center"
+      style={{ minWidth: 120, height: 80 }}
     >
-      <div className="flex items-center gap-2 font-mono uppercase text-foreground"
-           style={{ fontSize: 10, letterSpacing: '0.16em' }}>
-        {isPipeline ? (
-          <span aria-hidden="true">+</span>
-        ) : (
-          <span className={`inline-block ${dotClass}`} style={{ width: 7, height: 7, borderRadius: 9999 }} />
-        )}
-        {brand.status === 'active' ? 'Active' : brand.status === 'dev' ? 'Dev' : 'Open'}
-      </div>
-      <div
-        className="font-sans font-medium text-foreground"
-        style={{ fontSize: 'clamp(15px, 1.4vw, 18px)', letterSpacing: '-0.01em', lineHeight: 1.2 }}
-      >
-        {brand.name}
-      </div>
-      {brand.sector && (
-        <div className="font-mono uppercase text-foreground"
-             style={{ fontSize: 9, letterSpacing: '0.12em', lineHeight: 1.5 }}>
-          {brand.sector}
-        </div>
-      )}
+      <LoadingImage
+        src={src}
+        alt="Portfolio brand logo"
+        className={`max-h-[64px] w-auto h-auto ${status !== 'active' ? 'opacity-60' : ''}`}
+        objectFit="contain"
+        loaderSize={28}
+      />
     </div>
   );
 }
@@ -140,15 +120,21 @@ export default function VorvnOperateSection() {
         </div>
       </div>
 
-      {/* Schema spine */}
-      <div className="mx-auto" style={{ maxWidth: 980 }}>
+      {/* Schema with continuous spine connecting all panels */}
+      <div className="relative mx-auto" style={{ maxWidth: 980 }}>
+        <span
+          aria-hidden="true"
+          className="absolute bg-foreground pointer-events-none"
+          style={{ left: '50%', top: 0, bottom: 0, width: 1, transform: 'translateX(-0.5px)', zIndex: 0 }}
+        />
+        <div className="relative" style={{ zIndex: 1 }}>
         {/* PANEL 1 — OPERATOR / VORVN */}
         <Panel delay="d1">
           <div className="flex flex-col items-center text-center">
             <RoleBadge>{t('operate.p1.role')}</RoleBadge>
             <h3
-              className="font-sans font-semibold text-foreground mt-7"
-              style={{ fontSize: 'clamp(56px, 11vw, 140px)', letterSpacing: '-0.04em', lineHeight: 0.92 }}
+              className="font-brand text-foreground mt-7"
+              style={{ fontSize: 'clamp(28px, 5vw, 56px)', letterSpacing: '0.01em', lineHeight: 1.0 }}
             >
               {t('operate.p1.name')}
             </h3>
@@ -173,10 +159,10 @@ export default function VorvnOperateSection() {
           <div className="flex flex-col items-center text-center">
             <RoleBadge>{t('operate.p2.role')}</RoleBadge>
             <h3
-              className="font-sans font-semibold text-foreground mt-7"
-              style={{ fontSize: 'clamp(36px, 7vw, 88px)', letterSpacing: '-0.035em', lineHeight: 0.95 }}
+              className="font-display font-medium text-foreground mt-7"
+              style={{ fontSize: 'clamp(28px, 5vw, 56px)', letterSpacing: '-0.01em', lineHeight: 1.05 }}
             >
-              Aduh <span className="font-light">(Lagi)</span> Studio
+              Aduh (Lagi) Studio
             </h3>
             <p className="font-sans font-normal text-foreground mt-5 mx-auto"
                style={{ fontSize: 'clamp(15px, 1.5vw, 20px)', lineHeight: 1.5, maxWidth: 460 }}>
@@ -208,11 +194,10 @@ export default function VorvnOperateSection() {
                style={{ fontSize: 'clamp(13px, 1.1vw, 16px)', lineHeight: 1.75, maxWidth: 560 }}>
               {t('operate.p3.desc')}
             </p>
-            <div
-              className="grid w-full mt-8 gap-3"
-              style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))' }}
-            >
-              {BRANDS.map((b) => <BrandCell key={b.name} brand={b} />)}
+            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 mt-8 w-full">
+              {PORTFOLIO_LOGOS.map((logo, i) => (
+                <PortfolioLogo key={i} src={logo.src} status={logo.status} />
+              ))}
             </div>
           </div>
         </Panel>
@@ -296,6 +281,7 @@ export default function VorvnOperateSection() {
              style={{ fontSize: 'clamp(14px, 1.15vw, 17px)', lineHeight: 1.78, maxWidth: 640 }}>
             {t('operate.logic.outcome')}
           </p>
+        </div>
         </div>
       </div>
     </section>

@@ -17,6 +17,7 @@ export default {
         brand: ["var(--f-brand)"],
         sans: ["var(--f-sans)"],
         mono: ["var(--f-mono)"],
+        display: ["var(--f-display)"],
       },
       colors: {
         border: "hsl(var(--border))",

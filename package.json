@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@fontsource/gasoek-one": "^5.2.8",
+    "@fontsource/imbue": "^5.2.8",
     "@fontsource/inter-tight": "^5.2.7",
     "@fontsource/jetbrains-mono": "^5.2.8",
     "@hookform/resolvers": "^3.10.0",
