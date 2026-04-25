@@ -120,8 +120,14 @@ export default function VorvnOperateSection() {
         </div>
       </div>
 
-      {/* Schema spine */}
-      <div className="mx-auto" style={{ maxWidth: 980 }}>
+      {/* Schema with continuous spine connecting all panels */}
+      <div className="relative mx-auto" style={{ maxWidth: 980 }}>
+        <span
+          aria-hidden="true"
+          className="absolute bg-foreground pointer-events-none"
+          style={{ left: '50%', top: 0, bottom: 0, width: 1, transform: 'translateX(-0.5px)', zIndex: 0 }}
+        />
+        <div className="relative" style={{ zIndex: 1 }}>
         {/* PANEL 1 — OPERATOR / VORVN */}
         <Panel delay="d1">
           <div className="flex flex-col items-center text-center">
