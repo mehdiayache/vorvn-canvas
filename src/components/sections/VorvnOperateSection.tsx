@@ -16,18 +16,15 @@ import LoadingImage from '@/components/LoadingImage';
 
 type Brand = { status: 'active' | 'dev' | 'pipeline'; name: string; sector?: string };
 
-const BRANDS: Brand[] = [
-  { status: 'active', name: 'Cook Warriors', sector: 'Consumer Goods · USA / UAE' },
-  { status: 'dev',    name: 'MAQTOB',         sector: 'Modest Fashion · EU' },
-  { status: 'dev',    name: 'xVoyager',       sector: 'Lifestyle · Global' },
-  { status: 'dev',    name: 'Warung Marrakech', sector: 'F&B · MA / ID' },
-  { status: 'pipeline', name: 'Pipeline' },
-];
-
 const OPERATOR_TAGS    = ['Holding', 'IP Core', 'Brand Strategy', 'Operations', 'Portfolio Control'];
 const INCUBATOR_TAGS   = ['Brand Identity', 'Product Design', 'Visual Systems', 'Prototyping', 'No Distribution'];
 const EXECUTION_TAGS   = ['Distribution', 'DTC', 'Amazon', 'Wholesale', 'Regional Partners', 'Post-Validation Only'];
 const SUPPLY_NODES     = ['Production', 'Sourcing', 'Regional Export', 'Logistics'];
+
+/* Logos sourced from the canonical portfolio data (no fictional brand cards). */
+const PORTFOLIO_LOGOS = BRANDS_DATA
+  .filter((b) => !!b.logo)
+  .map((b) => ({ src: b.logo as string, status: b.status }));
 
 /* --------- atoms --------- */
 
