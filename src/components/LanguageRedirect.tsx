@@ -1,40 +1,30 @@
+import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { LANGUAGES } from '@/i18n';
+import LanguageSplash from './LanguageSplash';
 
 const SUPPORTED = LANGUAGES.map((l) => l.code);
-const FALLBACK = 'en';
+const STORAGE_KEY = 'i18nextLng';
 
-function detectLanguage(): string {
-  // 1. Explicit prior choice from the language switcher
+function getStoredLanguage(): string | null {
   try {
-    const stored = localStorage.getItem('i18nextLng');
-    if (stored) {
-      const base = stored.toLowerCase().split('-')[0];
-      if (SUPPORTED.includes(base)) return base;
-    }
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return null;
+    const base = stored.toLowerCase().split('-')[0];
+    return SUPPORTED.includes(base) ? base : null;
   } catch {
-    // localStorage may be unavailable (SSR, privacy mode) — ignore
+    return null;
   }
-
-  // 2. Browser preference list (ranked)
-  const candidates =
-    typeof navigator !== 'undefined'
-      ? navigator.languages && navigator.languages.length > 0
-        ? navigator.languages
-        : [navigator.language]
-      : [];
-
-  for (const candidate of candidates) {
-    if (!candidate) continue;
-    const base = candidate.toLowerCase().split('-')[0];
-    if (SUPPORTED.includes(base)) return base;
-  }
-
-  // 3. Ultimate fallback
-  return FALLBACK;
 }
 
 export default function LanguageRedirect() {
-  const lang = detectLanguage();
-  return <Navigate to={`/${lang}`} replace />;
+  // Only the user's explicit prior choice triggers an automatic redirect.
+  // First-time visitors see the splash picker — no silent browser-language redirect.
+  const [stored] = useState<string | null>(() => getStoredLanguage());
+
+  if (stored) {
+    return <Navigate to={`/${stored}`} replace />;
+  }
+
+  return <LanguageSplash />;
 }
