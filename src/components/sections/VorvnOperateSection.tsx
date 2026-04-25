@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { BRANDS_DATA } from '@/data/brands';
-import LoadingImage from '@/components/LoadingImage';
 
 /**
  * VorvnOperateSection — "How We Operate"
@@ -14,7 +13,7 @@ import LoadingImage from '@/components/LoadingImage';
  * Aduh (Lagi) Studio in Imbue (font-display) — at body-title scale.
  */
 
-type Brand = { status: 'active' | 'dev' | 'pipeline'; name: string; sector?: string };
+
 
 const OPERATOR_TAGS    = ['Holding', 'IP Core', 'Brand Strategy', 'Operations', 'Portfolio Control'];
 const INCUBATOR_TAGS   = ['Brand Identity', 'Product Design', 'Visual Systems', 'Prototyping', 'No Distribution'];
@@ -81,15 +80,16 @@ function Panel({ children, delay = '' }: { children: React.ReactNode; delay?: st
 function PortfolioLogo({ src, status }: { src: string; status: string }) {
   return (
     <div
-      className="flex items-center justify-center"
-      style={{ minWidth: 120, height: 80 }}
+      className="flex items-center justify-center aspect-square"
+      style={{ width: 'clamp(80px, 10vw, 120px)' }}
     >
-      <LoadingImage
+      <img
         src={src}
         alt="Portfolio brand logo"
-        className={`max-h-[64px] w-auto h-auto ${status !== 'active' ? 'opacity-60' : ''}`}
-        objectFit="contain"
-        loaderSize={28}
+        loading="lazy"
+        decoding="async"
+        className={`block w-full h-full object-contain ${status !== 'active' ? 'opacity-60' : ''}`}
+        style={{ background: 'transparent', mixBlendMode: 'multiply' }}
       />
     </div>
   );
@@ -204,62 +204,62 @@ export default function VorvnOperateSection() {
 
         <Connector label={t('operate.c3')} />
 
-        {/* PANEL 4 — EXECUTION (PER BRAND) */}
-        <Panel delay="d4">
-          <div className="flex flex-col items-center text-center">
-            <RoleBadge>{t('operate.p4.role')}</RoleBadge>
-            <h3
-              className="font-sans font-medium text-foreground mt-7"
-              style={{ fontSize: 'clamp(28px, 5vw, 56px)', letterSpacing: '-0.03em', lineHeight: 1.05 }}
-            >
-              {t('operate.p4.title')}
-            </h3>
-            <p className="font-sans font-normal text-foreground mt-5 mx-auto"
-               style={{ fontSize: 'clamp(13px, 1.1vw, 16px)', lineHeight: 1.75, maxWidth: 520 }}>
-              {t('operate.p4.desc')}
-            </p>
-            <div className="flex flex-wrap justify-center gap-2 mt-7">
-              {EXECUTION_TAGS.map((tag) => <MonoTag key={tag}>{tag}</MonoTag>)}
+        {/* PANELS 4 + 5 — EXECUTION (PER BRAND) & SUPPLY (BACKED BY) — side by side */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* PANEL 4 — EXECUTION */}
+          <Panel delay="d4">
+            <div className="flex flex-col items-center text-center h-full">
+              <RoleBadge>{t('operate.p4.role')}</RoleBadge>
+              <h3
+                className="font-sans font-medium text-foreground mt-7"
+                style={{ fontSize: 'clamp(22px, 3vw, 34px)', letterSpacing: '-0.025em', lineHeight: 1.1 }}
+              >
+                {t('operate.p4.title')}
+              </h3>
+              <p className="font-sans font-normal text-foreground mt-5 mx-auto"
+                 style={{ fontSize: 'clamp(13px, 1.05vw, 15px)', lineHeight: 1.75, maxWidth: 460 }}>
+                {t('operate.p4.desc')}
+              </p>
+              <div className="flex flex-wrap justify-center gap-2 mt-7">
+                {EXECUTION_TAGS.map((tag) => <MonoTag key={tag}>{tag}</MonoTag>)}
+              </div>
             </div>
-          </div>
-        </Panel>
+          </Panel>
 
-        <Connector label={t('operate.c4')} />
-
-        {/* PANEL 5 — SUPPLY & EXPORT */}
-        <Panel delay="d5">
-          <div className="flex flex-col items-center text-center">
-            <RoleBadge>{t('operate.p5.role')}</RoleBadge>
-            <h3
-              className="font-sans font-medium text-foreground mt-7"
-              style={{ fontSize: 'clamp(24px, 4vw, 44px)', letterSpacing: '-0.025em', lineHeight: 1.1 }}
-            >
-              {t('operate.p5.title')}
-            </h3>
-            <p className="font-sans font-normal text-foreground mt-5 mx-auto"
-               style={{ fontSize: 'clamp(13px, 1.1vw, 16px)', lineHeight: 1.75, maxWidth: 520 }}>
-              {t('operate.p5.desc')}
-            </p>
-            <div className="flex flex-wrap justify-center gap-x-10 gap-y-6 mt-8">
-              {SUPPLY_NODES.map((n) => (
-                <div key={n} className="flex flex-col items-center gap-3">
-                  {/* crosshair node — light UI version */}
-                  <div className="relative border border-foreground"
-                       style={{ width: 'clamp(38px, 5vw, 52px)', height: 'clamp(38px, 5vw, 52px)', borderRadius: 12 }}>
-                    <span className="absolute bg-foreground"
-                          style={{ left: '50%', top: 8, bottom: 8, width: 1, transform: 'translateX(-50%)' }} />
-                    <span className="absolute bg-foreground"
-                          style={{ top: '50%', left: 8, right: 8, height: 1, transform: 'translateY(-50%)' }} />
+          {/* PANEL 5 — SUPPLY & EXPORT */}
+          <Panel delay="d5">
+            <div className="flex flex-col items-center text-center h-full">
+              <RoleBadge>{t('operate.p5.role')}</RoleBadge>
+              <h3
+                className="font-sans font-medium text-foreground mt-7"
+                style={{ fontSize: 'clamp(22px, 3vw, 34px)', letterSpacing: '-0.025em', lineHeight: 1.1 }}
+              >
+                {t('operate.p5.title')}
+              </h3>
+              <p className="font-sans font-normal text-foreground mt-5 mx-auto"
+                 style={{ fontSize: 'clamp(13px, 1.05vw, 15px)', lineHeight: 1.75, maxWidth: 460 }}>
+                {t('operate.p5.desc')}
+              </p>
+              <div className="flex flex-wrap justify-center gap-x-8 gap-y-5 mt-7">
+                {SUPPLY_NODES.map((n) => (
+                  <div key={n} className="flex flex-col items-center gap-3">
+                    <div className="relative border border-foreground"
+                         style={{ width: 'clamp(36px, 4.5vw, 48px)', height: 'clamp(36px, 4.5vw, 48px)', borderRadius: 12 }}>
+                      <span className="absolute bg-foreground"
+                            style={{ left: '50%', top: 8, bottom: 8, width: 1, transform: 'translateX(-50%)' }} />
+                      <span className="absolute bg-foreground"
+                            style={{ top: '50%', left: 8, right: 8, height: 1, transform: 'translateY(-50%)' }} />
+                    </div>
+                    <span className="font-mono uppercase text-foreground text-center"
+                          style={{ fontSize: 10, letterSpacing: '0.14em', maxWidth: 90, lineHeight: 1.5 }}>
+                      {n}
+                    </span>
                   </div>
-                  <span className="font-mono uppercase text-foreground text-center"
-                        style={{ fontSize: 10, letterSpacing: '0.14em', maxWidth: 90, lineHeight: 1.5 }}>
-                    {n}
-                  </span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </Panel>
+          </Panel>
+        </div>
 
         {/* STRUCTURE LOGIC */}
         <div className="reveal d6 mt-16 pt-12 border-t border-rule text-center">
