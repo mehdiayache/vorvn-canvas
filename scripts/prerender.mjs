@@ -34,28 +34,28 @@ const LANGUAGES = [
 const SEO = {
   home: {
     en: {
-      title: 'VORVN — Autonomous IP & Brand Holdings | Hong Kong · Bali',
-      desc: 'VORVN is an independent IP & brand holdings company. We design, build and own digital-first brands from Hong Kong and our Bali incubator studio.',
+      title: 'VORVN — Autonomous IP & Brand Designers | Hong Kong · Bali',
+      desc: 'VORVN is an independent IP & brand design house. We design, build and own digital-first brands from Hong Kong and our Bali incubator studio.',
     },
     fr: {
-      title: 'VORVN — Holding indépendant de marques & PI | Hong Kong · Bali',
-      desc: "VORVN est un holding indépendant de propriété intellectuelle et de marques. Nous concevons, construisons et possédons des marques digitales depuis Hong Kong et notre studio incubateur de Bali.",
+      title: 'VORVN — Concepteurs indépendants de marques & PI | Hong Kong · Bali',
+      desc: "VORVN est un studio indépendant de conception de propriété intellectuelle et de marques. Nous concevons, construisons et possédons des marques digitales depuis Hong Kong et notre studio incubateur de Bali.",
     },
     es: {
-      title: 'VORVN — Holding autónomo de marcas y PI | Hong Kong · Bali',
-      desc: 'VORVN es un holding independiente de propiedad intelectual y marcas. Diseñamos, construimos y poseemos marcas digitales desde Hong Kong y nuestro estudio incubadora en Bali.',
+      title: 'VORVN — Diseñadores autónomos de marcas y PI | Hong Kong · Bali',
+      desc: 'VORVN es una casa de diseño independiente de propiedad intelectual y marcas. Diseñamos, construimos y poseemos marcas digitales desde Hong Kong y nuestro estudio incubadora en Bali.',
     },
     zh: {
-      title: 'VORVN — 自主知识产权与品牌控股公司 | 香港 · 巴厘岛',
-      desc: 'VORVN 是独立的知识产权与品牌控股公司。我们在香港与巴厘岛孵化工作室设计、构建并拥有数字优先品牌。',
+      title: 'VORVN — 自主知识产权与品牌设计公司 | 香港 · 巴厘岛',
+      desc: 'VORVN 是独立的知识产权与品牌设计公司。我们在香港与巴厘岛孵化工作室设计、构建并拥有数字优先品牌。',
     },
     id: {
-      title: 'VORVN — Holding IP & Merek Independen | Hong Kong · Bali',
-      desc: 'VORVN adalah perusahaan holding IP & merek yang independen. Kami merancang, membangun, dan memiliki merek digital dari Hong Kong dan studio inkubator kami di Bali.',
+      title: 'VORVN — Perancang IP & Merek Independen | Hong Kong · Bali',
+      desc: 'VORVN adalah studio perancang IP & merek yang independen. Kami merancang, membangun, dan memiliki merek digital dari Hong Kong dan studio inkubator kami di Bali.',
     },
     ar: {
-      title: 'VORVN — حيازات مستقلة للعلامات والملكية الفكرية | هونغ كونغ · بالي',
-      desc: 'VORVN شركة حيازات مستقلة للعلامات التجارية والملكية الفكرية. نصمم ونبني ونمتلك علامات رقمية من هونغ كونغ ومن استوديو الحاضنة لدينا في بالي.',
+      title: 'VORVN — مصمّمو علامات وملكية فكرية مستقلون | هونغ كونغ · بالي',
+      desc: 'VORVN استوديو مستقل لتصميم العلامات التجارية والملكية الفكرية. نصمم ونبني ونمتلك علامات رقمية من هونغ كونغ ومن استوديو الحاضنة لدينا في بالي.',
     },
   },
   contact: {
@@ -122,12 +122,12 @@ function buildHreflangBlock(suffix) {
 
 function organizationJsonLd(lang) {
   const descByLang = {
-    en: 'Independent IP & brand holdings company designing, building and owning digital-first brands from Hong Kong and our Bali incubator studio.',
-    fr: "Holding indépendant de propriété intellectuelle et de marques — conception, construction et détention de marques digitales depuis Hong Kong et notre studio incubateur de Bali.",
-    es: 'Holding independiente de propiedad intelectual y marcas — diseño, construcción y propiedad de marcas digitales desde Hong Kong y nuestro estudio incubadora en Bali.',
-    zh: '独立的知识产权与品牌控股公司,在香港与巴厘岛孵化工作室设计、构建并拥有数字优先品牌。',
-    id: 'Perusahaan holding IP & merek independen yang merancang, membangun, dan memiliki merek digital dari Hong Kong dan studio inkubator kami di Bali.',
-    ar: 'شركة حيازات مستقلة للعلامات التجارية والملكية الفكرية، تصمم وتبني وتمتلك علامات رقمية من هونغ كونغ ومن استوديو الحاضنة لدينا في بالي.',
+    en: 'Independent IP & brand design house designing, building and owning digital-first brands from Hong Kong and our Bali incubator studio.',
+    fr: "Studio indépendant de conception de propriété intellectuelle et de marques — conception, construction et détention de marques digitales depuis Hong Kong et notre studio incubateur de Bali.",
+    es: 'Casa de diseño independiente de propiedad intelectual y marcas — diseño, construcción y propiedad de marcas digitales desde Hong Kong y nuestro estudio incubadora en Bali.',
+    zh: '独立的知识产权与品牌设计公司,在香港与巴厘岛孵化工作室设计、构建并拥有数字优先品牌。',
+    id: 'Studio perancang IP & merek independen yang merancang, membangun, dan memiliki merek digital dari Hong Kong dan studio inkubator kami di Bali.',
+    ar: 'استوديو مستقل لتصميم العلامات التجارية والملكية الفكرية، يصمم ويبني ويمتلك علامات رقمية من هونغ كونغ ومن استوديو الحاضنة لدينا في بالي.',
   };
   return {
     '@context': 'https://schema.org',
