@@ -52,7 +52,7 @@
   },
   "portfolio": {
     "label": "Portafolio",
-    "intro": "Las marcas y propiedad intelectual que diseñamos, construimos y poseemos — desplegadas en mercados de consumo en todo el mundo.",
+    "intro": "Las marcas y propiedad intelectual que diseñamos, construimos y poseemos, desplegadas en mercados de consumo en todo el mundo.",
     "visitBrand": "Visitar Marca →",
     "inDevelopment": "En Desarrollo",
     "downloadPresentation": "Descargar Presentación →",
@@ -63,13 +63,13 @@
         "name": "Cook Warriors",
         "sector": "Bienes de Consumo, USA, EAU",
         "statusLabel": "Activa",
-        "desc": "Una marca de utensilios de cocina premium construida en torno al Eggscalibur — la icónica sartén con mango de espada. Desde el concepto hasta la entrega desde los EAU a los hogares estadounidenses, Cook Warriors es la marca insignia de bienes de consumo de VORVN."
+        "desc": "Una marca de utensilios de cocina premium construida en torno al Eggscalibur, la icónica sartén con mango de espada. Desde el concepto hasta la entrega desde los EAU a los hogares estadounidenses, Cook Warriors es la marca insignia de bienes de consumo de VORVN."
       },
       {
         "name": "Stories of Bible",
         "sector": "Editorial Cristiana, USA",
         "statusLabel": "Salida",
-        "desc": "Incubación y co-construcción de una de las marcas de libros cristianos de mayor crecimiento en el mercado estadounidense. Dirección completa de la producción — sistemas de diseño, formación de equipos, producción de contenido e infraestructura de entrega. Montaje y gestión de un estudio creativo que produjo libros bíblicos ilustrados a escala, vendidos principalmente al mercado cristiano de EE. UU. La marca generó más de 2M$ en ingresos durante el periodo de colaboración."
+        "desc": "Incubación y co-construcción de una de las marcas de libros cristianos de mayor crecimiento en el mercado estadounidense. Dirección completa de la producción, sistemas de diseño, formación de equipos, producción de contenido e infraestructura de entrega. Montaje y gestión de un estudio creativo que produjo libros bíblicos ilustrados a escala, vendidos principalmente al mercado cristiano de EE. UU. La marca generó más de 2M$ en ingresos durante el periodo de colaboración."
       },
       {
         "name": "MAQTOB",
@@ -81,13 +81,13 @@
         "name": "xVoyager",
         "sector": "Exploración, Global",
         "statusLabel": "En Desarrollo",
-        "desc": "Una marca centrada en la exploración para nómadas y aventureros globales. Actualmente en desarrollo conceptual dentro del laboratorio VORVN — diseñada para quienes se mueven sin dirección fija."
+        "desc": "Una marca centrada en la exploración para nómadas y aventureros globales. Actualmente en desarrollo conceptual dentro del laboratorio VORVN, diseñada para quienes se mueven sin dirección fija."
       },
       {
         "name": "Warung Marrakech",
         "sector": "Alimentación y Bebidas",
         "statusLabel": "En Desarrollo",
-        "desc": "Un concepto en la intersección entre el patrimonio marroquí y la hospitalidad balinesa. Especias, calidez y cultura — donde dos continentes se encuentran en un mismo plato."
+        "desc": "Un concepto en la intersección entre el patrimonio marroquí y la hospitalidad balinesa. Especias, calidez y cultura, donde dos continentes se encuentran en un mismo plato."
       }
     ]
   },
@@ -98,12 +98,12 @@
       "role": "Operador",
       "name": "VORVN",
       "tagline": "El sistema que posee, define y opera.",
-      "desc": "Cada marca existe como un módulo dentro de VORVN — diseñado para la replicación, el control y la expansión."
+      "desc": "Cada marca existe como un módulo dentro de VORVN, diseñado para la replicación, el control y la expansión."
     },
     "p2": {
       "role": "Incubadora",
       "tagline": "Donde las marcas se construyen antes de existir.",
-      "desc": "La unidad operativa creativa, controlada y licenciada por VORVN. Da forma a las marcas en su etapa más temprana — identidad, lógica de producto, sistemas visuales, primeros prototipos. Opera como una incubadora donde los conceptos se forman, refinan y preparan antes de enfrentar el mercado real. No maneja distribución. Se enfoca en creación, refinamiento y preparación."
+      "desc": "La unidad operativa creativa, controlada y licenciada por VORVN. Da forma a las marcas en su etapa más temprana, identidad, lógica de producto, sistemas visuales, primeros prototipos. Opera como una incubadora donde los conceptos se forman, refinan y preparan antes de enfrentar el mercado real. No maneja distribución. Se enfoca en creación, refinamiento y preparación."
     },
     "p3": {
       "role": "Activos Independientes",
@@ -113,7 +113,7 @@
     "p4": {
       "role": "Por Marca",
       "title": "Capa de Ejecución Externa",
-      "desc": "Cada marca construye o conecta su propia distribución, operaciones y canales de mercado una vez validada. La ejecución se separa deliberadamente de la creación — ninguna marca entra al mercado sin pasar por la incubadora y recibir la aprobación estructural de VORVN."
+      "desc": "Cada marca construye o conecta su propia distribución, operaciones y canales de mercado una vez validada. La ejecución se separa deliberadamente de la creación, ninguna marca entra al mercado sin pasar por la incubadora y recibir la aprobación estructural de VORVN."
     },
     "p5": {
       "role": "Suministro & Exportación",
@@ -131,30 +131,30 @@
         "Aduh (Lagi) Studio construye.",
         "Las marcas despliegan. Las entidades de soporte abastecen."
       ],
-      "outcome": "Un sistema donde las marcas se crean en un entorno controlado, y luego se liberan como negocios independientes y estructurados — cada uno respaldado por la IP, las operaciones y la infraestructura de suministro que VORVN controla. No es un estudio. No es una agencia. Un sistema de holding construido para poseer, operar y escalar."
+      "outcome": "Un sistema donde las marcas se crean en un entorno controlado, y luego se liberan como negocios independientes y estructurados, cada uno respaldado por la IP, las operaciones y la infraestructura de suministro que VORVN controla. No es un estudio. No es una agencia. Un sistema de holding construido para poseer, operar y escalar."
     }
   },
   "founder": {
     "label": "Fundador",
     "quote": "«Creo que el mundo pertenece a quienes lo diseñan, y eso es exactamente lo que hacemos.\n\nDiseñamos.»",
     "name": "Mehdi Ayache Berberos",
-    "title": "CEO y Fundador — VORVN Limited",
-    "caption": "20 años entre diseño, medios y emprendimiento. 6 startups fundadas. Director Creativo para gobiernos, bancos y marcas globales. Awwwards. TEDx. Comisión Europea. Hoy construye VORVN — poseyendo el trabajo, no entregándolo."
+    "title": "CEO y Fundador, VORVN Limited",
+    "caption": "20 años entre diseño, medios y emprendimiento. 6 startups fundadas. Director Creativo para gobiernos, bancos y marcas globales. Awwwards. TEDx. Comisión Europea. Hoy construye VORVN, poseyendo el trabajo, no entregándolo."
   },
   "investors": {
     "label": "Inversores",
     "headline": "El capital se encuentra con\nuna ejecución verticalmente integrada.",
-    "body": "VORVN es una holding privada de IP y marcas con capacidades internas de diseño, producción y distribución en Asia, África y mercados occidentales. Abrimos dos vías estructuradas al capital alineado — una operativa, otra estratégica — diseñadas para convertir la inversión en marcas propias, lanzadas y generadoras de ingresos.",
+    "body": "VORVN es una holding privada de IP y marcas con capacidades internas de diseño, producción y distribución en Asia, África y mercados occidentales. Abrimos dos vías estructuradas al capital alineado, una operativa, otra estratégica, diseñadas para convertir la inversión en marcas propias, lanzadas y generadoras de ingresos.",
     "schemaTitle": "Dos vías estructuradas",
-    "incubatorBadge": "01 — Incubadora",
+    "incubatorBadge": "01, Incubadora",
     "incubatorTitle": "Validación Design-to-Market",
     "incubatorLocation": "Bali, Indonesia · Full-stack, rápido",
-    "incubatorDesc": "Validación de marca de extremo a extremo en nuestro estudio de Bali: diseño, prototipado, branding y pruebas de go-to-market — full-stack y rápido. Para desriesgar conceptos antes de escalar.",
+    "incubatorDesc": "Validación de marca de extremo a extremo en nuestro estudio de Bali: diseño, prototipado, branding y pruebas de go-to-market, full-stack y rápido. Para desriesgar conceptos antes de escalar.",
     "incubatorCta": "Co-incubar una marca →",
-    "ventureBadge": "02 — Venture",
+    "ventureBadge": "02, Venture",
     "ventureTitle": "Co-Construcción Estratégica",
     "ventureLocation": "Hong Kong · Global",
-    "ventureDesc": "Co-fundamos ventures con socios de capital sobre IP validada. Cap table compartida, convicción compartida, horizonte largo — estructurados para escalar globalmente.",
+    "ventureDesc": "Co-fundamos ventures con socios de capital sobre IP validada. Cap table compartida, convicción compartida, horizonte largo, estructurados para escalar globalmente.",
     "ventureCta": "Hablar de un co-build →",
     "cta": "Solicitar introducción",
     "ctaSub": "Por invitación · Solo entidades cualificadas"
@@ -176,7 +176,7 @@
     "label": "Señal Perdida",
     "signal": "● Fuera de red",
     "headline": "Esta página no existe en nuestra holding.",
-    "body": "La ruta que seguiste no corresponde a ninguna marca, entidad ni documento dentro de VORVN. Puede haberse movido — o nunca estuvo aquí.",
+    "body": "La ruta que seguiste no corresponde a ninguna marca, entidad ni documento dentro de VORVN. Puede haberse movido, o nunca estuvo aquí.",
     "attempted": "Ruta solicitada:",
     "cta": "Volver a VORVN",
     "footerLeft": "404 · No Encontrada",
@@ -185,7 +185,7 @@
   "contact": {
     "label": "Contacto",
     "headline": "Háblanos.\nDirectamente.",
-    "body": "Introducciones de inversores, colaboraciones de marca, prensa, carreras — elige un tema y escríbenos un mensaje real. Respondemos a los que importan.",
+    "body": "Introducciones de inversores, colaboraciones de marca, prensa, carreras, elige un tema y escríbenos un mensaje real. Respondemos a los que importan.",
     "offices": "Oficinas",
     "formLabel": "Formulario",
     "formHeadline": "Enviar un mensaje",
@@ -201,10 +201,10 @@
       "message": "Tu mensaje",
       "messagePlaceholder": "Cuéntanos qué estás construyendo, por qué ahora, y qué necesitas de nosotros.",
       "messageHint": "Mín. 10 caracteres",
-      "topicHelp": "Elige el que mejor encaje — tu mensaje irá a la persona correcta.",
+      "topicHelp": "Elige el que mejor encaje, tu mensaje irá a la persona correcta.",
       "namePlaceholder": "Tu nombre completo",
       "emailPlaceholder": "nombre@ejemplo.com",
-      "companyPlaceholder": "Opcional — tu empresa o proyecto"
+      "companyPlaceholder": "Opcional, tu empresa o proyecto"
     },
     "topics": {
       "investor": "Inversor / Asociación",
@@ -226,7 +226,7 @@
     "success": {
       "tag": "Recibido",
       "title": "Mensaje enviado.",
-      "body": "Gracias por contactarnos. Leemos cada mensaje y respondemos en 48 horas — normalmente antes.",
+      "body": "Gracias por contactarnos. Leemos cada mensaje y respondemos en 48 horas, normalmente antes.",
       "again": "Enviar otro →"
     },
     "phones": "Teléfonos",

@@ -73,8 +73,8 @@ export default function PrivacyPolicy() {
 
       <h2 id="lawful-basis">4. Lawful basis for processing (GDPR / UK-GDPR)</h2>
       <ul>
-        <li><strong>Contact form submissions</strong>: legitimate interest — responding to a person who has voluntarily contacted us (Art. 6(1)(f) GDPR). You may withdraw at any time by asking us to delete your data.</li>
-        <li><strong>Server logs and rate-limiting</strong>: legitimate interest — securing the service (Art. 6(1)(f) GDPR).</li>
+        <li><strong>Contact form submissions</strong>: legitimate interest, responding to a person who has voluntarily contacted us (Art. 6(1)(f) GDPR). You may withdraw at any time by asking us to delete your data.</li>
+        <li><strong>Server logs and rate-limiting</strong>: legitimate interest, securing the service (Art. 6(1)(f) GDPR).</li>
         <li><strong>Any future analytics or advertising cookies</strong> (e.g. Meta Pixel): consent (Art. 6(1)(a) GDPR), collected via our cookie banner before any tracker loads.</li>
       </ul>
 
@@ -104,10 +104,10 @@ export default function PrivacyPolicy() {
         We share personal data only with the processors strictly required to operate the site:
       </p>
       <ul>
-        <li><strong>Netlify, Inc.</strong> (USA) — website hosting, contact-form serverless function execution. <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Privacy policy</a>.</li>
-        <li><strong>Google LLC</strong> (USA) — Gmail (Google Workspace) is used to deliver contact-form submissions to our internal inbox. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy policy</a>.</li>
-        <li><strong>Google Search Console</strong> — aggregated, anonymised search-performance data only.</li>
-        <li><strong>Meta Platforms Ireland Ltd.</strong> — only if you consent to the Meta Pixel.</li>
+        <li><strong>Netlify, Inc.</strong> (USA), website hosting, contact-form serverless function execution. <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Privacy policy</a>.</li>
+        <li><strong>Google LLC</strong> (USA), Gmail (Google Workspace) is used to deliver contact-form submissions to our internal inbox. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy policy</a>.</li>
+        <li><strong>Google Search Console</strong>, aggregated, anonymised search-performance data only.</li>
+        <li><strong>Meta Platforms Ireland Ltd.</strong>, only if you consent to the Meta Pixel.</li>
       </ul>
       <p>
         We do not disclose personal data to any other third parties unless required by law,
@@ -146,7 +146,7 @@ export default function PrivacyPolicy() {
         <li><strong>Rectify</strong> inaccurate or incomplete data</li>
         <li><strong>Erase</strong> your data ("right to be forgotten")</li>
         <li><strong>Restrict</strong> or <strong>object to</strong> processing</li>
-        <li><strong>Data portability</strong> — receive your data in a machine-readable format</li>
+        <li><strong>Data portability</strong>, receive your data in a machine-readable format</li>
         <li><strong>Withdraw consent</strong> at any time, where processing is based on consent</li>
         <li><strong>Lodge a complaint</strong> with a supervisory authority</li>
       </ul>
@@ -162,7 +162,7 @@ export default function PrivacyPolicy() {
         The data controller is VORVN LIMITED (Hong Kong). We have not appointed an EU
         representative under Art. 27 GDPR because our processing of EU residents' data is
         occasional and does not include special categories of data on a large scale. EU/UK
-        residents may lodge a complaint with their local supervisory authority — for example,
+        residents may lodge a complaint with their local supervisory authority, for example,
         the Irish Data Protection Commission (<a href="https://www.dataprotection.ie" target="_blank" rel="noopener noreferrer">dataprotection.ie</a>)
         or the UK Information Commissioner's Office (<a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a>).
       </p>
@@ -180,7 +180,7 @@ export default function PrivacyPolicy() {
         information</strong> as those terms are defined under the CCPA/CPRA. We do not offer
         financial incentives for personal information.
       </p>
-      <h3>11.4 Indonesia (UU PDP — Law No. 27 of 2022)</h3>
+      <h3>11.4 Indonesia (UU PDP, Law No. 27 of 2022)</h3>
       <p>
         Where Indonesian personal data is processed (e.g. operations of our Bali studio), we
         rely on the consent of the data subject or on legitimate operational necessity as

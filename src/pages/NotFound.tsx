@@ -15,7 +15,7 @@ export default function NotFound() {
   const homeHref = `/${activeLang}`;
 
   useEffect(() => {
-    console.error('404 — non-existent route:', location.pathname);
+    console.error('404, non-existent route:', location.pathname);
   }, [location.pathname]);
 
   return (

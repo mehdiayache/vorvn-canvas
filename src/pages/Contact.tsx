@@ -131,7 +131,7 @@ export default function Contact() {
       <Nav />
 
       <main style={{ paddingTop: '88px' }}>
-        {/* HEADER — no top border; the fixed Nav's bottom border already provides the rule */}
+        {/* HEADER, no top border; the fixed Nav's bottom border already provides the rule */}
         <section
           style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}
         >
@@ -303,7 +303,7 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={onSubmit} noValidate className="mt-12 space-y-10 reveal d2">
-                  {/* Honeypot — hidden from users, bots fill it */}
+                  {/* Honeypot, hidden from users, bots fill it */}
                   <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
                     <label htmlFor="website">Website</label>
                     <input

@@ -52,7 +52,7 @@
   },
   "portfolio": {
     "label": "Portfolio",
-    "intro": "The brands and intellectual property we design, build, and own — deployed across consumer markets worldwide.",
+    "intro": "The brands and intellectual property we design, build, and own, deployed across consumer markets worldwide.",
     "visitBrand": "Visit Brand →",
     "inDevelopment": "In Development",
     "downloadPresentation": "Download Presentation →",
@@ -63,13 +63,13 @@
         "name": "Cook Warriors",
         "sector": "Consumer Goods, USA, UAE",
         "statusLabel": "Active",
-        "desc": "A premium kitchenware brand built around the Eggscalibur — the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
+        "desc": "A premium kitchenware brand built around the Eggscalibur, the iconic sword-handle frying pan. From concept through UAE fulfillment to US households, Cook Warriors is VORVN's flagship consumer goods brand."
       },
       {
         "name": "Stories of Bible",
         "sector": "Christian Publishing, USA",
         "statusLabel": "Exited",
-        "desc": "Incubated and co-built one of the fastest-growing Christian book brands in the US market. Led the full production side — design systems, team building, content production, and delivery infrastructure. Assembled a creative studio that produced illustrated Bible books at scale, sold primarily to the US Christian market. The brand generated over $2M in revenue across the partnership period."
+        "desc": "Incubated and co-built one of the fastest-growing Christian book brands in the US market. Led the full production side, design systems, team building, content production, and delivery infrastructure. Assembled a creative studio that produced illustrated Bible books at scale, sold primarily to the US Christian market. The brand generated over $2M in revenue across the partnership period."
       },
       {
         "name": "MAQTOB",
@@ -81,13 +81,13 @@
         "name": "xVoyager",
         "sector": "Exploration, Global",
         "statusLabel": "In Development",
-        "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab — designed for those who move without a fixed address."
+        "desc": "An exploration-first brand for global nomads and adventurers. Currently in concept development within the VORVN lab, designed for those who move without a fixed address."
       },
       {
         "name": "Warung Marrakech",
         "sector": "Food & Beverage",
         "statusLabel": "In Development",
-        "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture — where two continents meet on one plate."
+        "desc": "A concept at the intersection of Moroccan heritage and Balinese hospitality. Spice, warmth, and culture, where two continents meet on one plate."
       }
     ]
   },
@@ -98,12 +98,12 @@
       "role": "Operator",
       "name": "VORVN",
       "tagline": "The system that owns, defines, and operates.",
-      "desc": "Every brand exists as a module within VORVN — designed for replication, control, and expansion."
+      "desc": "Every brand exists as a module within VORVN, designed for replication, control, and expansion."
     },
     "p2": {
       "role": "Incubator",
       "tagline": "Where brands are built before they exist.",
-      "desc": "The creative operating unit, held and licensed by VORVN. It shapes brands at their earliest stage — identity, product logic, visual systems, first prototypes. It operates as an incubator where concepts are formed, refined, and prepared before entering real market conditions. It does not handle distribution. It focuses on creation, refinement, and readiness."
+      "desc": "The creative operating unit, held and licensed by VORVN. It shapes brands at their earliest stage, identity, product logic, visual systems, first prototypes. It operates as an incubator where concepts are formed, refined, and prepared before entering real market conditions. It does not handle distribution. It focuses on creation, refinement, and readiness."
     },
     "p3": {
       "role": "Independent Assets",
@@ -113,7 +113,7 @@
     "p4": {
       "role": "Per Brand",
       "title": "External Execution Layer",
-      "desc": "Each brand builds or connects its own distribution, operations, and market channels once validated. Execution is deliberately separated from creation — no brand enters market without passing through the incubator and receiving VORVN's structural sign-off."
+      "desc": "Each brand builds or connects its own distribution, operations, and market channels once validated. Execution is deliberately separated from creation, no brand enters market without passing through the incubator and receiving VORVN's structural sign-off."
     },
     "p5": {
       "role": "Supply & Export",
@@ -131,30 +131,30 @@
         "Aduh (Lagi) Studio builds.",
         "Brands deploy. Support entities supply."
       ],
-      "outcome": "Design is the engine. Aduh (Lagi) Studio, held and licensed by VORVN, develops every brand from idea to first prototype inside a controlled creative environment ... identity, product logic, prototype, validation. VORVN owns the intellectual property and runs the system as legal operator. Once validated, each brand becomes an autonomous company with its own systems, audience, and economics — built to grow, sellable as a unit, or open to outside ventures. One process, repeated. Design to market, end to end."
+      "outcome": "Design is the engine. Aduh (Lagi) Studio, held and licensed by VORVN, develops every brand from idea to first prototype inside a controlled creative environment ... identity, product logic, prototype, validation. VORVN owns the intellectual property and runs the system as legal operator. Once validated, each brand becomes an autonomous company with its own systems, audience, and economics, built to grow, sellable as a unit, or open to outside ventures. One process, repeated. Design to market, end to end."
     }
   },
   "founder": {
     "label": "Founder",
     "quote": "\"I believe the world belongs to those who design it, and that's exactly what we do.\n\nWe Design.\"",
     "name": "Mehdi Ayache Berberos",
-    "title": "CEO & Founder — VORVN Limited",
-    "caption": "20 years across design, media and entrepreneurship. Founded 6 startups. Creative Director for governments, banks and global brands. Awwwards. TEDx. European Commission. Now building VORVN — owning the work, not delivering it."
+    "title": "CEO & Founder, VORVN Limited",
+    "caption": "20 years across design, media and entrepreneurship. Founded 6 startups. Creative Director for governments, banks and global brands. Awwwards. TEDx. European Commission. Now building VORVN, owning the work, not delivering it."
   },
   "investors": {
     "label": "Investors",
     "headline": "Capital meets\nvertically integrated execution.",
-    "body": "VORVN is a privately held IP and brand holding company with in-house design, production, and distribution capabilities across Asia, Africa, and Western markets. We open two structured pathways for aligned capital — one operational, one strategic — designed to convert investment into shipped, owned, revenue-generating brands.",
+    "body": "VORVN is a privately held IP and brand holding company with in-house design, production, and distribution capabilities across Asia, Africa, and Western markets. We open two structured pathways for aligned capital, one operational, one strategic, designed to convert investment into shipped, owned, revenue-generating brands.",
     "schemaTitle": "Two structured pathways",
-    "incubatorBadge": "01 — Incubator",
+    "incubatorBadge": "01, Incubator",
     "incubatorTitle": "Design-to-Market Validation",
     "incubatorLocation": "Bali, Indonesia · Full-Stack, Fast",
-    "incubatorDesc": "End-to-end brand validation inside our Bali studio: design, prototyping, branding, and go-to-market testing — full-stack and fast. Built to de-risk concepts before scale.",
+    "incubatorDesc": "End-to-end brand validation inside our Bali studio: design, prototyping, branding, and go-to-market testing, full-stack and fast. Built to de-risk concepts before scale.",
     "incubatorCta": "Co-incubate a brand →",
-    "ventureBadge": "02 — Venture",
+    "ventureBadge": "02, Venture",
     "ventureTitle": "Strategic Co-Build",
     "ventureLocation": "Hong Kong · Global",
-    "ventureDesc": "We co-found ventures with capital partners on validated IP. Shared cap table, shared conviction, long horizon — structured for scale across consumer markets worldwide.",
+    "ventureDesc": "We co-found ventures with capital partners on validated IP. Shared cap table, shared conviction, long horizon, structured for scale across consumer markets worldwide.",
     "ventureCta": "Discuss a co-build →",
     "cta": "Request Introduction",
     "ctaSub": "By invitation · Qualified entities only"
@@ -185,7 +185,7 @@
   "contact": {
     "label": "Contact",
     "headline": "Talk to us.\nDirectly.",
-    "body": "Investor introductions, brand collaborations, press, careers — pick a topic and write us a real message. We answer the ones that matter.",
+    "body": "Investor introductions, brand collaborations, press, careers, pick a topic and write us a real message. We answer the ones that matter.",
     "offices": "Offices",
     "formLabel": "Form",
     "formHeadline": "Send a message",
@@ -201,10 +201,10 @@
       "message": "Your message",
       "messagePlaceholder": "Tell us what you're building, why now, and what you need from us.",
       "messageHint": "Min. 10 characters",
-      "topicHelp": "Pick the one that fits best — it routes your message to the right person.",
+      "topicHelp": "Pick the one that fits best, it routes your message to the right person.",
       "namePlaceholder": "Your full name",
       "emailPlaceholder": "name@example.com",
-      "companyPlaceholder": "Optional — your company or project"
+      "companyPlaceholder": "Optional, your company or project"
     },
     "topics": {
       "investor": "Investor / Partnership",
@@ -226,7 +226,7 @@
     "success": {
       "tag": "Received",
       "title": "Message sent.",
-      "body": "Thanks for reaching out. We read every message and reply within 48 hours — usually faster.",
+      "body": "Thanks for reaching out. We read every message and reply within 48 hours, usually faster.",
       "again": "Send another →"
     },
     "phones": "Phones",

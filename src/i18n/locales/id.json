@@ -52,7 +52,7 @@
   },
   "portfolio": {
     "label": "Portofolio",
-    "intro": "Merek dan kekayaan intelektual yang kami rancang, bangun, dan miliki — diluncurkan ke pasar konsumen di seluruh dunia.",
+    "intro": "Merek dan kekayaan intelektual yang kami rancang, bangun, dan miliki, diluncurkan ke pasar konsumen di seluruh dunia.",
     "visitBrand": "Kunjungi Merek →",
     "inDevelopment": "Dalam Pengembangan",
     "downloadPresentation": "Unduh Presentasi →",
@@ -63,13 +63,13 @@
         "name": "Cook Warriors",
         "sector": "Barang Konsumen, USA, UEA",
         "statusLabel": "Aktif",
-        "desc": "Merek perlengkapan dapur premium yang dibangun di sekitar Eggscalibur — wajan ikonik bergagang pedang. Dari konsep hingga pengiriman dari UEA ke rumah-rumah di AS, Cook Warriors adalah merek konsumen unggulan VORVN."
+        "desc": "Merek perlengkapan dapur premium yang dibangun di sekitar Eggscalibur, wajan ikonik bergagang pedang. Dari konsep hingga pengiriman dari UEA ke rumah-rumah di AS, Cook Warriors adalah merek konsumen unggulan VORVN."
       },
       {
         "name": "Stories of Bible",
         "sector": "Penerbitan Kristen, AS",
         "statusLabel": "Exited",
-        "desc": "Menginkubasi dan turut membangun salah satu merek buku Kristen dengan pertumbuhan tercepat di pasar AS. Memimpin seluruh sisi produksi — design system, pembentukan tim, produksi konten, dan infrastruktur distribusi. Membentuk dan mengelola studio kreatif yang memproduksi buku Alkitab berilustrasi dalam skala besar, dijual terutama ke pasar Kristen di AS. Merek ini menghasilkan pendapatan lebih dari $2 juta selama periode kemitraan."
+        "desc": "Menginkubasi dan turut membangun salah satu merek buku Kristen dengan pertumbuhan tercepat di pasar AS. Memimpin seluruh sisi produksi, design system, pembentukan tim, produksi konten, dan infrastruktur distribusi. Membentuk dan mengelola studio kreatif yang memproduksi buku Alkitab berilustrasi dalam skala besar, dijual terutama ke pasar Kristen di AS. Merek ini menghasilkan pendapatan lebih dari $2 juta selama periode kemitraan."
       },
       {
         "name": "MAQTOB",
@@ -81,13 +81,13 @@
         "name": "xVoyager",
         "sector": "Eksplorasi, Global",
         "statusLabel": "Dalam Pengembangan",
-        "desc": "Merek dengan semangat eksplorasi untuk para nomaden dan petualang global. Saat ini dalam pengembangan konsep di lab VORVN — dirancang untuk mereka yang bergerak tanpa alamat tetap."
+        "desc": "Merek dengan semangat eksplorasi untuk para nomaden dan petualang global. Saat ini dalam pengembangan konsep di lab VORVN, dirancang untuk mereka yang bergerak tanpa alamat tetap."
       },
       {
         "name": "Warung Marrakech",
         "sector": "Makanan & Minuman",
         "statusLabel": "Dalam Pengembangan",
-        "desc": "Konsep di persimpangan warisan Maroko dan keramahan khas Bali. Rempah, kehangatan, dan budaya — tempat dua benua bertemu di satu piring."
+        "desc": "Konsep di persimpangan warisan Maroko dan keramahan khas Bali. Rempah, kehangatan, dan budaya, tempat dua benua bertemu di satu piring."
       }
     ]
   },
@@ -98,12 +98,12 @@
       "role": "Operator",
       "name": "VORVN",
       "tagline": "Sistem yang memiliki, mendefinisikan, dan menjalankan.",
-      "desc": "Setiap merek hadir sebagai modul di dalam VORVN — dirancang untuk replikasi, kontrol, dan ekspansi."
+      "desc": "Setiap merek hadir sebagai modul di dalam VORVN, dirancang untuk replikasi, kontrol, dan ekspansi."
     },
     "p2": {
       "role": "Inkubator",
       "tagline": "Tempat merek dibangun sebelum mereka ada.",
-      "desc": "Unit operasional kreatif, dimiliki dan dilisensikan oleh VORVN. Membentuk merek pada tahap paling awal — identitas, logika produk, sistem visual, prototipe pertama. Beroperasi sebagai inkubator tempat konsep dibentuk, disempurnakan, dan disiapkan sebelum memasuki kondisi pasar nyata. Tidak menangani distribusi. Fokus pada penciptaan, penyempurnaan, dan kesiapan."
+      "desc": "Unit operasional kreatif, dimiliki dan dilisensikan oleh VORVN. Membentuk merek pada tahap paling awal, identitas, logika produk, sistem visual, prototipe pertama. Beroperasi sebagai inkubator tempat konsep dibentuk, disempurnakan, dan disiapkan sebelum memasuki kondisi pasar nyata. Tidak menangani distribusi. Fokus pada penciptaan, penyempurnaan, dan kesiapan."
     },
     "p3": {
       "role": "Aset Independen",
@@ -113,7 +113,7 @@
     "p4": {
       "role": "Per Merek",
       "title": "Lapisan Eksekusi Eksternal",
-      "desc": "Setiap merek membangun atau menghubungkan distribusi, operasi, dan kanal pasarnya sendiri setelah divalidasi. Eksekusi sengaja dipisahkan dari penciptaan — tidak ada merek yang masuk pasar tanpa melewati inkubator dan menerima persetujuan struktural dari VORVN."
+      "desc": "Setiap merek membangun atau menghubungkan distribusi, operasi, dan kanal pasarnya sendiri setelah divalidasi. Eksekusi sengaja dipisahkan dari penciptaan, tidak ada merek yang masuk pasar tanpa melewati inkubator dan menerima persetujuan struktural dari VORVN."
     },
     "p5": {
       "role": "Pasokan & Ekspor",
@@ -131,30 +131,30 @@
         "Aduh (Lagi) Studio membangun.",
         "Merek beroperasi. Entitas pendukung memasok."
       ],
-      "outcome": "Sebuah sistem di mana merek diciptakan dalam lingkungan terkontrol, lalu dilepas sebagai bisnis independen yang terstruktur — masing-masing didukung oleh IP, operasi, dan infrastruktur pasokan yang dikendalikan VORVN. Bukan studio. Bukan agensi. Sebuah sistem holding yang dibangun untuk memiliki, mengoperasikan, dan menumbuhkan."
+      "outcome": "Sebuah sistem di mana merek diciptakan dalam lingkungan terkontrol, lalu dilepas sebagai bisnis independen yang terstruktur, masing-masing didukung oleh IP, operasi, dan infrastruktur pasokan yang dikendalikan VORVN. Bukan studio. Bukan agensi. Sebuah sistem holding yang dibangun untuk memiliki, mengoperasikan, dan menumbuhkan."
     }
   },
   "founder": {
     "label": "Pendiri",
     "quote": "\"Saya percaya dunia adalah milik mereka yang merancangnya, dan itulah yang kami lakukan.\n\nKami merancang.\"",
     "name": "Mehdi Ayache Berberos",
-    "title": "CEO & Pendiri — VORVN Limited",
-    "caption": "20 tahun di persilangan desain, media, dan kewirausahaan. Mendirikan 6 startup. Creative Director untuk pemerintah, bank, dan merek global. Awwwards. TEDx. Komisi Eropa. Kini membangun VORVN — memiliki karya, bukan menyerahkannya."
+    "title": "CEO & Pendiri, VORVN Limited",
+    "caption": "20 tahun di persilangan desain, media, dan kewirausahaan. Mendirikan 6 startup. Creative Director untuk pemerintah, bank, dan merek global. Awwwards. TEDx. Komisi Eropa. Kini membangun VORVN, memiliki karya, bukan menyerahkannya."
   },
   "investors": {
     "label": "Investor",
     "headline": "Modal bertemu\neksekusi terintegrasi vertikal.",
-    "body": "VORVN adalah perusahaan holding IP dan merek yang dimiliki secara privat, dengan kapabilitas in-house di desain, produksi, dan distribusi di Asia, Afrika, dan pasar Barat. Kami membuka dua jalur terstruktur bagi modal yang selaras — satu operasional, satu strategis — dirancang untuk mengubah investasi menjadi merek yang dimiliki, diluncurkan, dan menghasilkan pendapatan.",
+    "body": "VORVN adalah perusahaan holding IP dan merek yang dimiliki secara privat, dengan kapabilitas in-house di desain, produksi, dan distribusi di Asia, Afrika, dan pasar Barat. Kami membuka dua jalur terstruktur bagi modal yang selaras, satu operasional, satu strategis, dirancang untuk mengubah investasi menjadi merek yang dimiliki, diluncurkan, dan menghasilkan pendapatan.",
     "schemaTitle": "Dua jalur terstruktur",
-    "incubatorBadge": "01 — Inkubator",
+    "incubatorBadge": "01, Inkubator",
     "incubatorTitle": "Validasi Design-to-Market",
     "incubatorLocation": "Bali, Indonesia · Full-stack, cepat",
-    "incubatorDesc": "Validasi merek end-to-end di studio Bali kami: desain, prototyping, branding, dan uji go-to-market — full-stack dan cepat. Dirancang untuk meminimalkan risiko sebelum scale-up.",
+    "incubatorDesc": "Validasi merek end-to-end di studio Bali kami: desain, prototyping, branding, dan uji go-to-market, full-stack dan cepat. Dirancang untuk meminimalkan risiko sebelum scale-up.",
     "incubatorCta": "Inkubasi merek bersama →",
-    "ventureBadge": "02 — Venture",
+    "ventureBadge": "02, Venture",
     "ventureTitle": "Co-Build Strategis",
     "ventureLocation": "Hong Kong · Global",
-    "ventureDesc": "Kami turut mendirikan venture bersama mitra modal di atas IP yang tervalidasi. Cap table bersama, keyakinan bersama, horizon panjang — terstruktur untuk skala global.",
+    "ventureDesc": "Kami turut mendirikan venture bersama mitra modal di atas IP yang tervalidasi. Cap table bersama, keyakinan bersama, horizon panjang, terstruktur untuk skala global.",
     "ventureCta": "Bahas co-build →",
     "cta": "Minta Perkenalan",
     "ctaSub": "Berdasarkan undangan · Hanya entitas yang memenuhi syarat"
@@ -176,7 +176,7 @@
     "label": "Sinyal Hilang",
     "signal": "● Di luar jaringan",
     "headline": "Halaman ini tidak ada di holding kami.",
-    "body": "Rute yang Anda ikuti tidak terhubung ke merek, entitas, atau dokumen mana pun di bawah VORVN. Mungkin telah dipindahkan — atau memang tidak pernah ada.",
+    "body": "Rute yang Anda ikuti tidak terhubung ke merek, entitas, atau dokumen mana pun di bawah VORVN. Mungkin telah dipindahkan, atau memang tidak pernah ada.",
     "attempted": "Rute yang dicoba:",
     "cta": "Kembali ke VORVN",
     "footerLeft": "404 · Tidak Ditemukan",
@@ -185,7 +185,7 @@
   "contact": {
     "label": "Kontak",
     "headline": "Bicaralah dengan kami.\nLangsung.",
-    "body": "Perkenalan investor, kolaborasi merek, media, karir — pilih topik dan kirimkan pesan yang sebenarnya. Kami menjawab yang penting.",
+    "body": "Perkenalan investor, kolaborasi merek, media, karir, pilih topik dan kirimkan pesan yang sebenarnya. Kami menjawab yang penting.",
     "offices": "Kantor",
     "formLabel": "Formulir",
     "formHeadline": "Kirim pesan",
@@ -201,10 +201,10 @@
       "message": "Pesan Anda",
       "messagePlaceholder": "Ceritakan apa yang sedang Anda bangun, mengapa sekarang, dan apa yang Anda butuhkan dari kami.",
       "messageHint": "Min. 10 karakter",
-      "topicHelp": "Pilih yang paling sesuai — pesan Anda akan diteruskan ke orang yang tepat.",
+      "topicHelp": "Pilih yang paling sesuai, pesan Anda akan diteruskan ke orang yang tepat.",
       "namePlaceholder": "Nama lengkap Anda",
       "emailPlaceholder": "nama@contoh.com",
-      "companyPlaceholder": "Opsional — perusahaan atau proyek Anda"
+      "companyPlaceholder": "Opsional, perusahaan atau proyek Anda"
     },
     "topics": {
       "investor": "Investor / Kemitraan",
@@ -226,7 +226,7 @@
     "success": {
       "tag": "Diterima",
       "title": "Pesan terkirim.",
-      "body": "Terima kasih telah menghubungi kami. Kami membaca setiap pesan dan membalas dalam 48 jam — biasanya lebih cepat.",
+      "body": "Terima kasih telah menghubungi kami. Kami membaca setiap pesan dan membalas dalam 48 jam, biasanya lebih cepat.",
       "again": "Kirim pesan lain →"
     },
     "phones": "Telepon",
