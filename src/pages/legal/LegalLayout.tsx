@@ -33,9 +33,9 @@ export default function LegalLayout({
 }: LegalLayoutProps) {
   const scrollRef = useScrollReveal();
 
-  // Manual SEO head — legal pages are outside i18n, so SeoHead doesn't apply.
+  // Manual SEO head, legal pages are outside i18n, so SeoHead doesn't apply.
   useEffect(() => {
-    const fullTitle = `${title} — VORVN`;
+    const fullTitle = `${title}, VORVN`;
     document.title = fullTitle;
     document.documentElement.lang = 'en';
 
@@ -61,7 +61,7 @@ export default function LegalLayout({
 
     return () => {
       // Reset to default site title when navigating away.
-      document.title = 'VORVN — Autonomous IP & Brand Holdings | Hong Kong · Bali';
+      document.title = 'VORVN, Autonomous IP & Brand Holdings | Hong Kong · Bali';
     };
   }, [title, description, slug]);
 
@@ -70,7 +70,7 @@ export default function LegalLayout({
       <Nav />
 
       <main style={{ paddingTop: '88px' }}>
-        {/* HEADER — no top border; the fixed Nav's bottom border already provides the rule */}
+        {/* HEADER, no top border; the fixed Nav's bottom border already provides the rule */}
         <section
           style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}
         >

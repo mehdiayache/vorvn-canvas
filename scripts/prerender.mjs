@@ -3,7 +3,7 @@
 // localized route, with title, description, canonical, hreflang, OG, Twitter,
 // and JSON-LD baked into <head> BEFORE JavaScript runs.
 //
-// React still hydrates normally on top — UX unchanged. Crawlers see correct
+// React still hydrates normally on top, UX unchanged. Crawlers see correct
 // language metadata on the first byte of every URL.
 
 import fs from 'node:fs';
@@ -15,7 +15,7 @@ const distDir = path.resolve(__dirname, '..', 'dist');
 const baseHtmlPath = path.join(distDir, 'index.html');
 
 if (!fs.existsSync(baseHtmlPath)) {
-  console.error('[prerender] dist/index.html not found — run `vite build` first.');
+  console.error('[prerender] dist/index.html not found, run `vite build` first.');
   process.exit(1);
 }
 
@@ -34,54 +34,54 @@ const LANGUAGES = [
 const SEO = {
   home: {
     en: {
-      title: 'VORVN — Autonomous IP & Brand Designers | Hong Kong · Bali',
+      title: 'VORVN: Autonomous IP & Brand Designers | Hong Kong · Bali',
       desc: 'VORVN is an independent IP & brand design house. We design, build and own digital-first brands from Hong Kong and our Bali incubator studio.',
     },
     fr: {
-      title: 'VORVN — Concepteurs indépendants de marques & PI | Hong Kong · Bali',
+      title: 'VORVN: Concepteurs indépendants de marques & PI | Hong Kong · Bali',
       desc: "VORVN est un studio indépendant de conception de propriété intellectuelle et de marques. Nous concevons, construisons et possédons des marques digitales depuis Hong Kong et notre studio incubateur de Bali.",
     },
     es: {
-      title: 'VORVN — Diseñadores autónomos de marcas y PI | Hong Kong · Bali',
+      title: 'VORVN: Diseñadores autónomos de marcas y PI | Hong Kong · Bali',
       desc: 'VORVN es una casa de diseño independiente de propiedad intelectual y marcas. Diseñamos, construimos y poseemos marcas digitales desde Hong Kong y nuestro estudio incubadora en Bali.',
     },
     zh: {
-      title: 'VORVN — 自主知识产权与品牌设计公司 | 香港 · 巴厘岛',
+      title: 'VORVN: 自主知识产权与品牌设计公司 | 香港 · 巴厘岛',
       desc: 'VORVN 是独立的知识产权与品牌设计公司。我们在香港与巴厘岛孵化工作室设计、构建并拥有数字优先品牌。',
     },
     id: {
-      title: 'VORVN — Perancang IP & Merek Independen | Hong Kong · Bali',
+      title: 'VORVN: Perancang IP & Merek Independen | Hong Kong · Bali',
       desc: 'VORVN adalah studio perancang IP & merek yang independen. Kami merancang, membangun, dan memiliki merek digital dari Hong Kong dan studio inkubator kami di Bali.',
     },
     ar: {
-      title: 'VORVN — مصمّمو علامات وملكية فكرية مستقلون | هونغ كونغ · بالي',
+      title: 'VORVN: مصمّمو علامات وملكية فكرية مستقلون | هونغ كونغ · بالي',
       desc: 'VORVN استوديو مستقل لتصميم العلامات التجارية والملكية الفكرية. نصمم ونبني ونمتلك علامات رقمية من هونغ كونغ ومن استوديو الحاضنة لدينا في بالي.',
     },
   },
   contact: {
     en: {
-      title: 'Contact VORVN — Investors, Brand Collaborations & Press',
-      desc: 'Talk to VORVN directly. Investor introductions, brand collaborations, press, and careers — Hong Kong & Bali. We reply within 48 hours.',
+      title: 'Contact VORVN: Investors, Brand Collaborations & Press',
+      desc: 'Talk to VORVN directly. Investor introductions, brand collaborations, press, and careers, Hong Kong & Bali. We reply within 48 hours.',
     },
     fr: {
-      title: 'Contact VORVN — Investisseurs, Collaborations & Presse',
-      desc: "Parlez directement à VORVN. Introductions investisseurs, collaborations de marque, presse, carrières — Hong Kong & Bali. Réponse sous 48h.",
+      title: 'Contact VORVN: Investisseurs, Collaborations & Presse',
+      desc: "Parlez directement à VORVN. Introductions investisseurs, collaborations de marque, presse, carrières, Hong Kong & Bali. Réponse sous 48h.",
     },
     es: {
-      title: 'Contacto VORVN — Inversores, Colaboraciones y Prensa',
-      desc: 'Habla directamente con VORVN. Inversores, colaboraciones de marca, prensa y carreras — Hong Kong y Bali. Respondemos en 48 horas.',
+      title: 'Contacto VORVN: Inversores, Colaboraciones y Prensa',
+      desc: 'Habla directamente con VORVN. Inversores, colaboraciones de marca, prensa y carreras, Hong Kong y Bali. Respondemos en 48 horas.',
     },
     zh: {
-      title: '联系 VORVN — 投资人、品牌合作、媒体与招聘',
-      desc: '直接联系 VORVN。投资人介绍、品牌合作、媒体与招聘 —— 香港与巴厘岛。我们在 48 小时内回复。',
+      title: '联系 VORVN: 投资人、品牌合作、媒体与招聘',
+      desc: '直接联系 VORVN。投资人介绍、品牌合作、媒体与招聘,, 香港与巴厘岛。我们在 48 小时内回复。',
     },
     id: {
-      title: 'Kontak VORVN — Investor, Kolaborasi Merek & Pers',
-      desc: 'Hubungi VORVN langsung. Pengantar investor, kolaborasi merek, pers, dan karier — Hong Kong & Bali. Kami membalas dalam 48 jam.',
+      title: 'Kontak VORVN: Investor, Kolaborasi Merek & Pers',
+      desc: 'Hubungi VORVN langsung. Pengantar investor, kolaborasi merek, pers, dan karier, Hong Kong & Bali. Kami membalas dalam 48 jam.',
     },
     ar: {
-      title: 'اتصل بـ VORVN — مستثمرون، تعاونات وعلامات وصحافة',
-      desc: 'تحدث مع VORVN مباشرة. مقدمات للمستثمرين، تعاونات العلامات، الصحافة والوظائف — هونغ كونغ وبالي. نرد خلال 48 ساعة.',
+      title: 'اتصل بـ VORVN: مستثمرون، تعاونات وعلامات وصحافة',
+      desc: 'تحدث مع VORVN مباشرة. مقدمات للمستثمرين، تعاونات العلامات، الصحافة والوظائف, هونغ كونغ وبالي. نرد خلال 48 ساعة.',
     },
   },
 };
@@ -123,8 +123,8 @@ function buildHreflangBlock(suffix) {
 function organizationJsonLd(lang) {
   const descByLang = {
     en: 'Independent IP & brand design house designing, building and owning digital-first brands from Hong Kong and our Bali incubator studio.',
-    fr: "Studio indépendant de conception de propriété intellectuelle et de marques — conception, construction et détention de marques digitales depuis Hong Kong et notre studio incubateur de Bali.",
-    es: 'Casa de diseño independiente de propiedad intelectual y marcas — diseño, construcción y propiedad de marcas digitales desde Hong Kong y nuestro estudio incubadora en Bali.',
+    fr: "Studio indépendant de conception de propriété intellectuelle et de marques, conception, construction et détention de marques digitales depuis Hong Kong et notre studio incubateur de Bali.",
+    es: 'Casa de diseño independiente de propiedad intelectual y marcas, diseño, construcción y propiedad de marcas digitales desde Hong Kong y nuestro estudio incubadora en Bali.',
     zh: '独立的知识产权与品牌设计公司,在香港与巴厘岛孵化工作室设计、构建并拥有数字优先品牌。',
     id: 'Studio perancang IP & merek independen yang merancang, membangun, dan memiliki merek digital dari Hong Kong dan studio inkubator kami di Bali.',
     ar: 'استوديو مستقل لتصميم العلامات التجارية والملكية الفكرية، يصمم ويبني ويمتلك علامات رقمية من هونغ كونغ ومن استوديو الحاضنة لدينا في بالي.',

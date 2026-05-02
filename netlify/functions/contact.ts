@@ -11,7 +11,7 @@ const schema = z.object({
   company: z.string().trim().max(200).optional().or(z.literal('')),
   topic: z.enum(TOPICS),
   message: z.string().trim().min(10).max(5000),
-  // Honeypot — must be empty / absent
+  // Honeypot, must be empty / absent
   website: z.string().max(0).optional().or(z.literal('')),
 });
 
@@ -99,18 +99,18 @@ export const handler: Handler = async (event: HandlerEvent) => {
   // Build email
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
-  const safeCompany = company ? escapeHtml(company) : '—';
+  const safeCompany = company ? escapeHtml(company) : ',';
   const safeTopic = escapeHtml(topic);
   const safeMessage = escapeHtml(message).replace(/\n/g, '<br />');
 
-  const subject = `[VORVN Contact · ${topic}] ${name}${company ? ' — ' + company : ''}`;
+  const subject = `[VORVN Contact · ${topic}] ${name}${company ? ', ' + company : ''}`;
 
   const text =
     `New contact form submission\n\n` +
     `Topic:   ${topic}\n` +
     `Name:    ${name}\n` +
     `Email:   ${email}\n` +
-    `Company: ${company || '—'}\n\n` +
+    `Company: ${company || ','}\n\n` +
     `Message:\n${message}\n`;
 
   const html = `<!doctype html><html><body style="font-family: -apple-system, Segoe UI, Inter, sans-serif; color:#111; line-height:1.55;">

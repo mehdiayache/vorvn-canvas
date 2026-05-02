@@ -10,63 +10,63 @@ type PageKey = 'home' | 'contact' | 'notFound';
 const SEO: Record<PageKey, Record<string, { title: string; desc: string }>> = {
   home: {
     en: {
-      title: 'VORVN — Autonomous IP & Brand Designers | Hong Kong · Bali',
+      title: 'VORVN: Autonomous IP & Brand Designers | Hong Kong · Bali',
       desc: 'VORVN is an independent IP & brand design house. We design, build and own digital-first brands from Hong Kong and our Bali incubator studio.',
     },
     fr: {
-      title: 'VORVN — Concepteurs indépendants de marques & PI | Hong Kong · Bali',
+      title: 'VORVN: Concepteurs indépendants de marques & PI | Hong Kong · Bali',
       desc: "VORVN est un studio indépendant de conception de propriété intellectuelle et de marques. Nous concevons, construisons et possédons des marques digitales depuis Hong Kong et notre studio incubateur de Bali.",
     },
     es: {
-      title: 'VORVN — Diseñadores autónomos de marcas y PI | Hong Kong · Bali',
+      title: 'VORVN: Diseñadores autónomos de marcas y PI | Hong Kong · Bali',
       desc: 'VORVN es una casa de diseño independiente de propiedad intelectual y marcas. Diseñamos, construimos y poseemos marcas digitales desde Hong Kong y nuestro estudio incubadora en Bali.',
     },
     zh: {
-      title: 'VORVN — 自主知识产权与品牌设计公司 | 香港 · 巴厘岛',
+      title: 'VORVN: 自主知识产权与品牌设计公司 | 香港 · 巴厘岛',
       desc: 'VORVN 是独立的知识产权与品牌设计公司。我们在香港与巴厘岛孵化工作室设计、构建并拥有数字优先品牌。',
     },
     id: {
-      title: 'VORVN — Perancang IP & Merek Independen | Hong Kong · Bali',
+      title: 'VORVN: Perancang IP & Merek Independen | Hong Kong · Bali',
       desc: 'VORVN adalah studio perancang IP & merek yang independen. Kami merancang, membangun, dan memiliki merek digital dari Hong Kong dan studio inkubator kami di Bali.',
     },
     ar: {
-      title: 'VORVN — مصمّمو علامات وملكية فكرية مستقلون | هونغ كونغ · بالي',
+      title: 'VORVN: مصمّمو علامات وملكية فكرية مستقلون | هونغ كونغ · بالي',
       desc: 'VORVN استوديو مستقل لتصميم العلامات التجارية والملكية الفكرية. نصمم ونبني ونمتلك علامات رقمية من هونغ كونغ ومن استوديو الحاضنة لدينا في بالي.',
     },
   },
   contact: {
     en: {
-      title: 'Contact VORVN — Investors, Brand Collaborations & Press',
-      desc: 'Talk to VORVN directly. Investor introductions, brand collaborations, press, and careers — Hong Kong & Bali. We reply within 48 hours.',
+      title: 'Contact VORVN: Investors, Brand Collaborations & Press',
+      desc: 'Talk to VORVN directly. Investor introductions, brand collaborations, press, and careers, Hong Kong & Bali. We reply within 48 hours.',
     },
     fr: {
-      title: 'Contact VORVN — Investisseurs, Collaborations & Presse',
-      desc: "Parlez directement à VORVN. Introductions investisseurs, collaborations de marque, presse, carrières — Hong Kong & Bali. Réponse sous 48h.",
+      title: 'Contact VORVN: Investisseurs, Collaborations & Presse',
+      desc: "Parlez directement à VORVN. Introductions investisseurs, collaborations de marque, presse, carrières, Hong Kong & Bali. Réponse sous 48h.",
     },
     es: {
-      title: 'Contacto VORVN — Inversores, Colaboraciones y Prensa',
-      desc: 'Habla directamente con VORVN. Inversores, colaboraciones de marca, prensa y carreras — Hong Kong y Bali. Respondemos en 48 horas.',
+      title: 'Contacto VORVN: Inversores, Colaboraciones y Prensa',
+      desc: 'Habla directamente con VORVN. Inversores, colaboraciones de marca, prensa y carreras, Hong Kong y Bali. Respondemos en 48 horas.',
     },
     zh: {
-      title: '联系 VORVN — 投资人、品牌合作、媒体与招聘',
-      desc: '直接联系 VORVN。投资人介绍、品牌合作、媒体与招聘 —— 香港与巴厘岛。我们在 48 小时内回复。',
+      title: '联系 VORVN: 投资人、品牌合作、媒体与招聘',
+      desc: '直接联系 VORVN。投资人介绍、品牌合作、媒体与招聘,, 香港与巴厘岛。我们在 48 小时内回复。',
     },
     id: {
-      title: 'Kontak VORVN — Investor, Kolaborasi Merek & Pers',
-      desc: 'Hubungi VORVN langsung. Pengantar investor, kolaborasi merek, pers, dan karier — Hong Kong & Bali. Kami membalas dalam 48 jam.',
+      title: 'Kontak VORVN: Investor, Kolaborasi Merek & Pers',
+      desc: 'Hubungi VORVN langsung. Pengantar investor, kolaborasi merek, pers, dan karier, Hong Kong & Bali. Kami membalas dalam 48 jam.',
     },
     ar: {
-      title: 'اتصل بـ VORVN — مستثمرون، تعاونات وعلامات وصحافة',
-      desc: 'تحدث مع VORVN مباشرة. مقدمات للمستثمرين، تعاونات العلامات، الصحافة والوظائف — هونغ كونغ وبالي. نرد خلال 48 ساعة.',
+      title: 'اتصل بـ VORVN: مستثمرون، تعاونات وعلامات وصحافة',
+      desc: 'تحدث مع VORVN مباشرة. مقدمات للمستثمرين، تعاونات العلامات، الصحافة والوظائف, هونغ كونغ وبالي. نرد خلال 48 ساعة.',
     },
   },
   notFound: {
-    en: { title: '404 — Page Not Found | VORVN', desc: 'Page not found.' },
-    fr: { title: '404 — Page introuvable | VORVN', desc: 'Page introuvable.' },
-    es: { title: '404 — Página no encontrada | VORVN', desc: 'Página no encontrada.' },
-    zh: { title: '404 — 页面未找到 | VORVN', desc: '页面未找到。' },
-    id: { title: '404 — Halaman tidak ditemukan | VORVN', desc: 'Halaman tidak ditemukan.' },
-    ar: { title: '404 — الصفحة غير موجودة | VORVN', desc: 'الصفحة غير موجودة.' },
+    en: { title: '404: Page Not Found | VORVN', desc: 'Page not found.' },
+    fr: { title: '404: Page introuvable | VORVN', desc: 'Page introuvable.' },
+    es: { title: '404: Página no encontrada | VORVN', desc: 'Página no encontrada.' },
+    zh: { title: '404: 页面未找到 | VORVN', desc: '页面未找到。' },
+    id: { title: '404: Halaman tidak ditemukan | VORVN', desc: 'Halaman tidak ditemukan.' },
+    ar: { title: '404: الصفحة غير موجودة | VORVN', desc: 'الصفحة غير موجودة.' },
   },
 };
 
@@ -158,7 +158,7 @@ export default function SeoHead({ page = 'home', pathSuffix, noindex = false }: 
     // Canonical
     upsertLink('canonical', url);
 
-    // hreflang alternates — clean & re-emit per render
+    // hreflang alternates, clean & re-emit per render
     document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
     LANGUAGES.forEach((l) => {
       const link = document.createElement('link');
@@ -173,7 +173,7 @@ export default function SeoHead({ page = 'home', pathSuffix, noindex = false }: 
     xdef.href = `${BASE_URL}/en${suffix}`;
     document.head.appendChild(xdef);
 
-    // JSON-LD — Organization (home only)
+    // JSON-LD, Organization (home only)
     document.head.querySelectorAll('script[data-seo-jsonld]').forEach((el) => el.remove());
     if (page === 'home') {
       const org = {

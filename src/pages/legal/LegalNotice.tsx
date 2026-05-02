@@ -27,7 +27,7 @@ export default function LegalNotice() {
       </p>
       <address className="not-italic font-mono text-[12px] leading-[1.7] text-mid">
         VORVN LIMITED<br />
-        Private company limited by shares — Hong Kong SAR<br />
+        Private company limited by shares, Hong Kong SAR<br />
         RM4 16/F, Ho King Commercial Centre<br />
         2–16 Fa Yuen Street, Mongkok<br />
         Kowloon, Hong Kong SAR<br />
@@ -41,7 +41,7 @@ export default function LegalNotice() {
       <h2 id="group">2. Affiliated group entities</h2>
       <ul>
         <li>
-          <strong>PT. Aduh (Lagi) Studio</strong> — incubator studio,
+          <strong>PT. Aduh (Lagi) Studio</strong>, incubator studio,
           No. 12, Jl. Ciung Wanara 1, Denpasar Timur, Bali 80235, Indonesia.
         </li>
       </ul>
@@ -65,10 +65,10 @@ export default function LegalNotice() {
 
       <h2 id="ip">5. Intellectual property</h2>
       <p>
-        All content on this site — including but not limited to the VORVN wordmark and logo,
+        All content on this site, including but not limited to the VORVN wordmark and logo,
         the names "VE VOLD™", "Cook Warriors", "Eggscalibur", "Hearts Notes", "MAQTOB",
         "xVoyager", "Warung Marrakech", "Davi Properties", all visual identity elements,
-        photography, illustrations, graphic design, copy, source code, and the overall layout —
+        photography, illustrations, graphic design, copy, source code, and the overall layout,
         is the exclusive property of VORVN LIMITED or its licensors and is protected by Hong
         Kong, international copyright, trademark and database laws.
       </p>
@@ -99,7 +99,7 @@ export default function LegalNotice() {
       <p>
         The information on this site is provided "as is" for general informational purposes
         only. While we take reasonable care to ensure accuracy, VORVN LIMITED makes no warranty
-        — express or implied — as to the completeness, accuracy, reliability, suitability or
+       , express or implied, as to the completeness, accuracy, reliability, suitability or
         availability of the site or its content. To the fullest extent permitted by applicable
         law, VORVN LIMITED shall not be liable for any direct, indirect, incidental,
         consequential or special damages arising out of or in any way connected with the use of
