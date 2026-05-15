@@ -393,7 +393,8 @@ for (const slug of ['privacy', 'notice']) {
     `    <meta name="twitter:description" content="${escapeHtml(seo.desc)}" />`,
     `    <meta name="twitter:image" content="${BASE_URL}/og-image.jpg" />`,
   ].join('\n');
-  const html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
+  let html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
+  html = injectBodyH1(html, H1_COPY.legal[slug]);
   writeFile(`legal/${slug}/index.html`, html);
   count++;
 }
