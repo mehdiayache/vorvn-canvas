@@ -31,6 +31,35 @@ const LANGUAGES = [
   { code: 'ar', dir: 'rtl', ogLocale: 'ar_AR' },
 ];
 
+const H1_COPY = {
+  home: {
+    en: 'VORVN — Autonomous IP & Brand Designers in Hong Kong and Bali',
+    fr: 'VORVN — Concepteurs autonomes de marques et PI à Hong Kong et Bali',
+    es: 'VORVN — Diseñadores autónomos de marcas y PI en Hong Kong y Bali',
+    zh: 'VORVN — 香港与巴厘岛的自主知识产权与品牌设计公司',
+    id: 'VORVN — Perancang IP & Merek Independen di Hong Kong dan Bali',
+    ar: 'VORVN — مصمّمو علامات وملكية فكرية مستقلون في هونغ كونغ وبالي',
+  },
+  contact: {
+    en: 'Contact VORVN — Investors, Brand Collaborations & Press',
+    fr: 'Contact VORVN — Investisseurs, collaborations de marque et presse',
+    es: 'Contacto VORVN — Inversores, colaboraciones de marca y prensa',
+    zh: '联系 VORVN — 投资人、品牌合作与媒体',
+    id: 'Kontak VORVN — Investor, Kolaborasi Merek & Pers',
+    ar: 'اتصل بـ VORVN — مستثمرون، تعاونات علامات وصحافة',
+  },
+  legal: {
+    privacy: 'VORVN Privacy Policy',
+    notice: 'VORVN Legal Notice',
+  },
+};
+
+function injectBodyH1(html, h1Text) {
+  const h1 = `<h1 class="sr-only">${escapeHtml(h1Text)}</h1>`;
+  // Insert immediately after opening <body ...> tag, before #root
+  return html.replace(/(<body[^>]*>)/i, `$1${h1}`);
+}
+
 const SEO = {
   home: {
     en: {
@@ -316,7 +345,8 @@ for (const l of LANGUAGES) {
     hreflangBlock: buildHreflangBlock(''),
     jsonLdScripts: [organizationJsonLd(l.code), websiteJsonLd(l.code), personJsonLd()],
   });
-  const html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
+  let html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
+  html = injectBodyH1(html, H1_COPY.home[l.code]);
   writeFile(`${l.code}/index.html`, html);
   count++;
 }
@@ -337,7 +367,8 @@ for (const l of LANGUAGES) {
       breadcrumbJsonLd(l.code, '/contact', 'Contact'),
     ],
   });
-  const html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
+  let html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
+  html = injectBodyH1(html, H1_COPY.contact[l.code]);
   writeFile(`${l.code}/contact/index.html`, html);
   count++;
 }
@@ -362,7 +393,8 @@ for (const slug of ['privacy', 'notice']) {
     `    <meta name="twitter:description" content="${escapeHtml(seo.desc)}" />`,
     `    <meta name="twitter:image" content="${BASE_URL}/og-image.jpg" />`,
   ].join('\n');
-  const html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
+  let html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
+  html = injectBodyH1(html, H1_COPY.legal[slug]);
   writeFile(`legal/${slug}/index.html`, html);
   count++;
 }
@@ -380,7 +412,8 @@ for (const slug of ['privacy', 'notice']) {
     hreflangBlock: buildHreflangBlock(''),
     jsonLdScripts: [organizationJsonLd('en'), websiteJsonLd('en'), personJsonLd()],
   });
-  const html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
+  let html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
+  html = injectBodyH1(html, H1_COPY.home.en);
   fs.writeFileSync(baseHtmlPath, html, 'utf8');
 }
 
