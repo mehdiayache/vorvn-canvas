@@ -2,6 +2,7 @@
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
 >
   <!-- ============ HOME ============ -->
   <url>
@@ -16,6 +17,11 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+    <image:image>
+      <image:loc>https://www.vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
+      <image:title>Mehdi Ayache Berberos, Founder of VORVN</image:title>
+      <image:caption>Moroccan designer and entrepreneur, Founder of VORVN, based between Bali and Asia.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.vorvn.com/fr</loc>
@@ -29,6 +35,11 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+    <image:image>
+      <image:loc>https://www.vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
+      <image:title>Mehdi Ayache Berberos, fondateur de VORVN</image:title>
+      <image:caption>Designer et entrepreneur marocain, fondateur de VORVN, basé entre Bali et l'Asie.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.vorvn.com/es</loc>
@@ -42,6 +53,11 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+    <image:image>
+      <image:loc>https://www.vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
+      <image:title>Mehdi Ayache Berberos, fundador de VORVN</image:title>
+      <image:caption>Diseñador y emprendedor marroquí, fundador de VORVN, radicado entre Bali y Asia.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.vorvn.com/zh</loc>
@@ -55,6 +71,11 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+    <image:image>
+      <image:loc>https://www.vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
+      <image:title>Mehdi Ayache Berberos，VORVN 创始人</image:title>
+      <image:caption>摩洛哥设计师与创业者，VORVN 创始人，常驻巴厘岛与亚洲。</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.vorvn.com/id</loc>
@@ -68,6 +89,11 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+    <image:image>
+      <image:loc>https://www.vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
+      <image:title>Mehdi Ayache Berberos, pendiri VORVN</image:title>
+      <image:caption>Desainer dan wirausahawan asal Maroko, pendiri VORVN, berbasis di Bali dan Asia.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.vorvn.com/ar</loc>
@@ -81,6 +107,11 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+    <image:image>
+      <image:loc>https://www.vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
+      <image:title>المهدي عياش بربروش، مؤسس VORVN</image:title>
+      <image:caption>مصمم ورائد أعمال مغربي، مؤسس VORVN، مقيم بين بالي وآسيا.</image:caption>
+    </image:image>
   </url>
 
   <!-- ============ CONTACT ============ -->

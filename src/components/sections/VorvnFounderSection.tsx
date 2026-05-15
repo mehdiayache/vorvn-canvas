@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import founderPhoto from '@/assets/founder-mehdi.webp';
+import founderPhoto from '@/assets/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp';
 import LoadingImage from '@/components/LoadingImage';
 
 export default function VorvnFounderSection() {
@@ -114,20 +114,20 @@ export default function VorvnFounderSection() {
         </div>
 
         {/* RIGHT PANEL — photo + caption */}
-        <div
-          className="relative overflow-hidden order-first lg:order-none"
+        <figure
+          className="relative overflow-hidden order-first lg:order-none m-0"
           style={{ minHeight: 'min(78vw, 520px)' }}
         >
           <LoadingImage
             src={founderPhoto}
-            alt="Portrait of Mehdi Ayache Berberos, Founder and CEO of VORVN"
+            alt={t('founder.photoAlt')}
             className="absolute inset-0 w-full h-full"
             loaderSize={56}
             imgStyle={{ objectPosition: 'center center' }}
           />
 
           {/* Caption overlay — accent color since portrait background is dark */}
-          <div
+          <figcaption
             className="absolute z-[2] text-right"
             style={{
               bottom: 'clamp(20px, 4vh, 52px)',
@@ -146,8 +146,8 @@ export default function VorvnFounderSection() {
             >
               {t('founder.caption')}
             </p>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );
