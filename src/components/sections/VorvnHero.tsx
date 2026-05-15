@@ -29,7 +29,9 @@ export default function Hero() {
     <header className="min-h-screen flex flex-col justify-end relative overflow-hidden" style={{ padding: `0 var(--gutter) clamp(52px, 8vh, 96px)` }}>
       <EyeSvg />
 
-      <h1
+      <div
+        role="heading"
+        aria-level={1}
         className="relative z-[1] font-sans font-medium text-foreground m-0"
         style={{
           fontSize: 'clamp(36px, 6vw, 96px)',
@@ -42,7 +44,7 @@ export default function Hero() {
         {t('hero.headline').split('\n').map((line, i) => (
           <span key={i} className="block">{line}</span>
         ))}
-      </h1>
+      </div>
 
       <div
         className="relative z-[1] h-px bg-rule my-7"
