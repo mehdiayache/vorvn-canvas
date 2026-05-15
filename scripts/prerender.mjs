@@ -314,7 +314,7 @@ for (const l of LANGUAGES) {
     desc: seo.desc,
     canonical,
     hreflangBlock: buildHreflangBlock(''),
-    jsonLdScripts: [organizationJsonLd(l.code), websiteJsonLd(l.code)],
+    jsonLdScripts: [organizationJsonLd(l.code), websiteJsonLd(l.code), personJsonLd()],
   });
   const html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
   writeFile(`${l.code}/index.html`, html);
@@ -378,7 +378,7 @@ for (const slug of ['privacy', 'notice']) {
     desc: seo.desc,
     canonical,
     hreflangBlock: buildHreflangBlock(''),
-    jsonLdScripts: [organizationJsonLd('en'), websiteJsonLd('en')],
+    jsonLdScripts: [organizationJsonLd('en'), websiteJsonLd('en'), personJsonLd()],
   });
   const html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
   fs.writeFileSync(baseHtmlPath, html, 'utf8');
