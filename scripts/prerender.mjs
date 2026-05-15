@@ -412,7 +412,8 @@ for (const slug of ['privacy', 'notice']) {
     hreflangBlock: buildHreflangBlock(''),
     jsonLdScripts: [organizationJsonLd('en'), websiteJsonLd('en'), personJsonLd()],
   });
-  const html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
+  let html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
+  html = injectBodyH1(html, H1_COPY.home.en);
   fs.writeFileSync(baseHtmlPath, html, 'utf8');
 }
 
