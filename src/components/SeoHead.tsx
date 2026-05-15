@@ -231,7 +231,7 @@ export default function SeoHead({ page = 'home', pathSuffix, noindex = false }: 
         '@context': 'https://schema.org',
         '@type': 'Person',
         name: 'Mehdi Ayache Berberos',
-        alternateName: ['المهدي عياش بربروش', 'المهدي عياش', 'Mehdi Ayache'],
+        alternateName: ['المهدي عياش بربروس', 'المهدي عياش', 'Mehdi Ayache'],
         givenName: 'Mehdi',
         familyName: 'Ayache Berberos',
         jobTitle: 'Founder & CEO',

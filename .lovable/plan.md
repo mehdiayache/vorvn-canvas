@@ -11,7 +11,7 @@ I'll use this everywhere unless you give me a different one:
 - **ES**: *Mehdi Ayache Berberos, fundador de VORVN. Diseñador y emprendedor marroquí, radicado entre Bali y Asia.*
 - **ID**: *Mehdi Ayache Berberos, pendiri VORVN. Desainer dan wirausahawan asal Maroko, berbasis di Bali dan Asia.*
 - **ZH**: *Mehdi Ayache Berberos，VORVN 创始人。摩洛哥设计师与创业者，常驻巴厘岛与亚洲。*
-- **AR**: *المهدي عياش بربروش، مؤسس VORVN. مصمم ورائد أعمال مغربي، مقيم بين بالي وآسيا.*
+- **AR**: *المهدي عياش بربروس، مؤسس VORVN. مصمم ورائد أعمال مغربي، مقيم بين بالي وآسيا.*
 
 You can edit any of these before or after I implement.
 
@@ -41,7 +41,7 @@ Inject into `SeoHead.tsx` (and `scripts/prerender.mjs` so it's in the static HTM
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Mehdi Ayache Berberos",
-  "alternateName": ["المهدي عياش", "المهدي عياش بربروش", "Mehdi Ayache"],
+  "alternateName": ["المهدي عياش", "المهدي عياش بربروس", "Mehdi Ayache"],
   "jobTitle": "Founder & CEO",
   "nationality": "MA",
   "image": "https://<domain>/assets/<renamed-file>",
