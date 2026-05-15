@@ -1,100 +1,47 @@
-## Goal
+## Problem
 
-Get the founder portrait indexed on Google Images for queries like *"Mehdi Ayache"*, *"المهدي عياش"*, *"Moroccan designer Bali"*, *"Moroccan entrepreneur Asia"*, and link the Latin and Arabic name to a single entity.
+Bing scans raw HTML (no JS execution on first pass). Our SPA's `<h1>` lives inside React components and only appears after hydration, so the prerendered HTML served to Bingbot contains zero heading tags. Confirmed via `curl https://vorvn.com/en/` — no `<h*>` in source.
 
-## Proposed canonical caption
+## Fix
 
-I'll use this everywhere unless you give me a different one:
+Inject a static, semantically meaningful, **per-language** `<h1>` into the prerendered `<body>` of every localized homepage and the apex `index.html`, placed **outside** `#root` so React hydration never overwrites it. Visually hide with `sr-only` (CSS clip technique) — invisible to users, fully readable by Bingbot/Googlebot.
 
-- **EN**: *Mehdi Ayache Berberos, Founder of VORVN. Moroccan designer and entrepreneur, based between Bali and Asia.*
-- **FR**: *Mehdi Ayache Berberos, fondateur de VORVN. Designer et entrepreneur marocain, basé entre Bali et l'Asie.*
-- **ES**: *Mehdi Ayache Berberos, fundador de VORVN. Diseñador y emprendedor marroquí, radicado entre Bali y Asia.*
-- **ID**: *Mehdi Ayache Berberos, pendiri VORVN. Desainer dan wirausahawan asal Maroko, berbasis di Bali dan Asia.*
-- **ZH**: *Mehdi Ayache Berberos，VORVN 创始人。摩洛哥设计师与创业者，常驻巴厘岛与亚洲。*
-- **AR**: *المهدي عياش بربروس، مؤسس VORVN. مصمم ورائد أعمال مغربي، مقيم بين بالي وآسيا.*
+This keeps the existing visible hero design 100% unchanged. The visible hero `<h1>` stays inside React; crawlers see the static one first; users see the React one after hydration. Two `<h1>` tags on one page is technically tolerated by Google/Bing (HTML5 allows multiple), but to stay strictly correct we'll downgrade the visible hero from `<h1>` to a styled `<div role="heading" aria-level="1">` — same a11y, only the prerendered one counts as the SEO H1.
 
-You can edit any of these before or after I implement.
+### Per-language H1 copy (keyword-rich, ~80 chars)
 
-## Steps
+| Lang | H1 |
+|---|---|
+| en | VORVN — Autonomous IP & Brand Designers in Hong Kong and Bali |
+| fr | VORVN — Concepteurs autonomes de marques et PI à Hong Kong et Bali |
+| es | VORVN — Diseñadores autónomos de marcas y PI en Hong Kong y Bali |
+| zh | VORVN — 香港与巴厘岛的自主知识产权与品牌设计公司 |
+| id | VORVN — Perancang IP & Merek Independen di Hong Kong dan Bali |
+| ar | VORVN — مصمّمو علامات وملكية فكرية مستقلون في هونغ كونغ وبالي |
 
-### 1. Rename the image asset
-- Rename `src/assets/founder-mehdi.webp` → `src/assets/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp`
-- Update the import in `VorvnFounderSection.tsx`
-- One-time signal upgrade. Filename is the first thing Google reads.
+Contact pages get an analogous H1 ("Contact VORVN — …"). Legal pages already have proper H1s in their React components, but we'll bake a static one too for consistency.
 
-### 2. Localize alt text + caption (i18n)
-- Add to all 6 locale files under `founder`:
-  - `photoAlt` — short, descriptive, name + role + nationality + location
-  - `photoCaption` — the canonical caption above (slightly longer, used in `<figcaption>`)
-- Replace hardcoded English alt in `VorvnFounderSection.tsx` with `t('founder.photoAlt')`
+## Implementation
 
-### 3. Promote photo to semantic `<figure>` / `<figcaption>`
-- Wrap the right panel image in `<figure>` and replace the absolute-positioned overlay div with `<figcaption>`
-- Keep the same visual styling (caption bottom-right, mono 9px, accent color), just swap the tag
-- Google weights `<figcaption>` text as authoritative caption for the adjacent image
+1. **`scripts/prerender.mjs`**
+   - Add a `H1_COPY` map (home + contact, all 6 langs).
+   - Add `injectBodyH1(html, h1Text)` that inserts `<h1 class="sr-only">…</h1>` immediately after `<body>` (before `<div id="root">`).
+   - Call it for every generated file (6 home + 6 contact + 2 legal + apex root).
 
-### 4. Add `Person` JSON-LD on the homepage
-Inject into `SeoHead.tsx` (and `scripts/prerender.mjs` so it's in the static HTML) when `page === "home"`:
+2. **`src/index.css`**
+   - Confirm `.sr-only` utility exists (Tailwind ships it by default — verify, otherwise no change).
 
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Mehdi Ayache Berberos",
-  "alternateName": ["المهدي عياش", "المهدي عياش بربروس", "Mehdi Ayache"],
-  "jobTitle": "Founder & CEO",
-  "nationality": "MA",
-  "image": "https://<domain>/assets/<renamed-file>",
-  "worksFor": { "@type": "Organization", "name": "VORVN" },
-  "sameAs": [
-    "https://www.linkedin.com/in/mehdiayache/",
-    "https://mehdiayache.com"
-  ],
-  "description": "Moroccan designer and entrepreneur, Founder of VORVN. Based between Bali and Asia."
-}
+3. **`src/components/sections/VorvnHero.tsx`**
+   - Change the visible `<h1>` to `<div role="heading" aria-level={1}>` to avoid duplicate H1s. Visual styling unchanged.
+
+4. **No other changes.** Sitemap, IndexNow, head meta, etc. all stay as-is.
+
+## Verification
+
+After publish:
 ```
-
-This is the strongest "this image = this person" signal, and `alternateName` is what links the Arabic and Latin spellings.
-
-### 5. Image sitemap
-Extend `public/sitemap.xml` (or the prerender script if it generates the sitemap) so each language URL carries an `<image:image>` block:
-
-```xml
-<url>
-  <loc>https://<domain>/en</loc>
-  <image:image xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-    <image:loc>https://<domain>/assets/<renamed-file></image:loc>
-    <image:title>Mehdi Ayache Berberos, Founder of VORVN</image:title>
-    <image:caption>Moroccan designer and entrepreneur, based between Bali and Asia.</image:caption>
-  </image:image>
-</url>
+curl -s https://vorvn.com/en/ | grep -o '<h1[^>]*>[^<]*</h1>'
+curl -s https://vorvn.com/fr/ | grep -o '<h1[^>]*>[^<]*</h1>'
+curl -s https://vorvn.com/    | grep -o '<h1[^>]*>[^<]*</h1>'
 ```
-
-One block per language, with localized title/caption.
-
-### 6. Off-site consistency (you, not me)
-After deploy, update LinkedIn, mehdiayache.com, any press kit or Crunchbase profile to use:
-- The same image file (or a copy with the same filename)
-- The same caption wording
-- Cross-link: mehdiayache.com → vorvn.com → LinkedIn
-
-This is what actually moves the needle for Google's entity graph. The on-site work above is the foundation; external consistency is the multiplier.
-
-## Files touched
-
-- `src/assets/founder-mehdi.webp` → renamed
-- `src/components/sections/VorvnFounderSection.tsx` — import path, alt via i18n, `<figure>`/`<figcaption>`
-- `src/i18n/locales/{en,fr,es,id,zh,ar}.json` — add `founder.photoAlt` + `founder.photoCaption`
-- `src/components/SeoHead.tsx` — Person JSON-LD on home
-- `scripts/prerender.mjs` — same Person JSON-LD in static HTML
-- `public/sitemap.xml` (or the generator) — image entries per language
-
-## Out of scope
-
-- EXIF metadata (Google strips it)
-- Multiple image variants (splits signal)
-- og:image change (separate concern, only touch if you also want the social preview to be your portrait)
-
-## Realistic timeline
-
-Google re-crawls and re-clusters images on its own schedule. Expect 2–6 weeks before you see movement on Image search results, longer for the Arabic/Latin name link to consolidate. The on-site work is one shot; the off-site consistency is what speeds it up.
+Each should return the localized H1. Then re-run the Bing Site Scan — the H1 notice will clear.
