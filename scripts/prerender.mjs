@@ -367,7 +367,8 @@ for (const l of LANGUAGES) {
       breadcrumbJsonLd(l.code, '/contact', 'Contact'),
     ],
   });
-  const html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
+  let html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
+  html = injectBodyH1(html, H1_COPY.contact[l.code]);
   writeFile(`${l.code}/contact/index.html`, html);
   count++;
 }
