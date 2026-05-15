@@ -225,6 +225,32 @@ export default function SeoHead({ page = 'home', pathSuffix, noindex = false }: 
       script.setAttribute('data-seo-jsonld', 'org');
       script.text = JSON.stringify(org);
       document.head.appendChild(script);
+
+      // Person, founder identity (links Latin and Arabic name to one entity)
+      const person = {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Mehdi Ayache Berberos',
+        alternateName: ['المهدي عياش بربروش', 'المهدي عياش', 'Mehdi Ayache'],
+        givenName: 'Mehdi',
+        familyName: 'Ayache Berberos',
+        jobTitle: 'Founder & CEO',
+        nationality: { '@type': 'Country', name: 'Morocco' },
+        image: `${BASE_URL}/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp`,
+        url: 'https://mehdiayache.com',
+        worksFor: { '@type': 'Organization', name: 'VORVN', url: BASE_URL },
+        description:
+          'Moroccan designer and entrepreneur, Founder of VORVN. Based between Bali and Asia.',
+        sameAs: [
+          'https://www.linkedin.com/in/mehdiayache/',
+          'https://mehdiayache.com',
+        ],
+      };
+      const personScript = document.createElement('script');
+      personScript.type = 'application/ld+json';
+      personScript.setAttribute('data-seo-jsonld', 'person');
+      personScript.text = JSON.stringify(person);
+      document.head.appendChild(personScript);
     }
 
     if (page === 'contact') {

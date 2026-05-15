@@ -176,6 +176,28 @@ function organizationJsonLd(lang) {
   };
 }
 
+function personJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Mehdi Ayache Berberos',
+    alternateName: ['المهدي عياش بربروش', 'المهدي عياش', 'Mehdi Ayache'],
+    givenName: 'Mehdi',
+    familyName: 'Ayache Berberos',
+    jobTitle: 'Founder & CEO',
+    nationality: { '@type': 'Country', name: 'Morocco' },
+    image: `${BASE_URL}/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp`,
+    url: 'https://mehdiayache.com',
+    worksFor: { '@type': 'Organization', name: 'VORVN', url: BASE_URL },
+    description:
+      'Moroccan designer and entrepreneur, Founder of VORVN. Based between Bali and Asia.',
+    sameAs: [
+      'https://www.linkedin.com/in/mehdiayache/',
+      'https://mehdiayache.com',
+    ],
+  };
+}
+
 function websiteJsonLd(lang) {
   return {
     '@context': 'https://schema.org',
