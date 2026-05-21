@@ -554,6 +554,7 @@ for (const slug of ['privacy', 'notice']) {
   });
   let html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
   html = injectBodyH1(html, H1_COPY.home.en);
+  html = injectPrerenderedContent(html, buildHomeContent('en'));
   fs.writeFileSync(baseHtmlPath, html, 'utf8');
 }
 
