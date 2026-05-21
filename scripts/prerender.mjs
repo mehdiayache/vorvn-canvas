@@ -534,6 +534,7 @@ for (const slug of ['privacy', 'notice']) {
   ].join('\n');
   let html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
   html = injectBodyH1(html, H1_COPY.legal[slug]);
+  html = injectPrerenderedContent(html, buildLegalContent(slug));
   writeFile(`legal/${slug}/index.html`, html);
   count++;
 }
