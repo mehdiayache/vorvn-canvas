@@ -484,6 +484,7 @@ for (const l of LANGUAGES) {
   });
   let html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
   html = injectBodyH1(html, H1_COPY.home[l.code]);
+  html = injectPrerenderedContent(html, buildHomeContent(l.code));
   writeFile(`${l.code}/index.html`, html);
   count++;
 }
