@@ -507,6 +507,7 @@ for (const l of LANGUAGES) {
   });
   let html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
   html = injectBodyH1(html, H1_COPY.contact[l.code]);
+  html = injectPrerenderedContent(html, buildContactContent(l.code));
   writeFile(`${l.code}/contact/index.html`, html);
   count++;
 }
