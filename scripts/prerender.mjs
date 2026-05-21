@@ -60,6 +60,143 @@ function injectBodyH1(html, h1Text) {
   return html.replace(/(<body[^>]*>)/i, `$1${h1}`);
 }
 
+function injectPrerenderedContent(html, innerHtml) {
+  // Sits outside #root with the `hidden` attribute. Crawlers (Bing/Google/AI
+  // bots) parse and index every word. Real users never see it because React
+  // mounts inside #root immediately, and `hidden` removes it from the visual
+  // tree even before hydration. This is the SEO fallback content fix.
+  const block = `<div id="prerendered-content" hidden aria-hidden="true">${innerHtml}</div>`;
+  return html.replace(/(<div id="root">)/i, `${block}$1`);
+}
+
+const localeCache = {};
+function loadLocale(lang) {
+  if (localeCache[lang]) return localeCache[lang];
+  const fp = path.resolve(__dirname, '..', 'src', 'i18n', 'locales', `${lang}.json`);
+  localeCache[lang] = JSON.parse(fs.readFileSync(fp, 'utf8'));
+  return localeCache[lang];
+}
+
+function pTag(s) {
+  if (!s) return '';
+  return `<p>${escapeHtml(String(s).replace(/\s+/g, ' ').trim())}</p>`;
+}
+function hTag(level, s) {
+  return `<h${level}>${escapeHtml(String(s).replace(/\s+/g, ' ').trim())}</h${level}>`;
+}
+
+function buildHomeContent(lang) {
+  const j = loadLocale(lang);
+  const parts = [];
+
+  parts.push(hTag(2, j.hero.headline));
+  parts.push(pTag(`${j.hero.taglinePre} ${Object.values(j.hero.words).join(' / ')} ${j.hero.taglinePost}`));
+  parts.push(pTag(j.hero.basedIn));
+
+  parts.push(hTag(2, `${j.founder.label} — ${j.founder.name}`));
+  parts.push(pTag(j.founder.quote));
+  parts.push(pTag(`${j.founder.title}. ${j.founder.caption}`));
+
+  parts.push(hTag(2, j.entity.label));
+  parts.push(pTag(j.entity.statement));
+  parts.push(pTag(j.entity.detail));
+
+  parts.push(hTag(2, j.presence.label));
+  for (const loc of j.presence.locations) {
+    const line = [loc.region, loc.city, loc.entity, loc.address].filter(Boolean).join(' — ');
+    parts.push(pTag(line));
+  }
+
+  parts.push(hTag(2, j.portfolio.label));
+  parts.push(pTag(j.portfolio.intro));
+  for (const b of j.portfolio.brands) {
+    parts.push(hTag(3, b.name));
+    parts.push(pTag(`${b.sector} · ${b.statusLabel}`));
+    parts.push(pTag(b.desc));
+  }
+
+  parts.push(hTag(2, j.operate.label));
+  parts.push(pTag(j.operate.kicker));
+  for (const k of ['p1', 'p2', 'p3', 'p4', 'p5']) {
+    const op = j.operate[k];
+    if (!op) continue;
+    const head = [op.role, op.name, op.title, op.tagline].filter(Boolean).join(' — ');
+    parts.push(hTag(3, head));
+    parts.push(pTag(op.desc));
+  }
+  if (j.operate.logic) {
+    parts.push(pTag((j.operate.logic.lines || []).join(' ')));
+    parts.push(pTag(j.operate.logic.outcome));
+  }
+
+  parts.push(hTag(2, j.investors.label));
+  parts.push(pTag(j.investors.headline));
+  parts.push(pTag(j.investors.body));
+  parts.push(hTag(3, `${j.investors.incubatorBadge} — ${j.investors.incubatorTitle}`));
+  parts.push(pTag(`${j.investors.incubatorLocation}. ${j.investors.incubatorDesc}`));
+  parts.push(hTag(3, `${j.investors.ventureBadge} — ${j.investors.ventureTitle}`));
+  parts.push(pTag(`${j.investors.ventureLocation}. ${j.investors.ventureDesc}`));
+  parts.push(pTag(`${j.investors.cta}. ${j.investors.ctaSub}`));
+
+  const closing = String(j.closing.statement || '')
+    .replace('{chaos}', j.closing.chaos || '')
+    .replace('{lifeless}', j.closing.lifeless || '');
+  parts.push(pTag(closing));
+  parts.push(pTag(j.closing.sub));
+
+  parts.push(pTag(String(j.footer.legal || '').replace('{{year}}', new Date().getFullYear())));
+
+  return parts.join('');
+}
+
+function buildContactContent(lang) {
+  const j = loadLocale(lang);
+  const c = j.contact;
+  const parts = [];
+  parts.push(hTag(2, c.headline));
+  parts.push(pTag(c.body));
+  parts.push(hTag(3, c.offices));
+  for (const loc of j.presence.locations) {
+    const line = [loc.region, loc.city, loc.entity, loc.address].filter(Boolean).join(' — ');
+    parts.push(pTag(line));
+  }
+  parts.push(hTag(3, c.formHeadline));
+  const topics = Object.values(c.topics || {}).join(', ');
+  if (topics) parts.push(pTag(topics));
+  parts.push(pTag(c.privacy));
+  return parts.join('');
+}
+
+function buildLegalContent(slug) {
+  const file = slug === 'privacy' ? 'PrivacyPolicy.tsx' : 'LegalNotice.tsx';
+  const fp = path.resolve(__dirname, '..', 'src', 'pages', 'legal', file);
+  const src = fs.readFileSync(fp, 'utf8');
+  const m = src.match(/<LegalLayout[\s\S]*?>([\s\S]*?)<\/LegalLayout>/);
+  if (!m) return '';
+  let body = m[1];
+  // Strip JS expressions like {' '} or {something}
+  body = body.replace(/\{[^{}]*\}/g, ' ');
+  const segments = [];
+  const re = /<(h2|h3|p|li|address)[^>]*>([\s\S]*?)<\/\1>/gi;
+  let mm;
+  while ((mm = re.exec(body)) !== null) {
+    const rawTag = mm[1].toLowerCase();
+    const tag = (rawTag === 'li' || rawTag === 'address') ? 'p' : rawTag;
+    const text = mm[2]
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&nbsp;/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (text) segments.push(`<${tag}>${escapeHtml(text)}</${tag}>`);
+  }
+  return segments.join('');
+}
+
 const SEO = {
   home: {
     en: {
@@ -347,6 +484,7 @@ for (const l of LANGUAGES) {
   });
   let html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
   html = injectBodyH1(html, H1_COPY.home[l.code]);
+  html = injectPrerenderedContent(html, buildHomeContent(l.code));
   writeFile(`${l.code}/index.html`, html);
   count++;
 }
@@ -369,6 +507,7 @@ for (const l of LANGUAGES) {
   });
   let html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
   html = injectBodyH1(html, H1_COPY.contact[l.code]);
+  html = injectPrerenderedContent(html, buildContactContent(l.code));
   writeFile(`${l.code}/contact/index.html`, html);
   count++;
 }
@@ -395,6 +534,7 @@ for (const slug of ['privacy', 'notice']) {
   ].join('\n');
   let html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
   html = injectBodyH1(html, H1_COPY.legal[slug]);
+  html = injectPrerenderedContent(html, buildLegalContent(slug));
   writeFile(`legal/${slug}/index.html`, html);
   count++;
 }
@@ -414,6 +554,7 @@ for (const slug of ['privacy', 'notice']) {
   });
   let html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
   html = injectBodyH1(html, H1_COPY.home.en);
+  html = injectPrerenderedContent(html, buildHomeContent('en'));
   fs.writeFileSync(baseHtmlPath, html, 'utf8');
 }
 
