@@ -1,47 +1,64 @@
-## Problem
+# Fix Bing "thin content" — prerender real page text
 
-Bing scans raw HTML (no JS execution on first pass). Our SPA's `<h1>` lives inside React components and only appears after hydration, so the prerendered HTML served to Bingbot contains zero heading tags. Confirmed via `curl https://vorvn.com/en/` — no `<h*>` in source.
+## The problem
 
-## Fix
+Every page on vorvn.com ships near-empty HTML to crawlers. React fills the content in after page load, but Bingbot, Googlebot, and AI search bots read the HTML *before* JavaScript runs. So they see 7–92 words per page instead of the real 500–4000+.
 
-Inject a static, semantically meaningful, **per-language** `<h1>` into the prerendered `<body>` of every localized homepage and the apex `index.html`, placed **outside** `#root` so React hydration never overwrites it. Visually hide with `sr-only` (CSS clip technique) — invisible to users, fully readable by Bingbot/Googlebot.
+Bing flagged 1 page. In reality every page is thin.
 
-This keeps the existing visible hero design 100% unchanged. The visible hero `<h1>` stays inside React; crawlers see the static one first; users see the React one after hydration. Two `<h1>` tags on one page is technically tolerated by Google/Bing (HTML5 allows multiple), but to stay strictly correct we'll downgrade the visible hero from `<h1>` to a styled `<div role="heading" aria-level="1">` — same a11y, only the prerendered one counts as the SEO H1.
+## The fix
 
-### Per-language H1 copy (keyword-rich, ~80 chars)
+Extend `scripts/prerender.mjs` (the same script we used for the H1 fix) to inject the actual page text into the prerendered HTML, per language. The text sits inside a hidden `<div>` that React replaces on hydration — visitors see zero change, but crawlers finally see real content.
 
-| Lang | H1 |
-|---|---|
-| en | VORVN — Autonomous IP & Brand Designers in Hong Kong and Bali |
-| fr | VORVN — Concepteurs autonomes de marques et PI à Hong Kong et Bali |
-| es | VORVN — Diseñadores autónomos de marcas y PI en Hong Kong y Bali |
-| zh | VORVN — 香港与巴厘岛的自主知识产权与品牌设计公司 |
-| id | VORVN — Perancang IP & Merek Independen di Hong Kong dan Bali |
-| ar | VORVN — مصمّمو علامات وملكية فكرية مستقلون في هونغ كونغ وبالي |
+## What gets injected per page type
 
-Contact pages get an analogous H1 ("Contact VORVN — …"). Legal pages already have proper H1s in their React components, but we'll bake a static one too for consistency.
+**Homepage (`/`, `/en/`, `/fr/`, `/es/`, `/zh/`, `/id/`, `/ar/`)** — pulled from existing i18n JSON files (`src/i18n/locales/*.json`), already translated:
+- Hero headline + subhead + rotating words
+- Founder section (quote + bio paragraphs)
+- Entity / Presence / Portfolio / Operate / Investors / Closing sections
+- Footer copy
 
-## Implementation
+Estimated 600–1200 words per language, all already written.
 
-1. **`scripts/prerender.mjs`**
-   - Add a `H1_COPY` map (home + contact, all 6 langs).
-   - Add `injectBodyH1(html, h1Text)` that inserts `<h1 class="sr-only">…</h1>` immediately after `<body>` (before `<div id="root">`).
-   - Call it for every generated file (6 home + 6 contact + 2 legal + apex root).
+**Contact page (`/{lang}/contact`)** — intro copy, office addresses, form labels, all from i18n JSON. ~200 words.
 
-2. **`src/index.css`**
-   - Confirm `.sr-only` utility exists (Tailwind ships it by default — verify, otherwise no change).
+**Legal pages (`/legal/privacy`, `/legal/notice`)** — the full text from `PrivacyPolicy.tsx` and `LegalNotice.tsx`. ~2000–4000 words each. Extracted once into plain-text constants the script reads.
 
-3. **`src/components/sections/VorvnHero.tsx`**
-   - Change the visible `<h1>` to `<div role="heading" aria-level={1}>` to avoid duplicate H1s. Visual styling unchanged.
+## How the injection works
 
-4. **No other changes.** Sitemap, IndexNow, head meta, etc. all stay as-is.
+```html
+<body>
+  <h1 class="sr-only">…</h1>             ← already there
+  <div id="prerendered-content" hidden>   ← NEW
+    <h2>…</h2><p>…</p><p>…</p>…
+  </div>
+  <div id="root"></div>                   ← React replaces this on hydration
+</body>
+```
+
+`hidden` + sitting outside `#root` means:
+- Crawlers parse and index every word
+- Real users never see it (React mounts inside `#root` instantly)
+- No layout shift, no visual change, no CSS work
+- No duplicate-content issue (it's the same page's own copy)
+
+## Files touched
+
+- `scripts/prerender.mjs` — add `buildHomeContent(lang)`, `buildContactContent(lang)`, `buildLegalContent(slug)` helpers; call them in the 4 existing injection points
+- `scripts/legal-content.mjs` — NEW, plain-text export of privacy + notice copy (single source of truth so both the React component and the prerender pull from the same place — optional refactor, or we just duplicate for v1)
+
+No React component changes. No CSS changes. No visible UI changes.
 
 ## Verification
 
 After publish:
 ```
-curl -s https://vorvn.com/en/ | grep -o '<h1[^>]*>[^<]*</h1>'
-curl -s https://vorvn.com/fr/ | grep -o '<h1[^>]*>[^<]*</h1>'
-curl -s https://vorvn.com/    | grep -o '<h1[^>]*>[^<]*</h1>'
+curl -sL https://vorvn.com/en/ | sed 's/<[^>]*>/ /g' | wc -w
 ```
-Each should return the localized H1. Then re-run the Bing Site Scan — the H1 notice will clear.
+Should jump from 84 → 800+. Then trigger a Bing rescan; the thin-content notice clears on the next crawl (usually 1–7 days).
+
+## Out of scope
+
+- Server-side rendering / SSR migration (overkill; prerendering is enough for a static marketing site)
+- Rewriting copy for SEO keywords (separate task if you want it)
+- AI-search optimization beyond what this already fixes
