@@ -44,21 +44,25 @@ export default function Newsroom() {
             <li key={a.slug} className="border-b border-rule">
               <Link
                 to={`/${currentLang}/newsroom/${a.slug}`}
-                className="group grid grid-cols-[110px_110px_1fr] md:grid-cols-[140px_160px_1fr] gap-4 md:gap-8 items-baseline py-6 md:py-8 hover:bg-foreground/[0.02] transition-colors px-2 -mx-2"
+                className="group block py-6 md:py-8 px-2 -mx-2 hover:bg-foreground/[0.02] transition-colors md:grid md:grid-cols-[140px_160px_1fr] md:gap-8 md:items-baseline"
               >
-                <span className="font-mono text-[11px] md:text-[12px] tracking-[0.08em] text-mid">
-                  {formatDate(a.date)}
-                </span>
-                <span className="font-mono text-[9px] md:text-[10px] tracking-[0.18em] uppercase text-mid">
-                  {t(`newsroom.types.${a.type}`)}
-                </span>
-                <span className="font-sans text-[17px] md:text-[22px] font-medium tracking-[-0.005em] text-foreground group-hover:text-mid transition-colors">
+                <div className="flex items-center gap-3 mb-3 md:mb-0 md:contents">
+                  <span className="font-mono text-[11px] md:text-[12px] tracking-[0.08em] text-mid">
+                    {formatDate(a.date)}
+                  </span>
+                  <span aria-hidden className="md:hidden text-mid">·</span>
+                  <span className="font-mono text-[9px] md:text-[10px] tracking-[0.18em] uppercase text-mid">
+                    {t(`newsroom.types.${a.type}`)}
+                  </span>
+                </div>
+                <h2 className="font-sans text-[20px] leading-[1.25] md:text-[22px] font-medium tracking-[-0.005em] text-foreground group-hover:text-mid transition-colors">
                   {a.title}
-                </span>
+                </h2>
               </Link>
             </li>
           ))}
         </ul>
+
       </main>
 
       <VorvnFooter />

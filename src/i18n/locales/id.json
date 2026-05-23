@@ -233,7 +233,7 @@
     },
     "phones": "Telepon",
     "directLabel": "Langsung",
-    "writeUs": "Hubungi kami →"
+    "writeUs": "Hubungi kami"
   },
   "newsroom": {
     "tag": "VORVN · Newsroom",
@@ -258,6 +258,7 @@
       "whatsapp": "WhatsApp",
       "x": "X",
       "linkedin": "LinkedIn"
-    }
+    },
+    "viewAll": "Lihat semua"
   }
 }

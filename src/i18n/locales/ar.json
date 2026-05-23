@@ -233,7 +233,7 @@
     },
     "phones": "الهواتف",
     "directLabel": "مباشر",
-    "writeUs": "تواصل معنا ←"
+    "writeUs": "تواصل معنا"
   },
   "newsroom": {
     "tag": "VORVN · غرفة الأخبار",
@@ -258,6 +258,7 @@
       "whatsapp": "واتساب",
       "x": "X",
       "linkedin": "لينكدإن"
-    }
+    },
+    "viewAll": "عرض الكل"
   }
 }

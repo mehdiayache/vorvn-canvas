@@ -233,7 +233,7 @@
     },
     "phones": "Teléfonos",
     "directLabel": "Directo",
-    "writeUs": "Contáctanos →"
+    "writeUs": "Contáctanos"
   },
   "newsroom": {
     "tag": "VORVN · Sala de prensa",
@@ -258,6 +258,7 @@
       "whatsapp": "WhatsApp",
       "x": "X",
       "linkedin": "LinkedIn"
-    }
+    },
+    "viewAll": "Ver todo"
   }
 }
