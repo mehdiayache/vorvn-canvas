@@ -249,6 +249,15 @@
       "essay": "Ensayo",
       "news": "Noticia",
       "collaboration": "Colaboración"
+    },
+    "updated": "Actualizado",
+    "share": {
+      "label": "Compartir",
+      "copy": "Copiar enlace",
+      "copied": "Copiado",
+      "whatsapp": "WhatsApp",
+      "x": "X",
+      "linkedin": "LinkedIn"
     }
   }
 }

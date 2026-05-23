@@ -249,6 +249,15 @@
       "essay": "Esai",
       "news": "Berita",
       "collaboration": "Kolaborasi"
+    },
+    "updated": "Diperbarui",
+    "share": {
+      "label": "Bagikan",
+      "copy": "Salin tautan",
+      "copied": "Disalin",
+      "whatsapp": "WhatsApp",
+      "x": "X",
+      "linkedin": "LinkedIn"
     }
   }
 }

@@ -249,6 +249,15 @@
       "essay": "随笔",
       "news": "新闻",
       "collaboration": "合作"
+    },
+    "updated": "更新于",
+    "share": {
+      "label": "分享",
+      "copy": "复制链接",
+      "copied": "已复制",
+      "whatsapp": "WhatsApp",
+      "x": "X",
+      "linkedin": "LinkedIn"
     }
   }
 }
