@@ -803,11 +803,12 @@ ${hreflangLinks('/newsroom')}
       );
     }
     for (const a of newsroomArticles) {
+      const lastmod = a.updated || a.date;
       for (const l of LANGUAGES) {
         blocks.push(
           `  <url>
     <loc>${BASE_URL}/${l.code}/newsroom/${a.slug}</loc>
-    <lastmod>${a.date}</lastmod>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
 ${hreflangLinks(`/newsroom/${a.slug}`)}
