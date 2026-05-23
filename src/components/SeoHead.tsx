@@ -96,12 +96,27 @@ const SEO: Record<PageKey, Record<string, { title: string; desc: string }>> = {
   },
 };
 
+interface ArticleMeta {
+  publishedTime: string;
+  modifiedTime: string;
+  authorName: string;
+  section: string;
+  cover?: string;
+  coverAlt?: string;
+}
+
 interface SeoHeadProps {
   page?: PageKey;
   /** Path within the language root, e.g. "/contact". Defaults to derived from current location. */
   pathSuffix?: string;
   /** If true, emits noindex (used for 404). */
   noindex?: boolean;
+  /** Override the default page title (used for newsroom articles). */
+  titleOverride?: string;
+  /** Override the default page description. */
+  descriptionOverride?: string;
+  /** When set, emits og:type=article and Article JSON-LD. */
+  articleMeta?: ArticleMeta;
 }
 
 function upsertMeta(selector: string, attr: 'name' | 'property', key: string, content: string) {
@@ -128,7 +143,15 @@ function upsertLink(rel: string, href: string, attrs: Record<string, string> = {
   el.href = href;
 }
 
-export default function SeoHead({ page = 'home', pathSuffix, noindex = false }: SeoHeadProps) {
+export default function SeoHead({
+  page = 'home',
+  pathSuffix,
+  noindex = false,
+  titleOverride,
+  descriptionOverride,
+  articleMeta,
+}: SeoHeadProps) {
+
   const { i18n } = useTranslation();
   const lang = i18n.language || 'en';
   const location = useLocation();
@@ -142,8 +165,12 @@ export default function SeoHead({ page = 'home', pathSuffix, noindex = false }: 
   const suffix = pathSuffix ?? derivedSuffix;
 
   useEffect(() => {
-    const seo = SEO[page]?.[lang] || SEO[page]?.en;
-    if (!seo) return;
+    const baseSeo = SEO[page]?.[lang] || SEO[page]?.en;
+    if (!baseSeo) return;
+    const seo = {
+      title: titleOverride || baseSeo.title,
+      desc: descriptionOverride || baseSeo.desc,
+    };
 
     // Remove prerendered JSON-LD so we don't double-emit after hydration.
     document.head.querySelectorAll('script[data-prerender]').forEach((el) => el.remove());
@@ -153,6 +180,10 @@ export default function SeoHead({ page = 'home', pathSuffix, noindex = false }: 
     document.documentElement.dir = RTL_LANGUAGES.includes(lang) ? 'rtl' : 'ltr';
 
     const url = `${BASE_URL}/${lang}${suffix}`;
+    const ogImage = articleMeta?.cover
+      ? `${BASE_URL}${articleMeta.cover}`
+      : `${BASE_URL}/og-image.jpg`;
+    const ogImageAlt = articleMeta?.coverAlt || seo.title;
 
     // Standard meta
     upsertMeta('meta[name="description"]', 'name', 'description', seo.desc);
@@ -166,20 +197,36 @@ export default function SeoHead({ page = 'home', pathSuffix, noindex = false }: 
     // Open Graph
     upsertMeta('meta[property="og:title"]', 'property', 'og:title', seo.title);
     upsertMeta('meta[property="og:description"]', 'property', 'og:description', seo.desc);
-    upsertMeta('meta[property="og:type"]', 'property', 'og:type', 'website');
+    upsertMeta(
+      'meta[property="og:type"]',
+      'property',
+      'og:type',
+      articleMeta ? 'article' : 'website',
+    );
     upsertMeta('meta[property="og:url"]', 'property', 'og:url', url);
     upsertMeta('meta[property="og:site_name"]', 'property', 'og:site_name', 'VORVN');
     upsertMeta('meta[property="og:locale"]', 'property', 'og:locale', toOgLocale(lang));
-    upsertMeta('meta[property="og:image"]', 'property', 'og:image', `${BASE_URL}/og-image.jpg`);
+    upsertMeta('meta[property="og:image"]', 'property', 'og:image', ogImage);
     upsertMeta('meta[property="og:image:width"]', 'property', 'og:image:width', '1200');
     upsertMeta('meta[property="og:image:height"]', 'property', 'og:image:height', '630');
-    upsertMeta('meta[property="og:image:alt"]', 'property', 'og:image:alt', seo.title);
+    upsertMeta('meta[property="og:image:alt"]', 'property', 'og:image:alt', ogImageAlt);
+
+    // article:* tags (only meaningful when og:type=article)
+    document.head
+      .querySelectorAll('meta[property^="article:"]')
+      .forEach((el) => el.remove());
+    if (articleMeta) {
+      upsertMeta('meta[property="article:published_time"]', 'property', 'article:published_time', articleMeta.publishedTime);
+      upsertMeta('meta[property="article:modified_time"]', 'property', 'article:modified_time', articleMeta.modifiedTime);
+      upsertMeta('meta[property="article:author"]', 'property', 'article:author', articleMeta.authorName);
+      upsertMeta('meta[property="article:section"]', 'property', 'article:section', articleMeta.section);
+    }
 
     // Twitter
     upsertMeta('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image');
     upsertMeta('meta[name="twitter:title"]', 'name', 'twitter:title', seo.title);
     upsertMeta('meta[name="twitter:description"]', 'name', 'twitter:description', seo.desc);
-    upsertMeta('meta[name="twitter:image"]', 'name', 'twitter:image', `${BASE_URL}/og-image.jpg`);
+    upsertMeta('meta[name="twitter:image"]', 'name', 'twitter:image', ogImage);
 
     // Canonical
     upsertLink('canonical', url);
@@ -198,6 +245,7 @@ export default function SeoHead({ page = 'home', pathSuffix, noindex = false }: 
     xdef.hreflang = 'x-default';
     xdef.href = `${BASE_URL}/en${suffix}`;
     document.head.appendChild(xdef);
+
 
     // JSON-LD, Organization (home only)
     document.head.querySelectorAll('script[data-seo-jsonld]').forEach((el) => el.remove());
