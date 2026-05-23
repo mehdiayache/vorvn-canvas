@@ -30,12 +30,22 @@ export default function VorvnNewsroomBlock({ blocks }: Props) {
             );
           case 'quote':
             return (
-              <blockquote
-                key={i}
-                className="border-s border-foreground ps-5 py-1 font-sans text-[18px] md:text-[20px] leading-[1.55] text-foreground"
-              >
-                {parseInline(b.text)}
-              </blockquote>
+              <figure key={i} className="relative my-10 ps-6 border-s border-foreground">
+                <span
+                  aria-hidden
+                  className="absolute -top-4 start-2 font-sans text-[56px] leading-none text-foreground/15 select-none"
+                >
+                  &ldquo;
+                </span>
+                <blockquote className="font-sans text-[22px] md:text-[26px] leading-[1.35] tracking-[-0.01em] text-foreground">
+                  {parseInline(b.text)}
+                </blockquote>
+                {b.attribution && (
+                  <figcaption className="mt-4 font-mono text-[11px] tracking-[0.18em] uppercase text-mid">
+                    — <cite className="not-italic">{b.attribution}</cite>
+                  </figcaption>
+                )}
+              </figure>
             );
           case 'list':
             return (
@@ -46,6 +56,23 @@ export default function VorvnNewsroomBlock({ blocks }: Props) {
                   </li>
                 ))}
               </ul>
+            );
+          case 'image':
+            return (
+              <figure key={i} className="my-6">
+                <img
+                  src={b.src}
+                  alt={b.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto block border border-rule"
+                />
+                {b.caption && (
+                  <figcaption className="mt-3 font-mono text-[11px] tracking-[0.12em] uppercase text-mid">
+                    {b.caption}
+                  </figcaption>
+                )}
+              </figure>
             );
           case 'p':
           default:
