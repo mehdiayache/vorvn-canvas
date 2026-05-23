@@ -382,7 +382,7 @@ export default function SeoHead({
       document.head.querySelectorAll('script[data-seo-jsonld]').forEach((el) => el.remove());
       document.head.querySelectorAll('meta[property^="article:"]').forEach((el) => el.remove());
     };
-  }, [lang, page, suffix, noindex, titleOverride, descriptionOverride, articleMeta]);
+  }, [lang, page, suffix, noindex, titleOverride, descriptionOverride, articleMeta, hreflangLangs]);
 
 
   return null;
