@@ -87,6 +87,12 @@ export default function Nav() {
             {t('investors.label')}
           </button>
           <button
+            onClick={() => navigate(`/${i18n.language}/newsroom`)}
+            className="font-sans text-[11px] font-medium tracking-[0.1em] uppercase text-foreground hover:text-mid transition-colors duration-200 bg-transparent border-none p-0 cursor-pointer"
+          >
+            {t('nav.newsroom')}
+          </button>
+          <button
             onClick={() => navigate(`/${i18n.language}/contact`)}
             className="font-sans text-[11px] font-medium tracking-[0.1em] uppercase text-foreground hover:text-mid transition-colors duration-200 bg-transparent border-none p-0 cursor-pointer"
           >
