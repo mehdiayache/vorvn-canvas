@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { Mail, Newspaper } from 'lucide-react';
+
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
