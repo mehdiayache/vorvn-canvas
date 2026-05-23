@@ -575,18 +575,38 @@ for (const slug of ['privacy', 'notice']) {
   fs.writeFileSync(baseHtmlPath, html, 'utf8');
 }
 
-// ============ NEWSROOM ============
+// ============ NEWSROOM (v3: one JSON per language) ============
 const newsroomDir = path.resolve(__dirname, '..', 'src', 'content', 'newsroom');
-const newsroomArticles = [];
+const FILENAME_RE = /^(\d{4}-\d{2}-\d{2})-([a-z]{2})-([a-z0-9-]+)\.json$/;
+
+/**
+ * groups: Map<`${date}__${slug}`, { slug, date, byLang: Record<lang, doc> }>
+ * Sorted desc by date when consumed.
+ */
+const newsroomGroups = [];
 if (fs.existsSync(newsroomDir)) {
+  const map = new Map();
   for (const f of fs.readdirSync(newsroomDir).filter((x) => x.endsWith('.json'))) {
+    const m = FILENAME_RE.exec(f);
+    if (!m) {
+      console.warn('[prerender] skipping newsroom file with bad name:', f);
+      continue;
+    }
     try {
-      newsroomArticles.push(JSON.parse(fs.readFileSync(path.join(newsroomDir, f), 'utf8')));
+      const doc = JSON.parse(fs.readFileSync(path.join(newsroomDir, f), 'utf8'));
+      const key = `${doc.date}__${doc.slug}`;
+      if (!map.has(key)) map.set(key, { slug: doc.slug, date: doc.date, byLang: {} });
+      map.get(key).byLang[doc.lang] = doc;
     } catch (e) {
       console.error('[prerender] newsroom parse fail:', f, e.message);
     }
   }
-  newsroomArticles.sort((a, b) => (a.date < b.date ? 1 : -1));
+  for (const g of map.values()) newsroomGroups.push(g);
+  newsroomGroups.sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+function pickArticle(group, lang) {
+  return group.byLang[lang] || group.byLang.en;
 }
 
 const NEWSROOM_SEO = {
@@ -632,41 +652,35 @@ function buildNewsroomIndexContent(lang) {
   const parts = [];
   parts.push(hTag(2, seo.h1));
   parts.push(pTag(seo.desc));
-  for (const a of newsroomArticles) {
-    const tr = a.translations[lang] || a.translations.en;
-    parts.push(hTag(3, tr.title));
-    parts.push(pTag(`${a.date} — ${tr.excerpt}`));
+  for (const g of newsroomGroups) {
+    const a = pickArticle(g, lang);
+    parts.push(hTag(3, a.title));
+    parts.push(pTag(`${a.date} — ${a.excerpt}`));
   }
   return parts.join('');
 }
 
-function buildArticleContent(article, lang) {
-  const tr = article.translations[lang] || article.translations.en;
+function buildArticleContent(article) {
   const author = resolveAuthor(article);
   const parts = [];
-  parts.push(hTag(1, tr.title));
+  parts.push(hTag(1, article.title));
   parts.push(pTag(`${article.date} — ${author.name} (${author.title})`));
-  parts.push(pTag(tr.excerpt));
-  if (article.cover) {
-    parts.push(`<figure><img src="${escapeHtml(article.cover)}" alt="${escapeHtml(tr.coverAlt || tr.title)}" /></figure>`);
-  }
-  for (const b of tr.body) parts.push(blockToHtml(b));
+  parts.push(pTag(article.excerpt));
+  for (const b of article.body) parts.push(blockToHtml(b));
   return parts.join('');
 }
 
-function articleJsonLd(article, lang) {
-  const tr = article.translations[lang] || article.translations.en;
+function articleJsonLd(article, urlLang) {
   const author = resolveAuthor(article);
-  const image = article.cover ? [`${BASE_URL}${article.cover}`] : [`${BASE_URL}/og-image.jpg`];
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: tr.title,
-    description: tr.excerpt,
+    headline: article.title,
+    description: article.excerpt,
     datePublished: article.date,
     dateModified: article.updated || article.date,
-    inLanguage: lang,
-    image,
+    inLanguage: article.lang,
+    image: [`${BASE_URL}/og-image.jpg`],
     articleSection: article.type,
     author: { '@type': 'Person', name: author.name, jobTitle: author.title },
     publisher: {
@@ -674,7 +688,7 @@ function articleJsonLd(article, lang) {
       name: 'VORVN',
       logo: { '@type': 'ImageObject', url: `${BASE_URL}/apple-touch-icon.png` },
     },
-    mainEntityOfPage: `${BASE_URL}/${lang}/newsroom/${article.slug}`,
+    mainEntityOfPage: `${BASE_URL}/${urlLang}/newsroom/${article.slug}`,
   };
 }
 
@@ -689,18 +703,29 @@ function collectionPageJsonLd(lang, seo) {
     isPartOf: { '@type': 'WebSite', name: 'VORVN', url: BASE_URL },
     mainEntity: {
       '@type': 'ItemList',
-      itemListElement: newsroomArticles.map((a, i) => {
-        const tr = a.translations[lang] || a.translations.en;
+      itemListElement: newsroomGroups.map((g, i) => {
+        const a = pickArticle(g, lang);
         return {
           '@type': 'ListItem',
           position: i + 1,
           url: `${BASE_URL}/${lang}/newsroom/${a.slug}`,
-          name: tr.title,
+          name: a.title,
         };
       }),
     },
   };
 }
+
+/** Hreflang block restricted to a subset of language codes. */
+function buildHreflangBlockSubset(suffix, langCodes) {
+  const set = new Set(langCodes);
+  const links = LANGUAGES.filter((l) => set.has(l.code))
+    .map((l) => `    <link rel="alternate" hreflang="${l.code}" href="${BASE_URL}/${l.code}${suffix}" />`)
+    .join('\n');
+  const xdef = `    <link rel="alternate" hreflang="x-default" href="${BASE_URL}/en${suffix}" />`;
+  return `${links}\n${xdef}`;
+}
+
 
 
 // Newsroom index per language
