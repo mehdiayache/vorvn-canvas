@@ -183,10 +183,8 @@ export default function SeoHead({
     document.documentElement.dir = RTL_LANGUAGES.includes(lang) ? 'rtl' : 'ltr';
 
     const url = `${BASE_URL}/${lang}${suffix}`;
-    const ogImage = articleMeta?.cover
-      ? `${BASE_URL}${articleMeta.cover}`
-      : `${BASE_URL}/og-image.jpg`;
-    const ogImageAlt = articleMeta?.coverAlt || seo.title;
+    const ogImage = `${BASE_URL}/og-image.jpg`;
+    const ogImageAlt = seo.title;
 
     // Standard meta
     upsertMeta('meta[name="description"]', 'name', 'description', seo.desc);
