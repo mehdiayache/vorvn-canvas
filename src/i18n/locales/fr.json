@@ -259,6 +259,10 @@
       "x": "X",
       "linkedin": "LinkedIn"
     },
-    "viewAll": "Tout voir"
+    "viewAll": "Tout voir",
+    "sidebar": {
+      "title": "Restez informé",
+      "body": "Pour les licences, partenariats ou demandes presse — ou simplement pour suivre la suite, [contactez-nous](/LANG/contact) ou consultez la [newsroom](/LANG/newsroom)."
+    }
   }
 }

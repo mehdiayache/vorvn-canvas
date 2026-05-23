@@ -259,6 +259,10 @@
       "x": "X",
       "linkedin": "LinkedIn"
     },
-    "viewAll": "查看全部"
+    "viewAll": "查看全部",
+    "sidebar": {
+      "title": "保持关注",
+      "body": "关于授权、合作或媒体咨询——或只是想了解后续动态，请[联系我们](/LANG/contact)或关注[新闻室](/LANG/newsroom)。"
+    }
   }
 }

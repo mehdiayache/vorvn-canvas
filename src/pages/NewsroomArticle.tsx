@@ -4,6 +4,7 @@ import Nav from '@/components/Nav';
 import SeoHead from '@/components/SeoHead';
 import VorvnFooter from '@/components/sections/VorvnFooter';
 import VorvnNewsroomBlock from '@/components/sections/VorvnNewsroomBlock';
+import VorvnNewsroomSidebar from '@/components/sections/VorvnNewsroomSidebar';
 import VorvnShareRow from '@/components/VorvnShareRow';
 import NotFound from '@/pages/NotFound';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
@@ -53,7 +54,8 @@ export default function NewsroomArticle() {
         className="flex-1 pt-32 pb-24"
         style={{ padding: '128px var(--gutter) 96px' }}
       >
-        <div className="max-w-[68ch] mx-auto">
+        <div className="max-w-[1200px] mx-auto md:grid md:grid-cols-[minmax(0,68ch)_minmax(0,1fr)] md:gap-16 lg:gap-24">
+         <div className="min-w-0">
           <Link
             to={`/${currentLang}/newsroom`}
             className="inline-block font-mono text-[10px] tracking-[0.18em] uppercase text-mid hover:text-foreground transition-colors mb-10"
@@ -131,6 +133,8 @@ export default function NewsroomArticle() {
               )}
             </nav>
           )}
+         </div>
+         <VorvnNewsroomSidebar lang={currentLang} />
         </div>
       </main>
 
