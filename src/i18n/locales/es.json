@@ -259,6 +259,10 @@
       "x": "X",
       "linkedin": "LinkedIn"
     },
-    "viewAll": "Ver todo"
+    "viewAll": "Ver todo",
+    "sidebar": {
+      "title": "Mantente al tanto",
+      "body": "Para licencias, colaboraciones o prensa — o simplemente para seguir lo que viene, [escríbenos](/LANG/contact) o consulta la [newsroom](/LANG/newsroom)."
+    }
   }
 }

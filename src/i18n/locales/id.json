@@ -259,6 +259,10 @@
       "x": "X",
       "linkedin": "LinkedIn"
     },
-    "viewAll": "Lihat semua"
+    "viewAll": "Lihat semua",
+    "sidebar": {
+      "title": "Tetap terhubung",
+      "body": "Untuk lisensi, kemitraan atau permintaan media — atau sekadar mengikuti perkembangan, [hubungi kami](/LANG/contact) atau ikuti [newsroom](/LANG/newsroom)."
+    }
   }
 }

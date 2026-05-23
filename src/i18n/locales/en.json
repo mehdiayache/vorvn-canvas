@@ -259,6 +259,10 @@
       "x": "X",
       "linkedin": "LinkedIn"
     },
-    "viewAll": "View all"
+    "viewAll": "View all",
+    "sidebar": {
+      "title": "Stay in the loop",
+      "body": "For licensing, partnerships or press requests — or simply to follow what comes next, [reach out](/LANG/contact) or watch this [newsroom](/LANG/newsroom)."
+    }
   }
 }
