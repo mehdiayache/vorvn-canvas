@@ -752,26 +752,29 @@ for (const l of LANGUAGES) {
   count++;
 }
 
-// Each article × each language
-for (const article of newsroomArticles) {
-  const author = resolveAuthor(article);
+// Each article × each language (en file is always present; other langs fall back)
+for (const group of newsroomGroups) {
+  const availableLangs = Object.keys(group.byLang);
   for (const l of LANGUAGES) {
-    const tr = article.translations[l.code] || article.translations.en;
+    const article = pickArticle(group, l.code);
+    const author = resolveAuthor(article);
     const canonical = `${BASE_URL}/${l.code}/newsroom/${article.slug}`;
-    const title = `${tr.title} | VORVN`;
-    const ogImage = article.cover ? `${BASE_URL}${article.cover}` : undefined;
+    const title = `${article.title} | VORVN`;
     const newsroomLabel = NEWSROOM_SEO[l.code].label;
+    // Served language = the actual file language (may be `en` if fallback).
+    // <html lang> reflects what is served so crawlers see the real content language.
+    const servedLang = article.lang;
+    const servedDir = LANGUAGES.find((x) => x.code === servedLang)?.dir || l.dir;
+    const servedLocale = LANGUAGES.find((x) => x.code === servedLang)?.ogLocale || l.ogLocale;
     const headBlock = buildHeadBlock({
-      lang: l.code,
-      dir: l.dir,
-      ogLocale: l.ogLocale,
+      lang: servedLang,
+      dir: servedDir,
+      ogLocale: servedLocale,
       title,
-      desc: tr.excerpt,
+      desc: article.excerpt,
       canonical,
-      hreflangBlock: buildHreflangBlock(`/newsroom/${article.slug}`),
+      hreflangBlock: buildHreflangBlockSubset(`/newsroom/${article.slug}`, availableLangs),
       ogType: 'article',
-      ogImage,
-      ogImageAlt: tr.coverAlt,
       articleMeta: {
         publishedTime: article.date,
         modifiedTime: article.updated || article.date,
@@ -786,14 +789,14 @@ for (const article of newsroomArticles) {
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'VORVN', item: `${BASE_URL}/${l.code}` },
             { '@type': 'ListItem', position: 2, name: newsroomLabel, item: `${BASE_URL}/${l.code}/newsroom` },
-            { '@type': 'ListItem', position: 3, name: tr.title, item: canonical },
+            { '@type': 'ListItem', position: 3, name: article.title, item: canonical },
           ],
         },
       ],
     });
-    let html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
-    html = injectBodyH1(html, tr.title);
-    html = injectPrerenderedContent(html, buildArticleContent(article, l.code));
+    let html = injectInto(baseHtml, { lang: servedLang, dir: servedDir, headBlock });
+    html = injectBodyH1(html, article.title);
+    html = injectPrerenderedContent(html, buildArticleContent(article));
     writeFile(`${l.code}/newsroom/${article.slug}/index.html`, html);
     count++;
   }
