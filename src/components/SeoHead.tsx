@@ -343,11 +343,42 @@ export default function SeoHead({
       document.head.appendChild(script);
     }
 
+    if (articleMeta) {
+      const article = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: seo.title,
+        description: seo.desc,
+        datePublished: articleMeta.publishedTime,
+        dateModified: articleMeta.modifiedTime,
+        inLanguage: lang,
+        image: [ogImage],
+        articleSection: articleMeta.section,
+        author: {
+          '@type': 'Person',
+          name: articleMeta.authorName,
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'VORVN',
+          logo: { '@type': 'ImageObject', url: `${BASE_URL}/apple-touch-icon.png` },
+        },
+        mainEntityOfPage: url,
+      };
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-seo-jsonld', 'article');
+      script.text = JSON.stringify(article);
+      document.head.appendChild(script);
+    }
+
     return () => {
       document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
       document.head.querySelectorAll('script[data-seo-jsonld]').forEach((el) => el.remove());
+      document.head.querySelectorAll('meta[property^="article:"]').forEach((el) => el.remove());
     };
-  }, [lang, page, suffix, noindex]);
+  }, [lang, page, suffix, noindex, titleOverride, descriptionOverride, articleMeta]);
+
 
   return null;
 }
