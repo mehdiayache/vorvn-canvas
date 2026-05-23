@@ -407,11 +407,17 @@ function buildHeadBlock({
   hreflangBlock,
   jsonLdScripts,
   noindex = false,
+  ogType = 'website',
+  ogImage,
+  ogImageAlt,
+  articleMeta,
 }) {
   const robots = noindex
     ? 'noindex, nofollow'
     : 'index, follow, max-image-preview:large';
-  return [
+  const image = ogImage || `${BASE_URL}/og-image.jpg`;
+  const imageAlt = ogImageAlt || title;
+  const lines = [
     `    <title>${escapeHtml(title)}</title>`,
     `    <meta name="description" content="${escapeHtml(desc)}" />`,
     `    <meta name="robots" content="${robots}" />`,
@@ -419,24 +425,35 @@ function buildHeadBlock({
     hreflangBlock,
     `    <meta property="og:title" content="${escapeHtml(title)}" />`,
     `    <meta property="og:description" content="${escapeHtml(desc)}" />`,
-    `    <meta property="og:type" content="website" />`,
+    `    <meta property="og:type" content="${ogType}" />`,
     `    <meta property="og:url" content="${canonical}" />`,
     `    <meta property="og:site_name" content="VORVN" />`,
     `    <meta property="og:locale" content="${ogLocale}" />`,
-    `    <meta property="og:image" content="${BASE_URL}/og-image.jpg" />`,
+    `    <meta property="og:image" content="${image}" />`,
     `    <meta property="og:image:width" content="1200" />`,
     `    <meta property="og:image:height" content="630" />`,
-    `    <meta property="og:image:alt" content="${escapeHtml(title)}" />`,
+    `    <meta property="og:image:alt" content="${escapeHtml(imageAlt)}" />`,
     `    <meta name="twitter:card" content="summary_large_image" />`,
     `    <meta name="twitter:title" content="${escapeHtml(title)}" />`,
     `    <meta name="twitter:description" content="${escapeHtml(desc)}" />`,
-    `    <meta name="twitter:image" content="${BASE_URL}/og-image.jpg" />`,
-    ...jsonLdScripts.map(
-      (obj) =>
-        `    <script type="application/ld+json" data-prerender>${escapeJsonForScript(obj)}</script>`,
-    ),
-  ].join('\n');
+    `    <meta name="twitter:image" content="${image}" />`,
+  ];
+  if (articleMeta) {
+    lines.push(
+      `    <meta property="article:published_time" content="${articleMeta.publishedTime}" />`,
+      `    <meta property="article:modified_time" content="${articleMeta.modifiedTime}" />`,
+      `    <meta property="article:author" content="${escapeHtml(articleMeta.authorName)}" />`,
+      `    <meta property="article:section" content="${escapeHtml(articleMeta.section)}" />`,
+    );
+  }
+  for (const obj of jsonLdScripts) {
+    lines.push(
+      `    <script type="application/ld+json" data-prerender>${escapeJsonForScript(obj)}</script>`,
+    );
+  }
+  return lines.join('\n');
 }
+
 
 const baseHtml = fs.readFileSync(baseHtmlPath, 'utf8');
 
@@ -591,8 +608,23 @@ function blockToHtml(b) {
     const items = (b.items || []).map((it) => `<li>${escapeHtml(stripInlineLinks(it))}</li>`).join('');
     return `<ul>${items}</ul>`;
   }
-  const tag = b.type === 'quote' ? 'blockquote' : b.type;
-  return `<${tag}>${escapeHtml(stripInlineLinks(b.text || ''))}</${tag}>`;
+  if (b.type === 'image') {
+    const cap = b.caption ? `<figcaption>${escapeHtml(stripInlineLinks(b.caption))}</figcaption>` : '';
+    return `<figure><img src="${escapeHtml(b.src)}" alt="${escapeHtml(b.alt || '')}" loading="lazy" />${cap}</figure>`;
+  }
+  if (b.type === 'quote') {
+    const cite = b.attribution ? `<cite>${escapeHtml(b.attribution)}</cite>` : '';
+    return `<blockquote>${escapeHtml(stripInlineLinks(b.text || ''))}${cite}</blockquote>`;
+  }
+  return `<${b.type}>${escapeHtml(stripInlineLinks(b.text || ''))}</${b.type}>`;
+}
+
+const AUTHOR_FALLBACK = { name: 'Mehdi Ayache', title: 'CEO & Founder' };
+function resolveAuthor(a) {
+  return {
+    name: a?.author?.name || AUTHOR_FALLBACK.name,
+    title: a?.author?.title || AUTHOR_FALLBACK.title,
+  };
 }
 
 function buildNewsroomIndexContent(lang) {
@@ -610,25 +642,33 @@ function buildNewsroomIndexContent(lang) {
 
 function buildArticleContent(article, lang) {
   const tr = article.translations[lang] || article.translations.en;
+  const author = resolveAuthor(article);
   const parts = [];
   parts.push(hTag(1, tr.title));
-  parts.push(pTag(`${article.date}${article.author ? ' — ' + article.author : ''}`));
+  parts.push(pTag(`${article.date} — ${author.name} (${author.title})`));
   parts.push(pTag(tr.excerpt));
+  if (article.cover) {
+    parts.push(`<figure><img src="${escapeHtml(article.cover)}" alt="${escapeHtml(tr.coverAlt || tr.title)}" /></figure>`);
+  }
   for (const b of tr.body) parts.push(blockToHtml(b));
   return parts.join('');
 }
 
 function articleJsonLd(article, lang) {
   const tr = article.translations[lang] || article.translations.en;
+  const author = resolveAuthor(article);
+  const image = article.cover ? [`${BASE_URL}${article.cover}`] : [`${BASE_URL}/og-image.jpg`];
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: tr.title,
     description: tr.excerpt,
     datePublished: article.date,
-    dateModified: article.date,
+    dateModified: article.updated || article.date,
     inLanguage: lang,
-    author: { '@type': 'Person', name: article.author || 'VORVN' },
+    image,
+    articleSection: article.type,
+    author: { '@type': 'Person', name: author.name, jobTitle: author.title },
     publisher: {
       '@type': 'Organization',
       name: 'VORVN',
@@ -637,6 +677,31 @@ function articleJsonLd(article, lang) {
     mainEntityOfPage: `${BASE_URL}/${lang}/newsroom/${article.slug}`,
   };
 }
+
+function collectionPageJsonLd(lang, seo) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: seo.title,
+    description: seo.desc,
+    url: `${BASE_URL}/${lang}/newsroom`,
+    inLanguage: lang,
+    isPartOf: { '@type': 'WebSite', name: 'VORVN', url: BASE_URL },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: newsroomArticles.map((a, i) => {
+        const tr = a.translations[lang] || a.translations.en;
+        return {
+          '@type': 'ListItem',
+          position: i + 1,
+          url: `${BASE_URL}/${lang}/newsroom/${a.slug}`,
+          name: tr.title,
+        };
+      }),
+    },
+  };
+}
+
 
 // Newsroom index per language
 for (const l of LANGUAGES) {
