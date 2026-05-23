@@ -101,8 +101,8 @@ interface ArticleMeta {
   modifiedTime: string;
   authorName: string;
   section: string;
-  cover?: string;
-  coverAlt?: string;
+  /** Actual language served (may differ from URL lang when falling back to en). */
+  servedLang?: string;
 }
 
 interface SeoHeadProps {
@@ -117,6 +117,8 @@ interface SeoHeadProps {
   descriptionOverride?: string;
   /** When set, emits og:type=article and Article JSON-LD. */
   articleMeta?: ArticleMeta;
+  /** When set, restricts hreflang alternates to this subset (used per-article). */
+  hreflangLangs?: string[];
 }
 
 function upsertMeta(selector: string, attr: 'name' | 'property', key: string, content: string) {
