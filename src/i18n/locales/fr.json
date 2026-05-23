@@ -4,7 +4,8 @@
     "contact": "Contact",
     "light": "Clair",
     "dark": "Sombre",
-    "menu": "Menu"
+    "menu": "Menu",
+    "newsroom": "Actualités"
   },
   "hero": {
     "headline": "Concepteurs d'IP & de Marques\nAutonomes & Indépendants.",
@@ -233,5 +234,21 @@
     "phones": "Téléphones",
     "directLabel": "Direct",
     "writeUs": "Nous contacter →"
+  },
+  "newsroom": {
+    "tag": "VORVN · Salle de presse",
+    "headline": "Notes de la holding.",
+    "intro": "Essais, actualités et collaborations. Nous publions quand il y a quelque chose à dire — pas selon un calendrier.",
+    "empty": "Aucune entrée pour le moment. La première arrive.",
+    "by": "Par",
+    "back": "Retour à la Salle de presse",
+    "prev": "Précédent",
+    "next": "Suivant",
+    "adjacent": "Autres articles",
+    "types": {
+      "essay": "Essai",
+      "news": "Actualité",
+      "collaboration": "Collaboration"
+    }
   }
 }

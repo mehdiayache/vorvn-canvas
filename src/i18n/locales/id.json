@@ -4,7 +4,8 @@
     "contact": "Kontak",
     "light": "Terang",
     "dark": "Gelap",
-    "menu": "Menu"
+    "menu": "Menu",
+    "newsroom": "Newsroom"
   },
   "hero": {
     "headline": "Perancang IP & Merek\nyang Otonom & Independen.",
@@ -233,5 +234,21 @@
     "phones": "Telepon",
     "directLabel": "Langsung",
     "writeUs": "Hubungi kami →"
+  },
+  "newsroom": {
+    "tag": "VORVN · Newsroom",
+    "headline": "Catatan dari perusahaan induk.",
+    "intro": "Esai, berita, dan kolaborasi. Kami menerbitkan saat ada sesuatu yang layak dikatakan — bukan menurut jadwal.",
+    "empty": "Belum ada entri. Yang pertama akan segera hadir.",
+    "by": "Oleh",
+    "back": "Kembali ke Newsroom",
+    "prev": "Sebelumnya",
+    "next": "Berikutnya",
+    "adjacent": "Artikel lainnya",
+    "types": {
+      "essay": "Esai",
+      "news": "Berita",
+      "collaboration": "Kolaborasi"
+    }
   }
 }

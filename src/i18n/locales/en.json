@@ -4,7 +4,8 @@
     "contact": "Contact",
     "light": "Light",
     "dark": "Dark",
-    "menu": "Menu"
+    "menu": "Menu",
+    "newsroom": "Newsroom"
   },
   "hero": {
     "headline": "Autonomous & Independent\nIP & Brand Designers.",
@@ -233,5 +234,21 @@
     "phones": "Phones",
     "directLabel": "Direct",
     "writeUs": "Contact us →"
+  },
+  "newsroom": {
+    "tag": "VORVN · Newsroom",
+    "headline": "Notes from the holding.",
+    "intro": "Essays, news and collaborations. We publish when there is something worth saying — not on a schedule.",
+    "empty": "No entries yet. The first one is coming.",
+    "by": "By",
+    "back": "Back to Newsroom",
+    "prev": "Previous",
+    "next": "Next",
+    "adjacent": "More articles",
+    "types": {
+      "essay": "Essay",
+      "news": "News",
+      "collaboration": "Collaboration"
+    }
   }
 }

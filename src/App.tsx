@@ -9,6 +9,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import CookieBanner from "./components/CookieBanner";
 import Index from "./pages/Index";
 import Contact from "./pages/Contact";
+import Newsroom from "./pages/Newsroom";
+import NewsroomArticle from "./pages/NewsroomArticle";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
 import LegalNotice from "./pages/legal/LegalNotice";
@@ -46,6 +48,22 @@ const App = () => (
             element={
               <LanguageRoute>
                 <Contact />
+              </LanguageRoute>
+            }
+          />
+          <Route
+            path="/:lang/newsroom"
+            element={
+              <LanguageRoute>
+                <Newsroom />
+              </LanguageRoute>
+            }
+          />
+          <Route
+            path="/:lang/newsroom/:slug"
+            element={
+              <LanguageRoute>
+                <NewsroomArticle />
               </LanguageRoute>
             }
           />

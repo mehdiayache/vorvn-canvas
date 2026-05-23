@@ -77,6 +77,12 @@ export default function Footer() {
         >
           {t('contact.writeUs')}
         </Link>
+        <Link
+          to={`/${lang}/newsroom`}
+          className="font-mono text-[11px] tracking-[0.06em] text-mid block mb-[10px] hover:text-foreground transition-colors duration-200"
+        >
+          {t('nav.newsroom')}
+        </Link>
         <div className="font-mono text-[9px] tracking-[0.14em] text-mid">{t('footer.geo')}</div>
       </div>
     </footer>

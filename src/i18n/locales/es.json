@@ -4,7 +4,8 @@
     "contact": "Contacto",
     "light": "Claro",
     "dark": "Oscuro",
-    "menu": "Menú"
+    "menu": "Menú",
+    "newsroom": "Sala de prensa"
   },
   "hero": {
     "headline": "Diseñadores de IP y Marcas\nAutónomos e Independientes.",
@@ -233,5 +234,21 @@
     "phones": "Teléfonos",
     "directLabel": "Directo",
     "writeUs": "Contáctanos →"
+  },
+  "newsroom": {
+    "tag": "VORVN · Sala de prensa",
+    "headline": "Notas desde la holding.",
+    "intro": "Ensayos, noticias y colaboraciones. Publicamos cuando hay algo que vale la pena decir — no por calendario.",
+    "empty": "Aún no hay entradas. La primera está en camino.",
+    "by": "Por",
+    "back": "Volver a la Sala de prensa",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "adjacent": "Más artículos",
+    "types": {
+      "essay": "Ensayo",
+      "news": "Noticia",
+      "collaboration": "Colaboración"
+    }
   }
 }
