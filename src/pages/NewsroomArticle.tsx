@@ -10,7 +10,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import {
   getArticle,
   getAdjacent,
-  translate,
+  getAvailableLangs,
   formatDate,
   resolveAuthor,
 } from '@/lib/newsroom';
@@ -23,28 +23,28 @@ export default function NewsroomArticle() {
   const scrollRef = useScrollReveal();
   const currentLang = lang || i18n.language || 'en';
 
-  const article = slug ? getArticle(slug) : undefined;
-  if (!article) return <NotFound />;
+  const article = slug ? getArticle(slug, currentLang) : undefined;
+  if (!article || !slug) return <NotFound />;
 
-  const tr = translate(article, currentLang);
-  const { prev, next } = getAdjacent(article.slug);
+  const { prev, next } = getAdjacent(article.slug, currentLang);
   const author = resolveAuthor(article);
   const shareUrl = `${BASE_URL}/${currentLang}/newsroom/${article.slug}`;
+  const availableLangs = getAvailableLangs(slug);
 
   return (
     <div ref={scrollRef} className="min-h-screen flex flex-col bg-background">
       <SeoHead
         page="newsroom"
         pathSuffix={`/newsroom/${article.slug}`}
-        titleOverride={`${tr.title} | VORVN`}
-        descriptionOverride={tr.excerpt}
+        titleOverride={`${article.title} | VORVN`}
+        descriptionOverride={article.excerpt}
+        hreflangLangs={availableLangs}
         articleMeta={{
           publishedTime: article.date,
           modifiedTime: article.updated || article.date,
           authorName: author.name,
           section: article.type,
-          cover: article.cover,
-          coverAlt: tr.coverAlt,
+          servedLang: article.lang,
         }}
       />
       <Nav />
@@ -78,7 +78,7 @@ export default function NewsroomArticle() {
                 )}
               </div>
               <h1 className="font-sans text-[34px] md:text-[48px] leading-[1.1] tracking-[-0.02em] text-foreground">
-                {tr.title}
+                {article.title}
               </h1>
               <p className="mt-6 font-mono text-[11px] tracking-[0.1em] uppercase text-mid">
                 <span rel="author">
@@ -89,23 +89,9 @@ export default function NewsroomArticle() {
               </p>
             </header>
 
-            {article.cover && (
-              <figure className="mb-10">
-                <img
-                  src={article.cover}
-                  alt={tr.coverAlt || tr.title}
-                  loading="eager"
-                  decoding="async"
-                  width={1200}
-                  height={630}
-                  className="w-full h-auto block border border-rule"
-                />
-              </figure>
-            )}
+            <VorvnNewsroomBlock blocks={article.body} />
 
-            <VorvnNewsroomBlock blocks={tr.body} />
-
-            <VorvnShareRow url={shareUrl} title={tr.title} />
+            <VorvnShareRow url={shareUrl} title={article.title} />
           </article>
 
           {(prev || next) && (
@@ -122,7 +108,7 @@ export default function NewsroomArticle() {
                     ← {t('newsroom.prev')}
                   </div>
                   <div className="font-sans text-[16px] text-foreground group-hover:text-mid transition-colors">
-                    {translate(prev, currentLang).title}
+                    {prev.title}
                   </div>
                 </Link>
               ) : (
@@ -137,7 +123,7 @@ export default function NewsroomArticle() {
                     {t('newsroom.next')} →
                   </div>
                   <div className="font-sans text-[16px] text-foreground group-hover:text-mid transition-colors">
-                    {translate(next, currentLang).title}
+                    {next.title}
                   </div>
                 </Link>
               ) : (
