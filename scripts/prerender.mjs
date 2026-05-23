@@ -810,12 +810,13 @@ if (fs.existsSync(sitemapPath)) {
 
   // Append Newsroom URLs if not already present
   if (!sm.includes('/newsroom')) {
-    const hreflangLinks = (suffix) =>
-      LANGUAGES.map(
-        (l) =>
-          `      <xhtml:link rel="alternate" hreflang="${l.code}" href="${BASE_URL}/${l.code}${suffix}" />`,
-      ).join('\n') +
-      `\n      <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}/en${suffix}" />`;
+    const hreflangLinks = (suffix, langCodes = LANGUAGES.map((x) => x.code)) => {
+      const set = new Set(langCodes);
+      return LANGUAGES.filter((l) => set.has(l.code))
+        .map((l) => `      <xhtml:link rel="alternate" hreflang="${l.code}" href="${BASE_URL}/${l.code}${suffix}" />`)
+        .join('\n') +
+        `\n      <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}/en${suffix}" />`;
+    };
 
     const blocks = [];
     blocks.push('\n  <!-- ============ NEWSROOM ============ -->');
@@ -830,16 +831,18 @@ ${hreflangLinks('/newsroom')}
   </url>`,
       );
     }
-    for (const a of newsroomArticles) {
-      const lastmod = a.updated || a.date;
+    for (const g of newsroomGroups) {
+      const en = g.byLang.en;
+      const lastmod = (en?.updated) || g.date;
+      const availableLangs = Object.keys(g.byLang);
       for (const l of LANGUAGES) {
         blocks.push(
           `  <url>
-    <loc>${BASE_URL}/${l.code}/newsroom/${a.slug}</loc>
+    <loc>${BASE_URL}/${l.code}/newsroom/${g.slug}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-${hreflangLinks(`/newsroom/${a.slug}`)}
+${hreflangLinks(`/newsroom/${g.slug}`, availableLangs)}
   </url>`,
         );
       }
@@ -850,5 +853,5 @@ ${hreflangLinks(`/newsroom/${a.slug}`)}
   fs.writeFileSync(sitemapPath, sm, 'utf8');
 }
 
-console.log(`[prerender] Wrote ${count} localized HTML files + refreshed root + sitemap. Newsroom: ${newsroomArticles.length} article(s).`);
+console.log(`[prerender] Wrote ${count} localized HTML files + refreshed root + sitemap. Newsroom: ${newsroomGroups.length} article(s).`);
 
