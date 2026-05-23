@@ -1,211 +1,162 @@
-## Goal
+# Newsroom v3 — Writer & Developer Documentation
 
-Lock the **final** Newsroom JSON schema so it covers everything an article ever needs (author with fallback, cover image, inline images, attributed quotes, updated date), upgrade the article UI (sharing, better pull-quote, image figures), and bring SEO to the state of the art for 2026-2027.
+Architecture change: **one JSON file per language per article**, with English as the canonical fallback. Cover images removed (decision locked). `analysis` added as a valid type. Trademark symbols (™, ®) are mandatory wherever brand names appear.
 
 ---
 
-## 1. Final JSON schema
+## 1. File naming
 
-Root fields are language-neutral. Everything human-readable lives under `translations.<lang>`. All 6 languages remain required.
+```
+src/content/newsroom/YYYY-MM-DD-{lang}-{id}.json
+```
 
-```json
+- `YYYY-MM-DD` — publication date (must match the `date` field inside the file)
+- `{lang}` — one of: `en`, `fr`, `es`, `zh`, `id`, `ar`
+- `{id}` — kebab-case article slug (letters, digits, hyphens only). Same across all languages.
+
+Examples:
+```
+2026-05-23-en-engineering-the-meme-cook-warriors-operating-model.json
+2026-05-23-fr-engineering-the-meme-cook-warriors-operating-model.json
+```
+
+Rules:
+- The `en` version is REQUIRED for every article. It is the canonical source.
+- Other languages are OPTIONAL. If `zh` is missing, the site serves the `en` file for `/zh/newsroom/{id}` (with `<html lang="en">` on that route and an `hreflang` pointing only to languages that exist).
+- All files sharing the same `{date}-{id}` must agree on: `slug` (`id`), `date`, `type`, `author`, `updated`.
+
+For now: ship `en` only. Other languages can be added file-by-file later without code changes.
+
+---
+
+## 2. JSON schema (per file)
+
+```jsonc
 {
-  "slug": "vorvn-enters-saudi-arabia",
+  "slug": "engineering-the-meme-cook-warriors-operating-model",
+  "lang": "en",
   "date": "2026-05-23",
-  "updated": "2026-06-01",
-  "type": "news",
-
-  "author": {
+  "updated": "2026-05-23",        // optional, omit if same as date
+  "type": "analysis",              // essay | news | collaboration | analysis
+  "author": {                      // optional, defaults to Mehdi Ayache / CEO & Founder
     "name": "Mehdi Ayache",
     "title": "CEO & Founder"
   },
-
-  "cover": "/newsroom/vorvn-enters-saudi-arabia/cover.jpg",
-
-  "translations": {
-    "en": {
-      "title": "VORVN enters Saudi Arabia",
-      "excerpt": "A new chapter in the Gulf, starting with Riyadh.",
-      "coverAlt": "Riyadh skyline at dusk",
-      "body": [
-        { "type": "p",     "text": "Today we open our [Riyadh office](https://vorvn.com/contact)." },
-        { "type": "h2",    "text": "Why now" },
-        { "type": "p",     "text": "..." },
-        { "type": "image", "src": "/newsroom/vorvn-enters-saudi-arabia/office.jpg",
-                           "alt": "Our team on opening day",
-                           "caption": "Opening day, May 2026." },
-        { "type": "quote", "text": "Conviction over consensus.",
-                           "attribution": "Mehdi Ayache" },
-        { "type": "list",  "items": ["First…", "Second…"] }
-      ]
-    },
-    "fr": { "...": "same shape" },
-    "es": { "...": "same shape" },
-    "zh": { "...": "same shape" },
-    "id": { "...": "same shape" },
-    "ar": { "...": "same shape" }
-  }
+  "title": "Engineering the meme: Cook Warriors™ operating model",
+  "excerpt": "How Cook Warriors™ turned a single launch into a measurable operating model. (≤160 chars)",
+  "body": [
+    { "type": "p",     "text": "Opening paragraph with an [inline link](https://cookwarriors.com) and ™ where required." },
+    { "type": "h2",    "text": "Section heading" },
+    { "type": "h3",    "text": "Sub-section heading" },
+    { "type": "p",     "text": "More prose. External links open in a new tab automatically." },
+    { "type": "list",  "items": ["Point one", "Point two", "Point three"] },
+    { "type": "quote", "text": "The pull quote.", "attribution": "Optional source" },
+    { "type": "p",     "text": "Closing paragraph with a CTA: [contact us](/en/contact)." }
+  ]
 }
 ```
 
-### Field reference
-
-| Field | Required | Notes |
-|---|---|---|
-| `slug` | yes | Same across all langs. Matches filename. |
-| `date` | yes | `YYYY-MM-DD`. Publish date. |
-| `updated` | no | `YYYY-MM-DD`. If present → used as `dateModified` + sitemap `<lastmod>`. Falls back to `date`. |
-| `type` | yes | `essay` \| `news` \| `collaboration`. Shown as monospace tag. |
-| `author` | no | Object `{ name?, title? }`. **Missing fields fall back to "Mehdi Ayache" / "CEO & Founder"**. |
-| `cover` | no | Public path (e.g. `/newsroom/<slug>/cover.jpg`). 1200×630 recommended. If missing → no cover hero, no OG image (per your choice). |
-| `translations.<lang>.title` | yes | H1 + meta title. |
-| `translations.<lang>.excerpt` | yes | Meta description + OG description + timeline preview. |
-| `translations.<lang>.coverAlt` | only if `cover` set | Alt text for accessibility + SEO. |
-| `translations.<lang>.body[]` | yes, non-empty | Block array. |
-
-### Block types
-
-- `p` — paragraph. Supports inline `[label](url)` links.
-- `h2`, `h3` — subheadings.
-- `quote` — `{ text, attribution? }`. Upgraded pull-quote design.
-- `list` — `{ items: string[] }`. Bulleted.
-- `image` — `{ src, alt, caption? }`. Rendered as `<figure>` with `<figcaption>`.
-
-### Image storage
-
-`public/newsroom/<slug>/cover.jpg` (and any inline images). Self-contained per article. JPG for photos, PNG for graphics.
+Notes vs v2:
+- No top-level `translations` wrapper. Each file is one language.
+- New required field: `lang` (must match filename `{lang}`).
+- No `cover` / `coverAlt` anywhere. Image blocks inside body are still allowed (rare) but typically omitted.
+- `type` now accepts `analysis`.
 
 ---
 
-## 2. Author fallback
+## 3. Block reference
 
-Resolved at render time (and in JSON-LD):
+| Type    | Required fields            | Optional       | Renders as |
+|---------|----------------------------|----------------|------------|
+| `p`     | `text`                     | —              | `<p>` with inline `[label](url)` parsing |
+| `h2`    | `text`                     | —              | `<h2>` |
+| `h3`    | `text`                     | —              | `<h3>` |
+| `list`  | `items` (string[])         | —              | `<ul><li>` |
+| `quote` | `text`                     | `attribution`  | `<blockquote><p>…</p><cite>— …</cite></blockquote>` |
+| `image` | `src` (in `/public`), `alt`| `caption`      | `<figure><img/><figcaption/></figure>` |
 
-```ts
-const author = {
-  name: article.author?.name ?? "Mehdi Ayache",
-  title: article.author?.title ?? "CEO & Founder",
-};
-```
-
-Each field falls back independently — guest articles can override just `name`, keep default `title`, or vice versa.
-
----
-
-## 3. Sharing buttons
-
-Compact row at the **bottom** of each article (cleaner than top+bottom for minimalism). Four actions, all `<a>` tags or one tiny clipboard handler — zero third-party JS.
-
-- **Copy link** — `navigator.clipboard.writeText(url)`, shows a 1.5s "Copied" confirmation in monospace.
-- **WhatsApp** — `https://wa.me/?text={title} — {url}`
-- **X** — `https://twitter.com/intent/tweet?url={url}&text={title}`
-- **LinkedIn** — `https://www.linkedin.com/sharing/share-offsite/?url={url}`
-
-Design: monospace text labels (no icons needed — fits the brand), separated by `·`, hover underline. RTL-aware.
+Inline markdown supported inside any `text`: `[label](url)`. External URLs auto-open in new tab. Use relative paths (`/en/contact`) for internal links.
 
 ---
 
-## 4. Quote — new pull-quote design
+## 4. Trademark rules (mandatory)
 
-- Inter Tight, **24-28px**, tight leading (`1.35`), `text-foreground`.
-- Generous vertical margin (e.g. `my-10`).
-- Decorative oversized `"` opening mark (50-60px, low opacity) absolutely positioned, RTL-flipped.
-- Optional `attribution` rendered below: JetBrains Mono, 13px, uppercase, preceded by `—`.
-- Border-start kept as the structural anchor.
-- Wrapped in `<blockquote>` + `<cite>` for semantics.
-
----
-
-## 5. SEO — full 2026-2027 spec for articles
-
-All injected at prerender time (real HTML for crawlers, not JS).
-
-**Per article HTML head (via `SeoHead` + prerender):**
-- `<title>` = article title + ` — VORVN`
-- `<meta name="description">` = excerpt
-- `<link rel="canonical">` = `https://vorvn.com/{lang}/newsroom/{slug}`
-- `<link rel="alternate" hreflang>` ×6 + `x-default`
-- `<meta property="og:type" content="article">`
-- `og:title`, `og:description`, `og:url`, `og:locale`, `og:locale:alternate` ×5
-- `og:image` only if `cover` is set (per your decision)
-- `article:published_time`, `article:modified_time`, `article:author`, `article:section` (= type)
-- `<meta name="twitter:card" content="summary_large_image">` when cover set, else `summary`
-
-**Per article JSON-LD (two scripts):**
-
-1. `Article`:
-   ```json
-   {
-     "@context": "https://schema.org",
-     "@type": "Article",
-     "headline": "...",
-     "description": "...",
-     "datePublished": "2026-05-23",
-     "dateModified": "2026-06-01",
-     "inLanguage": "en",
-     "image": ["https://vorvn.com/newsroom/.../cover.jpg"],
-     "author":    { "@type": "Person",       "name": "Mehdi Ayache", "jobTitle": "CEO & Founder" },
-     "publisher": { "@type": "Organization", "name": "VORVN", "logo": { "@type": "ImageObject", "url": "https://vorvn.com/logo.png" } },
-     "mainEntityOfPage": "https://vorvn.com/en/newsroom/slug"
-   }
-   ```
-2. `BreadcrumbList`: Home › Newsroom › Article (localized labels).
-
-**Semantic HTML** in `NewsroomArticle.tsx`:
-- `<article>` wrapper
-- `<header>` with type tag + `<time datetime="...">` + single `<h1>`
-- Author byline in `<p>` with `rel="author"`
-- `<figure><img/><figcaption/></figure>` for images
-- `<blockquote><p>…</p><cite>…</cite></blockquote>` for quotes
-- Body uses `<h2>/<h3>` only (no h1)
-
-**Sitemap & IndexNow:**
-- Sitemap already auto-enumerates articles; switch `<lastmod>` to `updated || date`, keep per-article `<xhtml:link rel="alternate" hreflang>` set.
-- IndexNow ping list (in `scripts/indexnow-ping.mjs`) extended to include every article URL × 6 languages on each deploy.
-
-**Newsroom index page:**
-- `Article` schema not applicable; instead emit `CollectionPage` + `ItemList` JSON-LD listing all article URLs. Helps Google understand the timeline.
+Always use the proper symbol on brand names:
+- `Cook Warriors™`, `Eggscalibur™`, `VORVN®` (if registered), etc.
+- Symbol goes immediately after the name, no space.
+- Apply in `title`, `excerpt`, and `body` consistently.
+- Translations must preserve symbols even when the brand name is transliterated.
 
 ---
 
-## 6. Updated validator (`scripts/validate-newsroom.mjs`)
+## 5. SEO & length guidance
 
-Adds:
-- `updated` (optional) must match `YYYY-MM-DD` if present.
-- `author`, if present, must be object; `name`/`title` strings if present.
-- `cover`, if present, must start with `/`. If present → `coverAlt` required in every language.
-- `image` block requires `src` (starts with `/`) and `alt` (string).
-- `quote` block `attribution` optional, string if present.
-- Verifies referenced image files exist in `public/`.
+- `title` — ≤ 60 chars (Google truncates beyond).
+- `excerpt` — ≤ 160 chars (used as `<meta name="description">` and Open Graph description).
+- One `h1` is rendered by the page from `title`; body must only use `h2` / `h3`.
+- Inline links inside `p` blocks improve internal linking and authority.
+- `updated` drives `<lastmod>` in sitemap and `dateModified` in JSON-LD.
 
 ---
 
-## 7. Sample article rewrite
+## 6. Validator changes (developer notes)
 
-Rewrite `2026-05-23-welcome-to-the-newsroom.json` to exercise every field (cover + inline image placeholders, an attributed quote, a list, links) so future articles can copy-paste.
-
-We won't generate actual image files — the sample's `cover` field will be omitted (or we can add a 1200×630 placeholder later); per your "no OG image for now" choice this is fine.
+`scripts/validate-newsroom.mjs` must be updated to:
+1. Parse filename as `YYYY-MM-DD-{lang}-{id}.json`; enforce `lang ∈ LANGS`, `id` kebab-case.
+2. Require `lang` field equal to filename `{lang}`.
+3. Require an `en` file for every `{date}-{id}` group; other languages optional.
+4. Cross-check that within a group, `date`, `type`, `author`, `updated` match the `en` file.
+5. Add `analysis` to the allowed `type` set.
+6. Drop all `cover` / `coverAlt` checks.
+7. Validate body blocks against the table above (no top-level `translations`).
+8. Warn if `title > 60` or `excerpt > 160` chars (warning, not failure).
 
 ---
 
-## 8. Files
+## 7. Loader changes (`src/lib/newsroom.ts`)
 
-**Modify**
-- `src/lib/newsroom.ts` — extend `Article` / `Block` types, add `resolveAuthor()`, `getCanonical(article, lang)`.
-- `src/components/sections/VorvnNewsroomBlock.tsx` — new `image` block, upgraded `quote` with attribution.
-- `src/pages/NewsroomArticle.tsx` — semantic `<article>`, cover figure, share row, author byline.
-- `src/components/SeoHead.tsx` — article-specific OG/Twitter/article:* tags, both JSON-LD scripts.
-- `scripts/prerender.mjs` — inject new meta + JSON-LD per article, switch sitemap `<lastmod>` to `updated || date`, add `CollectionPage` to index.
-- `scripts/indexnow-ping.mjs` — include all per-language article URLs.
-- `scripts/validate-newsroom.mjs` — new field validation.
-- `src/content/newsroom/2026-05-23-welcome-to-the-newsroom.json` — rewrite as exemplar.
-- `src/i18n/locales/*.json` ×6 — add `newsroom.share.copy`, `share.copied`, `share.label`, breadcrumb labels.
-- `.lovable/memory/features/newsroom.md` + index — record new schema.
+- Glob `../content/newsroom/*.json`; bucket by `{date}-{id}`.
+- Expose `getArticle(slug, lang)`:
+  1. Try exact `{lang}` file.
+  2. Fall back to `en` file.
+  3. Return `undefined` only if neither exists.
+- `getAllArticles(lang)` returns one entry per slug, preferring `{lang}` then `en`, sorted by date desc.
+- `Article` type is now flat (no `translations` map).
+- `resolveAuthor()` fallback unchanged: `Mehdi Ayache` / `CEO & Founder`.
 
-**Create**
-- `src/components/VorvnShareRow.tsx` — share buttons component.
+---
 
-**Out of scope (can add later)**
-- Real image optimization pipeline (responsive `srcset`, AVIF/WebP) — current setup ships plain `<img loading="lazy">`.
-- Default site-wide OG image — explicitly declined for now.
-- RSS feed, comments, search, tags.
+## 8. Route & SEO behavior
+
+- `/:lang/newsroom` lists every unique slug; titles/excerpts use `{lang}` else `en`.
+- `/:lang/newsroom/:slug` serves `{lang}` else `en`. When falling back, the page emits `<html lang="en">` and only lists existing language alternates in `hreflang`.
+- `x-default` always points to the `en` URL.
+- JSON-LD `inLanguage` reflects the actually-served language.
+
+---
+
+## 9. Writer checklist (per article)
+
+- [ ] Filename: `YYYY-MM-DD-en-{id}.json`, `id` kebab-case.
+- [ ] `lang: "en"`, `date` matches filename.
+- [ ] `type` is one of: `essay`, `news`, `collaboration`, `analysis`.
+- [ ] `title` ≤ 60 chars, includes ™ where applicable.
+- [ ] `excerpt` ≤ 160 chars, includes ™ where applicable.
+- [ ] First block is a `p` that hooks the reader.
+- [ ] Use `h2` for sections, `h3` only inside sections.
+- [ ] At least 2 inline links: one external (source/brand), one internal (`/en/contact` or `/en/newsroom`).
+- [ ] Optional `quote` block for the standout line; `attribution` only if not the author.
+- [ ] No `cover` field. No `image` blocks unless essential.
+- [ ] Closing `p` ends with a clear CTA link.
+
+---
+
+## 10. Files to modify (when build mode is approved)
+
+- `scripts/validate-newsroom.mjs` — new filename + flat-schema validation, allow `analysis`, drop cover.
+- `src/lib/newsroom.ts` — flat `Article`, per-language files, fallback resolver.
+- `src/components/sections/VorvnNewsroomBlock.tsx` — consume flat shape.
+- `src/pages/Newsroom.tsx`, `src/pages/NewsroomArticle.tsx` — pass `lang`, render fallback notice if served from `en`.
+- `src/components/SeoHead.tsx`, `scripts/prerender.mjs` — drop cover/OG image, restrict `hreflang` to existing langs, `x-default → en`.
+- `src/content/newsroom/2026-05-23-welcome-to-the-newsroom.json` — migrate to `2026-05-23-en-welcome-to-the-newsroom.json` flat shape; delete old file.
+- `.lovable/memory/features/newsroom.md` — update to v3 rules.
