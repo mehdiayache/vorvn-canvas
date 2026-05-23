@@ -5,7 +5,7 @@ import { LANGUAGES, RTL_LANGUAGES } from '@/i18n';
 
 const BASE_URL = 'https://www.vorvn.com';
 
-type PageKey = 'home' | 'contact' | 'notFound';
+type PageKey = 'home' | 'contact' | 'notFound' | 'newsroom';
 
 const SEO: Record<PageKey, Record<string, { title: string; desc: string }>> = {
   home: {
