@@ -75,18 +75,21 @@ export default function Footer() {
       <div className="lg:text-right">
         <Link
           to={`/${lang}/contact`}
-          className="font-mono text-[11px] tracking-[0.06em] text-foreground block mb-[10px] hover:text-mid transition-colors duration-200"
+          className="inline-flex items-center gap-2 lg:flex-row-reverse font-mono text-[11px] tracking-[0.06em] text-foreground mb-[10px] hover:text-mid transition-colors duration-200"
         >
-          {t('contact.writeUs')}
+          <Mail size={13} strokeWidth={1.5} aria-hidden />
+          <span>{t('contact.writeUs')}</span>
         </Link>
         <Link
           to={`/${lang}/newsroom`}
-          className="font-mono text-[11px] tracking-[0.06em] text-mid block mb-[10px] hover:text-foreground transition-colors duration-200"
+          className="inline-flex items-center gap-2 lg:flex-row-reverse font-mono text-[11px] tracking-[0.06em] text-mid mb-[10px] hover:text-foreground transition-colors duration-200"
         >
-          {t('nav.newsroom')}
+          <Newspaper size={13} strokeWidth={1.5} aria-hidden />
+          <span>{t('nav.newsroom')}</span>
         </Link>
         <div className="font-mono text-[9px] tracking-[0.14em] text-mid">{t('footer.geo')}</div>
       </div>
+
     </footer>
   );
 }
