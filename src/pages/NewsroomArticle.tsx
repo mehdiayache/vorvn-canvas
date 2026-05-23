@@ -133,6 +133,8 @@ export default function NewsroomArticle() {
               )}
             </nav>
           )}
+         </div>
+         <VorvnNewsroomSidebar lang={currentLang} />
         </div>
       </main>
 
