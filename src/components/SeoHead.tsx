@@ -356,7 +356,7 @@ export default function SeoHead({
         description: seo.desc,
         datePublished: articleMeta.publishedTime,
         dateModified: articleMeta.modifiedTime,
-        inLanguage: lang,
+        inLanguage: articleMeta.servedLang || lang,
         image: [ogImage],
         articleSection: articleMeta.section,
         author: {
