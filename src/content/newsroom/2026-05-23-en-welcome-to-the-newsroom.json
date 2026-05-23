@@ -1,0 +1,16 @@
+{
+  "slug": "welcome-to-the-newsroom",
+  "lang": "en",
+  "date": "2026-05-23",
+  "type": "essay",
+  "title": "Welcome to the VORVN™ Newsroom",
+  "excerpt": "Notes, essays, and announcements from VORVN™ and its brands. Operator perspective, no marketing fluff.",
+  "body": [
+    { "type": "p", "text": "We have spent the last years building quietly. Today we open a small window into our work — not a blog, not a press wire, but a record of what we think, what we ship, and who we choose to build with." },
+    { "type": "h2", "text": "What you will find here" },
+    { "type": "p", "text": "Three kinds of entries. Essays on how we operate. News when one of our [brands](/en/#portfolio) ships something we are proud of. Collaborations when we welcome a new partner into the VORVN™ orbit." },
+    { "type": "p", "text": "We will not chase a publishing rhythm. We will write when there is something worth saying." },
+    { "type": "quote", "text": "Make the work the announcement." },
+    { "type": "p", "text": "If you want to talk, the door is always open via our [contact page](/en/contact)." }
+  ]
+}
