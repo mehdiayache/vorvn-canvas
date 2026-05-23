@@ -241,6 +241,7 @@
     "intro": "Essays, news and collaborations. We publish when there is something worth saying — not on a schedule.",
     "empty": "No entries yet. The first one is coming.",
     "by": "By",
+    "updated": "Updated",
     "back": "Back to Newsroom",
     "prev": "Previous",
     "next": "Next",
@@ -249,6 +250,15 @@
       "essay": "Essay",
       "news": "News",
       "collaboration": "Collaboration"
+    },
+    "share": {
+      "label": "Share",
+      "copy": "Copy link",
+      "copied": "Copied",
+      "whatsapp": "WhatsApp",
+      "x": "X",
+      "linkedin": "LinkedIn"
     }
   }
+
 }
