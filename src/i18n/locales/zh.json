@@ -4,7 +4,8 @@
     "contact": "联系",
     "light": "浅色",
     "dark": "深色",
-    "menu": "菜单"
+    "menu": "菜单",
+    "newsroom": "新闻中心"
   },
   "hero": {
     "headline": "自主且独立的\nIP 与品牌设计者。",
@@ -233,5 +234,21 @@
     "phones": "电话",
     "directLabel": "直接联系",
     "writeUs": "联系我们 →"
+  },
+  "newsroom": {
+    "tag": "VORVN · 新闻中心",
+    "headline": "来自控股的笔记。",
+    "intro": "随笔、新闻与合作。当有值得说的话时我们才发布 — 不按时间表。",
+    "empty": "尚无条目。首篇即将发布。",
+    "by": "作者",
+    "back": "返回新闻中心",
+    "prev": "上一篇",
+    "next": "下一篇",
+    "adjacent": "更多文章",
+    "types": {
+      "essay": "随笔",
+      "news": "新闻",
+      "collaboration": "合作"
+    }
   }
 }
