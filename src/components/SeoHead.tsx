@@ -68,6 +68,32 @@ const SEO: Record<PageKey, Record<string, { title: string; desc: string }>> = {
     id: { title: '404: Halaman tidak ditemukan | VORVN', desc: 'Halaman tidak ditemukan.' },
     ar: { title: '404: الصفحة غير موجودة | VORVN', desc: 'الصفحة غير موجودة.' },
   },
+  newsroom: {
+    en: {
+      title: 'VORVN Newsroom: Essays, News & Collaborations',
+      desc: 'Notes, essays and announcements from VORVN and its brands. Operator perspective, no marketing fluff. Hong Kong & Bali.',
+    },
+    fr: {
+      title: 'Salle de Presse VORVN: Essais, Actualités & Collaborations',
+      desc: 'Notes, essais et annonces de VORVN et de ses marques. Vision opérateur, sans marketing. Hong Kong & Bali.',
+    },
+    es: {
+      title: 'Sala de Prensa VORVN: Ensayos, Noticias y Colaboraciones',
+      desc: 'Notas, ensayos y anuncios de VORVN y sus marcas. Perspectiva de operador, sin marketing. Hong Kong y Bali.',
+    },
+    zh: {
+      title: 'VORVN 新闻中心: 随笔、新闻与合作',
+      desc: '来自 VORVN 及旗下品牌的随笔、文章与公告。运营者视角,不做营销修饰。香港与巴厘岛。',
+    },
+    id: {
+      title: 'Newsroom VORVN: Esai, Berita & Kolaborasi',
+      desc: 'Catatan, esai, dan pengumuman dari VORVN dan merek-mereknya. Perspektif operator, tanpa basa-basi pemasaran. Hong Kong & Bali.',
+    },
+    ar: {
+      title: 'غرفة أخبار VORVN: مقالات، أخبار، وتعاونات',
+      desc: 'ملاحظات ومقالات وإعلانات من VORVN وعلاماتها. منظور المُشغِّل، دون تسويق. هونغ كونغ وبالي.',
+    },
+  },
 };
 
 interface SeoHeadProps {
