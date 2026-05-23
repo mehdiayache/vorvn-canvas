@@ -152,6 +152,7 @@ export default function SeoHead({
   titleOverride,
   descriptionOverride,
   articleMeta,
+  hreflangLangs,
 }: SeoHeadProps) {
 
   const { i18n } = useTranslation();
