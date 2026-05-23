@@ -715,7 +715,10 @@ for (const l of LANGUAGES) {
     desc: seo.desc,
     canonical,
     hreflangBlock: buildHreflangBlock('/newsroom'),
-    jsonLdScripts: [breadcrumbJsonLd(l.code, '/newsroom', seo.label)],
+    jsonLdScripts: [
+      collectionPageJsonLd(l.code, seo),
+      breadcrumbJsonLd(l.code, '/newsroom', seo.label),
+    ],
   });
   let html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
   html = injectBodyH1(html, seo.h1);
@@ -726,10 +729,13 @@ for (const l of LANGUAGES) {
 
 // Each article × each language
 for (const article of newsroomArticles) {
+  const author = resolveAuthor(article);
   for (const l of LANGUAGES) {
     const tr = article.translations[l.code] || article.translations.en;
     const canonical = `${BASE_URL}/${l.code}/newsroom/${article.slug}`;
     const title = `${tr.title} | VORVN`;
+    const ogImage = article.cover ? `${BASE_URL}${article.cover}` : undefined;
+    const newsroomLabel = NEWSROOM_SEO[l.code].label;
     const headBlock = buildHeadBlock({
       lang: l.code,
       dir: l.dir,
@@ -738,9 +744,26 @@ for (const article of newsroomArticles) {
       desc: tr.excerpt,
       canonical,
       hreflangBlock: buildHreflangBlock(`/newsroom/${article.slug}`),
+      ogType: 'article',
+      ogImage,
+      ogImageAlt: tr.coverAlt,
+      articleMeta: {
+        publishedTime: article.date,
+        modifiedTime: article.updated || article.date,
+        authorName: author.name,
+        section: article.type,
+      },
       jsonLdScripts: [
         articleJsonLd(article, l.code),
-        breadcrumbJsonLd(l.code, `/newsroom/${article.slug}`, tr.title),
+        {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'VORVN', item: `${BASE_URL}/${l.code}` },
+            { '@type': 'ListItem', position: 2, name: newsroomLabel, item: `${BASE_URL}/${l.code}/newsroom` },
+            { '@type': 'ListItem', position: 3, name: tr.title, item: canonical },
+          ],
+        },
       ],
     });
     let html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
