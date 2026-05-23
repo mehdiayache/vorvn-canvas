@@ -73,20 +73,25 @@ export default function Footer() {
 
       {/* 4 — Contact */}
       <div className="lg:text-right">
-        <Link
-          to={`/${lang}/contact`}
-          className="inline-flex items-center gap-2 lg:flex-row-reverse font-mono text-[11px] tracking-[0.06em] text-foreground mb-[10px] hover:text-mid transition-colors duration-200"
-        >
-          <Mail size={13} strokeWidth={1.5} aria-hidden />
-          <span>{t('contact.writeUs')}</span>
-        </Link>
-        <Link
-          to={`/${lang}/newsroom`}
-          className="inline-flex items-center gap-2 lg:flex-row-reverse font-mono text-[11px] tracking-[0.06em] text-mid mb-[10px] hover:text-foreground transition-colors duration-200"
-        >
-          <Newspaper size={13} strokeWidth={1.5} aria-hidden />
-          <span>{t('nav.newsroom')}</span>
-        </Link>
+        <div className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid mb-3">
+          {t('nav.contact')}
+        </div>
+        <div className="flex flex-col gap-2 lg:items-end mb-4">
+          <Link
+            to={`/${lang}/contact`}
+            className="inline-flex items-center gap-2 lg:flex-row-reverse text-[11px] font-normal tracking-[0.1em] uppercase text-mid hover:text-foreground transition-colors duration-200"
+          >
+            <Mail size={12} strokeWidth={1.5} aria-hidden />
+            <span>{t('contact.writeUs')}</span>
+          </Link>
+          <Link
+            to={`/${lang}/newsroom`}
+            className="inline-flex items-center gap-2 lg:flex-row-reverse text-[11px] font-normal tracking-[0.1em] uppercase text-mid hover:text-foreground transition-colors duration-200"
+          >
+            <Newspaper size={12} strokeWidth={1.5} aria-hidden />
+            <span>{t('nav.newsroom')}</span>
+          </Link>
+        </div>
         <div className="font-mono text-[9px] tracking-[0.14em] text-mid">{t('footer.geo')}</div>
       </div>
 
