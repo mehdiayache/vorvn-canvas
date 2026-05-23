@@ -28,7 +28,9 @@ export default function Index() {
       <VorvnOperateSection />
       <VorvnInvestorsSection />
       <VorvnClosingSection />
+      <VorvnNewsroomTeaser />
       <VorvnFooter />
+
     </div>
   );
 }
