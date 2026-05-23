@@ -9,7 +9,9 @@ import VorvnOperateSection from '@/components/sections/VorvnOperateSection';
 import VorvnFounderSection from '@/components/sections/VorvnFounderSection';
 import VorvnInvestorsSection from '@/components/sections/VorvnInvestorsSection';
 import VorvnClosingSection from '@/components/sections/VorvnClosingSection';
+import VorvnNewsroomTeaser from '@/components/sections/VorvnNewsroomTeaser';
 import VorvnFooter from '@/components/sections/VorvnFooter';
+
 
 export default function Index() {
   const scrollRef = useScrollReveal();
