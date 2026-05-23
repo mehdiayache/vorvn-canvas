@@ -28,25 +28,24 @@ export default function VorvnShareRow({ url, title }: Props) {
     'font-mono text-[10px] tracking-[0.18em] uppercase text-mid hover:text-foreground transition-colors';
 
   return (
-    <div className="mt-16 pt-8 border-t border-rule flex flex-wrap items-center gap-x-5 gap-y-3">
-      <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-mid/70">
+    <div className="mt-16 pt-8 border-t border-rule">
+      <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-mid/70 mb-4 md:mb-0 md:inline-block md:mr-5 md:align-middle">
         {t('newsroom.share.label')}
-      </span>
-      <button type="button" onClick={onCopy} className={linkClass} aria-live="polite">
-        {copied ? t('newsroom.share.copied') : t('newsroom.share.copy')}
-      </button>
-      <span aria-hidden className="text-mid/40">·</span>
-      <a href={wa} target="_blank" rel="noopener noreferrer" className={linkClass}>
-        {t('newsroom.share.whatsapp')}
-      </a>
-      <span aria-hidden className="text-mid/40">·</span>
-      <a href={x} target="_blank" rel="noopener noreferrer" className={linkClass}>
-        {t('newsroom.share.x')}
-      </a>
-      <span aria-hidden className="text-mid/40">·</span>
-      <a href={li} target="_blank" rel="noopener noreferrer" className={linkClass}>
-        {t('newsroom.share.linkedin')}
-      </a>
+      </div>
+      <div className="flex flex-col md:inline-flex md:flex-row md:flex-wrap md:items-center gap-y-3 md:gap-x-5 md:align-middle">
+        <button type="button" onClick={onCopy} className={linkClass} aria-live="polite">
+          {copied ? t('newsroom.share.copied') : t('newsroom.share.copy')}
+        </button>
+        <a href={wa} target="_blank" rel="noopener noreferrer" className={linkClass}>
+          {t('newsroom.share.whatsapp')}
+        </a>
+        <a href={x} target="_blank" rel="noopener noreferrer" className={linkClass}>
+          {t('newsroom.share.x')}
+        </a>
+        <a href={li} target="_blank" rel="noopener noreferrer" className={linkClass}>
+          {t('newsroom.share.linkedin')}
+        </a>
+      </div>
     </div>
   );
 }
