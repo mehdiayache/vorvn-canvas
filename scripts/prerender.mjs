@@ -558,11 +558,180 @@ for (const slug of ['privacy', 'notice']) {
   fs.writeFileSync(baseHtmlPath, html, 'utf8');
 }
 
+// ============ NEWSROOM ============
+const newsroomDir = path.resolve(__dirname, '..', 'src', 'content', 'newsroom');
+const newsroomArticles = [];
+if (fs.existsSync(newsroomDir)) {
+  for (const f of fs.readdirSync(newsroomDir).filter((x) => x.endsWith('.json'))) {
+    try {
+      newsroomArticles.push(JSON.parse(fs.readFileSync(path.join(newsroomDir, f), 'utf8')));
+    } catch (e) {
+      console.error('[prerender] newsroom parse fail:', f, e.message);
+    }
+  }
+  newsroomArticles.sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+const NEWSROOM_SEO = {
+  en: { title: 'VORVN Newsroom: Essays, News & Collaborations', desc: 'Notes, essays and announcements from VORVN and its brands. Operator perspective, no marketing fluff. Hong Kong & Bali.', h1: 'VORVN Newsroom — Essays, News & Collaborations', label: 'Newsroom' },
+  fr: { title: 'Salle de Presse VORVN: Essais, Actualités & Collaborations', desc: 'Notes, essais et annonces de VORVN et de ses marques. Vision opérateur, sans marketing. Hong Kong & Bali.', h1: 'Salle de Presse VORVN — Essais, actualités et collaborations', label: 'Salle de presse' },
+  es: { title: 'Sala de Prensa VORVN: Ensayos, Noticias y Colaboraciones', desc: 'Notas, ensayos y anuncios de VORVN y sus marcas. Perspectiva de operador, sin marketing. Hong Kong y Bali.', h1: 'Sala de Prensa VORVN — Ensayos, noticias y colaboraciones', label: 'Sala de prensa' },
+  zh: { title: 'VORVN 新闻中心: 随笔、新闻与合作', desc: '来自 VORVN 及旗下品牌的随笔、文章与公告。运营者视角,不做营销修饰。香港与巴厘岛。', h1: 'VORVN 新闻中心 — 随笔、新闻与合作', label: '新闻中心' },
+  id: { title: 'Newsroom VORVN: Esai, Berita & Kolaborasi', desc: 'Catatan, esai, dan pengumuman dari VORVN dan merek-mereknya. Perspektif operator, tanpa basa-basi pemasaran. Hong Kong & Bali.', h1: 'Newsroom VORVN — Esai, berita & kolaborasi', label: 'Newsroom' },
+  ar: { title: 'غرفة أخبار VORVN: مقالات، أخبار، وتعاونات', desc: 'ملاحظات ومقالات وإعلانات من VORVN وعلاماتها. منظور المُشغِّل، دون تسويق. هونغ كونغ وبالي.', h1: 'غرفة أخبار VORVN — مقالات، أخبار وتعاونات', label: 'غرفة الأخبار' },
+};
+
+function stripInlineLinks(s) {
+  return String(s).replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
+}
+
+function blockToHtml(b) {
+  if (!b) return '';
+  if (b.type === 'list') {
+    const items = (b.items || []).map((it) => `<li>${escapeHtml(stripInlineLinks(it))}</li>`).join('');
+    return `<ul>${items}</ul>`;
+  }
+  const tag = b.type === 'quote' ? 'blockquote' : b.type;
+  return `<${tag}>${escapeHtml(stripInlineLinks(b.text || ''))}</${tag}>`;
+}
+
+function buildNewsroomIndexContent(lang) {
+  const seo = NEWSROOM_SEO[lang];
+  const parts = [];
+  parts.push(hTag(2, seo.h1));
+  parts.push(pTag(seo.desc));
+  for (const a of newsroomArticles) {
+    const tr = a.translations[lang] || a.translations.en;
+    parts.push(hTag(3, tr.title));
+    parts.push(pTag(`${a.date} — ${tr.excerpt}`));
+  }
+  return parts.join('');
+}
+
+function buildArticleContent(article, lang) {
+  const tr = article.translations[lang] || article.translations.en;
+  const parts = [];
+  parts.push(hTag(1, tr.title));
+  parts.push(pTag(`${article.date}${article.author ? ' — ' + article.author : ''}`));
+  parts.push(pTag(tr.excerpt));
+  for (const b of tr.body) parts.push(blockToHtml(b));
+  return parts.join('');
+}
+
+function articleJsonLd(article, lang) {
+  const tr = article.translations[lang] || article.translations.en;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: tr.title,
+    description: tr.excerpt,
+    datePublished: article.date,
+    dateModified: article.date,
+    inLanguage: lang,
+    author: { '@type': 'Person', name: article.author || 'VORVN' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'VORVN',
+      logo: { '@type': 'ImageObject', url: `${BASE_URL}/apple-touch-icon.png` },
+    },
+    mainEntityOfPage: `${BASE_URL}/${lang}/newsroom/${article.slug}`,
+  };
+}
+
+// Newsroom index per language
+for (const l of LANGUAGES) {
+  const seo = NEWSROOM_SEO[l.code];
+  const canonical = `${BASE_URL}/${l.code}/newsroom`;
+  const headBlock = buildHeadBlock({
+    lang: l.code,
+    dir: l.dir,
+    ogLocale: l.ogLocale,
+    title: seo.title,
+    desc: seo.desc,
+    canonical,
+    hreflangBlock: buildHreflangBlock('/newsroom'),
+    jsonLdScripts: [breadcrumbJsonLd(l.code, '/newsroom', seo.label)],
+  });
+  let html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
+  html = injectBodyH1(html, seo.h1);
+  html = injectPrerenderedContent(html, buildNewsroomIndexContent(l.code));
+  writeFile(`${l.code}/newsroom/index.html`, html);
+  count++;
+}
+
+// Each article × each language
+for (const article of newsroomArticles) {
+  for (const l of LANGUAGES) {
+    const tr = article.translations[l.code] || article.translations.en;
+    const canonical = `${BASE_URL}/${l.code}/newsroom/${article.slug}`;
+    const title = `${tr.title} | VORVN`;
+    const headBlock = buildHeadBlock({
+      lang: l.code,
+      dir: l.dir,
+      ogLocale: l.ogLocale,
+      title,
+      desc: tr.excerpt,
+      canonical,
+      hreflangBlock: buildHreflangBlock(`/newsroom/${article.slug}`),
+      jsonLdScripts: [
+        articleJsonLd(article, l.code),
+        breadcrumbJsonLd(l.code, `/newsroom/${article.slug}`, tr.title),
+      ],
+    });
+    let html = injectInto(baseHtml, { lang: l.code, dir: l.dir, headBlock });
+    html = injectBodyH1(html, tr.title);
+    html = injectPrerenderedContent(html, buildArticleContent(article, l.code));
+    writeFile(`${l.code}/newsroom/${article.slug}/index.html`, html);
+    count++;
+  }
+}
+
+// ============ SITEMAP ============
 const sitemapPath = path.join(distDir, 'sitemap.xml');
 if (fs.existsSync(sitemapPath)) {
   let sm = fs.readFileSync(sitemapPath, 'utf8');
   sm = sm.replace(/<lastmod>[\d-]+<\/lastmod>/g, `<lastmod>${NOW}</lastmod>`);
+
+  // Append Newsroom URLs if not already present
+  if (!sm.includes('/newsroom')) {
+    const hreflangLinks = (suffix) =>
+      LANGUAGES.map(
+        (l) =>
+          `      <xhtml:link rel="alternate" hreflang="${l.code}" href="${BASE_URL}/${l.code}${suffix}" />`,
+      ).join('\n') +
+      `\n      <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}/en${suffix}" />`;
+
+    const blocks = [];
+    blocks.push('\n  <!-- ============ NEWSROOM ============ -->');
+    for (const l of LANGUAGES) {
+      blocks.push(
+        `  <url>
+    <loc>${BASE_URL}/${l.code}/newsroom</loc>
+    <lastmod>${NOW}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+${hreflangLinks('/newsroom')}
+  </url>`,
+      );
+    }
+    for (const a of newsroomArticles) {
+      for (const l of LANGUAGES) {
+        blocks.push(
+          `  <url>
+    <loc>${BASE_URL}/${l.code}/newsroom/${a.slug}</loc>
+    <lastmod>${a.date}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+${hreflangLinks(`/newsroom/${a.slug}`)}
+  </url>`,
+        );
+      }
+    }
+    sm = sm.replace('</urlset>', blocks.join('\n') + '\n</urlset>');
+  }
+
   fs.writeFileSync(sitemapPath, sm, 'utf8');
 }
 
-console.log(`[prerender] Wrote ${count} localized HTML files + refreshed root + sitemap.`);
+console.log(`[prerender] Wrote ${count} localized HTML files + refreshed root + sitemap. Newsroom: ${newsroomArticles.length} article(s).`);
+
