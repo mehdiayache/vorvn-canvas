@@ -54,7 +54,7 @@ export default function NewsroomArticle() {
         className="flex-1 pt-32 pb-24"
         style={{ padding: '128px var(--gutter) 96px' }}
       >
-        <div className="max-w-[1200px] mx-auto md:grid md:grid-cols-[minmax(0,68ch)_minmax(0,1fr)] md:gap-16 lg:gap-24">
+        <div className="mx-auto max-w-[68ch] lg:max-w-[1080px] lg:grid lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-20 xl:max-w-[1180px] xl:grid-cols-[minmax(0,1fr)_280px] xl:gap-24">
          <div className="min-w-0">
           <Link
             to={`/${currentLang}/newsroom`}
