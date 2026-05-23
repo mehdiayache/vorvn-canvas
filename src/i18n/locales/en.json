@@ -233,7 +233,7 @@
     },
     "phones": "Phones",
     "directLabel": "Direct",
-    "writeUs": "Contact us →"
+    "writeUs": "Contact us"
   },
   "newsroom": {
     "tag": "VORVN · Newsroom",
@@ -258,7 +258,7 @@
       "whatsapp": "WhatsApp",
       "x": "X",
       "linkedin": "LinkedIn"
-    }
+    },
+    "viewAll": "View all"
   }
-
 }
