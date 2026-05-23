@@ -1,79 +1,49 @@
 ---
 name: Newsroom
-description: File-based JSON-per-article publishing, 6 langs required, prerendered + sitemap auto. Schema v2 with author fallback, cover image, inline images, attributed quotes, dateModified, sharing.
+description: v3 file-based publishing — one JSON per language per article, English fallback, no covers
 type: feature
 ---
 
-# Newsroom
+# Newsroom (v3)
 
-Flat, file-based publishing. Each article is one JSON in `src/content/newsroom/` holding all 6 languages. No CMS, no database, no admin UI.
+## Filename convention
+`src/content/newsroom/YYYY-MM-DD-{lang}-{id}.json`
+- `{lang}` ∈ en, fr, es, zh, id, ar
+- `{id}` = kebab-case slug, identical across languages
+- English file is REQUIRED per article; other languages optional and fall back to `en`
 
-## File naming
-
-`src/content/newsroom/YYYY-MM-DD-slug.json` — filename must match `${date}-${slug}.json` or validation fails.
-
-## JSON schema (v2)
-
+## JSON schema (flat, one language per file)
 ```json
 {
-  "slug": "unique-slug",
-  "date": "2026-05-23",
-  "updated": "2026-06-01",          // optional, drives dateModified + sitemap lastmod
-  "type": "essay|news|collaboration",
-  "author": {                        // optional, each field falls back independently
-    "name": "Mehdi Ayache",
-    "title": "CEO & Founder"
-  },
-  "cover": "/newsroom/<slug>/cover.jpg",  // optional, 1200x630, used as OG image when set
-  "translations": {
-    "en": {
-      "title": "...",
-      "excerpt": "...",
-      "coverAlt": "...",             // required only when cover is set
-      "body": [ ...blocks ]
-    },
-    "fr": { ... }, "es": { ... }, "zh": { ... }, "id": { ... }, "ar": { ... }
-  }
+  "slug": "...", "lang": "en", "date": "YYYY-MM-DD",
+  "updated": "YYYY-MM-DD",
+  "type": "essay|news|collaboration|analysis",
+  "author": { "name": "...", "title": "..." },
+  "title": "...", "excerpt": "...",
+  "body": [ { "type": "p|h2|h3|list|quote|image", ... } ]
 }
 ```
 
-All 6 languages required. Validator (`scripts/validate-newsroom.mjs`) runs before build.
+## Rules
+- Author fallback: Mehdi Ayache / CEO & Founder when `author` omitted
+- TM/® symbols are mandatory on brand names (Cook Warriors™, VORVN™, etc.) — including title/excerpt
+- No `cover` images. No default OG image for articles — site default is reused.
+- Inline links via `[label](url)` inside any `text`. External auto-opens new tab.
+- `title` ≤ 60 chars (warn), `excerpt` ≤ 160 chars (warn)
+- Cross-file fields (`date`, `type`, `updated`, `author.name`) must match the `en` file within a group
 
-## Author fallback
-
-If `author` (or any of its fields) is missing → defaults to **Mehdi Ayache / CEO & Founder**. Implemented in `resolveAuthor()` in `src/lib/newsroom.ts` AND mirrored in `scripts/prerender.mjs`.
-
-## Block types in body[]
-
-- `{ "type": "p", "text": "..." }` — supports inline `[label](url)` links, external URLs open in new tab
-- `{ "type": "h2", "text": "..." }` / `{ "type": "h3", "text": "..." }`
-- `{ "type": "quote", "text": "...", "attribution": "Name" }` — attribution optional, renders as pull-quote
-- `{ "type": "list", "items": ["...", "..."] }`
-- `{ "type": "image", "src": "/newsroom/<slug>/img.jpg", "alt": "...", "caption": "..." }` — caption optional, validator checks src exists in /public
-
-## Images
-
-Stored under `public/newsroom/<slug>/`. Self-contained per article — easy to delete cleanly. Validator verifies referenced files exist.
-
-## SEO baked in
-
-Per article, prerender emits:
-- `<title>`, `<meta description>`, canonical, hreflang ×6 + x-default
-- `og:type=article`, `og:image` (cover when set, else default site OG), full og:* set
-- `article:published_time`, `article:modified_time`, `article:author`, `article:section`
-- Twitter `summary_large_image`
-- JSON-LD `Article` (with author Person + jobTitle, publisher Organization) and `BreadcrumbList` (Home › Newsroom › Article, localized labels)
-
-Newsroom index page also emits `CollectionPage` + `ItemList` JSON-LD enumerating all articles.
-
-Sitemap: `<lastmod>` uses `updated || date`. Per-article hreflang block included automatically.
-
-IndexNow: reads sitemap, so every article URL ×6 langs pings automatically on each deploy.
+## Routing
+- `/:lang/newsroom` — index, lists articles in requested lang (else en fallback per row)
+- `/:lang/newsroom/:slug` — serves requested lang file else en; `<html lang>` reflects the served language
+- hreflang alternates per-article are restricted to languages that actually exist; `x-default` always points to `/en/...`
 
 ## Sharing
+`VorvnShareRow`: Copy link · WhatsApp · X · LinkedIn
 
-`VorvnShareRow` component at bottom of every article. Buttons: Copy link, WhatsApp, X, LinkedIn. All native `<a>` or clipboard API — zero third-party scripts.
-
-## Quote design
-
-Pull-quote with oversized decorative `"` opening mark (low opacity, RTL-aware), 22-26px Inter Tight, border-start anchor, `<cite>` for attribution in JetBrains Mono.
+## Files
+- `src/lib/newsroom.ts` — loader (groups by slug, picks lang with en fallback)
+- `src/components/sections/VorvnNewsroomBlock.tsx` — block renderer
+- `src/pages/Newsroom.tsx`, `src/pages/NewsroomArticle.tsx`
+- `src/components/SeoHead.tsx` — supports `hreflangLangs` subset + `articleMeta.servedLang`
+- `scripts/validate-newsroom.mjs` — pre-build schema/filename validator
+- `scripts/prerender.mjs` — emits per-lang static HTML + sitemap + JSON-LD

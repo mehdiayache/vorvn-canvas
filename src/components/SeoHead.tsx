@@ -101,8 +101,8 @@ interface ArticleMeta {
   modifiedTime: string;
   authorName: string;
   section: string;
-  cover?: string;
-  coverAlt?: string;
+  /** Actual language served (may differ from URL lang when falling back to en). */
+  servedLang?: string;
 }
 
 interface SeoHeadProps {
@@ -117,6 +117,8 @@ interface SeoHeadProps {
   descriptionOverride?: string;
   /** When set, emits og:type=article and Article JSON-LD. */
   articleMeta?: ArticleMeta;
+  /** When set, restricts hreflang alternates to this subset (used per-article). */
+  hreflangLangs?: string[];
 }
 
 function upsertMeta(selector: string, attr: 'name' | 'property', key: string, content: string) {
@@ -150,6 +152,7 @@ export default function SeoHead({
   titleOverride,
   descriptionOverride,
   articleMeta,
+  hreflangLangs,
 }: SeoHeadProps) {
 
   const { i18n } = useTranslation();
@@ -180,10 +183,8 @@ export default function SeoHead({
     document.documentElement.dir = RTL_LANGUAGES.includes(lang) ? 'rtl' : 'ltr';
 
     const url = `${BASE_URL}/${lang}${suffix}`;
-    const ogImage = articleMeta?.cover
-      ? `${BASE_URL}${articleMeta.cover}`
-      : `${BASE_URL}/og-image.jpg`;
-    const ogImageAlt = articleMeta?.coverAlt || seo.title;
+    const ogImage = `${BASE_URL}/og-image.jpg`;
+    const ogImageAlt = seo.title;
 
     // Standard meta
     upsertMeta('meta[name="description"]', 'name', 'description', seo.desc);
@@ -231,9 +232,13 @@ export default function SeoHead({
     // Canonical
     upsertLink('canonical', url);
 
-    // hreflang alternates, clean & re-emit per render
+    // hreflang alternates, clean & re-emit per render.
+    // If hreflangLangs is provided, only emit those (used for per-article availability).
     document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
-    LANGUAGES.forEach((l) => {
+    const langsToEmit = hreflangLangs && hreflangLangs.length > 0
+      ? LANGUAGES.filter((l) => hreflangLangs.includes(l.code))
+      : LANGUAGES;
+    langsToEmit.forEach((l) => {
       const link = document.createElement('link');
       link.rel = 'alternate';
       link.hreflang = l.code;
@@ -351,7 +356,7 @@ export default function SeoHead({
         description: seo.desc,
         datePublished: articleMeta.publishedTime,
         dateModified: articleMeta.modifiedTime,
-        inLanguage: lang,
+        inLanguage: articleMeta.servedLang || lang,
         image: [ogImage],
         articleSection: articleMeta.section,
         author: {
@@ -377,7 +382,7 @@ export default function SeoHead({
       document.head.querySelectorAll('script[data-seo-jsonld]').forEach((el) => el.remove());
       document.head.querySelectorAll('meta[property^="article:"]').forEach((el) => el.remove());
     };
-  }, [lang, page, suffix, noindex, titleOverride, descriptionOverride, articleMeta]);
+  }, [lang, page, suffix, noindex, titleOverride, descriptionOverride, articleMeta, hreflangLangs]);
 
 
   return null;
