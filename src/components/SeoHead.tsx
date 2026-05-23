@@ -232,9 +232,13 @@ export default function SeoHead({
     // Canonical
     upsertLink('canonical', url);
 
-    // hreflang alternates, clean & re-emit per render
+    // hreflang alternates, clean & re-emit per render.
+    // If hreflangLangs is provided, only emit those (used for per-article availability).
     document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
-    LANGUAGES.forEach((l) => {
+    const langsToEmit = hreflangLangs && hreflangLangs.length > 0
+      ? LANGUAGES.filter((l) => hreflangLangs.includes(l.code))
+      : LANGUAGES;
+    langsToEmit.forEach((l) => {
       const link = document.createElement('link');
       link.rel = 'alternate';
       link.hreflang = l.code;
