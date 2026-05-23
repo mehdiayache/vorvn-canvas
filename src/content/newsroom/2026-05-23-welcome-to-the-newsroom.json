@@ -2,7 +2,6 @@
   "slug": "welcome-to-the-newsroom",
   "date": "2026-05-23",
   "type": "essay",
-  "author": "Mehdi Berberos",
   "translations": {
     "en": {
       "title": "Welcome to the VORVN Newsroom",
@@ -12,7 +11,7 @@
         { "type": "h2", "text": "What you will find here" },
         { "type": "p", "text": "Three kinds of entries. Essays on how we operate. News when one of our [brands](/en/#portfolio) ships something we are proud of. Collaborations when we welcome a new partner into the VORVN orbit." },
         { "type": "p", "text": "We will not chase a publishing rhythm. We will write when there is something worth saying." },
-        { "type": "quote", "text": "Make the work the announcement." },
+        { "type": "quote", "text": "Make the work the announcement.", "attribution": "Mehdi Ayache" },
         { "type": "p", "text": "If you want to talk, the door is always open via our [contact page](/en/contact)." }
       ]
     },
@@ -24,7 +23,7 @@
         { "type": "h2", "text": "Ce que vous trouverez ici" },
         { "type": "p", "text": "Trois types d'entrées. Des essais sur notre façon d'opérer. Des nouvelles lorsque l'une de nos [marques](/fr/#portfolio) lance quelque chose dont nous sommes fiers. Des collaborations lorsque nous accueillons un nouveau partenaire dans l'orbite VORVN." },
         { "type": "p", "text": "Nous ne suivrons pas de rythme de publication. Nous écrirons quand il y aura quelque chose qui mérite d'être dit." },
-        { "type": "quote", "text": "Faire du travail l'annonce." },
+        { "type": "quote", "text": "Faire du travail l'annonce.", "attribution": "Mehdi Ayache" },
         { "type": "p", "text": "Si vous souhaitez nous parler, la porte est toujours ouverte via notre [page de contact](/fr/contact)." }
       ]
     },
@@ -36,7 +35,7 @@
         { "type": "h2", "text": "Qué encontrarás aquí" },
         { "type": "p", "text": "Tres tipos de entradas. Ensayos sobre cómo operamos. Noticias cuando una de nuestras [marcas](/es/#portfolio) lanza algo de lo que estamos orgullosos. Colaboraciones cuando damos la bienvenida a un nuevo socio a la órbita de VORVN." },
         { "type": "p", "text": "No perseguiremos un ritmo editorial. Escribiremos cuando haya algo que valga la pena decir." },
-        { "type": "quote", "text": "Que el trabajo sea el anuncio." },
+        { "type": "quote", "text": "Que el trabajo sea el anuncio.", "attribution": "Mehdi Ayache" },
         { "type": "p", "text": "Si quieres hablar, la puerta está siempre abierta a través de nuestra [página de contacto](/es/contact)." }
       ]
     },
@@ -48,7 +47,7 @@
         { "type": "h2", "text": "你将在此找到什么" },
         { "type": "p", "text": "三类内容。关于我们如何运作的文章。当我们旗下的[品牌](/zh/#portfolio)推出值得自豪的成果时发布的新闻。当有新伙伴加入 VORVN 时发布的合作公告。" },
         { "type": "p", "text": "我们不追求发布节奏。当有值得说的话时,我们才会写。" },
-        { "type": "quote", "text": "让作品本身成为公告。" },
+        { "type": "quote", "text": "让作品本身成为公告。", "attribution": "Mehdi Ayache" },
         { "type": "p", "text": "若想交流,大门常开 — 请通过我们的[联系页面](/zh/contact)。" }
       ]
     },
@@ -60,7 +59,7 @@
         { "type": "h2", "text": "Apa yang akan Anda temukan di sini" },
         { "type": "p", "text": "Tiga jenis entri. Esai tentang cara kami beroperasi. Berita ketika salah satu [merek](/id/#portfolio) kami meluncurkan sesuatu yang kami banggakan. Kolaborasi ketika kami menyambut mitra baru ke dalam orbit VORVN." },
         { "type": "p", "text": "Kami tidak akan mengejar ritme penerbitan. Kami akan menulis ketika ada sesuatu yang layak dikatakan." },
-        { "type": "quote", "text": "Biarkan karya menjadi pengumumannya." },
+        { "type": "quote", "text": "Biarkan karya menjadi pengumumannya.", "attribution": "Mehdi Ayache" },
         { "type": "p", "text": "Jika ingin berbicara, pintu selalu terbuka melalui [halaman kontak](/id/contact) kami." }
       ]
     },
@@ -72,7 +71,7 @@
         { "type": "h2", "text": "ما الذي ستجدونه هنا" },
         { "type": "p", "text": "ثلاثة أنواع من المنشورات. مقالات حول طريقة عملنا. أخبار عندما تُطلق إحدى [علاماتنا](/ar/#portfolio) شيئًا نفخر به. تعاونات عندما نرحب بشريك جديد في مدار VORVN." },
         { "type": "p", "text": "لن نلاحق إيقاع نشرٍ ثابت. سنكتب حين يستحقّ الأمر القول." },
-        { "type": "quote", "text": "اجعلوا العمل هو الإعلان." },
+        { "type": "quote", "text": "اجعلوا العمل هو الإعلان.", "attribution": "Mehdi Ayache" },
         { "type": "p", "text": "إن أردتم الحديث، فالباب مفتوح دائمًا عبر [صفحة التواصل](/ar/contact)." }
       ]
     }

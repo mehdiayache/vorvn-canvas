@@ -8,21 +8,42 @@ export type Block =
   | { type: 'p'; text: string }
   | { type: 'h2'; text: string }
   | { type: 'h3'; text: string }
-  | { type: 'quote'; text: string }
-  | { type: 'list'; items: string[] };
+  | { type: 'quote'; text: string; attribution?: string }
+  | { type: 'list'; items: string[] }
+  | { type: 'image'; src: string; alt: string; caption?: string };
 
 export interface ArticleTranslation {
   title: string;
   excerpt: string;
+  coverAlt?: string;
   body: Block[];
+}
+
+export interface ArticleAuthor {
+  name?: string;
+  title?: string;
 }
 
 export interface Article {
   slug: string;
-  date: string; // YYYY-MM-DD
+  date: string;         // YYYY-MM-DD
+  updated?: string;     // YYYY-MM-DD, optional
   type: ArticleType;
-  author?: string;
+  author?: ArticleAuthor;
+  cover?: string;       // public path, e.g. /newsroom/<slug>/cover.jpg
   translations: Record<string, ArticleTranslation>;
+}
+
+export const AUTHOR_FALLBACK = {
+  name: 'Mehdi Ayache',
+  title: 'CEO & Founder',
+} as const;
+
+export function resolveAuthor(article: Article): { name: string; title: string } {
+  return {
+    name: article.author?.name ?? AUTHOR_FALLBACK.name,
+    title: article.author?.title ?? AUTHOR_FALLBACK.title,
+  };
 }
 
 const modules = import.meta.glob<{ default: Article }>(
@@ -53,6 +74,9 @@ export function getAdjacent(slug: string): { prev?: Article; next?: Article } {
 }
 
 export function formatDate(iso: string): string {
-  // YYYY.MM.DD — monospace-friendly, locale-neutral
   return iso.replace(/-/g, '.');
+}
+
+export function lastModified(article: Article): string {
+  return article.updated || article.date;
 }

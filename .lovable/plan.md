@@ -1,181 +1,211 @@
+## Goal
 
-# Newsroom — Implementation Plan
-
-A file-based "Newsroom": one JSON per article holding all 6 languages, rendered as a reverse-chronological timeline. No CMS, no admin UI. Add an article = drop a JSON file in the repo, commit, deploy.
+Lock the **final** Newsroom JSON schema so it covers everything an article ever needs (author with fallback, cover image, inline images, attributed quotes, updated date), upgrade the article UI (sharing, better pull-quote, image figures), and bring SEO to the state of the art for 2026-2027.
 
 ---
 
-## 1. Content model
+## 1. Final JSON schema
 
-### Folder
-```text
-src/content/newsroom/
-  2026-05-23-on-building-quietly.json
-  2026-04-10-vorvn-x-partner-x.json
-  2026-03-01-from-riyadh.json
-```
-
-Filename pattern: `YYYY-MM-DD-slug.json`. Date drives sort, slug drives URL.
-
-### JSON schema (per article)
+Root fields are language-neutral. Everything human-readable lives under `translations.<lang>`. All 6 languages remain required.
 
 ```json
 {
-  "slug": "on-building-quietly",
+  "slug": "vorvn-enters-saudi-arabia",
   "date": "2026-05-23",
-  "type": "essay",
-  "author": "Mehdi Berberos",
+  "updated": "2026-06-01",
+  "type": "news",
+
+  "author": {
+    "name": "Mehdi Ayache",
+    "title": "CEO & Founder"
+  },
+
+  "cover": "/newsroom/vorvn-enters-saudi-arabia/cover.jpg",
+
   "translations": {
     "en": {
-      "title": "On building quietly",
-      "excerpt": "Why we don't announce until it ships.",
+      "title": "VORVN enters Saudi Arabia",
+      "excerpt": "A new chapter in the Gulf, starting with Riyadh.",
+      "coverAlt": "Riyadh skyline at dusk",
       "body": [
-        { "type": "p", "text": "We started VORVN with one rule…" },
-        { "type": "p", "text": "See our [portfolio](/en/#portfolio) for context." },
-        { "type": "h2", "text": "The discipline of silence" },
-        { "type": "quote", "text": "Make the work the announcement." }
+        { "type": "p",     "text": "Today we open our [Riyadh office](https://vorvn.com/contact)." },
+        { "type": "h2",    "text": "Why now" },
+        { "type": "p",     "text": "..." },
+        { "type": "image", "src": "/newsroom/vorvn-enters-saudi-arabia/office.jpg",
+                           "alt": "Our team on opening day",
+                           "caption": "Opening day, May 2026." },
+        { "type": "quote", "text": "Conviction over consensus.",
+                           "attribution": "Mehdi Ayache" },
+        { "type": "list",  "items": ["First…", "Second…"] }
       ]
     },
-    "fr": { "title": "...", "excerpt": "...", "body": [...] },
-    "es": { ... },
-    "ar": { ... },
-    "id": { ... },
-    "zh": { ... }
+    "fr": { "...": "same shape" },
+    "es": { "...": "same shape" },
+    "zh": { "...": "same shape" },
+    "id": { "...": "same shape" },
+    "ar": { "...": "same shape" }
   }
 }
 ```
 
-- `type`: `essay` | `news` | `collaboration` — shown as a JetBrains Mono tag.
-- `body[]`: typed blocks. `p`, `h2`, `h3`, `quote`, `list` (extensible later: `image`, `embed`).
-- Inline links in `text` use markdown `[label](url)` — parsed at render time. External URLs auto-open in new tab.
-- All 6 languages required (per your decision). A build-time validator will fail the build if any language is missing for any article.
+### Field reference
+
+| Field | Required | Notes |
+|---|---|---|
+| `slug` | yes | Same across all langs. Matches filename. |
+| `date` | yes | `YYYY-MM-DD`. Publish date. |
+| `updated` | no | `YYYY-MM-DD`. If present → used as `dateModified` + sitemap `<lastmod>`. Falls back to `date`. |
+| `type` | yes | `essay` \| `news` \| `collaboration`. Shown as monospace tag. |
+| `author` | no | Object `{ name?, title? }`. **Missing fields fall back to "Mehdi Ayache" / "CEO & Founder"**. |
+| `cover` | no | Public path (e.g. `/newsroom/<slug>/cover.jpg`). 1200×630 recommended. If missing → no cover hero, no OG image (per your choice). |
+| `translations.<lang>.title` | yes | H1 + meta title. |
+| `translations.<lang>.excerpt` | yes | Meta description + OG description + timeline preview. |
+| `translations.<lang>.coverAlt` | only if `cover` set | Alt text for accessibility + SEO. |
+| `translations.<lang>.body[]` | yes, non-empty | Block array. |
+
+### Block types
+
+- `p` — paragraph. Supports inline `[label](url)` links.
+- `h2`, `h3` — subheadings.
+- `quote` — `{ text, attribution? }`. Upgraded pull-quote design.
+- `list` — `{ items: string[] }`. Bulleted.
+- `image` — `{ src, alt, caption? }`. Rendered as `<figure>` with `<figcaption>`.
+
+### Image storage
+
+`public/newsroom/<slug>/cover.jpg` (and any inline images). Self-contained per article. JPG for photos, PNG for graphics.
 
 ---
 
-## 2. Routing
+## 2. Author fallback
 
-| Route | Page |
-|---|---|
-| `/:lang/newsroom` | Timeline index |
-| `/:lang/newsroom/:slug` | Single article |
-
-Inside `/:lang` so language switcher keeps working. Slug stays identical across languages — only the rendered content changes.
-
----
-
-## 3. Loading mechanism
-
-Vite glob import — zero runtime fetch, fully static, perfect Lighthouse:
+Resolved at render time (and in JSON-LD):
 
 ```ts
-const modules = import.meta.glob('@/content/newsroom/*.json', { eager: true });
+const author = {
+  name: article.author?.name ?? "Mehdi Ayache",
+  title: article.author?.title ?? "CEO & Founder",
+};
 ```
 
-A small `src/lib/newsroom.ts` helper exports:
-- `getAllArticles()` — sorted by date desc
-- `getArticle(slug)`
-- `translate(article, lang)` — returns the localized payload
+Each field falls back independently — guest articles can override just `name`, keep default `title`, or vice versa.
 
 ---
 
-## 4. UI
+## 3. Sharing buttons
 
-### Timeline index (`/:lang/newsroom`)
+Compact row at the **bottom** of each article (cleaner than top+bottom for minimalism). Four actions, all `<a>` tags or one tiny clipboard handler — zero third-party JS.
 
-Plain, monospace-aligned list — same restraint as the Portfolio accordion:
+- **Copy link** — `navigator.clipboard.writeText(url)`, shows a 1.5s "Copied" confirmation in monospace.
+- **WhatsApp** — `https://wa.me/?text={title} — {url}`
+- **X** — `https://twitter.com/intent/tweet?url={url}&text={title}`
+- **LinkedIn** — `https://www.linkedin.com/sharing/share-offsite/?url={url}`
 
-```text
-2026.05.23   ESSAY            On building quietly
-2026.04.10   COLLABORATION    VORVN × Partner X
-2026.03.01   NEWS             From Riyadh
-```
-
-- Date column: JetBrains Mono.
-- Type tag: JetBrains Mono uppercase, muted color.
-- Title: Inter Tight, hover underline.
-- 1px row separators (matches existing site rules).
-- Single H1: "Newsroom" (or the localized equivalent).
-- No pagination until > 30 articles.
-
-### Article page (`/:lang/newsroom/:slug`)
-
-- Header: type tag + date + H1 title + author byline.
-- Body: rendered from typed blocks. Max-width ~ 68ch for readability. Body text 17px/1.6 (already standard).
-- Footer: "← Back to Newsroom" + prev/next article links.
-- RTL handled automatically via existing `useDirection` hook.
+Design: monospace text labels (no icons needed — fits the brand), separated by `·`, hover underline. RTL-aware.
 
 ---
 
-## 5. Navigation
+## 4. Quote — new pull-quote design
 
-- **Header nav**: add `Newsroom` link next to `Contact` (both desktop and mobile menu).
-- **Footer**: add `Newsroom` link in the existing nav column.
-- Translated label per language, stored in `i18n/locales/*.json` under `nav.newsroom`.
-
----
-
-## 6. SEO (the critical part)
-
-Extend `scripts/prerender.mjs`:
-
-1. **Per-language Newsroom index page**: `/:lang/newsroom/index.html` with hidden `#prerendered-content` listing every article title + excerpt + date.
-2. **Per-article page**: `/:lang/newsroom/:slug/index.html` with full article text injected into hidden `#prerendered-content`.
-3. **Sitemap auto-generation**: extend `public/sitemap.xml` build step (or the prerender script) to append every `lang × article` URL with `<lastmod>` = article date.
-4. **JSON-LD `Article` schema** per article page: `headline`, `datePublished`, `author`, `inLanguage`, `mainEntityOfPage`.
-5. **`<link rel="alternate" hreflang>`** between language variants of the same article.
-6. **IndexNow ping** runs automatically on deploy (existing script reads sitemap — no changes needed).
+- Inter Tight, **24-28px**, tight leading (`1.35`), `text-foreground`.
+- Generous vertical margin (e.g. `my-10`).
+- Decorative oversized `"` opening mark (50-60px, low opacity) absolutely positioned, RTL-flipped.
+- Optional `attribution` rendered below: JetBrains Mono, 13px, uppercase, preceded by `—`.
+- Border-start kept as the structural anchor.
+- Wrapped in `<blockquote>` + `<cite>` for semantics.
 
 ---
 
-## 7. Content validation
+## 5. SEO — full 2026-2027 spec for articles
 
-A small `scripts/validate-newsroom.mjs` run as part of `npm run build` (before prerender):
-- Every JSON has all 6 language keys.
-- Each language has `title`, `excerpt`, non-empty `body`.
-- `date` is valid ISO date.
-- `type` ∈ `{essay, news, collaboration}`.
-- `slug` matches filename.
+All injected at prerender time (real HTML for crawlers, not JS).
 
-Fail the build with a clear message if anything's off — prevents broken articles ever reaching production.
+**Per article HTML head (via `SeoHead` + prerender):**
+- `<title>` = article title + ` — VORVN`
+- `<meta name="description">` = excerpt
+- `<link rel="canonical">` = `https://vorvn.com/{lang}/newsroom/{slug}`
+- `<link rel="alternate" hreflang>` ×6 + `x-default`
+- `<meta property="og:type" content="article">`
+- `og:title`, `og:description`, `og:url`, `og:locale`, `og:locale:alternate` ×5
+- `og:image` only if `cover` is set (per your decision)
+- `article:published_time`, `article:modified_time`, `article:author`, `article:section` (= type)
+- `<meta name="twitter:card" content="summary_large_image">` when cover set, else `summary`
+
+**Per article JSON-LD (two scripts):**
+
+1. `Article`:
+   ```json
+   {
+     "@context": "https://schema.org",
+     "@type": "Article",
+     "headline": "...",
+     "description": "...",
+     "datePublished": "2026-05-23",
+     "dateModified": "2026-06-01",
+     "inLanguage": "en",
+     "image": ["https://vorvn.com/newsroom/.../cover.jpg"],
+     "author":    { "@type": "Person",       "name": "Mehdi Ayache", "jobTitle": "CEO & Founder" },
+     "publisher": { "@type": "Organization", "name": "VORVN", "logo": { "@type": "ImageObject", "url": "https://vorvn.com/logo.png" } },
+     "mainEntityOfPage": "https://vorvn.com/en/newsroom/slug"
+   }
+   ```
+2. `BreadcrumbList`: Home › Newsroom › Article (localized labels).
+
+**Semantic HTML** in `NewsroomArticle.tsx`:
+- `<article>` wrapper
+- `<header>` with type tag + `<time datetime="...">` + single `<h1>`
+- Author byline in `<p>` with `rel="author"`
+- `<figure><img/><figcaption/></figure>` for images
+- `<blockquote><p>…</p><cite>…</cite></blockquote>` for quotes
+- Body uses `<h2>/<h3>` only (no h1)
+
+**Sitemap & IndexNow:**
+- Sitemap already auto-enumerates articles; switch `<lastmod>` to `updated || date`, keep per-article `<xhtml:link rel="alternate" hreflang>` set.
+- IndexNow ping list (in `scripts/indexnow-ping.mjs`) extended to include every article URL × 6 languages on each deploy.
+
+**Newsroom index page:**
+- `Article` schema not applicable; instead emit `CollectionPage` + `ItemList` JSON-LD listing all article URLs. Helps Google understand the timeline.
 
 ---
 
-## 8. Files to create
+## 6. Updated validator (`scripts/validate-newsroom.mjs`)
 
-- `src/content/newsroom/` (folder) + one sample article (`2026-05-23-welcome.json` with placeholder copy in all 6 languages).
-- `src/lib/newsroom.ts` — loader/types.
-- `src/lib/parseInline.ts` — markdown-link parser.
-- `src/components/sections/VorvnNewsroomBlock.tsx` — block renderer (p, h2, h3, quote, list).
-- `src/pages/Newsroom.tsx` — timeline index.
-- `src/pages/NewsroomArticle.tsx` — single article.
-- `scripts/validate-newsroom.mjs`
-
-## 9. Files to modify
-
-- `src/App.tsx` — add `/newsroom` and `/newsroom/:slug` inside `/:lang`.
-- `src/components/Nav.tsx` — add Newsroom link.
-- `src/components/sections/VorvnFooter.tsx` — add Newsroom link.
-- `src/i18n/locales/*.json` (×6) — add `nav.newsroom` + Newsroom page strings.
-- `scripts/prerender.mjs` — generate per-article + index HTML, inject hidden content, update sitemap.
-- `package.json` — add validator to build chain.
-- `.lovable/memory/index.md` + new `mem://features/newsroom.md`.
+Adds:
+- `updated` (optional) must match `YYYY-MM-DD` if present.
+- `author`, if present, must be object; `name`/`title` strings if present.
+- `cover`, if present, must start with `/`. If present → `coverAlt` required in every language.
+- `image` block requires `src` (starts with `/`) and `alt` (string).
+- `quote` block `attribution` optional, string if present.
+- Verifies referenced image files exist in `public/`.
 
 ---
 
-## How you'll publish a new article
+## 7. Sample article rewrite
 
-1. Duplicate the most recent JSON in `src/content/newsroom/`.
-2. Rename to `YYYY-MM-DD-your-slug.json`.
-3. Fill in `title`, `excerpt`, `body[]` for all 6 languages (use any translator — DeepL works well; final pass by you).
-4. Commit + push. Netlify build runs validator → prerenders → updates sitemap → pings IndexNow. Live in ~2 min.
+Rewrite `2026-05-23-welcome-to-the-newsroom.json` to exercise every field (cover + inline image placeholders, an attributed quote, a list, links) so future articles can copy-paste.
 
-Inline links in body text: just write `[label](https://example.com)` or `[label](/en/contact)`.
+We won't generate actual image files — the sample's `cover` field will be omitted (or we can add a 1200×630 placeholder later); per your "no OG image for now" choice this is fine.
 
 ---
 
-## Out of scope (intentionally)
+## 8. Files
 
-- Categories, tags, search, RSS — can add later if needed.
-- Images inside articles — schema supports it via a future `image` block; not in v1.
-- Comments / reactions — never (matches brand restraint).
-- Admin UI — never (you wanted file-based).
+**Modify**
+- `src/lib/newsroom.ts` — extend `Article` / `Block` types, add `resolveAuthor()`, `getCanonical(article, lang)`.
+- `src/components/sections/VorvnNewsroomBlock.tsx` — new `image` block, upgraded `quote` with attribution.
+- `src/pages/NewsroomArticle.tsx` — semantic `<article>`, cover figure, share row, author byline.
+- `src/components/SeoHead.tsx` — article-specific OG/Twitter/article:* tags, both JSON-LD scripts.
+- `scripts/prerender.mjs` — inject new meta + JSON-LD per article, switch sitemap `<lastmod>` to `updated || date`, add `CollectionPage` to index.
+- `scripts/indexnow-ping.mjs` — include all per-language article URLs.
+- `scripts/validate-newsroom.mjs` — new field validation.
+- `src/content/newsroom/2026-05-23-welcome-to-the-newsroom.json` — rewrite as exemplar.
+- `src/i18n/locales/*.json` ×6 — add `newsroom.share.copy`, `share.copied`, `share.label`, breadcrumb labels.
+- `.lovable/memory/features/newsroom.md` + index — record new schema.
+
+**Create**
+- `src/components/VorvnShareRow.tsx` — share buttons component.
+
+**Out of scope (can add later)**
+- Real image optimization pipeline (responsive `srcset`, AVIF/WebP) — current setup ships plain `<img loading="lazy">`.
+- Default site-wide OG image — explicitly declined for now.
+- RSS feed, comments, search, tags.

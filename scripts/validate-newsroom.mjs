@@ -7,10 +7,12 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const dir = path.resolve(__dirname, '..', 'src', 'content', 'newsroom');
+const publicDir = path.resolve(__dirname, '..', 'public');
 
 const LANGS = ['en', 'fr', 'es', 'zh', 'id', 'ar'];
 const TYPES = new Set(['essay', 'news', 'collaboration']);
-const BLOCK_TYPES = new Set(['p', 'h2', 'h3', 'quote', 'list']);
+const BLOCK_TYPES = new Set(['p', 'h2', 'h3', 'quote', 'list', 'image']);
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 if (!fs.existsSync(dir)) {
   console.log('[validate-newsroom] no newsroom dir, skipping.');
@@ -19,6 +21,17 @@ if (!fs.existsSync(dir)) {
 
 const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
 const errors = [];
+
+function checkPublicPath(p, label) {
+  if (typeof p !== 'string' || !p.startsWith('/')) {
+    errors.push(`${label}: path must start with "/" (got ${JSON.stringify(p)})`);
+    return;
+  }
+  const fp = path.join(publicDir, p.replace(/^\//, ''));
+  if (!fs.existsSync(fp)) {
+    errors.push(`${label}: file not found in /public — expected ${fp}`);
+  }
+}
 
 for (const file of files) {
   const fp = path.join(dir, file);
@@ -30,17 +43,34 @@ for (const file of files) {
     continue;
   }
 
-  const { slug, date, type, translations } = doc;
+  const { slug, date, updated, type, translations, author, cover } = doc;
 
   if (!slug || typeof slug !== 'string') errors.push(`${file}: missing "slug"`);
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date || '')) errors.push(`${file}: "date" must be YYYY-MM-DD`);
+  if (!DATE_RE.test(date || '')) errors.push(`${file}: "date" must be YYYY-MM-DD`);
+  if (updated !== undefined && !DATE_RE.test(updated)) {
+    errors.push(`${file}: "updated" must be YYYY-MM-DD when present`);
+  }
   if (!TYPES.has(type)) errors.push(`${file}: "type" must be one of ${[...TYPES].join(', ')}`);
 
-  // Filename must start with date and contain slug
   const expectedPrefix = `${date}-${slug}.json`;
   if (file !== expectedPrefix) {
     errors.push(`${file}: filename should be "${expectedPrefix}"`);
   }
+
+  if (author !== undefined) {
+    if (typeof author !== 'object' || author === null || Array.isArray(author)) {
+      errors.push(`${file}: "author" must be an object { name?, title? }`);
+    } else {
+      if (author.name !== undefined && typeof author.name !== 'string') {
+        errors.push(`${file}: "author.name" must be a string`);
+      }
+      if (author.title !== undefined && typeof author.title !== 'string') {
+        errors.push(`${file}: "author.title" must be a string`);
+      }
+    }
+  }
+
+  if (cover !== undefined) checkPublicPath(cover, `${file}.cover`);
 
   if (!translations || typeof translations !== 'object') {
     errors.push(`${file}: missing "translations"`);
@@ -55,6 +85,9 @@ for (const file of files) {
     }
     if (!tr.title || typeof tr.title !== 'string') errors.push(`${file}[${lang}]: missing "title"`);
     if (!tr.excerpt || typeof tr.excerpt !== 'string') errors.push(`${file}[${lang}]: missing "excerpt"`);
+    if (cover && (!tr.coverAlt || typeof tr.coverAlt !== 'string')) {
+      errors.push(`${file}[${lang}]: "coverAlt" required when "cover" is set`);
+    }
     if (!Array.isArray(tr.body) || tr.body.length === 0) {
       errors.push(`${file}[${lang}]: "body" must be non-empty array`);
       continue;
@@ -67,6 +100,21 @@ for (const file of files) {
       if (b.type === 'list') {
         if (!Array.isArray(b.items) || b.items.length === 0) {
           errors.push(`${file}[${lang}].body[${i}]: list needs "items"`);
+        }
+      } else if (b.type === 'image') {
+        checkPublicPath(b.src, `${file}[${lang}].body[${i}].src`);
+        if (!b.alt || typeof b.alt !== 'string') {
+          errors.push(`${file}[${lang}].body[${i}]: image needs "alt"`);
+        }
+        if (b.caption !== undefined && typeof b.caption !== 'string') {
+          errors.push(`${file}[${lang}].body[${i}]: image "caption" must be a string`);
+        }
+      } else if (b.type === 'quote') {
+        if (!b.text || typeof b.text !== 'string') {
+          errors.push(`${file}[${lang}].body[${i}]: missing "text"`);
+        }
+        if (b.attribution !== undefined && typeof b.attribution !== 'string') {
+          errors.push(`${file}[${lang}].body[${i}]: quote "attribution" must be a string`);
         }
       } else if (!b.text || typeof b.text !== 'string') {
         errors.push(`${file}[${lang}].body[${i}]: missing "text"`);
