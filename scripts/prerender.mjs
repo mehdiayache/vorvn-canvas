@@ -523,6 +523,9 @@ for (const l of LANGUAGES) {
     canonical,
     hreflangBlock: buildHreflangBlock('/contact'),
     jsonLdScripts: [
+      organizationJsonLd(l.code),
+      websiteJsonLd(l.code),
+      personJsonLd(),
       contactPageJsonLd(l.code, seo.title),
       breadcrumbJsonLd(l.code, '/contact', 'Contact'),
     ],
