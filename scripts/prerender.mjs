@@ -812,6 +812,7 @@ for (const group of newsroomGroups) {
         {
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',
+          inLanguage: servedLang,
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'VORVN', item: `${BASE_URL}/${l.code}` },
             { '@type': 'ListItem', position: 2, name: newsroomLabel, item: `${BASE_URL}/${l.code}/newsroom` },
