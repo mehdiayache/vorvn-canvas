@@ -1,50 +1,58 @@
-## Goal
+## Newsletter Opt-in (Newsroom Sidebar)
 
-Tighten the Newsroom: simpler headline, cleaner 3-category taxonomy, fix existing article's type.
+Add a secure double opt-in newsletter block under the existing sidebar text. Frontend posts to a Netlify Function, which forwards to your n8n webhook (server-side only — webhook URL never exposed). Later you wire n8n → self-hosted Listmonk.
 
-## 1. New headline + intro (all 6 languages)
+### Architecture
 
-Replace current copy in `newsroom.headline` / `newsroom.intro`:
+```
+Sidebar form → POST /.netlify/functions/newsletter → n8n webhook → Listmonk
+```
 
-- Headline: **"Newsroom."**
-- Intro: **"Press releases, announcements, and updates."**
+Reuses the exact security pattern from `netlify/functions/contact.ts`: Zod validation, honeypot, in-memory IP rate limit, CORS, sanitized error responses.
 
-Files: `src/i18n/locales/{en,fr,es,zh,id,ar}.json` — translate intro per locale, keep "Newsroom." as-is (proper noun, same across languages — Arabic gets its native equivalent).
+### New files
 
-## 2. New category taxonomy
+1. **`netlify/functions/newsletter.ts`**
+   - Zod schema: `name` (2–100), `email` (valid, ≤255), `consent` (must be `true`), `lang` (enum of 6 locales), `website` honeypot (empty).
+   - Rate limit: 3 submissions / 15 min per IP (stricter than contact).
+   - Forwards JSON to `process.env.N8N_NEWSLETTER_WEBHOOK_URL` with optional `Authorization: Bearer ${N8N_WEBHOOK_SECRET}` header (shared secret you set in n8n).
+   - Adds metadata: `source: "newsroom-sidebar"`, `ip`, `userAgent`, `submittedAt` ISO.
+   - Returns `{ ok: true }` on 2xx from n8n; never leaks webhook URL or upstream errors.
 
-Replace the 4 current types (`essay | news | collaboration | analysis`) with **3 new types**:
+2. **`src/components/sections/VorvnNewsletterOptin.tsx`**
+   - Inline form: Name, Email, consent checkbox, submit button.
+   - Honeypot `website` field (visually hidden).
+   - Zod validation client-side (mirrors server), localized error messages.
+   - States: `idle` → `submitting` → `sent` (success card, same minimal style as contact form).
+   - Checkbox label: "I agree to receive emails from VORVN and have read the [Privacy Policy](/legal/privacy)." — link to existing English-only legal page.
+   - Mentions double opt-in: "You'll receive a confirmation email to activate your subscription." (Listmonk handles the actual confirmation send.)
 
-| New type            | Meaning                                                         |
-|---------------------|-----------------------------------------------------------------|
-| `announcement`      | Official news, launches, partnerships                           |
-| `deep-insight`      | The inner kitchen: how we built it, what we tried, what worked  |
-| `perspective`       | CEO's point of view on the industry                             |
+### Modified files
 
-Changes:
+3. **`src/components/sections/VorvnNewsroomSidebar.tsx`**
+   - Render `<VorvnNewsletterOptin lang={lang} />` below the existing paragraph, separated by a thin `1px` rule and small icon (Mail from lucide-react).
 
-- `src/lib/newsroom.ts` — update `ArticleType` union to `'announcement' | 'deep-insight' | 'perspective'`.
-- `src/i18n/locales/*.json` — replace `newsroom.types.*` map with the 3 new keys, translated per locale.
-- `scripts/validate-newsroom.mjs` — update the allowed-types whitelist so the build fails fast on legacy values.
-- Any other reference to the old types (search across `src/` + `scripts/`) gets updated.
+4. **`src/i18n/locales/{en,fr,es,ar,id,zh}.json`**
+   - Add `newsroom.sidebar.newsletter.*` keys: eyebrow, intro, name placeholder, email placeholder, consent label (with `{{privacyLink}}` token), submit button, success title, success body, error messages.
 
-## 3. Reclassify existing article
+### Secrets (you add later via Netlify env vars)
 
-`src/content/newsroom/2026-05-23-en-meme-we-made-real-cook-warriors-method.json`:
+- `N8N_NEWSLETTER_WEBHOOK_URL` — full https URL of your n8n webhook node
+- `N8N_WEBHOOK_SECRET` — random string you also set in n8n to validate the `Authorization` header
 
-- Change `"type": "analysis"` → `"type": "deep-insight"`.
+### Security checklist
 
-## 4. Verify
+- Webhook URL & secret server-side only (never bundled into frontend)
+- Zod validation on both client and server
+- Honeypot to block dumb bots
+- IP rate limit (3 / 15 min)
+- Mandatory consent checkbox (server rejects if `consent !== true`)
+- Double opt-in enforced by Listmonk (n8n just forwards; Listmonk sends confirmation email)
+- No PII logged on success path
+- Generic error responses (no upstream leakage)
 
-- Run `npm run build` (validator + prerender) to confirm no stale type references.
-- Visit `/en/newsroom` → headline reads "Newsroom.", article shows "Deep Insights" badge.
-- Visit `/en/newsroom/meme-we-made-real-cook-warriors-method` → category tag updated.
+### Out of scope (for now)
 
-## Open question (your message cut off)
-
-You wrote **"ALSO first article is"** and stopped. Did you mean:
-- (a) The first article should be a different/new one (a fresh announcement)?
-- (b) You want to **pin** a specific article to the top?
-- (c) Something else?
-
-Tell me what comes after "ALSO first article is" and I'll fold it into the plan before we build.
+- n8n workflow setup (you'll do that)
+- Listmonk API call (n8n handles it later)
+- Confirmation/landing page after Listmonk opt-in click (Listmonk has built-in templates)
