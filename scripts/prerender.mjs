@@ -556,6 +556,9 @@ for (const slug of ['privacy', 'notice']) {
     `    <meta name="twitter:title" content="${escapeHtml(seo.title)}" />`,
     `    <meta name="twitter:description" content="${escapeHtml(seo.desc)}" />`,
     `    <meta name="twitter:image" content="${BASE_URL}/og-image.jpg" />`,
+    `    <script type="application/ld+json" data-prerender>${escapeJsonForScript(organizationJsonLd('en'))}</script>`,
+    `    <script type="application/ld+json" data-prerender>${escapeJsonForScript(websiteJsonLd('en'))}</script>`,
+    `    <script type="application/ld+json" data-prerender>${escapeJsonForScript(personJsonLd())}</script>`,
   ].join('\n');
   let html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
   html = injectBodyH1(html, H1_COPY.legal[slug]);
