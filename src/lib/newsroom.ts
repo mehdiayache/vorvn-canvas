@@ -2,7 +2,7 @@
 // One JSON file per language per article. Filename: YYYY-MM-DD-{lang}-{id}.json
 // English is the canonical fallback when a requested language is not present.
 
-export type ArticleType = 'essay' | 'news' | 'collaboration' | 'analysis';
+export type ArticleType = 'announcement' | 'deep-insight' | 'perspective';
 
 export type Block =
   | { type: 'p'; text: string }
