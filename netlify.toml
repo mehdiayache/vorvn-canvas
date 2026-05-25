@@ -6,6 +6,11 @@
 [build.environment]
   NODE_VERSION = "20"
 
+[build.processing.html]
+  # Disable Netlify's "pretty URLs" so it does NOT 301 /foo -> /foo/.
+  # Our prerendered URLs are canonical without a trailing slash.
+  pretty_urls = false
+
 [functions]
   node_bundler = "esbuild"
 
@@ -15,10 +20,66 @@
   to = "/.netlify/functions/contact"
   status = 200
 
-# SPA fallback for client-side routes (prerendered HTML files take precedence)
+# ====== Prerendered route → static HTML (status 200, no redirect) ======
+# Each rule maps a clean URL to its prerendered index.html so canonicals
+# (which never include a trailing slash) resolve directly with 200.
+
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/:lang/newsroom/:slug"
+  to = "/:lang/newsroom/:slug/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/:lang/newsroom"
+  to = "/:lang/newsroom/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/:lang/contact"
+  to = "/:lang/contact/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/:lang"
+  to = "/:lang/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/legal/:slug"
+  to = "/legal/:slug/index.html"
+  status = 200
+
+# ====== SPA fallback inside known language roots only ======
+# Unknown paths outside these roots fall through to Netlify's 404 (no soft-404).
+
+[[redirects]]
+  from = "/en/*"
+  to = "/en/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/fr/*"
+  to = "/fr/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/es/*"
+  to = "/es/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/zh/*"
+  to = "/zh/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/id/*"
+  to = "/id/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/ar/*"
+  to = "/ar/index.html"
   status = 200
 
 # Long-cache hashed assets emitted by Vite

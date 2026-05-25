@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { LANGUAGES, RTL_LANGUAGES } from '@/i18n';
 
-const BASE_URL = 'https://www.vorvn.com';
+const BASE_URL = 'https://vorvn.com';
 
 type PageKey = 'home' | 'contact' | 'notFound' | 'newsroom';
 

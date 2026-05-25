@@ -19,7 +19,7 @@ if (!fs.existsSync(baseHtmlPath)) {
   process.exit(1);
 }
 
-const BASE_URL = 'https://www.vorvn.com';
+const BASE_URL = 'https://vorvn.com';
 const NOW = new Date().toISOString().slice(0, 10);
 
 const LANGUAGES = [

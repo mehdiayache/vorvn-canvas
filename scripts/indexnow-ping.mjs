@@ -5,7 +5,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const HOST = 'www.vorvn.com';
+const HOST = 'vorvn.com';
 const KEY = 'bdee05f035be42638aa336fd200fef04';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const ENDPOINT = 'https://api.indexnow.org/IndexNow';
