@@ -265,7 +265,7 @@
       "body": "Untuk lisensi, kemitraan atau permintaan media — atau sekadar mengikuti perkembangan, [hubungi kami](/LANG/contact) atau ikuti [newsroom](/LANG/newsroom).",
       "newsletter": {
         "eyebrow": "Newsletter",
-        "intro": "Dapatkan rilis, wawasan mendalam, dan perspektif kami — satu hingga dua email per bulan.",
+        "intro": "Dapatkan rilis, wawasan mendalam, dan perspektif kami, satu hingga dua email per bulan.",
         "name": "Nama depan",
         "email": "Alamat email",
         "consent": "Saya setuju menerima email dari VORVN dan telah membaca <privacy>Kebijakan Privasi</privacy>.",
@@ -274,7 +274,7 @@
         "doubleOptin": "Double opt-in · Email konfirmasi diperlukan",
         "success": {
           "title": "Hampir selesai.",
-          "body": "Periksa kotak masuk Anda — klik tautan konfirmasi untuk mengaktifkan langganan Anda."
+          "body": "Periksa kotak masuk Anda, klik tautan konfirmasi untuk mengaktifkan langganan Anda."
         },
         "errors": {
           "name": "Silakan masukkan nama depan Anda.",

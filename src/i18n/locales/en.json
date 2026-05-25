@@ -265,7 +265,7 @@
       "body": "For licensing, partnerships or press requests — or simply to follow what comes next, [reach out](/LANG/contact) or watch this [newsroom](/LANG/newsroom).",
       "newsletter": {
         "eyebrow": "Newsletter",
-        "intro": "Get our drops, deep insights, and perspectives — one to two emails per month.",
+        "intro": "Get our drops, deep insights, and perspectives, one to two emails per month.",
         "name": "First name",
         "email": "Email address",
         "consent": "I agree to receive emails from VORVN and have read the <privacy>Privacy Policy</privacy>.",
@@ -274,7 +274,7 @@
         "doubleOptin": "Double opt-in · Confirmation email required",
         "success": {
           "title": "Almost there.",
-          "body": "Check your inbox for a confirmation email — click the link to activate your subscription."
+          "body": "Check your inbox for a confirmation email, click the link to activate your subscription."
         },
         "errors": {
           "name": "Please enter your first name.",
