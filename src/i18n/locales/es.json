@@ -271,7 +271,6 @@
         "consent": "Acepto recibir correos de VORVN y he leído la <privacy>Política de Privacidad</privacy>.",
         "submit": "Suscribirse",
         "submitting": "Enviando…",
-        "doubleOptin": "Doble opt-in · Se requiere correo de confirmación",
         "success": {
           "title": "Casi listo.",
           "body": "Revisa tu bandeja de entrada, haz clic en el enlace para activar tu suscripción."

@@ -80,6 +80,8 @@ export default function VorvnNewsletterOptin({ lang }: Props) {
   }
 
   const eyebrow = t('newsroom.sidebar.newsletter.eyebrow');
+  const inputCls =
+    'r-input w-full bg-transparent border px-4 py-3 font-sans text-[15px] leading-[1.5] text-foreground placeholder:text-foreground placeholder:opacity-40 focus:outline-none transition-colors duration-200';
 
   return (
     <div className="mt-10 pt-10 border-t border-rule">
@@ -89,11 +91,26 @@ export default function VorvnNewsletterOptin({ lang }: Props) {
       </div>
 
       {status === 'sent' ? (
-        <div role="status" aria-live="polite">
-          <p className="font-sans text-[15px] leading-[1.55] text-foreground m-0">
+        <div
+          role="status"
+          aria-live="polite"
+          className="r-card border border-foreground p-6 mt-2"
+          style={{ animation: 'fadeUpIn 0.5s cubic-bezier(0.16,1,0.3,1) both' }}
+        >
+          <div className="flex items-center gap-3 mb-3">
+            <span
+              aria-hidden
+              className="r-pill inline-block w-[8px] h-[8px] bg-foreground"
+              style={{ animation: 'dotPulse 2s ease-in-out infinite' }}
+            />
+            <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground">
+              {eyebrow}
+            </span>
+          </div>
+          <p className="font-sans text-[17px] font-medium leading-[1.4] text-foreground m-0">
             {t('newsroom.sidebar.newsletter.success.title')}
           </p>
-          <p className="font-sans text-[13px] leading-[1.6] text-mid mt-3 m-0">
+          <p className="font-sans text-[14px] leading-[1.6] text-mid mt-2 m-0">
             {t('newsroom.sidebar.newsletter.success.body')}
           </p>
         </div>
@@ -127,12 +144,12 @@ export default function VorvnNewsletterOptin({ lang }: Props) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder={t('newsroom.sidebar.newsletter.name')}
-              className="w-full bg-transparent border-0 border-b border-rule px-0 py-2 text-[14px] text-foreground placeholder:text-mid focus:outline-none focus:border-foreground"
+              className={`${inputCls} ${errors.name ? 'border-foreground focus:border-foreground' : 'border-rule focus:border-foreground'}`}
               aria-invalid={!!errors.name}
             />
             {errors.name && (
-              <p className="mt-2 font-mono text-[10px] tracking-[0.14em] uppercase text-foreground/80">
-                {errors.name}
+              <p className="mt-2 font-mono text-[12px] tracking-[0.06em] text-foreground">
+                <span className="text-mid">ERR ·</span> {errors.name}
               </p>
             )}
           </div>
@@ -148,12 +165,12 @@ export default function VorvnNewsletterOptin({ lang }: Props) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder={t('newsroom.sidebar.newsletter.email')}
-              className="w-full bg-transparent border-0 border-b border-rule px-0 py-2 text-[14px] text-foreground placeholder:text-mid focus:outline-none focus:border-foreground"
+              className={`${inputCls} ${errors.email ? 'border-foreground focus:border-foreground' : 'border-rule focus:border-foreground'}`}
               aria-invalid={!!errors.email}
             />
             {errors.email && (
-              <p className="mt-2 font-mono text-[10px] tracking-[0.14em] uppercase text-foreground/80">
-                {errors.email}
+              <p className="mt-2 font-mono text-[12px] tracking-[0.06em] text-foreground">
+                <span className="text-mid">ERR ·</span> {errors.email}
               </p>
             )}
           </div>
@@ -183,30 +200,36 @@ export default function VorvnNewsletterOptin({ lang }: Props) {
             </span>
           </label>
           {errors.consent && (
-            <p className="font-mono text-[10px] tracking-[0.14em] uppercase text-foreground/80">
-              {errors.consent}
+            <p className="font-mono text-[12px] tracking-[0.06em] text-foreground">
+              <span className="text-mid">ERR ·</span> {errors.consent}
             </p>
           )}
 
           <button
             type="submit"
             disabled={status === 'submitting'}
-            className="mt-3 inline-flex items-center gap-2 border border-foreground px-5 py-2 font-mono text-[10px] tracking-[0.18em] uppercase text-foreground hover:bg-foreground hover:text-background transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="btn-solid mt-3"
           >
             {status === 'submitting'
               ? t('newsroom.sidebar.newsletter.submitting')
               : t('newsroom.sidebar.newsletter.submit')}
+            {status === 'submitting' && <span className="btn-spinner" aria-hidden />}
           </button>
 
           {sendError && (
-            <p className="font-mono text-[10px] tracking-[0.14em] uppercase text-foreground/80">
-              {sendError}
-            </p>
+            <div
+              role="alert"
+              className="r-card border border-foreground p-5 mt-3"
+              style={{ animation: 'fadeUpIn 0.4s cubic-bezier(0.16,1,0.3,1) both' }}
+            >
+              <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground mb-2">
+                ERR
+              </div>
+              <p className="font-sans text-[14px] leading-[1.55] text-foreground m-0">
+                {sendError}
+              </p>
+            </div>
           )}
-
-          <p className="font-mono text-[10px] tracking-[0.14em] uppercase text-mid pt-2">
-            {t('newsroom.sidebar.newsletter.doubleOptin')}
-          </p>
         </form>
       )}
     </div>

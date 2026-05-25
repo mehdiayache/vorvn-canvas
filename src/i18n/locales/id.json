@@ -271,7 +271,6 @@
         "consent": "Saya setuju menerima email dari VORVN dan telah membaca <privacy>Kebijakan Privasi</privacy>.",
         "submit": "Berlangganan",
         "submitting": "Mengirim…",
-        "doubleOptin": "Double opt-in · Email konfirmasi diperlukan",
         "success": {
           "title": "Hampir selesai.",
           "body": "Periksa kotak masuk Anda, klik tautan konfirmasi untuk mengaktifkan langganan Anda."

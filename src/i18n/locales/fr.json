@@ -271,7 +271,6 @@
         "consent": "J'accepte de recevoir des emails de VORVN et j'ai lu la <privacy>politique de confidentialité</privacy>.",
         "submit": "S'abonner",
         "submitting": "Envoi…",
-        "doubleOptin": "Double opt-in · Email de confirmation requis",
         "success": {
           "title": "Presque terminé.",
           "body": "Vérifiez votre boîte mail, cliquez sur le lien de confirmation pour activer votre abonnement."
