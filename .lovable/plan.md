@@ -1,108 +1,50 @@
 ## Goal
 
-Stop Google Search Console from reporting "Redirect error" on newsroom articles, and make every article discoverable via sitemap.
+Tighten the Newsroom: simpler headline, cleaner 3-category taxonomy, fix existing article's type.
 
-## Changes
+## 1. New headline + intro (all 6 languages)
 
-### 1. Switch BASE_URL from `www.vorvn.com` → `vorvn.com` (apex)
+Replace current copy in `newsroom.headline` / `newsroom.intro`:
 
-Files to update (single constant in each):
-- `scripts/prerender.mjs` — `BASE_URL`
-- `src/components/SeoHead.tsx` — `BASE_URL`
-- `scripts/indexnow-ping.mjs` — base URL
-- `scripts/verify-seo.mjs` — if it hardcodes the host
+- Headline: **"Newsroom."**
+- Intro: **"Press releases, announcements, and updates."**
 
-Effect: canonical, hreflang, OG, Twitter, IndexNow pings, and JSON-LD all point at `https://vorvn.com/...`, which is the host Netlify already serves directly — no www→apex 301 anymore.
+Files: `src/i18n/locales/{en,fr,es,zh,id,ar}.json` — translate intro per locale, keep "Newsroom." as-is (proper noun, same across languages — Arabic gets its native equivalent).
 
-### 2. Kill the trailing-slash 301 on prerendered routes
+## 2. New category taxonomy
 
-Add to `netlify.toml`, **above** the existing SPA fallback:
+Replace the 4 current types (`essay | news | collaboration | analysis`) with **3 new types**:
 
-```toml
-# Serve prerendered HTML for clean URLs without redirecting to add a trailing slash.
-[[redirects]]
-  from = "/:lang/newsroom/:slug"
-  to   = "/:lang/newsroom/:slug/index.html"
-  status = 200
+| New type            | Meaning                                                         |
+|---------------------|-----------------------------------------------------------------|
+| `announcement`      | Official news, launches, partnerships                           |
+| `deep-insight`      | The inner kitchen: how we built it, what we tried, what worked  |
+| `perspective`       | CEO's point of view on the industry                             |
 
-[[redirects]]
-  from = "/:lang/newsroom"
-  to   = "/:lang/newsroom/index.html"
-  status = 200
+Changes:
 
-[[redirects]]
-  from = "/:lang/contact"
-  to   = "/:lang/contact/index.html"
-  status = 200
+- `src/lib/newsroom.ts` — update `ArticleType` union to `'announcement' | 'deep-insight' | 'perspective'`.
+- `src/i18n/locales/*.json` — replace `newsroom.types.*` map with the 3 new keys, translated per locale.
+- `scripts/validate-newsroom.mjs` — update the allowed-types whitelist so the build fails fast on legacy values.
+- Any other reference to the old types (search across `src/` + `scripts/`) gets updated.
 
-[[redirects]]
-  from = "/:lang"
-  to   = "/:lang/index.html"
-  status = 200
-```
+## 3. Reclassify existing article
 
-Effect: `https://vorvn.com/en/newsroom/<slug>` returns 200 directly with the prerendered file — no 301 chain. Canonical matches URL exactly.
+`src/content/newsroom/2026-05-23-en-meme-we-made-real-cook-warriors-method.json`:
 
-### 3. Tighten the SPA fallback (no more soft-404)
+- Change `"type": "analysis"` → `"type": "deep-insight"`.
 
-Replace the current global `/* → /index.html 200` with a fallback that only catches paths inside known language roots, and let everything else 404 naturally:
+## 4. Verify
 
-```toml
-[[redirects]]
-  from = "/:lang/*"
-  to   = "/:lang/index.html"
-  status = 200
-  conditions = {Path = ["/en/*","/fr/*","/es/*","/zh/*","/id/*","/ar/*"]}
-```
+- Run `npm run build` (validator + prerender) to confirm no stale type references.
+- Visit `/en/newsroom` → headline reads "Newsroom.", article shows "Deep Insights" badge.
+- Visit `/en/newsroom/meme-we-made-real-cook-warriors-method` → category tag updated.
 
-Unknown roots will hit React Router's `NotFound` only when accessed via a known lang prefix; truly unknown paths return Netlify's 404.
+## Open question (your message cut off)
 
-### 4. Auto-generate the sitemap
+You wrote **"ALSO first article is"** and stopped. Did you mean:
+- (a) The first article should be a different/new one (a fresh announcement)?
+- (b) You want to **pin** a specific article to the top?
+- (c) Something else?
 
-Replace hand-edited `public/sitemap.xml` with a build-time generator.
-
-- **New file:** `scripts/generate-sitemap.mjs`
-  - `BASE_URL = 'https://vorvn.com'`
-  - Reads `src/content/newsroom/*.json` to discover slugs + `updated`/`date`
-  - Emits entries for:
-    - 6 × `/{lang}` (with full hreflang block + image entry like today)
-    - 6 × `/{lang}/contact` (with hreflang)
-    - 6 × `/{lang}/newsroom` (with hreflang)
-    - Per article × per available language `/{lang}/newsroom/{slug}` with hreflang restricted to languages that actually exist for that article
-    - `/legal/privacy`, `/legal/notice` (English-only)
-  - `lastmod` = article `updated` for article rows, today's date for static rows
-  - Writes to `public/sitemap.xml` (Vite copies to `dist/`)
-- **Delete:** existing hand-edited `public/sitemap.xml` content (script overwrites)
-- **Wire-up:** add `prebuild` and `predev` to `package.json`:
-  ```json
-  "predev":   "node scripts/generate-sitemap.mjs",
-  "prebuild": "node scripts/validate-newsroom.mjs && node scripts/generate-sitemap.mjs"
-  ```
-  (Keep existing `build` chain intact; just prepend sitemap generation.)
-
-### 5. Update `public/robots.txt`
-
-Change the `Sitemap:` directive to `https://vorvn.com/sitemap.xml`.
-
-## Verification (after deploy)
-
-Run from local terminal:
-
-```bash
-curl -sI https://vorvn.com/en/newsroom/meme-we-made-real-cook-warriors-method
-# expect: HTTP/2 200 (no 301)
-
-curl -s https://vorvn.com/sitemap.xml | grep -c newsroom
-# expect: > 0
-```
-
-In Google Search Console:
-- Submit `https://vorvn.com/sitemap.xml`
-- Use "Test live URL" on the article, then "Request indexing"
-- Ensure a **Domain property** for `vorvn.com` exists
-
-## Out of scope
-
-- No changes to article content, design, or React components.
-- No change to the prerender content pipeline (it already produces correct HTML — only its `BASE_URL` constant changes).
-- No Helmet migration (prerender + `SeoHead` already covers per-route head).
+Tell me what comes after "ALSO first article is" and I'll fold it into the plan before we build.

@@ -237,8 +237,8 @@
   },
   "newsroom": {
     "tag": "VORVN · Sala de prensa",
-    "headline": "Notas desde la holding.",
-    "intro": "Ensayos, noticias y colaboraciones. Publicamos cuando hay algo que vale la pena decir — no por calendario.",
+    "headline": "Sala de prensa.",
+    "intro": "Comunicados, anuncios y novedades.",
     "empty": "Aún no hay entradas. La primera está en camino.",
     "by": "Por",
     "back": "Volver a la Sala de prensa",
@@ -246,9 +246,9 @@
     "next": "Siguiente",
     "adjacent": "Más artículos",
     "types": {
-      "essay": "Ensayo",
-      "news": "Noticia",
-      "collaboration": "Colaboración"
+      "announcement": "Anuncio",
+      "deep-insight": "Tras bambalinas",
+      "perspective": "Perspectiva"
     },
     "updated": "Actualizado",
     "share": {

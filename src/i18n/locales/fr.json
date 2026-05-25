@@ -237,8 +237,8 @@
   },
   "newsroom": {
     "tag": "VORVN · Salle de presse",
-    "headline": "Notes de la holding.",
-    "intro": "Essais, actualités et collaborations. Nous publions quand il y a quelque chose à dire — pas selon un calendrier.",
+    "headline": "Salle de presse.",
+    "intro": "Communiqués, annonces et mises à jour.",
     "empty": "Aucune entrée pour le moment. La première arrive.",
     "by": "Par",
     "back": "Retour à la Salle de presse",
@@ -246,9 +246,9 @@
     "next": "Suivant",
     "adjacent": "Autres articles",
     "types": {
-      "essay": "Essai",
-      "news": "Actualité",
-      "collaboration": "Collaboration"
+      "announcement": "Annonce",
+      "deep-insight": "Coulisses",
+      "perspective": "Perspective"
     },
     "updated": "Mis à jour",
     "share": {

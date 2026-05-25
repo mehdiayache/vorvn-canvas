@@ -237,8 +237,8 @@
   },
   "newsroom": {
     "tag": "VORVN · Newsroom",
-    "headline": "Notes from the holding.",
-    "intro": "Essays, news and collaborations. We publish when there is something worth saying — not on a schedule.",
+    "headline": "Newsroom.",
+    "intro": "Press releases, announcements, and updates.",
     "empty": "No entries yet. The first one is coming.",
     "by": "By",
     "updated": "Updated",
@@ -247,9 +247,9 @@
     "next": "Next",
     "adjacent": "More articles",
     "types": {
-      "essay": "Essay",
-      "news": "News",
-      "collaboration": "Collaboration"
+      "announcement": "Announcement",
+      "deep-insight": "Deep Insight",
+      "perspective": "Perspective"
     },
     "share": {
       "label": "Share",

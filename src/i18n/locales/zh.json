@@ -237,8 +237,8 @@
   },
   "newsroom": {
     "tag": "VORVN · 新闻中心",
-    "headline": "来自控股的笔记。",
-    "intro": "随笔、新闻与合作。当有值得说的话时我们才发布 — 不按时间表。",
+    "headline": "新闻中心。",
+    "intro": "新闻稿、公告与更新。",
     "empty": "尚无条目。首篇即将发布。",
     "by": "作者",
     "back": "返回新闻中心",
@@ -246,9 +246,9 @@
     "next": "下一篇",
     "adjacent": "更多文章",
     "types": {
-      "essay": "随笔",
-      "news": "新闻",
-      "collaboration": "合作"
+      "announcement": "公告",
+      "deep-insight": "深度洞察",
+      "perspective": "观点"
     },
     "updated": "更新于",
     "share": {
