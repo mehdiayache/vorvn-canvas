@@ -237,8 +237,8 @@
   },
   "newsroom": {
     "tag": "VORVN · Newsroom",
-    "headline": "Catatan dari perusahaan induk.",
-    "intro": "Esai, berita, dan kolaborasi. Kami menerbitkan saat ada sesuatu yang layak dikatakan — bukan menurut jadwal.",
+    "headline": "Newsroom.",
+    "intro": "Siaran pers, pengumuman, dan pembaruan.",
     "empty": "Belum ada entri. Yang pertama akan segera hadir.",
     "by": "Oleh",
     "back": "Kembali ke Newsroom",
@@ -246,9 +246,9 @@
     "next": "Berikutnya",
     "adjacent": "Artikel lainnya",
     "types": {
-      "essay": "Esai",
-      "news": "Berita",
-      "collaboration": "Kolaborasi"
+      "announcement": "Pengumuman",
+      "deep-insight": "Di Balik Layar",
+      "perspective": "Perspektif"
     },
     "updated": "Diperbarui",
     "share": {
