@@ -523,6 +523,9 @@ for (const l of LANGUAGES) {
     canonical,
     hreflangBlock: buildHreflangBlock('/contact'),
     jsonLdScripts: [
+      organizationJsonLd(l.code),
+      websiteJsonLd(l.code),
+      personJsonLd(),
       contactPageJsonLd(l.code, seo.title),
       breadcrumbJsonLd(l.code, '/contact', 'Contact'),
     ],
@@ -553,6 +556,9 @@ for (const slug of ['privacy', 'notice']) {
     `    <meta name="twitter:title" content="${escapeHtml(seo.title)}" />`,
     `    <meta name="twitter:description" content="${escapeHtml(seo.desc)}" />`,
     `    <meta name="twitter:image" content="${BASE_URL}/og-image.jpg" />`,
+    `    <script type="application/ld+json" data-prerender>${escapeJsonForScript(organizationJsonLd('en'))}</script>`,
+    `    <script type="application/ld+json" data-prerender>${escapeJsonForScript(websiteJsonLd('en'))}</script>`,
+    `    <script type="application/ld+json" data-prerender>${escapeJsonForScript(personJsonLd())}</script>`,
   ].join('\n');
   let html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
   html = injectBodyH1(html, H1_COPY.legal[slug]);
@@ -767,6 +773,9 @@ for (const l of LANGUAGES) {
     canonical,
     hreflangBlock: buildHreflangBlock('/newsroom'),
     jsonLdScripts: [
+      organizationJsonLd(l.code),
+      websiteJsonLd(l.code),
+      personJsonLd(),
       collectionPageJsonLd(l.code, seo),
       breadcrumbJsonLd(l.code, '/newsroom', seo.label),
     ],
@@ -808,6 +817,9 @@ for (const group of newsroomGroups) {
         section: article.type,
       },
       jsonLdScripts: [
+        organizationJsonLd(servedLang),
+        websiteJsonLd(servedLang),
+        personJsonLd(),
         articleJsonLd(article, l.code),
         {
           '@context': 'https://schema.org',
