@@ -638,8 +638,13 @@ function blockToHtml(b) {
     return `<figure><img src="${escapeHtml(b.src)}" alt="${escapeHtml(b.alt || '')}" loading="lazy" />${cap}</figure>`;
   }
   if (b.type === 'quote') {
-    const cite = b.attribution ? `<cite>${escapeHtml(b.attribution)}</cite>` : '';
-    return `<blockquote>${escapeHtml(stripInlineLinks(b.text || ''))}${cite}</blockquote>`;
+    // <cite> lives OUTSIDE <blockquote> per HTML spec, with em-dash separator
+    // so author name doesn't run into the quote in raw HTML view.
+    const text = escapeHtml(stripInlineLinks(b.text || ''));
+    const cap = b.attribution
+      ? `<figcaption>&mdash; <cite>${escapeHtml(b.attribution)}</cite></figcaption>`
+      : '';
+    return `<figure><blockquote>${text}</blockquote>${cap}</figure>`;
   }
   return `<${b.type}>${escapeHtml(stripInlineLinks(b.text || ''))}</${b.type}>`;
 }
@@ -668,18 +673,33 @@ function buildNewsroomIndexContent(lang) {
 function buildArticleContent(article) {
   const author = resolveAuthor(article);
   const parts = [];
-  parts.push(hTag(1, article.title));
+  // No <h1> here — injectBodyH1() already emits the single sr-only H1 for crawlers.
+  // Emitting one here as well would duplicate the H1 in the prerendered HTML.
   parts.push(pTag(`${article.date} — ${author.name} (${author.title})`));
   parts.push(pTag(article.excerpt));
   for (const b of article.body) parts.push(blockToHtml(b));
   return parts.join('');
 }
 
+function countWords(article) {
+  let n = 0;
+  for (const b of article.body || []) {
+    if (b.type === 'list') {
+      for (const it of b.items || []) n += String(it).trim().split(/\s+/).filter(Boolean).length;
+    } else if (b.text) {
+      n += String(b.text).trim().split(/\s+/).filter(Boolean).length;
+    }
+  }
+  return n;
+}
+
 function articleJsonLd(article, urlLang) {
   const author = resolveAuthor(article);
+  // Promote `news` articles to NewsArticle for Google News / Discover surfaces.
+  const ldType = article.type === 'news' ? 'NewsArticle' : 'Article';
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': ldType,
     headline: article.title,
     description: article.excerpt,
     datePublished: article.date,
@@ -687,6 +707,7 @@ function articleJsonLd(article, urlLang) {
     inLanguage: article.lang,
     image: [`${BASE_URL}/og-image.jpg`],
     articleSection: article.type,
+    wordCount: countWords(article),
     author: { '@type': 'Person', name: author.name, jobTitle: author.title },
     publisher: {
       '@type': 'Organization',
@@ -791,6 +812,7 @@ for (const group of newsroomGroups) {
         {
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',
+          inLanguage: servedLang,
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'VORVN', item: `${BASE_URL}/${l.code}` },
             { '@type': 'ListItem', position: 2, name: newsroomLabel, item: `${BASE_URL}/${l.code}/newsroom` },
