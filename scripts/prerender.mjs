@@ -56,17 +56,22 @@ const H1_COPY = {
 
 function injectBodyH1(html, h1Text) {
   const h1 = `<h1 class="sr-only">${escapeHtml(h1Text)}</h1>`;
-  // Insert immediately after opening <body ...> tag, before #root
-  return html.replace(/(<body[^>]*>)/i, `$1${h1}`);
+  // Function replacement so any `$` in h1Text is never interpreted as a
+  // backreference token by String.prototype.replace.
+  return html.replace(/(<body[^>]*>)/i, (m) => `${m}${h1}`);
 }
 
 function injectPrerenderedContent(html, innerHtml) {
-  // Sits outside #root with the `hidden` attribute. Crawlers (Bing/Google/AI
-  // bots) parse and index every word. Real users never see it because React
-  // mounts inside #root immediately, and `hidden` removes it from the visual
-  // tree even before hydration. This is the SEO fallback content fix.
+  // Sits outside #root with the `hidden` attribute. Crawlers parse and index
+  // every word; real users never see it because React mounts inside #root.
+  //
+  // IMPORTANT: function replacement. innerHtml may contain literal `$1`,
+  // `$2`, … (e.g. prices like `$100`, `$250`). With a string replacement,
+  // JavaScript expands those as capture-group backreferences and injects
+  // extra `<div id="root">` tags inside this hidden block — causing React to
+  // mount into the hidden node and rendering a blank page on direct entry.
   const block = `<div id="prerendered-content" hidden aria-hidden="true">${innerHtml}</div>`;
-  return html.replace(/(<div id="root">)/i, `${block}$1`);
+  return html.replace(/(<div id="root">)/i, (m) => `${block}${m}`);
 }
 
 const localeCache = {};
