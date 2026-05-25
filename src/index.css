@@ -149,6 +149,41 @@
 .arrow-link:disabled { opacity: 0.5; cursor: not-allowed; }
 .arrow-link:disabled:hover::after { transform: none; }
 
+/* ============================================================
+   .btn-solid — reusable solid black CTA with inline spinner slot.
+   Stays black on hover and during loading. Pair with .btn-spinner.
+   ============================================================ */
+.btn-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: hsl(var(--bg));
+  background: hsl(var(--foreground));
+  border: 1px solid hsl(var(--foreground));
+  border-radius: var(--radius-pill);
+  padding: 12px 22px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.btn-solid:hover { opacity: 0.88; }
+.btn-solid:disabled { cursor: not-allowed; opacity: 0.85; }
+
+.btn-spinner {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid hsl(var(--bg) / 0.35);
+  border-top-color: hsl(var(--bg));
+  border-radius: 9999px;
+  animation: btnSpin 0.7s linear infinite;
+  display: inline-block;
+}
+@keyframes btnSpin { to { transform: rotate(360deg); } }
+
 /* Scroll reveal */
 .reveal {
   opacity: 0;

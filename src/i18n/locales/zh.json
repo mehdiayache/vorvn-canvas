@@ -271,7 +271,6 @@
         "consent": "我同意接收 VORVN 的邮件，并已阅读<privacy>隐私政策</privacy>。",
         "submit": "订阅",
         "submitting": "发送中…",
-        "doubleOptin": "双重确认 · 需要确认邮件",
         "success": {
           "title": "即将完成。",
           "body": "请查收您的邮箱, 点击确认链接以激活订阅。"
