@@ -814,6 +814,9 @@ for (const group of newsroomGroups) {
         section: article.type,
       },
       jsonLdScripts: [
+        organizationJsonLd(servedLang),
+        websiteJsonLd(servedLang),
+        personJsonLd(),
         articleJsonLd(article, l.code),
         {
           '@context': 'https://schema.org',
