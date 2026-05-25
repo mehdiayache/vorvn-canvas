@@ -1,6 +1,7 @@
 import { Newspaper } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { parseInline } from '@/lib/parseInline';
+import VorvnNewsletterOptin from './VorvnNewsletterOptin';
 
 interface Props {
   lang: string;
@@ -23,6 +24,7 @@ export default function VorvnNewsroomSidebar({ lang }: Props) {
       <p className="font-sans text-[15px] leading-[1.55] text-foreground/85">
         {parseInline(body)}
       </p>
+      <VorvnNewsletterOptin lang={lang} />
     </aside>
   );
 }

@@ -262,7 +262,28 @@
     "viewAll": "Ver todo",
     "sidebar": {
       "title": "Mantente al tanto",
-      "body": "Para licencias, colaboraciones o prensa — o simplemente para seguir lo que viene, [escríbenos](/LANG/contact) o consulta la [newsroom](/LANG/newsroom)."
+      "body": "Para licencias, colaboraciones o prensa — o simplemente para seguir lo que viene, [escríbenos](/LANG/contact) o consulta la [newsroom](/LANG/newsroom).",
+      "newsletter": {
+        "eyebrow": "Newsletter",
+        "intro": "Recibe nuestros lanzamientos, análisis y perspectivas — uno o dos correos al mes.",
+        "name": "Nombre",
+        "email": "Correo electrónico",
+        "consent": "Acepto recibir correos de VORVN y he leído la <privacy>Política de Privacidad</privacy>.",
+        "submit": "Suscribirse",
+        "submitting": "Enviando…",
+        "doubleOptin": "Doble opt-in · Se requiere correo de confirmación",
+        "success": {
+          "title": "Casi listo.",
+          "body": "Revisa tu bandeja de entrada — haz clic en el enlace para activar tu suscripción."
+        },
+        "errors": {
+          "name": "Por favor, introduce tu nombre.",
+          "email": "Por favor, introduce un correo válido.",
+          "consent": "Debes aceptar antes de suscribirte.",
+          "rate": "Demasiados intentos. Inténtalo más tarde.",
+          "server": "Algo salió mal. Por favor, inténtalo de nuevo."
+        }
+      }
     }
   }
 }

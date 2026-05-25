@@ -262,7 +262,28 @@
     "viewAll": "Tout voir",
     "sidebar": {
       "title": "Restez informé",
-      "body": "Pour les licences, partenariats ou demandes presse — ou simplement pour suivre la suite, [contactez-nous](/LANG/contact) ou consultez la [newsroom](/LANG/newsroom)."
+      "body": "Pour les licences, partenariats ou demandes presse — ou simplement pour suivre la suite, [contactez-nous](/LANG/contact) ou consultez la [newsroom](/LANG/newsroom).",
+      "newsletter": {
+        "eyebrow": "Newsletter",
+        "intro": "Recevez nos sorties, analyses et perspectives — un à deux emails par mois.",
+        "name": "Prénom",
+        "email": "Adresse email",
+        "consent": "J'accepte de recevoir des emails de VORVN et j'ai lu la <privacy>politique de confidentialité</privacy>.",
+        "submit": "S'abonner",
+        "submitting": "Envoi…",
+        "doubleOptin": "Double opt-in · Email de confirmation requis",
+        "success": {
+          "title": "Presque terminé.",
+          "body": "Vérifiez votre boîte mail — cliquez sur le lien de confirmation pour activer votre abonnement."
+        },
+        "errors": {
+          "name": "Veuillez saisir votre prénom.",
+          "email": "Veuillez saisir une adresse email valide.",
+          "consent": "Vous devez accepter avant de vous abonner.",
+          "rate": "Trop de tentatives. Réessayez plus tard.",
+          "server": "Une erreur est survenue. Veuillez réessayer."
+        }
+      }
     }
   }
 }
