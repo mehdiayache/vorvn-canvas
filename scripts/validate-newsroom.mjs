@@ -11,7 +11,7 @@ const dir = path.resolve(__dirname, '..', 'src', 'content', 'newsroom');
 const publicDir = path.resolve(__dirname, '..', 'public');
 
 const LANGS = new Set(['en', 'fr', 'es', 'zh', 'id', 'ar']);
-const TYPES = new Set(['essay', 'news', 'collaboration', 'analysis']);
+const TYPES = new Set(['announcement', 'deep-insight', 'perspective']);
 const BLOCK_TYPES = new Set(['p', 'h2', 'h3', 'quote', 'list', 'image']);
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const FILENAME_RE = /^(\d{4}-\d{2}-\d{2})-([a-z]{2})-([a-z0-9-]+)\.json$/;
