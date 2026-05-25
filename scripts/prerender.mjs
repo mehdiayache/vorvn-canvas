@@ -479,7 +479,7 @@ function injectInto(html, { lang, dir, headBlock }) {
   ];
   for (const p of stripPatterns) out = out.replace(p, '');
 
-  out = out.replace('</head>', `${headBlock}\n  </head>`);
+  out = out.replace('</head>', () => `${headBlock}\n  </head>`);
   return out;
 }
 
