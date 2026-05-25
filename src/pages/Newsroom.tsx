@@ -39,15 +39,15 @@ export default function Newsroom() {
           {/* Article list */}
           <section>
             {articles.length === 0 ? (
-              <p className="py-10 font-sans text-[15px] text-mid border-t border-rule">
+              <p className="py-10 font-sans text-[15px] text-mid">
                 {t('newsroom.empty')}
               </p>
             ) : (
-              <ul className="border-t border-rule">
+              <ul>
                 {articles.map((a) => {
                   const author = resolveAuthor(a);
                   return (
-                    <li key={a.slug} className="border-b border-rule">
+                    <li key={a.slug}>
                       <Link
                         to={`/${currentLang}/newsroom/${a.slug}`}
                         className="group block py-8 md:py-12 px-2 -mx-2 hover:bg-foreground/[0.02] transition-colors"
