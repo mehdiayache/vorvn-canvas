@@ -262,7 +262,28 @@
     "viewAll": "查看全部",
     "sidebar": {
       "title": "保持关注",
-      "body": "关于授权、合作或媒体咨询——或只是想了解后续动态，请[联系我们](/LANG/contact)或关注[新闻室](/LANG/newsroom)。"
+      "body": "关于授权、合作或媒体咨询——或只是想了解后续动态，请[联系我们](/LANG/contact)或关注[新闻室](/LANG/newsroom)。",
+      "newsletter": {
+        "eyebrow": "订阅",
+        "intro": "获取我们的发布、深度洞察和观点 — 每月一到两封邮件。",
+        "name": "名字",
+        "email": "电子邮箱",
+        "consent": "我同意接收 VORVN 的邮件，并已阅读<privacy>隐私政策</privacy>。",
+        "submit": "订阅",
+        "submitting": "发送中…",
+        "doubleOptin": "双重确认 · 需要确认邮件",
+        "success": {
+          "title": "即将完成。",
+          "body": "请查收您的邮箱 — 点击确认链接以激活订阅。"
+        },
+        "errors": {
+          "name": "请输入您的名字。",
+          "email": "请输入有效的电子邮箱。",
+          "consent": "订阅前必须同意。",
+          "rate": "尝试次数过多。请稍后再试。",
+          "server": "出现错误。请重试。"
+        }
+      }
     }
   }
 }
