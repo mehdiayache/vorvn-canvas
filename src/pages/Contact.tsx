@@ -158,82 +158,6 @@ export default function Contact() {
           </div>
         </section>
 
-        {/* OFFICES */}
-        <section
-          className="border-t border-rule"
-          style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20 gap-y-12">
-            <div className="reveal">
-              <h2 className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground m-0">
-                {t('contact.offices')}
-              </h2>
-            </div>
-            <div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
-                {OFFICES.map((o, i) => (
-                  <div key={o.entity} className={`reveal d${i + 1}`}>
-                    <div className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid mb-4">
-                      {o.region}
-                    </div>
-                    <h3
-                      className="font-sans font-medium tracking-[-0.02em] mb-[10px] m-0"
-                      style={{ fontSize: 'clamp(18px, 1.9vw, 26px)' }}
-                    >
-                      {o.city}
-                    </h3>
-                    <div className="font-mono text-[9px] tracking-[0.1em] text-mid mb-[18px]">
-                      {o.entity}
-                    </div>
-                    <address className="not-italic font-sans text-[13px] font-normal leading-[1.78] text-mid">
-                      {o.address.split('\n').map((line, j) => (
-                        <span key={j}>
-                          {line}
-                          <br />
-                        </span>
-                      ))}
-                    </address>
-                    <span className="r-pill inline-block mt-6 font-mono text-[8px] tracking-[0.16em] uppercase text-mid border border-rule py-[5px] px-[11px]">
-                      {o.badge}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Phones + Email */}
-              <div className="mt-16 pt-10 border-t border-rule grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 reveal d3">
-                <div>
-                  <div className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid mb-4">
-                    {t('contact.phones')}
-                  </div>
-                  <div className="space-y-2">
-                    {PHONES.map((p) => (
-                      <a
-                        key={p.value}
-                        href={p.href}
-                        className="block font-sans text-[18px] font-medium text-foreground hover:text-mid transition-colors duration-200"
-                      >
-                        {p.value}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <div className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid mb-4">
-                    {t('contact.directLabel')}
-                  </div>
-                  <a
-                    href="#form"
-                    className="font-sans text-[18px] font-medium text-foreground hover:text-mid transition-colors duration-200"
-                  >
-                    {t('contact.writeUs')}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* FORM */}
         <section
           id="form"
@@ -463,6 +387,82 @@ export default function Contact() {
                   )}
                 </form>
               )}
+            </div>
+          </div>
+        </section>
+
+        {/* OFFICES */}
+        <section
+          className="border-t border-rule"
+          style={{ padding: 'clamp(80px, 12vh, 148px) var(--gutter)' }}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-x-20 gap-y-12">
+            <div className="reveal">
+              <h2 className="font-sans text-[18px] font-medium tracking-[0.01em] text-foreground m-0">
+                {t('contact.offices')}
+              </h2>
+            </div>
+            <div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+                {OFFICES.map((o, i) => (
+                  <div key={o.entity} className={`reveal d${i + 1}`}>
+                    <div className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid mb-4">
+                      {o.region}
+                    </div>
+                    <h3
+                      className="font-sans font-medium tracking-[-0.02em] mb-[10px] m-0"
+                      style={{ fontSize: 'clamp(18px, 1.9vw, 26px)' }}
+                    >
+                      {o.city}
+                    </h3>
+                    <div className="font-mono text-[9px] tracking-[0.1em] text-mid mb-[18px]">
+                      {o.entity}
+                    </div>
+                    <address className="not-italic font-sans text-[13px] font-normal leading-[1.78] text-mid">
+                      {o.address.split('\n').map((line, j) => (
+                        <span key={j}>
+                          {line}
+                          <br />
+                        </span>
+                      ))}
+                    </address>
+                    <span className="r-pill inline-block mt-6 font-mono text-[8px] tracking-[0.16em] uppercase text-mid border border-rule py-[5px] px-[11px]">
+                      {o.badge}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Phones + Email */}
+              <div className="mt-16 pt-10 border-t border-rule grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 reveal d3">
+                <div>
+                  <div className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid mb-4">
+                    {t('contact.phones')}
+                  </div>
+                  <div className="space-y-2">
+                    {PHONES.map((p) => (
+                      <a
+                        key={p.value}
+                        href={p.href}
+                        className="block font-sans text-[18px] font-medium text-foreground hover:text-mid transition-colors duration-200"
+                      >
+                        {p.value}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div className="font-mono text-[9px] tracking-[0.16em] uppercase text-mid mb-4">
+                    {t('contact.directLabel')}
+                  </div>
+                  <a
+                    href="#form"
+                    className="font-sans text-[18px] font-medium text-foreground hover:text-mid transition-colors duration-200"
+                  >
+                    {t('contact.writeUs')}
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
