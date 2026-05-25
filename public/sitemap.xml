@@ -4,206 +4,327 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
 >
-  <!-- ============ HOME ============ -->
   <url>
-    <loc>https://www.vorvn.com/en</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://vorvn.com/en</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en" />
     <image:image>
-      <image:loc>https://www.vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
+      <image:loc>https://vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
       <image:title>Mehdi Ayache Berberos, Founder of VORVN</image:title>
       <image:caption>Moroccan designer and entrepreneur, Founder of VORVN, based between Bali and Asia.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://www.vorvn.com/fr</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://vorvn.com/fr</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en" />
     <image:image>
-      <image:loc>https://www.vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
+      <image:loc>https://vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
       <image:title>Mehdi Ayache Berberos, fondateur de VORVN</image:title>
-      <image:caption>Designer et entrepreneur marocain, fondateur de VORVN, basé entre Bali et l'Asie.</image:caption>
+      <image:caption>Designer et entrepreneur marocain, fondateur de VORVN, basé entre Bali et l&apos;Asie.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://www.vorvn.com/es</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://vorvn.com/es</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en" />
     <image:image>
-      <image:loc>https://www.vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
+      <image:loc>https://vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
       <image:title>Mehdi Ayache Berberos, fundador de VORVN</image:title>
       <image:caption>Diseñador y emprendedor marroquí, fundador de VORVN, radicado entre Bali y Asia.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://www.vorvn.com/zh</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://vorvn.com/zh</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en" />
     <image:image>
-      <image:loc>https://www.vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
-      <image:title>Mehdi Ayache Berberos，VORVN 创始人</image:title>
-      <image:caption>摩洛哥设计师与创业者，VORVN 创始人，常驻巴厘岛与亚洲。</image:caption>
+      <image:loc>https://vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
+      <image:title>Mehdi Ayache Berberos, VORVN 创始人</image:title>
+      <image:caption>摩洛哥设计师与创业者,VORVN 创始人,常驻巴厘岛与亚洲之间。</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://www.vorvn.com/id</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://vorvn.com/id</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en" />
     <image:image>
-      <image:loc>https://www.vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
+      <image:loc>https://vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
       <image:title>Mehdi Ayache Berberos, pendiri VORVN</image:title>
-      <image:caption>Desainer dan wirausahawan asal Maroko, pendiri VORVN, berbasis di Bali dan Asia.</image:caption>
+      <image:caption>Perancang dan pengusaha Maroko, pendiri VORVN, berbasis di antara Bali dan Asia.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://www.vorvn.com/ar</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://vorvn.com/ar</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en" />
     <image:image>
-      <image:loc>https://www.vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
+      <image:loc>https://vorvn.com/mehdi-ayache-berberos-moroccan-designer-founder-vorvn.webp</image:loc>
       <image:title>المهدي عياش بربروس، مؤسس VORVN</image:title>
-      <image:caption>مصمم ورائد أعمال مغربي، مؤسس VORVN، مقيم بين بالي وآسيا.</image:caption>
+      <image:caption>مصمم ورائد أعمال مغربي، مؤسس VORVN، يقيم بين بالي وآسيا.</image:caption>
     </image:image>
   </url>
-
-  <!-- ============ CONTACT ============ -->
   <url>
-    <loc>https://www.vorvn.com/en/contact</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://vorvn.com/en/contact</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr/contact" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es/contact" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh/contact" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id/contact" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/contact" />
   </url>
   <url>
-    <loc>https://www.vorvn.com/fr/contact</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://vorvn.com/fr/contact</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr/contact" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es/contact" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh/contact" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id/contact" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/contact" />
   </url>
   <url>
-    <loc>https://www.vorvn.com/es/contact</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://vorvn.com/es/contact</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr/contact" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es/contact" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh/contact" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id/contact" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/contact" />
   </url>
   <url>
-    <loc>https://www.vorvn.com/zh/contact</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://vorvn.com/zh/contact</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr/contact" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es/contact" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh/contact" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id/contact" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/contact" />
   </url>
   <url>
-    <loc>https://www.vorvn.com/id/contact</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://vorvn.com/id/contact</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr/contact" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es/contact" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh/contact" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id/contact" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/contact" />
   </url>
   <url>
-    <loc>https://www.vorvn.com/ar/contact</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://vorvn.com/ar/contact</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.vorvn.com/en/contact" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.vorvn.com/fr/contact" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.vorvn.com/es/contact" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.vorvn.com/zh/contact" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.vorvn.com/id/contact" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.vorvn.com/ar/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/contact" />
   </url>
-
-  <!-- ============ LEGAL (English-only) ============ -->
   <url>
-    <loc>https://www.vorvn.com/legal/privacy</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://vorvn.com/en/newsroom</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/newsroom" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr/newsroom" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es/newsroom" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh/newsroom" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id/newsroom" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar/newsroom" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/newsroom" />
+  </url>
+  <url>
+    <loc>https://vorvn.com/fr/newsroom</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/newsroom" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr/newsroom" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es/newsroom" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh/newsroom" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id/newsroom" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar/newsroom" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/newsroom" />
+  </url>
+  <url>
+    <loc>https://vorvn.com/es/newsroom</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/newsroom" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr/newsroom" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es/newsroom" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh/newsroom" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id/newsroom" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar/newsroom" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/newsroom" />
+  </url>
+  <url>
+    <loc>https://vorvn.com/zh/newsroom</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/newsroom" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr/newsroom" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es/newsroom" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh/newsroom" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id/newsroom" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar/newsroom" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/newsroom" />
+  </url>
+  <url>
+    <loc>https://vorvn.com/id/newsroom</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/newsroom" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr/newsroom" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es/newsroom" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh/newsroom" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id/newsroom" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar/newsroom" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/newsroom" />
+  </url>
+  <url>
+    <loc>https://vorvn.com/ar/newsroom</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/newsroom" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://vorvn.com/fr/newsroom" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://vorvn.com/es/newsroom" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://vorvn.com/zh/newsroom" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://vorvn.com/id/newsroom" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vorvn.com/ar/newsroom" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/newsroom" />
+  </url>
+  <url>
+    <loc>https://vorvn.com/en/newsroom/meme-we-made-real-cook-warriors-method</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/newsroom/meme-we-made-real-cook-warriors-method" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/newsroom/meme-we-made-real-cook-warriors-method" />
+  </url>
+  <url>
+    <loc>https://vorvn.com/fr/newsroom/meme-we-made-real-cook-warriors-method</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/newsroom/meme-we-made-real-cook-warriors-method" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/newsroom/meme-we-made-real-cook-warriors-method" />
+  </url>
+  <url>
+    <loc>https://vorvn.com/es/newsroom/meme-we-made-real-cook-warriors-method</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/newsroom/meme-we-made-real-cook-warriors-method" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/newsroom/meme-we-made-real-cook-warriors-method" />
+  </url>
+  <url>
+    <loc>https://vorvn.com/zh/newsroom/meme-we-made-real-cook-warriors-method</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/newsroom/meme-we-made-real-cook-warriors-method" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/newsroom/meme-we-made-real-cook-warriors-method" />
+  </url>
+  <url>
+    <loc>https://vorvn.com/id/newsroom/meme-we-made-real-cook-warriors-method</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/newsroom/meme-we-made-real-cook-warriors-method" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/newsroom/meme-we-made-real-cook-warriors-method" />
+  </url>
+  <url>
+    <loc>https://vorvn.com/ar/newsroom/meme-we-made-real-cook-warriors-method</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vorvn.com/en/newsroom/meme-we-made-real-cook-warriors-method" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vorvn.com/en/newsroom/meme-we-made-real-cook-warriors-method" />
+  </url>
+  <url>
+    <loc>https://vorvn.com/legal/privacy</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://www.vorvn.com/legal/notice</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://vorvn.com/legal/notice</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>

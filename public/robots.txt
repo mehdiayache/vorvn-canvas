@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.vorvn.com/sitemap.xml
+Sitemap: https://vorvn.com/sitemap.xml

@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/validate-newsroom.mjs && vite build && node scripts/prerender.mjs && node scripts/verify-seo.mjs && node scripts/indexnow-ping.mjs",
-    "build:dev": "node scripts/validate-newsroom.mjs && vite build --mode development && node scripts/prerender.mjs",
+    "predev": "node scripts/generate-sitemap.mjs",
+    "build": "node scripts/validate-newsroom.mjs && node scripts/generate-sitemap.mjs && vite build && node scripts/prerender.mjs && node scripts/verify-seo.mjs && node scripts/indexnow-ping.mjs",
+    "build:dev": "node scripts/validate-newsroom.mjs && node scripts/generate-sitemap.mjs && vite build --mode development && node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",

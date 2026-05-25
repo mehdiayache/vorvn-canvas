@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.resolve(__dirname, '..', 'dist');
-const BASE_URL = 'https://www.vorvn.com';
+const BASE_URL = 'https://vorvn.com';
 const LANGS = ['en', 'fr', 'es', 'zh', 'id', 'ar'];
 
 let failed = 0;
