@@ -610,12 +610,12 @@ function pickArticle(group, lang) {
 }
 
 const NEWSROOM_SEO = {
-  en: { title: 'VORVN Newsroom: Essays, News & Collaborations', desc: 'Notes, essays and announcements from VORVN and its brands. Operator perspective, no marketing fluff. Hong Kong & Bali.', h1: 'VORVN Newsroom — Essays, News & Collaborations', label: 'Newsroom' },
-  fr: { title: 'Salle de Presse VORVN: Essais, Actualités & Collaborations', desc: 'Notes, essais et annonces de VORVN et de ses marques. Vision opérateur, sans marketing. Hong Kong & Bali.', h1: 'Salle de Presse VORVN — Essais, actualités et collaborations', label: 'Salle de presse' },
-  es: { title: 'Sala de Prensa VORVN: Ensayos, Noticias y Colaboraciones', desc: 'Notas, ensayos y anuncios de VORVN y sus marcas. Perspectiva de operador, sin marketing. Hong Kong y Bali.', h1: 'Sala de Prensa VORVN — Ensayos, noticias y colaboraciones', label: 'Sala de prensa' },
-  zh: { title: 'VORVN 新闻中心: 随笔、新闻与合作', desc: '来自 VORVN 及旗下品牌的随笔、文章与公告。运营者视角,不做营销修饰。香港与巴厘岛。', h1: 'VORVN 新闻中心 — 随笔、新闻与合作', label: '新闻中心' },
-  id: { title: 'Newsroom VORVN: Esai, Berita & Kolaborasi', desc: 'Catatan, esai, dan pengumuman dari VORVN dan merek-mereknya. Perspektif operator, tanpa basa-basi pemasaran. Hong Kong & Bali.', h1: 'Newsroom VORVN — Esai, berita & kolaborasi', label: 'Newsroom' },
-  ar: { title: 'غرفة أخبار VORVN: مقالات، أخبار، وتعاونات', desc: 'ملاحظات ومقالات وإعلانات من VORVN وعلاماتها. منظور المُشغِّل، دون تسويق. هونغ كونغ وبالي.', h1: 'غرفة أخبار VORVN — مقالات، أخبار وتعاونات', label: 'غرفة الأخبار' },
+  en: { title: 'VORVN Newsroom — Press releases, announcements & updates', desc: 'Press releases, announcements, and updates from VORVN and its brands. Hong Kong & Bali.', h1: 'Newsroom.', label: 'Newsroom' },
+  fr: { title: 'Salle de presse VORVN — Communiqués, annonces et mises à jour', desc: 'Communiqués, annonces et mises à jour de VORVN et de ses marques. Hong Kong & Bali.', h1: 'Salle de presse.', label: 'Salle de presse' },
+  es: { title: 'Sala de prensa VORVN — Comunicados, anuncios y novedades', desc: 'Comunicados, anuncios y novedades de VORVN y sus marcas. Hong Kong y Bali.', h1: 'Sala de prensa.', label: 'Sala de prensa' },
+  zh: { title: 'VORVN 新闻中心 — 新闻稿、公告与更新', desc: 'VORVN 及旗下品牌的新闻稿、公告与更新。香港与巴厘岛。', h1: '新闻中心。', label: '新闻中心' },
+  id: { title: 'Newsroom VORVN — Siaran pers, pengumuman & pembaruan', desc: 'Siaran pers, pengumuman, dan pembaruan dari VORVN dan merek-mereknya. Hong Kong & Bali.', h1: 'Newsroom.', label: 'Newsroom' },
+  ar: { title: 'غرفة أخبار VORVN — بيانات صحفية، إعلانات وتحديثات', desc: 'بيانات صحفية، إعلانات وتحديثات من VORVN وعلاماتها. هونغ كونغ وبالي.', h1: 'غرفة الأخبار.', label: 'غرفة الأخبار' },
 };
 
 function stripInlineLinks(s) {
