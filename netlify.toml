@@ -20,6 +20,12 @@
   to = "/.netlify/functions/contact"
   status = 200
 
+# Clean URL for the newsletter endpoint
+[[redirects]]
+  from = "/api/newsletter"
+  to = "/.netlify/functions/newsletter"
+  status = 200
+
 # ====== Prerendered route → static HTML (status 200, no redirect) ======
 # Each rule maps a clean URL to its prerendered index.html so canonicals
 # (which never include a trailing slash) resolve directly with 200.
