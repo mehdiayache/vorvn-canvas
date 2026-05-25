@@ -770,6 +770,9 @@ for (const l of LANGUAGES) {
     canonical,
     hreflangBlock: buildHreflangBlock('/newsroom'),
     jsonLdScripts: [
+      organizationJsonLd(l.code),
+      websiteJsonLd(l.code),
+      personJsonLd(),
       collectionPageJsonLd(l.code, seo),
       breadcrumbJsonLd(l.code, '/newsroom', seo.label),
     ],
