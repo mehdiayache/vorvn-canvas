@@ -2,6 +2,10 @@ import maqtob1 from '@/assets/brands/maqtob-1.png';
 import maqtob2 from '@/assets/brands/maqtob-2.png';
 import maqtob3 from '@/assets/brands/maqtob-3.png';
 import maqtob4 from '@/assets/brands/maqtob-4.png';
+import cookwarriorsLogo from '@/assets/brands/cookwarriors.svg';
+import maqtobLogo from '@/assets/brands/maqtob-logo.png';
+import warungMarrakechLogo from '@/assets/brands/warung-marrakech.png';
+import xvoyagerLogo from '@/assets/brands/xvoyager.png';
 
 export type BrandMetrics = {
   status: string;      // e.g. 'Profitable', 'Scaling', 'Launch phase'
@@ -26,7 +30,7 @@ export type BrandData = {
 
 export const BRANDS_DATA: BrandData[] = [
   {
-    logo: 'https://vorvn.com/wp-content/uploads/2024/08/cookwarriors.png',
+    logo: cookwarriorsLogo,
     url: 'https://cookwarriors.com',
     presentationUrl: 'https://vorvn.com/presentations/cookwarriors.pdf',
     status: 'active',
@@ -57,7 +61,7 @@ export const BRANDS_DATA: BrandData[] = [
     images: [],
   },
   {
-    logo: 'https://vorvn.com/wp-content/uploads/2024/08/maqtob.png',
+    logo: maqtobLogo,
     url: 'https://maqtob.id',
     presentationUrl: null,
     status: 'validation',
@@ -68,7 +72,7 @@ export const BRANDS_DATA: BrandData[] = [
     images: [maqtob1, maqtob2, maqtob3, maqtob4],
   },
   {
-    logo: 'https://vorvn.com/wp-content/uploads/2024/08/xvoyager.png',
+    logo: xvoyagerLogo,
     url: null,
     presentationUrl: null,
     status: 'dev',
@@ -79,7 +83,7 @@ export const BRANDS_DATA: BrandData[] = [
     images: [],
   },
   {
-    logo: 'https://vorvn.com/wp-content/uploads/2024/08/warung-marrakech-300x216.png',
+    logo: warungMarrakechLogo,
     url: null,
     presentationUrl: null,
     status: 'dev',
