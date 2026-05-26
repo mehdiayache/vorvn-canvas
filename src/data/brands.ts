@@ -1,3 +1,8 @@
+import maqtob1 from '@/assets/brands/maqtob-1.png';
+import maqtob2 from '@/assets/brands/maqtob-2.png';
+import maqtob3 from '@/assets/brands/maqtob-3.png';
+import maqtob4 from '@/assets/brands/maqtob-4.png';
+
 export type BrandMetrics = {
   status: string;      // e.g. 'Profitable', 'Scaling', 'Launch phase'
   since: string;       // e.g. '2024'
@@ -49,30 +54,18 @@ export const BRANDS_DATA: BrandData[] = [
     sectorTags: ['Publishing', 'Christian Books'],
     geoTags: ['USA'],
     exitYear: '2024',
-    images: [
-      'https://picsum.photos/seed/sob-1/800/800',
-      'https://picsum.photos/seed/sob-2/800/800',
-      'https://picsum.photos/seed/sob-3/800/800',
-      'https://picsum.photos/seed/sob-4/800/800',
-    ],
+    images: [],
   },
   {
     logo: 'https://vorvn.com/wp-content/uploads/2024/08/maqtob.png',
-    url: null,
+    url: 'https://maqtob.id',
     presentationUrl: null,
     status: 'validation',
     tags: ['Modest Fashion', 'Moroccan-Inspired', 'Indonesian Craft', 'France'],
     sectorTags: ['Modest Fashion', 'Moroccan-Inspired', 'Indonesian Craft'],
     geoTags: ['Indonesia', 'France', 'EU'],
     devTimeline: 'Q3 2026',
-    images: [
-      'https://picsum.photos/seed/mq-1/800/800',
-      'https://picsum.photos/seed/mq-2/800/800',
-      'https://picsum.photos/seed/mq-3/800/800',
-      'https://picsum.photos/seed/mq-4/800/800',
-      'https://picsum.photos/seed/mq-5/800/800',
-      'https://picsum.photos/seed/mq-6/800/800',
-    ],
+    images: [maqtob1, maqtob2, maqtob3, maqtob4],
   },
   {
     logo: 'https://vorvn.com/wp-content/uploads/2024/08/xvoyager.png',
@@ -83,14 +76,7 @@ export const BRANDS_DATA: BrandData[] = [
     sectorTags: ['Exploration', 'Lifestyle'],
     geoTags: ['Global'],
     devTimeline: 'Q1 2027',
-    images: [
-      'https://picsum.photos/seed/xv-1/800/800',
-      'https://picsum.photos/seed/xv-2/800/800',
-      'https://picsum.photos/seed/xv-3/800/800',
-      'https://picsum.photos/seed/xv-4/800/800',
-      'https://picsum.photos/seed/xv-5/800/800',
-      'https://picsum.photos/seed/xv-6/800/800',
-    ],
+    images: [],
   },
   {
     logo: 'https://vorvn.com/wp-content/uploads/2024/08/warung-marrakech-300x216.png',
@@ -101,13 +87,6 @@ export const BRANDS_DATA: BrandData[] = [
     sectorTags: ['Food & Beverage', 'Hospitality'],
     geoTags: ['Morocco', 'Indonesia'],
     devTimeline: 'Q4 2026',
-    images: [
-      'https://picsum.photos/seed/wm-1/800/800',
-      'https://picsum.photos/seed/wm-2/800/800',
-      'https://picsum.photos/seed/wm-3/800/800',
-      'https://picsum.photos/seed/wm-4/800/800',
-      'https://picsum.photos/seed/wm-5/800/800',
-      'https://picsum.photos/seed/wm-6/800/800',
-    ],
+    images: [],
   },
 ];

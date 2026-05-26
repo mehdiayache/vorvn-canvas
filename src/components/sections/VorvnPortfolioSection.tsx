@@ -327,7 +327,7 @@ function VorvnPortfolioItem({
             )}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-x-[60px] gap-y-9">
+          <div className={`grid grid-cols-1 gap-x-[60px] gap-y-9 ${data.images.length > 0 ? 'lg:grid-cols-[1fr_1.2fr]' : ''}`}>
             <div>
               {/* Sector tags inside the panel — same component, also visible on mobile */}
               <div className="flex flex-wrap gap-2 mb-5">
@@ -371,7 +371,7 @@ function VorvnPortfolioItem({
                 )}
               </div>
             </div>
-            {isOpen && <VorvnGallery images={data.images} brandName={brand.name} />}
+            {isOpen && data.images.length > 0 && <VorvnGallery images={data.images} brandName={brand.name} />}
           </div>
         </div>
       </div>
