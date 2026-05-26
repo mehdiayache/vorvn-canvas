@@ -1,14 +1,17 @@
-## Problem
+## Plan
 
-Netlify build fails on `validate-newsroom`:
+**1. Add Maqtob images to project**
+Copy 4 uploaded images into `src/assets/brands/`:
+- `maqtob-1.png` (wordmark, dark green)
+- `maqtob-2.png` (evil-eye tote)
+- `maqtob-3.png` (heart sweatshirt)
+- `maqtob-4.png` (patterned tote)
 
-1. Translations (ar/es/fr/id/zh) have top-level `"type": "analysis"` — invalid. EN uses `"deep-insight"`, and all translations must match EN.
-2. `zh` file has invalid JSON at position 1886 (likely an unescaped quote inside a string).
+**2. Update `src/data/brands.ts`**
+- Maqtob: set `url: 'https://maqtob.id'`, replace `images` with imported assets above.
+- Stories of Bible, X Voyager, Warung Marrakech: set `images: []` (placeholder picsum removed).
 
-## Fix
+**3. Update `src/components/sections/VorvnPortfolioSection.tsx`**
+- In the expanded panel grid, only render `<VorvnGallery>` when `data.images.length > 0`. When no images, the left column spans full width (switch grid to single column for that brand).
 
-1. In all 5 translation files (`2026-05-23-{ar,es,fr,id,zh}-meme-we-made-real-cook-warriors-method.json`), change top-level `"type": "analysis"` → `"type": "deep-insight"`.
-2. Open the `zh` file, locate the JSON parse error near position 1886, and escape/repair the offending character so the file parses.
-3. Re-run `node scripts/validate-newsroom.mjs` locally to confirm clean before redeploy.
-
-No code or component changes — content-only repair.
+That's it. Visit-brand link will now show for Maqtob automatically since `url` is set. Cook Warriors + Maqtob will be the only brands showing image galleries.
