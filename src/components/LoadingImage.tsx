@@ -13,6 +13,8 @@ type Props = {
   imgStyle?: React.CSSProperties;
   /** If true, mounts the <img> immediately (skip intersection observer). */
   eager?: boolean;
+  /** Resource priority hint for the browser (used for LCP images). */
+  fetchPriority?: 'high' | 'low' | 'auto';
 };
 
 /**
@@ -30,6 +32,7 @@ export default function LoadingImage({
   objectFit = 'cover',
   imgStyle,
   eager = false,
+  fetchPriority,
 }: Props) {
   const [inView, setInView] = useState(eager);
   const [loaded, setLoaded] = useState(false);
@@ -75,6 +78,8 @@ export default function LoadingImage({
           alt={alt}
           loading={eager ? 'eager' : 'lazy'}
           decoding="async"
+          // @ts-expect-error - fetchpriority is a valid HTML attr; React types lag.
+          fetchpriority={fetchPriority}
           onLoad={() => setLoaded(true)}
           onError={() => setErrored(true)}
           className={`block w-full h-full ${objectFit === 'contain' ? 'object-contain' : 'object-cover'}`}
