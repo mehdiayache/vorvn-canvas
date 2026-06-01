@@ -896,5 +896,42 @@ ${hreflangLinks(`/newsroom/${g.slug}`, availableLangs)}
   fs.writeFileSync(sitemapPath, sm, 'utf8');
 }
 
-console.log(`[prerender] Wrote ${count} localized HTML files + refreshed root + sitemap. Newsroom: ${newsroomGroups.length} article(s).`);
+// ============ 404 PAGE (English) ============
+// Netlify serves /404.html with HTTP 404 for any unknown path (see netlify.toml
+// final fallback). The HTML mirrors the React <NotFound /> content shell and is
+// explicitly noindex so it never gets indexed even if a crawler hits it.
+{
+  const title = '404 — Page Not Found | VORVN';
+  const desc = 'The page you requested could not be found on VORVN.';
+  const canonical = `${BASE_URL}/404`;
+  const headBlock = [
+    `    <title>${escapeHtml(title)}</title>`,
+    `    <meta name="description" content="${escapeHtml(desc)}" />`,
+    `    <meta name="robots" content="noindex, nofollow" />`,
+    `    <link rel="canonical" href="${canonical}" />`,
+    `    <meta property="og:title" content="${escapeHtml(title)}" />`,
+    `    <meta property="og:description" content="${escapeHtml(desc)}" />`,
+    `    <meta property="og:type" content="website" />`,
+    `    <meta property="og:url" content="${canonical}" />`,
+    `    <meta property="og:site_name" content="VORVN" />`,
+    `    <meta property="og:locale" content="en_US" />`,
+    `    <meta property="og:image" content="${BASE_URL}/og-image.jpg" />`,
+    `    <meta name="twitter:card" content="summary_large_image" />`,
+    `    <meta name="twitter:title" content="${escapeHtml(title)}" />`,
+    `    <meta name="twitter:description" content="${escapeHtml(desc)}" />`,
+    `    <meta name="twitter:image" content="${BASE_URL}/og-image.jpg" />`,
+  ].join('\n');
+  const fallbackBody =
+    '<h2>404 — Page not found</h2>' +
+    '<p>The page you requested could not be found on VORVN.</p>' +
+    `<p><a href="${BASE_URL}/en">Return to the VORVN home page</a></p>`;
+  let html = injectInto(baseHtml, { lang: 'en', dir: 'ltr', headBlock });
+  html = injectBodyH1(html, '404 — Page Not Found');
+  html = injectPrerenderedContent(html, fallbackBody);
+  writeFile('404.html', html);
+  count++;
+}
+
+console.log(`[prerender] Wrote ${count} localized HTML files + refreshed root + sitemap + 404. Newsroom: ${newsroomGroups.length} article(s).`);
+
 
