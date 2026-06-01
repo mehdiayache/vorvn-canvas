@@ -124,6 +124,8 @@ export default function VorvnFounderSection() {
             className="absolute inset-0 w-full h-full"
             loaderSize={56}
             imgStyle={{ objectPosition: 'center center' }}
+            eager
+            fetchPriority="high"
           />
 
           {/* Caption overlay — accent color since portrait background is dark */}

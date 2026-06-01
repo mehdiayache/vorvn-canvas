@@ -55,8 +55,8 @@ export default function LegalLayout({
     setMeta('meta[name="description"]', 'name', 'description', description);
     setMeta('meta[property="og:title"]', 'property', 'og:title', fullTitle);
     setMeta('meta[property="og:description"]', 'property', 'og:description', description);
-    setMeta('meta[property="og:url"]', 'property', 'og:url', `https://www.vorvn.com/legal/${slug}`);
-    setMeta('link[rel="canonical"]', 'rel', 'canonical', `https://www.vorvn.com/legal/${slug}`);
+    setMeta('meta[property="og:url"]', 'property', 'og:url', `https://vorvn.com/legal/${slug}`);
+    setMeta('link[rel="canonical"]', 'rel', 'canonical', `https://vorvn.com/legal/${slug}`);
     setMeta('meta[name="robots"]', 'name', 'robots', 'index, follow');
 
     return () => {

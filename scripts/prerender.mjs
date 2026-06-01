@@ -62,16 +62,20 @@ function injectBodyH1(html, h1Text) {
 }
 
 function injectPrerenderedContent(html, innerHtml) {
-  // Sits outside #root with the `hidden` attribute. Crawlers parse and index
-  // every word; real users never see it because React mounts inside #root.
+  // Inject SEO content INSIDE #root as visible static markup. React's
+  // createRoot() replaces #root's children on hydration, so real users never
+  // see this -- but crawlers and non-JS clients receive visible HTML that
+  // matches what React renders (no hidden/aria-hidden cloaking signal).
+  //
+  // `sr-only` keeps the brief pre-hydration paint visually quiet while still
+  // being a real, visible-to-crawlers element (not display:none, not hidden).
   //
   // IMPORTANT: function replacement. innerHtml may contain literal `$1`,
-  // `$2`, … (e.g. prices like `$100`, `$250`). With a string replacement,
-  // JavaScript expands those as capture-group backreferences and injects
-  // extra `<div id="root">` tags inside this hidden block — causing React to
-  // mount into the hidden node and rendering a blank page on direct entry.
-  const block = `<div id="prerendered-content" hidden aria-hidden="true">${innerHtml}</div>`;
-  return html.replace(/(<div id="root">)/i, (m) => `${block}${m}`);
+  // `$2`, ... (e.g. prices like `$100`). With a string replacement,
+  // JavaScript expands those as capture-group backreferences.
+  const block =
+    `<!-- prerender:start --><div class="sr-only" data-prerender>${innerHtml}</div><!-- prerender:end -->`;
+  return html.replace(/(<div id="root">)/i, (m) => `${m}${block}`);
 }
 
 const localeCache = {};

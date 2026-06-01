@@ -16,7 +16,7 @@ import {
   resolveAuthor,
 } from '@/lib/newsroom';
 
-const BASE_URL = 'https://www.vorvn.com';
+const BASE_URL = 'https://vorvn.com';
 
 export default function NewsroomArticle() {
   const { t, i18n } = useTranslation();
