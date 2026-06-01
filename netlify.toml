@@ -14,22 +14,66 @@
 [functions]
   node_bundler = "esbuild"
 
-# Clean URL for the contact endpoint
+# ============================================================
+# 1) Functions (clean URLs)
+# ============================================================
 [[redirects]]
   from = "/api/contact"
   to = "/.netlify/functions/contact"
   status = 200
 
-# Clean URL for the newsletter endpoint
 [[redirects]]
   from = "/api/newsletter"
   to = "/.netlify/functions/newsletter"
   status = 200
 
-# ====== Prerendered route → static HTML (status 200, no redirect) ======
-# Each rule maps a clean URL to its prerendered index.html so canonicals
-# (which never include a trailing slash) resolve directly with 200.
+# ============================================================
+# 2) Root -> default language (301)
+# ============================================================
+[[redirects]]
+  from = "/"
+  to = "/en"
+  status = 301
+  force = true
 
+# ============================================================
+# 3) Trailing-slash normalization (301 to non-slash canonical)
+# ============================================================
+[[redirects]]
+  from = "/:lang/"
+  to = "/:lang"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/:lang/contact/"
+  to = "/:lang/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/:lang/newsroom/"
+  to = "/:lang/newsroom"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/:lang/newsroom/:slug/"
+  to = "/:lang/newsroom/:slug"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/legal/:slug/"
+  to = "/legal/:slug"
+  status = 301
+  force = true
+
+# ============================================================
+# 4) Prerendered routes -> static HTML (200, no redirect)
+# Each rule maps a clean URL to its prerendered index.html so
+# canonicals (no trailing slash) resolve directly with 200.
+# ============================================================
 [[redirects]]
   from = "/:lang/newsroom/:slug"
   to = "/:lang/newsroom/:slug/index.html"
@@ -55,38 +99,19 @@
   to = "/legal/:slug/index.html"
   status = 200
 
-# ====== SPA fallback inside known language roots only ======
-# Unknown paths outside these roots fall through to Netlify's 404 (no soft-404).
-
+# ============================================================
+# 5) Final fallback: real 404 for everything else
+# Unknown URLs (including unknown paths inside /:lang/*) get a real
+# prerendered 404 page with HTTP 404 status -- no more soft 404s.
+# ============================================================
 [[redirects]]
-  from = "/en/*"
-  to = "/en/index.html"
-  status = 200
+  from = "/*"
+  to = "/404.html"
+  status = 404
 
-[[redirects]]
-  from = "/fr/*"
-  to = "/fr/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/es/*"
-  to = "/es/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/zh/*"
-  to = "/zh/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/id/*"
-  to = "/id/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/ar/*"
-  to = "/ar/index.html"
-  status = 200
+# ============================================================
+# Headers
+# ============================================================
 
 # Long-cache hashed assets emitted by Vite
 [[headers]]
@@ -111,5 +136,10 @@
 
 [[headers]]
   for = "/*/index.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/404.html"
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
